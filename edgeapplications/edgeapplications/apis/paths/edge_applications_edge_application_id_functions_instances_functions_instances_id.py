@@ -1,0 +1,13 @@
+from edgeapplications.paths.edge_applications_edge_application_id_functions_instances_functions_instances_id.get import ApiForget
+from edgeapplications.paths.edge_applications_edge_application_id_functions_instances_functions_instances_id.put import ApiForput
+from edgeapplications.paths.edge_applications_edge_application_id_functions_instances_functions_instances_id.delete import ApiFordelete
+from edgeapplications.paths.edge_applications_edge_application_id_functions_instances_functions_instances_id.patch import ApiForpatch
+
+
+class EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesId(
+    ApiForget,
+    ApiForput,
+    ApiFordelete,
+    ApiForpatch,
+):
+    pass
