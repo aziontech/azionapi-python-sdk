@@ -1,0 +1,53 @@
+import typing_extensions
+
+from edgeapplications.paths import PathValues
+from edgeapplications.apis.paths.edge_applications import EdgeApplications
+from edgeapplications.apis.paths.edge_applications_id import EdgeApplicationsId
+from edgeapplications.apis.paths.edge_applications_edge_application_id_cache_settings import EdgeApplicationsEdgeApplicationIdCacheSettings
+from edgeapplications.apis.paths.edge_applications_edge_application_id_cache_settings_cache_settings_id import EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsId
+from edgeapplications.apis.paths.edge_applications_edge_application_id_cache_settings_cache_settings import EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettings
+from edgeapplications.apis.paths.edge_applications_edge_application_id_functions_instances import EdgeApplicationsEdgeApplicationIdFunctionsInstances
+from edgeapplications.apis.paths.edge_applications_edge_application_id_functions_instances_functions_instances_id import EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesId
+from edgeapplications.apis.paths.edge_applications_edge_application_id_origins import EdgeApplicationsEdgeApplicationIdOrigins
+from edgeapplications.apis.paths.edge_applications_edge_application_id_origins_origin_key import EdgeApplicationsEdgeApplicationIdOriginsOriginKey
+from edgeapplications.apis.paths.edge_applications_edge_application_id_rules_engine_phase_rules import EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRules
+from edgeapplications.apis.paths.edge_applications_edge_application_id_rules_engine_phase_rules_rule_id import EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleId
+from edgeapplications.apis.paths.edge_applications_edge_application_id_device_groups import EdgeApplicationsEdgeApplicationIdDeviceGroups
+from edgeapplications.apis.paths.edge_applications_edge_application_id_device_groups_device_group_id import EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupId
+
+PathToApi = typing_extensions.TypedDict(
+    'PathToApi',
+    {
+        PathValues.EDGE_APPLICATIONS: EdgeApplications,
+        PathValues.EDGE_APPLICATIONS_ID: EdgeApplicationsId,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_CACHE_SETTINGS: EdgeApplicationsEdgeApplicationIdCacheSettings,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_CACHE_SETTINGS_CACHE_SETTINGS_ID: EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsId,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_CACHE_SETTINGS_CACHE_SETTINGS: EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettings,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_FUNCTIONS_INSTANCES: EdgeApplicationsEdgeApplicationIdFunctionsInstances,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_FUNCTIONS_INSTANCES_FUNCTIONS_INSTANCES_ID: EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesId,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_ORIGINS: EdgeApplicationsEdgeApplicationIdOrigins,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_ORIGINS_ORIGIN_KEY: EdgeApplicationsEdgeApplicationIdOriginsOriginKey,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_RULES_ENGINE_PHASE_RULES: EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRules,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_RULES_ENGINE_PHASE_RULES_RULE_ID: EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleId,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_DEVICE_GROUPS: EdgeApplicationsEdgeApplicationIdDeviceGroups,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_DEVICE_GROUPS_DEVICE_GROUP_ID: EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupId,
+    }
+)
+
+path_to_api = PathToApi(
+    {
+        PathValues.EDGE_APPLICATIONS: EdgeApplications,
+        PathValues.EDGE_APPLICATIONS_ID: EdgeApplicationsId,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_CACHE_SETTINGS: EdgeApplicationsEdgeApplicationIdCacheSettings,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_CACHE_SETTINGS_CACHE_SETTINGS_ID: EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsId,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_CACHE_SETTINGS_CACHE_SETTINGS: EdgeApplicationsEdgeApplicationIdCacheSettingsCacheSettings,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_FUNCTIONS_INSTANCES: EdgeApplicationsEdgeApplicationIdFunctionsInstances,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_FUNCTIONS_INSTANCES_FUNCTIONS_INSTANCES_ID: EdgeApplicationsEdgeApplicationIdFunctionsInstancesFunctionsInstancesId,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_ORIGINS: EdgeApplicationsEdgeApplicationIdOrigins,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_ORIGINS_ORIGIN_KEY: EdgeApplicationsEdgeApplicationIdOriginsOriginKey,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_RULES_ENGINE_PHASE_RULES: EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRules,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_RULES_ENGINE_PHASE_RULES_RULE_ID: EdgeApplicationsEdgeApplicationIdRulesEnginePhaseRulesRuleId,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_DEVICE_GROUPS: EdgeApplicationsEdgeApplicationIdDeviceGroups,
+        PathValues.EDGE_APPLICATIONS_EDGE_APPLICATION_ID_DEVICE_GROUPS_DEVICE_GROUP_ID: EdgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupId,
+    }
+)
