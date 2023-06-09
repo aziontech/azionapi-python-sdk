@@ -1,6 +1,5 @@
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/apis/tags/DNSSECApi.md
@@ -73,20 +72,4 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_models/__init__.py
-test/test_models/test_dns_sec.py
-test/test_models/test_dns_sec_delegation_signer.py
-test/test_models/test_dns_sec_delegation_signer_digest_type.py
-test/test_models/test_error_response.py
-test/test_models/test_errors_response.py
-test/test_models/test_get_or_patch_dns_sec_response.py
-test/test_models/test_get_records_response.py
-test/test_models/test_get_records_response_results.py
-test/test_models/test_get_zone_response.py
-test/test_models/test_get_zones_response.py
-test/test_models/test_get_zones_response_links.py
-test/test_models/test_post_or_put_record_response.py
-test/test_models/test_post_or_put_zone_response.py
-test/test_models/test_record_get.py
-test/test_models/test_record_post_or_put.py
-test/test_models/test_zone.py
 tox.ini

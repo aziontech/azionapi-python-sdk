@@ -87,7 +87,7 @@ request_path_origin_key = api_client.PathParameter(
     required=True,
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 
 

@@ -95,7 +95,7 @@ request_path_rule_id = api_client.PathParameter(
     required=True,
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 
 

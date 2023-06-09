@@ -107,7 +107,7 @@ request_body_update_device_groups_request = api_client.RequestBody(
     },
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJsonVersion3 = DeviceGroupsIdResponse
 

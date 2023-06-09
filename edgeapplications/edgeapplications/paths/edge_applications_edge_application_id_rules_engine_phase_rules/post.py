@@ -107,7 +107,7 @@ request_body_create_rules_engine_request = api_client.RequestBody(
     },
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJsonVersion3 = RulesEngineIdResponse
 

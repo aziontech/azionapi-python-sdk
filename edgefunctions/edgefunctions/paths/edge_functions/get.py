@@ -81,7 +81,7 @@ request_query_order_by = api_client.QueryParameter(
     explode=True,
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJsonVersion3 = ListEdgeFunctionResponse
 

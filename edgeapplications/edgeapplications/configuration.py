@@ -384,13 +384,13 @@ conf = edgeapplications.Configuration(
         :return: The Auth Settings information dict.
         """
         auth = {}
-        if 'JWT' in self.api_key:
-            auth['JWT'] = {
+        if 'tokenAuth' in self.api_key:
+            auth['tokenAuth'] = {
                 'type': 'api_key',
                 'in': 'header',
                 'key': 'Authorization',
                 'value': self.get_api_key_with_prefix(
-                    'JWT',
+                    'tokenAuth',
                 ),
             }
         return auth

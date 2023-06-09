@@ -81,7 +81,7 @@ request_path_id = api_client.PathParameter(
     required=True,
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJsonVersion3 = GetApplicationResponse
 

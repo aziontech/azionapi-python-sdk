@@ -114,7 +114,7 @@ request_path_service_id = api_client.PathParameter(
     required=True,
 )
 _auth = [
-    'bearerAuth',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJson = ResourceResponseWithTotal
 

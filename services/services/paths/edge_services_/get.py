@@ -88,7 +88,7 @@ request_query_sort = api_client.QueryParameter(
     explode=True,
 )
 _auth = [
-    'bearerAuth',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJson = ServiceResponseWithTotals
 

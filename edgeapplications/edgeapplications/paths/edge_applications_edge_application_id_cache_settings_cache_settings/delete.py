@@ -94,7 +94,7 @@ request_path_cache_settings = api_client.PathParameter(
     required=True,
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 
 

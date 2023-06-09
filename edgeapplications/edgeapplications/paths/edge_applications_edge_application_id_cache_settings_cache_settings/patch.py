@@ -100,7 +100,7 @@ request_body_application_cache_patch_request = api_client.RequestBody(
     },
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJsonVersion3 = ApplicationCachePatchResponse
 

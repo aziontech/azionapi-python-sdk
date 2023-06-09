@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ### Example
 
-* Api Key Authentication (JWT):
+* Api Key Authentication (tokenAuth):
 ```python
 import edgeapplications
 from edgeapplications.apis.tags import edge_applications_edge_functions_instances_api
@@ -36,11 +36,11 @@ configuration = edgeapplications.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with edgeapplications.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -190,7 +190,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[JWT](../../../README.md#JWT)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -202,7 +202,7 @@ headers | Unset | headers were not defined |
 
 ### Example
 
-* Api Key Authentication (JWT):
+* Api Key Authentication (tokenAuth):
 ```python
 import edgeapplications
 from edgeapplications.apis.tags import edge_applications_edge_functions_instances_api
@@ -219,11 +219,11 @@ configuration = edgeapplications.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with edgeapplications.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -373,7 +373,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[JWT](../../../README.md#JWT)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -385,7 +385,7 @@ headers | Unset | headers were not defined |
 
 ### Example
 
-* Api Key Authentication (JWT):
+* Api Key Authentication (tokenAuth):
 ```python
 import edgeapplications
 from edgeapplications.apis.tags import edge_applications_edge_functions_instances_api
@@ -403,11 +403,11 @@ configuration = edgeapplications.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with edgeapplications.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -578,7 +578,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[JWT](../../../README.md#JWT)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -590,7 +590,7 @@ headers | Unset | headers were not defined |
 
 ### Example
 
-* Api Key Authentication (JWT):
+* Api Key Authentication (tokenAuth):
 ```python
 import edgeapplications
 from edgeapplications.apis.tags import edge_applications_edge_functions_instances_api
@@ -608,11 +608,11 @@ configuration = edgeapplications.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with edgeapplications.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -783,7 +783,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[JWT](../../../README.md#JWT)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -795,7 +795,7 @@ headers | Unset | headers were not defined |
 
 ### Example
 
-* Api Key Authentication (JWT):
+* Api Key Authentication (tokenAuth):
 ```python
 import edgeapplications
 from edgeapplications.apis.tags import edge_applications_edge_functions_instances_api
@@ -812,11 +812,11 @@ configuration = edgeapplications.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with edgeapplications.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1015,7 +1015,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[JWT](../../../README.md#JWT)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -1027,7 +1027,7 @@ edge_application/:edge_application_id:/functions_instances
 
 ### Example
 
-* Api Key Authentication (JWT):
+* Api Key Authentication (tokenAuth):
 ```python
 import edgeapplications
 from edgeapplications.apis.tags import edge_applications_edge_functions_instances_api
@@ -1045,11 +1045,11 @@ configuration = edgeapplications.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with edgeapplications.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1210,7 +1210,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[JWT](../../../README.md#JWT)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 

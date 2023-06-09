@@ -61,7 +61,7 @@ request_path_resource_id = api_client.PathParameter(
     required=True,
 )
 _auth = [
-    'bearerAuth',
+    'tokenAuth',
 ]
 
 

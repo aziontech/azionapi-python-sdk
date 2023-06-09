@@ -89,9 +89,6 @@ request_body_body = api_client.RequestBody(
             schema=SchemaForRequestBodyB2XAuto),
     },
 )
-_auth = [
-    'authToken',
-]
 SchemaFor201ResponseBodyApplicationJson = schemas.AnyTypeSchema
 
 
@@ -242,7 +239,6 @@ class BaseApi(api_client.Api):
             headers=_headers,
             fields=_fields,
             body=_body,
-            auth_settings=_auth,
             stream=stream,
             timeout=timeout,
         )

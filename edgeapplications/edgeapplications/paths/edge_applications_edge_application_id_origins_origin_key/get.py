@@ -89,7 +89,7 @@ request_path_origin_key = api_client.PathParameter(
     required=True,
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJsonVersion3 = OriginsIdResponse
 

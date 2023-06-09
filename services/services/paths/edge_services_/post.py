@@ -42,7 +42,7 @@ request_body_create_service_request = api_client.RequestBody(
     required=True,
 )
 _auth = [
-    'bearerAuth',
+    'tokenAuth',
 ]
 SchemaFor201ResponseBodyApplicationJson = ServiceResponse
 

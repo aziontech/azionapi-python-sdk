@@ -99,7 +99,7 @@ request_body_create_device_groups_request = api_client.RequestBody(
     },
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJsonVersion3 = DeviceGroupsIdResponse
 
