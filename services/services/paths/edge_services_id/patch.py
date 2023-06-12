@@ -68,7 +68,7 @@ request_body_update_service_request = api_client.RequestBody(
     required=True,
 )
 _auth = [
-    'bearerAuth',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJson = ServiceResponse
 

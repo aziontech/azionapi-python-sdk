@@ -113,7 +113,7 @@ request_header_accept = api_client.HeaderParameter(
     schema=AcceptSchema,
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJsonVersion3 = GetApplicationsResponse
 

@@ -87,7 +87,7 @@ request_path_device_group_id = api_client.PathParameter(
     required=True,
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 
 

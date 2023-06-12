@@ -18,7 +18,6 @@ Delete a version. A version is just um path prefix/sub-namespace for a set of fi
 
 ### Example
 
-* Api Key Authentication (authToken):
 ```python
 import storageapi
 from storageapi.apis.tags import default_api
@@ -29,16 +28,6 @@ configuration = storageapi.Configuration(
     host = "https://storage-api.azion.com"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: authToken
-configuration.api_key['authToken'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['authToken'] = 'Bearer'
 # Enter a context with an instance of the API client
 with storageapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -94,7 +83,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[authToken](../../../README.md#authToken)
+No authorization required
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -108,7 +97,6 @@ Upload file and transfer to remote storage
 
 ### Example
 
-* Api Key Authentication (authToken):
 ```python
 import storageapi
 from storageapi.apis.tags import default_api
@@ -119,16 +107,6 @@ configuration = storageapi.Configuration(
     host = "https://storage-api.azion.com"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: authToken
-configuration.api_key['authToken'] = 'YOUR_API_KEY'
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['authToken'] = 'Bearer'
 # Enter a context with an instance of the API client
 with storageapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -241,7 +219,7 @@ dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal
 
 ### Authorization
 
-[authToken](../../../README.md#authToken)
+No authorization required
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 

@@ -68,7 +68,7 @@ request_body_create_resource_request = api_client.RequestBody(
     required=True,
 )
 _auth = [
-    'bearerAuth',
+    'tokenAuth',
 ]
 SchemaFor201ResponseBodyApplicationJson = ResourceDetail
 

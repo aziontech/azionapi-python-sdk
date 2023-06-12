@@ -159,11 +159,11 @@ configuration = edgefunctions.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with edgefunctions.ApiClient(configuration) as api_client:
@@ -211,8 +211,8 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 Authentication schemes defined for the API:
-<a id="JWT"></a>
-### JWT
+<a id="tokenAuth"></a>
+### tokenAuth
 
 - **Type**: API key
 - **API key parameter name**: Authorization

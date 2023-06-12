@@ -82,7 +82,7 @@ request_path_id = api_client.PathParameter(
     required=True,
 )
 _auth = [
-    'bearerAuth',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJson = ServiceResponse
 

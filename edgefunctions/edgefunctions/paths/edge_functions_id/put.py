@@ -70,7 +70,7 @@ request_body_put_edge_function_request = api_client.RequestBody(
     required=True,
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJson = EdgeFunctionResponse
 

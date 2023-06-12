@@ -24,7 +24,7 @@ Delete Service Resource by ID
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+* Api Key Authentication (tokenAuth):
 ```python
 import services
 from services.apis.tags import default_api
@@ -40,10 +40,11 @@ configuration = services.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
-configuration = services.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with services.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -149,7 +150,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[bearerAuth](../../../README.md#bearerAuth)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -161,7 +162,7 @@ Delete Service by ID
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+* Api Key Authentication (tokenAuth):
 ```python
 import services
 from services.apis.tags import default_api
@@ -177,10 +178,11 @@ configuration = services.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
-configuration = services.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with services.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -277,7 +279,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[bearerAuth](../../../README.md#bearerAuth)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -289,7 +291,7 @@ Return Service Resource by ID
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+* Api Key Authentication (tokenAuth):
 ```python
 import services
 from services.apis.tags import default_api
@@ -306,10 +308,11 @@ configuration = services.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
-configuration = services.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with services.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -407,7 +410,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[bearerAuth](../../../README.md#bearerAuth)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -419,7 +422,7 @@ Return Service Resources by page
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+* Api Key Authentication (tokenAuth):
 ```python
 import services
 from services.apis.tags import default_api
@@ -436,10 +439,11 @@ configuration = services.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
-configuration = services.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with services.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -600,7 +604,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[bearerAuth](../../../README.md#bearerAuth)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -612,7 +616,7 @@ Return Service by ID
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+* Api Key Authentication (tokenAuth):
 ```python
 import services
 from services.apis.tags import default_api
@@ -629,10 +633,11 @@ configuration = services.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
-configuration = services.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with services.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -757,7 +762,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[bearerAuth](../../../README.md#bearerAuth)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -769,7 +774,7 @@ Return Services by page
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+* Api Key Authentication (tokenAuth):
 ```python
 import services
 from services.apis.tags import default_api
@@ -786,10 +791,11 @@ configuration = services.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
-configuration = services.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with services.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -907,7 +913,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[bearerAuth](../../../README.md#bearerAuth)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -919,7 +925,7 @@ Create Service
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+* Api Key Authentication (tokenAuth):
 ```python
 import services
 from services.apis.tags import default_api
@@ -937,10 +943,11 @@ configuration = services.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
-configuration = services.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with services.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1032,7 +1039,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[bearerAuth](../../../README.md#bearerAuth)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -1044,7 +1051,7 @@ Update Service by ID
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+* Api Key Authentication (tokenAuth):
 ```python
 import services
 from services.apis.tags import default_api
@@ -1062,10 +1069,11 @@ configuration = services.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
-configuration = services.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with services.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1191,7 +1199,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[bearerAuth](../../../README.md#bearerAuth)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -1203,7 +1211,7 @@ Update Service Resource by ID
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+* Api Key Authentication (tokenAuth):
 ```python
 import services
 from services.apis.tags import default_api
@@ -1221,10 +1229,11 @@ configuration = services.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
-configuration = services.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with services.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1355,7 +1364,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[bearerAuth](../../../README.md#bearerAuth)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -1367,7 +1376,7 @@ Create Service Resource
 
 ### Example
 
-* Bearer Authentication (bearerAuth):
+* Api Key Authentication (tokenAuth):
 ```python
 import services
 from services.apis.tags import default_api
@@ -1385,10 +1394,11 @@ configuration = services.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
-configuration = services.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with services.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -1510,7 +1520,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[bearerAuth](../../../README.md#bearerAuth)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 

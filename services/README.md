@@ -160,10 +160,11 @@ configuration = services.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization: bearerAuth
-configuration = services.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with services.ApiClient(configuration) as api_client:
@@ -212,10 +213,12 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 Authentication schemes defined for the API:
-<a id="bearerAuth"></a>
-### bearerAuth
+<a id="tokenAuth"></a>
+### tokenAuth
 
-- **Type**: Bearer authentication
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
 
 
 ## Author

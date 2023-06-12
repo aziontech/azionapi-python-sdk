@@ -99,7 +99,7 @@ request_body_application_update_request = api_client.RequestBody(
     },
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJsonVersion3 = ApplicationUpdateResponse
 

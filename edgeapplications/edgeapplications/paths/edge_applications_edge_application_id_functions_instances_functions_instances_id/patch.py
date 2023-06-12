@@ -107,7 +107,7 @@ request_body_application_update_instance_request = api_client.RequestBody(
     },
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 SchemaFor200ResponseBodyApplicationJsonVersion3 = ApplicationInstanceResults
 
