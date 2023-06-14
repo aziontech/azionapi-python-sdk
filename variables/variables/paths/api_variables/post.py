@@ -32,18 +32,12 @@ from . import path
 
 # body param
 SchemaForRequestBodyApplicationJson = VariableCreate
-SchemaForRequestBodyApplicationXWwwFormUrlencoded = VariableCreate
-SchemaForRequestBodyMultipartFormData = VariableCreate
 
 
 request_body_variable_create = api_client.RequestBody(
     content={
         'application/json': api_client.MediaType(
             schema=SchemaForRequestBodyApplicationJson),
-        'application/x-www-form-urlencoded': api_client.MediaType(
-            schema=SchemaForRequestBodyApplicationXWwwFormUrlencoded),
-        'multipart/form-data': api_client.MediaType(
-            schema=SchemaForRequestBodyMultipartFormData),
     },
     required=True,
 )
@@ -69,8 +63,60 @@ _response_for_201 = api_client.OpenApiResponse(
             schema=SchemaFor201ResponseBodyApplicationJson),
     },
 )
+
+
+@dataclass
+class ApiResponseFor400(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: schemas.Unset = schemas.unset
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_400 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor400,
+)
+
+
+@dataclass
+class ApiResponseFor403(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: schemas.Unset = schemas.unset
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_403 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor403,
+)
+
+
+@dataclass
+class ApiResponseFor404(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: schemas.Unset = schemas.unset
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_404 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor404,
+)
+
+
+@dataclass
+class ApiResponseFor500(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: schemas.Unset = schemas.unset
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_500 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor500,
+)
 _status_code_to_response = {
     '201': _response_for_201,
+    '400': _response_for_400,
+    '403': _response_for_403,
+    '404': _response_for_404,
+    '500': _response_for_500,
 }
 _all_accept_content_types = (
     'application/json',
@@ -94,33 +140,7 @@ class BaseApi(api_client.Api):
     @typing.overload
     def _api_variables_create_oapg(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationXWwwFormUrlencoded,],
-        content_type: typing_extensions.Literal["application/x-www-form-urlencoded"],
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: typing_extensions.Literal[False] = ...,
-    ) -> typing.Union[
-        ApiResponseFor201,
-    ]: ...
-
-    @typing.overload
-    def _api_variables_create_oapg(
-        self,
-        body: typing.Union[SchemaForRequestBodyMultipartFormData,],
-        content_type: typing_extensions.Literal["multipart/form-data"],
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: typing_extensions.Literal[False] = ...,
-    ) -> typing.Union[
-        ApiResponseFor201,
-    ]: ...
-
-    @typing.overload
-    def _api_variables_create_oapg(
-        self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,SchemaForRequestBodyApplicationXWwwFormUrlencoded,SchemaForRequestBodyMultipartFormData,],
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = ...,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -134,7 +154,7 @@ class BaseApi(api_client.Api):
     @typing.overload
     def _api_variables_create_oapg(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,SchemaForRequestBodyApplicationXWwwFormUrlencoded,SchemaForRequestBodyMultipartFormData,],
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         skip_deserialization: typing_extensions.Literal[True],
         content_type: str = ...,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -145,7 +165,7 @@ class BaseApi(api_client.Api):
     @typing.overload
     def _api_variables_create_oapg(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,SchemaForRequestBodyApplicationXWwwFormUrlencoded,SchemaForRequestBodyMultipartFormData,],
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = ...,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -158,7 +178,7 @@ class BaseApi(api_client.Api):
 
     def _api_variables_create_oapg(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,SchemaForRequestBodyApplicationXWwwFormUrlencoded,SchemaForRequestBodyMultipartFormData,],
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = 'application/json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -238,33 +258,7 @@ class ApiVariablesCreate(BaseApi):
     @typing.overload
     def api_variables_create(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationXWwwFormUrlencoded,],
-        content_type: typing_extensions.Literal["application/x-www-form-urlencoded"],
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: typing_extensions.Literal[False] = ...,
-    ) -> typing.Union[
-        ApiResponseFor201,
-    ]: ...
-
-    @typing.overload
-    def api_variables_create(
-        self,
-        body: typing.Union[SchemaForRequestBodyMultipartFormData,],
-        content_type: typing_extensions.Literal["multipart/form-data"],
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: typing_extensions.Literal[False] = ...,
-    ) -> typing.Union[
-        ApiResponseFor201,
-    ]: ...
-
-    @typing.overload
-    def api_variables_create(
-        self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,SchemaForRequestBodyApplicationXWwwFormUrlencoded,SchemaForRequestBodyMultipartFormData,],
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = ...,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -278,7 +272,7 @@ class ApiVariablesCreate(BaseApi):
     @typing.overload
     def api_variables_create(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,SchemaForRequestBodyApplicationXWwwFormUrlencoded,SchemaForRequestBodyMultipartFormData,],
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         skip_deserialization: typing_extensions.Literal[True],
         content_type: str = ...,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -289,7 +283,7 @@ class ApiVariablesCreate(BaseApi):
     @typing.overload
     def api_variables_create(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,SchemaForRequestBodyApplicationXWwwFormUrlencoded,SchemaForRequestBodyMultipartFormData,],
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = ...,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -302,7 +296,7 @@ class ApiVariablesCreate(BaseApi):
 
     def api_variables_create(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,SchemaForRequestBodyApplicationXWwwFormUrlencoded,SchemaForRequestBodyMultipartFormData,],
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = 'application/json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -338,33 +332,7 @@ class ApiForpost(BaseApi):
     @typing.overload
     def post(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationXWwwFormUrlencoded,],
-        content_type: typing_extensions.Literal["application/x-www-form-urlencoded"],
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: typing_extensions.Literal[False] = ...,
-    ) -> typing.Union[
-        ApiResponseFor201,
-    ]: ...
-
-    @typing.overload
-    def post(
-        self,
-        body: typing.Union[SchemaForRequestBodyMultipartFormData,],
-        content_type: typing_extensions.Literal["multipart/form-data"],
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: typing_extensions.Literal[False] = ...,
-    ) -> typing.Union[
-        ApiResponseFor201,
-    ]: ...
-
-    @typing.overload
-    def post(
-        self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,SchemaForRequestBodyApplicationXWwwFormUrlencoded,SchemaForRequestBodyMultipartFormData,],
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = ...,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -378,7 +346,7 @@ class ApiForpost(BaseApi):
     @typing.overload
     def post(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,SchemaForRequestBodyApplicationXWwwFormUrlencoded,SchemaForRequestBodyMultipartFormData,],
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         skip_deserialization: typing_extensions.Literal[True],
         content_type: str = ...,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -389,7 +357,7 @@ class ApiForpost(BaseApi):
     @typing.overload
     def post(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,SchemaForRequestBodyApplicationXWwwFormUrlencoded,SchemaForRequestBodyMultipartFormData,],
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = ...,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -402,7 +370,7 @@ class ApiForpost(BaseApi):
 
     def post(
         self,
-        body: typing.Union[SchemaForRequestBodyApplicationJson,SchemaForRequestBodyApplicationXWwwFormUrlencoded,SchemaForRequestBodyMultipartFormData,],
+        body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = 'application/json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
