@@ -605,8 +605,8 @@ with edgeapplications.ApiClient(configuration) as api_client:
     body = ApplicationUpdateRequest(
         name="name_example",
         delivery_protocol="delivery_protocol_example",
-null,
-null,
+        http_port=None,
+        https_port=None,
         minimum_tls_version="minimum_tls_version_example",
         active=True,
         application_acceleration=True,
@@ -817,8 +817,8 @@ with edgeapplications.ApiClient(configuration) as api_client:
     body = ApplicationPutRequest(
         name="name_example",
         delivery_protocol="delivery_protocol_example",
-null,
-null,
+        http_port=None,
+        https_port=None,
         minimum_tls_version="minimum_tls_version_example",
         active=True,
         application_acceleration=True,

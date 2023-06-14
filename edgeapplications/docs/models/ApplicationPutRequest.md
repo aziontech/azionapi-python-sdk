@@ -10,8 +10,8 @@ Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
 **name** | str,  | str,  |  | 
 **delivery_protocol** | str,  | str,  |  | [optional] 
-**http_port** | [**Interface**](Interface.md) | [**Interface**](Interface.md) |  | [optional] 
-**https_port** | [**Interface**](Interface.md) | [**Interface**](Interface.md) |  | [optional] 
+**http_port** | dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader,  | frozendict.frozendict, str, decimal.Decimal, BoolClass, NoneClass, tuple, bytes, FileIO |  | [optional] 
+**https_port** | dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader,  | frozendict.frozendict, str, decimal.Decimal, BoolClass, NoneClass, tuple, bytes, FileIO |  | [optional] 
 **minimum_tls_version** | str,  | str,  |  | [optional] 
 **active** | bool,  | BoolClass,  |  | [optional] 
 **application_acceleration** | bool,  | BoolClass,  |  | [optional] 

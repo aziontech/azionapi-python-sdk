@@ -60,12 +60,12 @@ class GetApplicationsResponse(
                 class MetaOapg:
                     
                     @staticmethod
-                    def items() -> typing.Type['ApplicationResults']:
-                        return ApplicationResults
+                    def items() -> typing.Type['ApplicationsResults']:
+                        return ApplicationsResults
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple['ApplicationResults'], typing.List['ApplicationResults']],
+                    _arg: typing.Union[typing.Tuple['ApplicationsResults'], typing.List['ApplicationsResults']],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'results':
                     return super().__new__(
@@ -74,7 +74,7 @@ class GetApplicationsResponse(
                         _configuration=_configuration,
                     )
             
-                def __getitem__(self, i: int) -> 'ApplicationResults':
+                def __getitem__(self, i: int) -> 'ApplicationsResults':
                     return super().__getitem__(i)
             __annotations__ = {
                 "count": count,
@@ -150,4 +150,4 @@ class GetApplicationsResponse(
         )
 
 from edgeapplications.model.application_links import ApplicationLinks
-from edgeapplications.model.application_results import ApplicationResults
+from edgeapplications.model.applications_results import ApplicationsResults
