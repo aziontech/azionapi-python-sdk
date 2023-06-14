@@ -40,70 +40,121 @@ class ApplicationsResults(
         }
         
         class properties:
-            next = schemas.StrSchema
             id = schemas.Int64Schema
+            name = schemas.StrSchema
+            debug_rules = schemas.StrSchema
+            last_editor = schemas.StrSchema
+            last_modified = schemas.StrSchema
             active = schemas.BoolSchema
-        
-            @staticmethod
-            def links() -> typing.Type['ApplicationOrigins']:
-                return ApplicationOrigins
+            
+            
+            class origins(
+                schemas.ListSchema
+            ):
+            
+            
+                class MetaOapg:
+                    
+                    @staticmethod
+                    def items() -> typing.Type['ApplicationOrigins']:
+                        return ApplicationOrigins
+            
+                def __new__(
+                    cls,
+                    _arg: typing.Union[typing.Tuple['ApplicationOrigins'], typing.List['ApplicationOrigins']],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'origins':
+                    return super().__new__(
+                        cls,
+                        _arg,
+                        _configuration=_configuration,
+                    )
+            
+                def __getitem__(self, i: int) -> 'ApplicationOrigins':
+                    return super().__getitem__(i)
             __annotations__ = {
-                "next": next,
                 "id": id,
+                "name": name,
+                "debug_rules": debug_rules,
+                "last_editor": last_editor,
+                "last_modified": last_modified,
                 "active": active,
-                "links": links,
+                "origins": origins,
             }
         additional_properties = schemas.NotAnyTypeSchema
     
-    next: MetaOapg.properties.next
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["next"]) -> MetaOapg.properties.next: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["debug_rules"]) -> MetaOapg.properties.debug_rules: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["last_editor"]) -> MetaOapg.properties.last_editor: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["last_modified"]) -> MetaOapg.properties.last_modified: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["active"]) -> MetaOapg.properties.active: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["links"]) -> 'ApplicationOrigins': ...
+    def __getitem__(self, name: typing_extensions.Literal["origins"]) -> MetaOapg.properties.origins: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["next"], typing_extensions.Literal["id"], typing_extensions.Literal["active"], typing_extensions.Literal["links"], ]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id"], typing_extensions.Literal["name"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["last_editor"], typing_extensions.Literal["last_modified"], typing_extensions.Literal["active"], typing_extensions.Literal["origins"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["next"]) -> MetaOapg.properties.next: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["id"]) -> typing.Union[MetaOapg.properties.id, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["name"]) -> typing.Union[MetaOapg.properties.name, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["debug_rules"]) -> typing.Union[MetaOapg.properties.debug_rules, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["last_editor"]) -> typing.Union[MetaOapg.properties.last_editor, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["last_modified"]) -> typing.Union[MetaOapg.properties.last_modified, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["active"]) -> typing.Union[MetaOapg.properties.active, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["links"]) -> typing.Union['ApplicationOrigins', schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["origins"]) -> typing.Union[MetaOapg.properties.origins, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["next"], typing_extensions.Literal["id"], typing_extensions.Literal["active"], typing_extensions.Literal["links"], ]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id"], typing_extensions.Literal["name"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["last_editor"], typing_extensions.Literal["last_modified"], typing_extensions.Literal["active"], typing_extensions.Literal["origins"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
         cls,
         *_args: typing.Union[dict, frozendict.frozendict, ],
-        next: typing.Union[MetaOapg.properties.next, str, ],
         id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        name: typing.Union[MetaOapg.properties.name, str, schemas.Unset] = schemas.unset,
+        debug_rules: typing.Union[MetaOapg.properties.debug_rules, str, schemas.Unset] = schemas.unset,
+        last_editor: typing.Union[MetaOapg.properties.last_editor, str, schemas.Unset] = schemas.unset,
+        last_modified: typing.Union[MetaOapg.properties.last_modified, str, schemas.Unset] = schemas.unset,
         active: typing.Union[MetaOapg.properties.active, bool, schemas.Unset] = schemas.unset,
-        links: typing.Union['ApplicationOrigins', schemas.Unset] = schemas.unset,
+        origins: typing.Union[MetaOapg.properties.origins, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'ApplicationsResults':
         return super().__new__(
             cls,
             *_args,
-            next=next,
             id=id,
+            name=name,
+            debug_rules=debug_rules,
+            last_editor=last_editor,
+            last_modified=last_modified,
             active=active,
-            links=links,
+            origins=origins,
             _configuration=_configuration,
         )
 

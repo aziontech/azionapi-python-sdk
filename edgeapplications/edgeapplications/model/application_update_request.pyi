@@ -38,14 +38,8 @@ class ApplicationUpdateRequest(
         class properties:
             name = schemas.StrSchema
             delivery_protocol = schemas.StrSchema
-        
-            @staticmethod
-            def http_port() -> typing.Type['Interface']:
-                return Interface
-        
-            @staticmethod
-            def https_port() -> typing.Type['Interface']:
-                return Interface
+            http_port = schemas.AnyTypeSchema
+            https_port = schemas.AnyTypeSchema
             minimum_tls_version = schemas.StrSchema
             active = schemas.BoolSchema
             application_acceleration = schemas.BoolSchema
@@ -85,10 +79,10 @@ class ApplicationUpdateRequest(
     def __getitem__(self, name: typing_extensions.Literal["delivery_protocol"]) -> MetaOapg.properties.delivery_protocol: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["http_port"]) -> 'Interface': ...
+    def __getitem__(self, name: typing_extensions.Literal["http_port"]) -> MetaOapg.properties.http_port: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["https_port"]) -> 'Interface': ...
+    def __getitem__(self, name: typing_extensions.Literal["https_port"]) -> MetaOapg.properties.https_port: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["minimum_tls_version"]) -> MetaOapg.properties.minimum_tls_version: ...
@@ -137,10 +131,10 @@ class ApplicationUpdateRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["delivery_protocol"]) -> typing.Union[MetaOapg.properties.delivery_protocol, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["http_port"]) -> typing.Union['Interface', schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["http_port"]) -> typing.Union[MetaOapg.properties.http_port, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["https_port"]) -> typing.Union['Interface', schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["https_port"]) -> typing.Union[MetaOapg.properties.https_port, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["minimum_tls_version"]) -> typing.Union[MetaOapg.properties.minimum_tls_version, schemas.Unset]: ...
@@ -186,8 +180,8 @@ class ApplicationUpdateRequest(
         *_args: typing.Union[dict, frozendict.frozendict, ],
         name: typing.Union[MetaOapg.properties.name, str, schemas.Unset] = schemas.unset,
         delivery_protocol: typing.Union[MetaOapg.properties.delivery_protocol, str, schemas.Unset] = schemas.unset,
-        http_port: typing.Union['Interface', schemas.Unset] = schemas.unset,
-        https_port: typing.Union['Interface', schemas.Unset] = schemas.unset,
+        http_port: typing.Union[MetaOapg.properties.http_port, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        https_port: typing.Union[MetaOapg.properties.https_port, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         minimum_tls_version: typing.Union[MetaOapg.properties.minimum_tls_version, str, schemas.Unset] = schemas.unset,
         active: typing.Union[MetaOapg.properties.active, bool, schemas.Unset] = schemas.unset,
         application_acceleration: typing.Union[MetaOapg.properties.application_acceleration, bool, schemas.Unset] = schemas.unset,
@@ -223,5 +217,3 @@ class ApplicationUpdateRequest(
             web_application_firewall=web_application_firewall,
             _configuration=_configuration,
         )
-
-from edgeapplications.model.interface import Interface
