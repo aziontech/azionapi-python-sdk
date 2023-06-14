@@ -561,12 +561,19 @@ with domains.ApiClient(configuration) as api_client:
     api_instance = domains_api.DomainsApi(api_client)
 
     # example passing only optional values
+    query_params = {
+        'page': 1,
+        'page_size': 1,
+        'sort': "sort_example",
+        'order_by': "order_by_example",
+    }
     header_params = {
         'Accept': "application/json; version=3",
     }
     try:
         # /domains
         api_response = api_instance.get_domains(
+            query_params=query_params,
             header_params=header_params,
         )
         pprint(api_response)
@@ -577,11 +584,51 @@ with domains.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+query_params | RequestQueryParams | |
 header_params | RequestHeaderParams | |
 accept_content_types | typing.Tuple[str] | default is ('application/json; version&#x3D;3', ) | Tells the server the content type(s) that are accepted by the client
 stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
 timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
 skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
+
+### query_params
+#### RequestQueryParams
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+page | PageSchema | | optional
+page_size | PageSizeSchema | | optional
+sort | SortSchema | | optional
+order_by | OrderBySchema | | optional
+
+
+# PageSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
+
+# PageSizeSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
+
+# SortSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
+
+# OrderBySchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
 
 ### header_params
 #### RequestHeaderParams
