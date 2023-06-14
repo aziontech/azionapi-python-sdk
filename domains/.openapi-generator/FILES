@@ -1,6 +1,5 @@
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/apis/tags/DomainsApi.md
@@ -42,11 +41,4 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_models/__init__.py
-test/test_models/test_create_domain_request.py
-test/test_models/test_domain_links.py
-test/test_models/test_domain_response_with_result.py
-test/test_models/test_domain_response_with_results.py
-test/test_models/test_domain_results.py
-test/test_models/test_put_domain_request.py
-test/test_models/test_update_domain_request.py
 tox.ini

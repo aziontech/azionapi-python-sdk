@@ -29,6 +29,56 @@ from domains.model.domain_response_with_results import DomainResponseWithResults
 
 from . import path
 
+# Query params
+PageSchema = schemas.Int64Schema
+PageSizeSchema = schemas.Int64Schema
+SortSchema = schemas.StrSchema
+OrderBySchema = schemas.StrSchema
+RequestRequiredQueryParams = typing_extensions.TypedDict(
+    'RequestRequiredQueryParams',
+    {
+    }
+)
+RequestOptionalQueryParams = typing_extensions.TypedDict(
+    'RequestOptionalQueryParams',
+    {
+        'page': typing.Union[PageSchema, decimal.Decimal, int, ],
+        'page_size': typing.Union[PageSizeSchema, decimal.Decimal, int, ],
+        'sort': typing.Union[SortSchema, str, ],
+        'order_by': typing.Union[OrderBySchema, str, ],
+    },
+    total=False
+)
+
+
+class RequestQueryParams(RequestRequiredQueryParams, RequestOptionalQueryParams):
+    pass
+
+
+request_query_page = api_client.QueryParameter(
+    name="page",
+    style=api_client.ParameterStyle.FORM,
+    schema=PageSchema,
+    explode=True,
+)
+request_query_page_size = api_client.QueryParameter(
+    name="page_size",
+    style=api_client.ParameterStyle.FORM,
+    schema=PageSizeSchema,
+    explode=True,
+)
+request_query_sort = api_client.QueryParameter(
+    name="sort",
+    style=api_client.ParameterStyle.FORM,
+    schema=SortSchema,
+    explode=True,
+)
+request_query_order_by = api_client.QueryParameter(
+    name="order_by",
+    style=api_client.ParameterStyle.FORM,
+    schema=OrderBySchema,
+    explode=True,
+)
 # Header params
 AcceptSchema = schemas.StrSchema
 RequestRequiredHeaderParams = typing_extensions.TypedDict(
@@ -140,6 +190,7 @@ class BaseApi(api_client.Api):
     @typing.overload
     def _get_domains_oapg(
         self,
+        query_params: RequestQueryParams = frozendict.frozendict(),
         header_params: RequestHeaderParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -153,6 +204,7 @@ class BaseApi(api_client.Api):
     def _get_domains_oapg(
         self,
         skip_deserialization: typing_extensions.Literal[True],
+        query_params: RequestQueryParams = frozendict.frozendict(),
         header_params: RequestHeaderParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -162,6 +214,7 @@ class BaseApi(api_client.Api):
     @typing.overload
     def _get_domains_oapg(
         self,
+        query_params: RequestQueryParams = frozendict.frozendict(),
         header_params: RequestHeaderParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -174,6 +227,7 @@ class BaseApi(api_client.Api):
 
     def _get_domains_oapg(
         self,
+        query_params: RequestQueryParams = frozendict.frozendict(),
         header_params: RequestHeaderParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -186,8 +240,25 @@ class BaseApi(api_client.Api):
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
         """
+        self._verify_typed_dict_inputs_oapg(RequestQueryParams, query_params)
         self._verify_typed_dict_inputs_oapg(RequestHeaderParams, header_params)
         used_path = path.value
+
+        prefix_separator_iterator = None
+        for parameter in (
+            request_query_page,
+            request_query_page_size,
+            request_query_sort,
+            request_query_order_by,
+        ):
+            parameter_data = query_params.get(parameter.name, schemas.unset)
+            if parameter_data is schemas.unset:
+                continue
+            if prefix_separator_iterator is None:
+                prefix_separator_iterator = parameter.get_prefix_separator_iterator()
+            serialized_data = parameter.serialize(parameter_data, prefix_separator_iterator)
+            for serialized_value in serialized_data.values():
+                used_path += serialized_value
 
         _headers = HTTPHeaderDict()
         for parameter in (
@@ -237,6 +308,7 @@ class GetDomains(BaseApi):
     @typing.overload
     def get_domains(
         self,
+        query_params: RequestQueryParams = frozendict.frozendict(),
         header_params: RequestHeaderParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -250,6 +322,7 @@ class GetDomains(BaseApi):
     def get_domains(
         self,
         skip_deserialization: typing_extensions.Literal[True],
+        query_params: RequestQueryParams = frozendict.frozendict(),
         header_params: RequestHeaderParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -259,6 +332,7 @@ class GetDomains(BaseApi):
     @typing.overload
     def get_domains(
         self,
+        query_params: RequestQueryParams = frozendict.frozendict(),
         header_params: RequestHeaderParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -271,6 +345,7 @@ class GetDomains(BaseApi):
 
     def get_domains(
         self,
+        query_params: RequestQueryParams = frozendict.frozendict(),
         header_params: RequestHeaderParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -278,6 +353,7 @@ class GetDomains(BaseApi):
         skip_deserialization: bool = False,
     ):
         return self._get_domains_oapg(
+            query_params=query_params,
             header_params=header_params,
             accept_content_types=accept_content_types,
             stream=stream,
@@ -292,6 +368,7 @@ class ApiForget(BaseApi):
     @typing.overload
     def get(
         self,
+        query_params: RequestQueryParams = frozendict.frozendict(),
         header_params: RequestHeaderParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -305,6 +382,7 @@ class ApiForget(BaseApi):
     def get(
         self,
         skip_deserialization: typing_extensions.Literal[True],
+        query_params: RequestQueryParams = frozendict.frozendict(),
         header_params: RequestHeaderParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -314,6 +392,7 @@ class ApiForget(BaseApi):
     @typing.overload
     def get(
         self,
+        query_params: RequestQueryParams = frozendict.frozendict(),
         header_params: RequestHeaderParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -326,6 +405,7 @@ class ApiForget(BaseApi):
 
     def get(
         self,
+        query_params: RequestQueryParams = frozendict.frozendict(),
         header_params: RequestHeaderParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
@@ -333,6 +413,7 @@ class ApiForget(BaseApi):
         skip_deserialization: bool = False,
     ):
         return self._get_domains_oapg(
+            query_params=query_params,
             header_params=header_params,
             accept_content_types=accept_content_types,
             stream=stream,
