@@ -12,7 +12,7 @@ Key | Input Type | Accessed Type | Description | Notes
 **previous** | 
 **id** | decimal.Decimal, int,  | decimal.Decimal,  |  | [optional] value must be a 64 bit integer
 **name** | str,  | str,  |  | [optional] 
-**debug_rules** | str,  | str,  |  | [optional] 
+**debug_rules** | bool,  | BoolClass,  |  | [optional] 
 **last_editor** | str,  | str,  |  | [optional] 
 **last_modified** | str,  | str,  |  | [optional] 
 **active** | bool,  | BoolClass,  |  | [optional] 

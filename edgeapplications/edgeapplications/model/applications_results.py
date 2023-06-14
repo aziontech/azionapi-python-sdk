@@ -42,7 +42,7 @@ class ApplicationsResults(
         class properties:
             id = schemas.Int64Schema
             name = schemas.StrSchema
-            debug_rules = schemas.StrSchema
+            debug_rules = schemas.BoolSchema
             last_editor = schemas.StrSchema
             last_modified = schemas.StrSchema
             active = schemas.BoolSchema
@@ -138,7 +138,7 @@ class ApplicationsResults(
         *_args: typing.Union[dict, frozendict.frozendict, ],
         id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         name: typing.Union[MetaOapg.properties.name, str, schemas.Unset] = schemas.unset,
-        debug_rules: typing.Union[MetaOapg.properties.debug_rules, str, schemas.Unset] = schemas.unset,
+        debug_rules: typing.Union[MetaOapg.properties.debug_rules, bool, schemas.Unset] = schemas.unset,
         last_editor: typing.Union[MetaOapg.properties.last_editor, str, schemas.Unset] = schemas.unset,
         last_modified: typing.Union[MetaOapg.properties.last_modified, str, schemas.Unset] = schemas.unset,
         active: typing.Union[MetaOapg.properties.active, bool, schemas.Unset] = schemas.unset,
