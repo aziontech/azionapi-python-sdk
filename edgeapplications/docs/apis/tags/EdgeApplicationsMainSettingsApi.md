@@ -609,6 +609,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
         https_port=None,
         minimum_tls_version="minimum_tls_version_example",
         active=True,
+        debug_rules=True,
         application_acceleration=True,
         caching=True,
         device_detection=True,

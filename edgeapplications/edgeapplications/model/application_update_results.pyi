@@ -44,12 +44,15 @@ class ApplicationUpdateResults(
             "delivery_protocol",
             "edge_firewall",
             "caching",
+            "debug_rules",
             "http_port",
             "https_port",
             "minimum_tls_version",
+            "supported_ciphers",
             "name",
             "edge_functions",
             "l2_caching",
+            "http3",
             "id",
             "image_optimization",
         }
@@ -62,6 +65,9 @@ class ApplicationUpdateResults(
             https_port = schemas.AnyTypeSchema
             minimum_tls_version = schemas.StrSchema
             active = schemas.BoolSchema
+            debug_rules = schemas.BoolSchema
+            http3 = schemas.BoolSchema
+            supported_ciphers = schemas.StrSchema
             application_acceleration = schemas.BoolSchema
             caching = schemas.BoolSchema
             device_detection = schemas.BoolSchema
@@ -80,6 +86,9 @@ class ApplicationUpdateResults(
                 "https_port": https_port,
                 "minimum_tls_version": minimum_tls_version,
                 "active": active,
+                "debug_rules": debug_rules,
+                "http3": http3,
+                "supported_ciphers": supported_ciphers,
                 "application_acceleration": application_acceleration,
                 "caching": caching,
                 "device_detection": device_detection,
@@ -102,12 +111,15 @@ class ApplicationUpdateResults(
     delivery_protocol: MetaOapg.properties.delivery_protocol
     edge_firewall: MetaOapg.properties.edge_firewall
     caching: MetaOapg.properties.caching
+    debug_rules: MetaOapg.properties.debug_rules
     http_port: MetaOapg.properties.http_port
     https_port: MetaOapg.properties.https_port
     minimum_tls_version: MetaOapg.properties.minimum_tls_version
+    supported_ciphers: MetaOapg.properties.supported_ciphers
     name: MetaOapg.properties.name
     edge_functions: MetaOapg.properties.edge_functions
     l2_caching: MetaOapg.properties.l2_caching
+    http3: MetaOapg.properties.http3
     id: MetaOapg.properties.id
     image_optimization: MetaOapg.properties.image_optimization
     
@@ -139,6 +151,9 @@ class ApplicationUpdateResults(
     def __getitem__(self, name: typing_extensions.Literal["caching"]) -> MetaOapg.properties.caching: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["debug_rules"]) -> MetaOapg.properties.debug_rules: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["http_port"]) -> MetaOapg.properties.http_port: ...
     
     @typing.overload
@@ -146,6 +161,9 @@ class ApplicationUpdateResults(
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["minimum_tls_version"]) -> MetaOapg.properties.minimum_tls_version: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["supported_ciphers"]) -> MetaOapg.properties.supported_ciphers: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
@@ -157,12 +175,15 @@ class ApplicationUpdateResults(
     def __getitem__(self, name: typing_extensions.Literal["l2_caching"]) -> MetaOapg.properties.l2_caching: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["http3"]) -> MetaOapg.properties.http3: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["image_optimization"]) -> MetaOapg.properties.image_optimization: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["load_balancer"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["web_application_firewall"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["active"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["caching"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["name"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["id"], typing_extensions.Literal["image_optimization"], ]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["load_balancer"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["web_application_firewall"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["active"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["caching"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["supported_ciphers"], typing_extensions.Literal["name"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["http3"], typing_extensions.Literal["id"], typing_extensions.Literal["image_optimization"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -194,6 +215,9 @@ class ApplicationUpdateResults(
     def get_item_oapg(self, name: typing_extensions.Literal["caching"]) -> MetaOapg.properties.caching: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["debug_rules"]) -> MetaOapg.properties.debug_rules: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["http_port"]) -> MetaOapg.properties.http_port: ...
     
     @typing.overload
@@ -201,6 +225,9 @@ class ApplicationUpdateResults(
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["minimum_tls_version"]) -> MetaOapg.properties.minimum_tls_version: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["supported_ciphers"]) -> MetaOapg.properties.supported_ciphers: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
@@ -212,12 +239,15 @@ class ApplicationUpdateResults(
     def get_item_oapg(self, name: typing_extensions.Literal["l2_caching"]) -> MetaOapg.properties.l2_caching: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["http3"]) -> MetaOapg.properties.http3: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["image_optimization"]) -> MetaOapg.properties.image_optimization: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["load_balancer"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["web_application_firewall"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["active"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["caching"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["name"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["id"], typing_extensions.Literal["image_optimization"], ]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["load_balancer"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["web_application_firewall"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["active"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["caching"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["supported_ciphers"], typing_extensions.Literal["name"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["http3"], typing_extensions.Literal["id"], typing_extensions.Literal["image_optimization"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
@@ -232,12 +262,15 @@ class ApplicationUpdateResults(
         delivery_protocol: typing.Union[MetaOapg.properties.delivery_protocol, str, ],
         edge_firewall: typing.Union[MetaOapg.properties.edge_firewall, bool, ],
         caching: typing.Union[MetaOapg.properties.caching, bool, ],
+        debug_rules: typing.Union[MetaOapg.properties.debug_rules, bool, ],
         http_port: typing.Union[MetaOapg.properties.http_port, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         https_port: typing.Union[MetaOapg.properties.https_port, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         minimum_tls_version: typing.Union[MetaOapg.properties.minimum_tls_version, str, ],
+        supported_ciphers: typing.Union[MetaOapg.properties.supported_ciphers, str, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
         edge_functions: typing.Union[MetaOapg.properties.edge_functions, bool, ],
         l2_caching: typing.Union[MetaOapg.properties.l2_caching, bool, ],
+        http3: typing.Union[MetaOapg.properties.http3, bool, ],
         id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, ],
         image_optimization: typing.Union[MetaOapg.properties.image_optimization, bool, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -254,12 +287,15 @@ class ApplicationUpdateResults(
             delivery_protocol=delivery_protocol,
             edge_firewall=edge_firewall,
             caching=caching,
+            debug_rules=debug_rules,
             http_port=http_port,
             https_port=https_port,
             minimum_tls_version=minimum_tls_version,
+            supported_ciphers=supported_ciphers,
             name=name,
             edge_functions=edge_functions,
             l2_caching=l2_caching,
+            http3=http3,
             id=id,
             image_optimization=image_optimization,
             _configuration=_configuration,
