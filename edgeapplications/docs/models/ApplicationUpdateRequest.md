@@ -14,6 +14,7 @@ Key | Input Type | Accessed Type | Description | Notes
 **https_port** | dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader,  | frozendict.frozendict, str, decimal.Decimal, BoolClass, NoneClass, tuple, bytes, FileIO |  | [optional] 
 **minimum_tls_version** | str,  | str,  |  | [optional] 
 **active** | bool,  | BoolClass,  |  | [optional] 
+**debug_rules** | bool,  | BoolClass,  |  | [optional] 
 **application_acceleration** | bool,  | BoolClass,  |  | [optional] 
 **caching** | bool,  | BoolClass,  |  | [optional] 
 **device_detection** | bool,  | BoolClass,  |  | [optional] 

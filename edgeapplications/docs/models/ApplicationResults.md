@@ -21,6 +21,7 @@ Key | Input Type | Accessed Type | Description | Notes
 **http_port** | dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader,  | frozendict.frozendict, str, decimal.Decimal, BoolClass, NoneClass, tuple, bytes, FileIO |  | 
 **https_port** | dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader,  | frozendict.frozendict, str, decimal.Decimal, BoolClass, NoneClass, tuple, bytes, FileIO |  | 
 **minimum_tls_version** | str,  | str,  |  | 
+**supported_ciphers** | str,  | str,  |  | 
 **name** | str,  | str,  |  | 
 **edge_functions** | bool,  | BoolClass,  |  | 
 **l2_caching** | bool,  | BoolClass,  |  | 

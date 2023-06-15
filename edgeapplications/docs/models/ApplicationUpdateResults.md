@@ -17,12 +17,15 @@ Key | Input Type | Accessed Type | Description | Notes
 **delivery_protocol** | str,  | str,  |  | 
 **edge_firewall** | bool,  | BoolClass,  |  | 
 **caching** | bool,  | BoolClass,  |  | 
+**debug_rules** | bool,  | BoolClass,  |  | 
 **http_port** | dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader,  | frozendict.frozendict, str, decimal.Decimal, BoolClass, NoneClass, tuple, bytes, FileIO |  | 
 **https_port** | dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader,  | frozendict.frozendict, str, decimal.Decimal, BoolClass, NoneClass, tuple, bytes, FileIO |  | 
 **minimum_tls_version** | str,  | str,  |  | 
+**supported_ciphers** | str,  | str,  |  | 
 **name** | str,  | str,  |  | 
 **edge_functions** | bool,  | BoolClass,  |  | 
 **l2_caching** | bool,  | BoolClass,  |  | 
+**http3** | bool,  | BoolClass,  |  | 
 **id** | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
 **image_optimization** | bool,  | BoolClass,  |  | 
 
