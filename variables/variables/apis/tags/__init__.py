@@ -6,4 +6,4 @@ import enum
 
 
 class TagValues(str, enum.Enum):
-    API = "api"
+    VARIABLES = "Variables"

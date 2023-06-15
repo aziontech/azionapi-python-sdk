@@ -1,9 +1,8 @@
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
-docs/apis/tags/ApiApi.md
+docs/apis/tags/VariablesApi.md
 docs/models/Variable.md
 docs/models/VariableCreate.md
 docs/models/VariableGet.md
@@ -14,14 +13,11 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_models/__init__.py
-test/test_models/test_variable.py
-test/test_models/test_variable_create.py
-test/test_models/test_variable_get.py
 tox.ini
 variables/__init__.py
 variables/api_client.py
 variables/apis/__init__.py
-variables/apis/tags/api_api.py
+variables/apis/tags/variables_api.py
 variables/configuration.py
 variables/exceptions.py
 variables/model/__init__.py
