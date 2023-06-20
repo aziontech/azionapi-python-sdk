@@ -33,14 +33,14 @@ from . import path
 _auth = [
     'tokenAuth',
 ]
-SchemaFor200ResponseBodyApplicationJsonVersion3 = GetZonesResponse
+SchemaFor200ResponseBodyApplicationJson = GetZonesResponse
 
 
 @dataclass
 class ApiResponseFor200(api_client.ApiResponse):
     response: urllib3.HTTPResponse
     body: typing.Union[
-        SchemaFor200ResponseBodyApplicationJsonVersion3,
+        SchemaFor200ResponseBodyApplicationJson,
     ]
     headers: schemas.Unset = schemas.unset
 
@@ -48,8 +48,8 @@ class ApiResponseFor200(api_client.ApiResponse):
 _response_for_200 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor200,
     content={
-        'application/json; version=3': api_client.MediaType(
-            schema=SchemaFor200ResponseBodyApplicationJsonVersion3),
+        'application/json': api_client.MediaType(
+            schema=SchemaFor200ResponseBodyApplicationJson),
     },
 )
 SchemaFor400ResponseBodyApplicationJsonVersion3 = ErrorsResponse
@@ -76,6 +76,7 @@ _status_code_to_response = {
     '400': _response_for_400,
 }
 _all_accept_content_types = (
+    'application/json',
     'application/json; version=3',
 )
 
