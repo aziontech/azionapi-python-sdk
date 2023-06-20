@@ -6,6 +6,5 @@ import enum
 
 
 class PathValues(str, enum.Enum):
-    API_SCHEMA = "/api/schema"
     API_VARIABLES = "/api/variables"
     API_VARIABLES_UUID = "/api/variables/{uuid}"

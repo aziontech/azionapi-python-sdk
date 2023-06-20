@@ -165,14 +165,17 @@ configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
 with variables.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = variables_api.VariablesApi(api_client)
-    format = "json" # str |  (optional)
-lang = "af" # str |  (optional)
+    variable_create = VariableCreate(
+        key="key_example",
+        value="value_example",
+        secret=True,
+    ) # VariableCreate | 
 
     try:
-        api_response = api_instance.api_schema_retrieve(format=formatlang=lang)
+        api_response = api_instance.api_variables_create(variable_create)
         pprint(api_response)
     except variables.ApiException as e:
-        print("Exception when calling VariablesApi->api_schema_retrieve: %s\n" % e)
+        print("Exception when calling VariablesApi->api_variables_create: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -181,7 +184,6 @@ All URIs are relative to *https://stage-variables.azion.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*VariablesApi* | [**api_schema_retrieve**](docs/apis/tags/VariablesApi.md#api_schema_retrieve) | **get** /api/schema | 
 *VariablesApi* | [**api_variables_create**](docs/apis/tags/VariablesApi.md#api_variables_create) | **post** /api/variables | 
 *VariablesApi* | [**api_variables_destroy**](docs/apis/tags/VariablesApi.md#api_variables_destroy) | **delete** /api/variables/{uuid} | 
 *VariablesApi* | [**api_variables_list**](docs/apis/tags/VariablesApi.md#api_variables_list) | **get** /api/variables | 
