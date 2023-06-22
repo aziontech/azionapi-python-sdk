@@ -418,6 +418,7 @@ with edgefunctions.ApiClient(configuration) as api_client:
         code="code_example",
         json_args=None,
         active=True,
+        is_proprietary_code=True,
     )
     try:
         # edge_functions
@@ -566,6 +567,7 @@ with edgefunctions.ApiClient(configuration) as api_client:
         active=True,
         initiator_type="initiator_type_example",
         language="language_example",
+        is_proprietary_code=True,
     )
     try:
         # edge_functions
@@ -710,6 +712,7 @@ with edgefunctions.ApiClient(configuration) as api_client:
         code="code_example",
         json_args=None,
         active=True,
+        is_proprietary_code=True,
     )
     try:
         # edge_functions

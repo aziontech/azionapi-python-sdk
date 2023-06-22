@@ -21,6 +21,7 @@ from .. import ApiTestMixin
 class TestStorageVersionId(ApiTestMixin, unittest.TestCase):
     """
     StorageVersionId unit test stubs
+        /domains/:version_id  # noqa: E501
     """
     _configuration = configuration.Configuration()
 

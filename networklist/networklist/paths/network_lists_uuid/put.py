@@ -69,6 +69,9 @@ request_body_update_network_lists_request = api_client.RequestBody(
     },
     required=True,
 )
+_auth = [
+    'tokenAuth',
+]
 SchemaFor200ResponseBodyApplicationJson = ListNetworkListsResponse
 
 
@@ -248,6 +251,7 @@ class BaseApi(api_client.Api):
             headers=_headers,
             fields=_fields,
             body=_body,
+            auth_settings=_auth,
             stream=stream,
             timeout=timeout,
         )

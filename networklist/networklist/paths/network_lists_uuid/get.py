@@ -55,6 +55,9 @@ request_path_uuid = api_client.PathParameter(
     schema=UuidSchema,
     required=True,
 )
+_auth = [
+    'tokenAuth',
+]
 SchemaFor200ResponseBodyApplicationJson = NetworkListsResponse
 
 
@@ -158,6 +161,7 @@ class BaseApi(api_client.Api):
             resource_path=used_path,
             method='get'.upper(),
             headers=_headers,
+            auth_settings=_auth,
             stream=stream,
             timeout=timeout,
         )

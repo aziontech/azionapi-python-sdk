@@ -1,7 +1,7 @@
 <a id="__pageTop"></a>
 # services.apis.tags.default_api.DefaultApi
 
-All URIs are relative to *http://localhost:3002*
+All URIs are relative to *http://bff.azion.net:3002*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,8 +10,8 @@ Method | HTTP request | Description
 [**get_resource**](#get_resource) | **get** /edge_services/{serviceId}/resources/{resourceId} | Return Service Resource by ID
 [**get_resources**](#get_resources) | **get** /edge_services/{serviceId}/resources | Return Service Resources by page
 [**get_service**](#get_service) | **get** /edge_services/{id} | Return Service by ID
-[**get_services**](#get_services) | **get** /edge_services/ | Return Services by page
-[**new_service**](#new_service) | **post** /edge_services/ | Create Service
+[**get_services**](#get_services) | **get** /edge_services | Return Services by page
+[**new_service**](#new_service) | **post** /edge_services | Create Service
 [**patch_service**](#patch_service) | **patch** /edge_services/{id} | Update Service by ID
 [**patch_service_resource**](#patch_service_resource) | **patch** /edge_services/{serviceId}/resources/{resourceId} | Update Service Resource by ID
 [**post_resource**](#post_resource) | **post** /edge_services/{serviceId}/resources | Create Service Resource
@@ -29,10 +29,10 @@ Delete Service Resource by ID
 import services
 from services.apis.tags import default_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3002
+# Defining the host is optional and defaults to http://bff.azion.net:3002
 # See configuration.py for a list of all supported configuration parameters.
 configuration = services.Configuration(
-    host = "http://localhost:3002"
+    host = "http://bff.azion.net:3002"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -167,10 +167,10 @@ Delete Service by ID
 import services
 from services.apis.tags import default_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3002
+# Defining the host is optional and defaults to http://bff.azion.net:3002
 # See configuration.py for a list of all supported configuration parameters.
 configuration = services.Configuration(
-    host = "http://localhost:3002"
+    host = "http://bff.azion.net:3002"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -297,10 +297,10 @@ import services
 from services.apis.tags import default_api
 from services.model.resource_detail import ResourceDetail
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3002
+# Defining the host is optional and defaults to http://bff.azion.net:3002
 # See configuration.py for a list of all supported configuration parameters.
 configuration = services.Configuration(
-    host = "http://localhost:3002"
+    host = "http://bff.azion.net:3002"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -416,7 +416,7 @@ headers | Unset | headers were not defined |
 
 # **get_resources**
 <a id="get_resources"></a>
-> ResourceResponseWithTotal get_resources(service_id)
+> {str: typing.Any} get_resources(service_id)
 
 Return Service Resources by page
 
@@ -426,12 +426,11 @@ Return Service Resources by page
 ```python
 import services
 from services.apis.tags import default_api
-from services.model.resource_response_with_total import ResourceResponseWithTotal
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3002
+# Defining the host is optional and defaults to http://bff.azion.net:3002
 # See configuration.py for a list of all supported configuration parameters.
 configuration = services.Configuration(
-    host = "http://localhost:3002"
+    host = "http://bff.azion.net:3002"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -576,10 +575,15 @@ body | typing.Union[SchemaFor200ResponseBodyApplicationJson, ] |  |
 headers | Unset | headers were not defined |
 
 # SchemaFor200ResponseBodyApplicationJson
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**ResourceResponseWithTotal**](../../models/ResourceResponseWithTotal.md) |  | 
 
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
 
 #### get_resources.ApiResponseFor400
 Name | Type | Description  | Notes
@@ -622,10 +626,10 @@ import services
 from services.apis.tags import default_api
 from services.model.service_response import ServiceResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3002
+# Defining the host is optional and defaults to http://bff.azion.net:3002
 # See configuration.py for a list of all supported configuration parameters.
 configuration = services.Configuration(
-    host = "http://localhost:3002"
+    host = "http://bff.azion.net:3002"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -780,10 +784,10 @@ import services
 from services.apis.tags import default_api
 from services.model.service_response_with_totals import ServiceResponseWithTotals
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3002
+# Defining the host is optional and defaults to http://bff.azion.net:3002
 # See configuration.py for a list of all supported configuration parameters.
 configuration = services.Configuration(
-    host = "http://localhost:3002"
+    host = "http://bff.azion.net:3002"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -932,10 +936,10 @@ from services.apis.tags import default_api
 from services.model.service_response import ServiceResponse
 from services.model.create_service_request import CreateServiceRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3002
+# Defining the host is optional and defaults to http://bff.azion.net:3002
 # See configuration.py for a list of all supported configuration parameters.
 configuration = services.Configuration(
-    host = "http://localhost:3002"
+    host = "http://bff.azion.net:3002"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1058,10 +1062,10 @@ from services.apis.tags import default_api
 from services.model.service_response import ServiceResponse
 from services.model.update_service_request import UpdateServiceRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3002
+# Defining the host is optional and defaults to http://bff.azion.net:3002
 # See configuration.py for a list of all supported configuration parameters.
 configuration = services.Configuration(
-    host = "http://localhost:3002"
+    host = "http://bff.azion.net:3002"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1218,10 +1222,10 @@ from services.apis.tags import default_api
 from services.model.resource_detail import ResourceDetail
 from services.model.update_resource_request import UpdateResourceRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3002
+# Defining the host is optional and defaults to http://bff.azion.net:3002
 # See configuration.py for a list of all supported configuration parameters.
 configuration = services.Configuration(
-    host = "http://localhost:3002"
+    host = "http://bff.azion.net:3002"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1383,10 +1387,10 @@ from services.apis.tags import default_api
 from services.model.resource_detail import ResourceDetail
 from services.model.create_resource_request import CreateResourceRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3002
+# Defining the host is optional and defaults to http://bff.azion.net:3002
 # See configuration.py for a list of all supported configuration parameters.
 configuration = services.Configuration(
-    host = "http://localhost:3002"
+    host = "http://bff.azion.net:3002"
 )
 
 # The client must configure the authentication and authorization parameters

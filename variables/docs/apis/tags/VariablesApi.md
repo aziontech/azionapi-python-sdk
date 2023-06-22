@@ -5,17 +5,17 @@ All URIs are relative to *https://stage-variables.azion.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**api_variables_create**](#api_variables_create) | **post** /api/variables | 
-[**api_variables_destroy**](#api_variables_destroy) | **delete** /api/variables/{uuid} | 
-[**api_variables_list**](#api_variables_list) | **get** /api/variables | 
-[**api_variables_retrieve**](#api_variables_retrieve) | **get** /api/variables/{uuid} | 
-[**api_variables_update**](#api_variables_update) | **put** /api/variables/{uuid} | 
+[**api_variables_create**](#api_variables_create) | **post** /api/variables | /api/variables
+[**api_variables_destroy**](#api_variables_destroy) | **delete** /api/variables/{uuid} | /api/variables/:uuid
+[**api_variables_list**](#api_variables_list) | **get** /api/variables | /api/variables
+[**api_variables_retrieve**](#api_variables_retrieve) | **get** /api/variables/{uuid} | /api/variables/:uuid
+[**api_variables_update**](#api_variables_update) | **put** /api/variables/{uuid} | /api/variables/:uuid
 
 # **api_variables_create**
 <a id="api_variables_create"></a>
 > VariableGet api_variables_create(variable_create)
 
-
+/api/variables
 
 Create a new Variable. <br><ul><li>If the attribute \"secret\" is informed with value \"true\" in request payload the Variable value will be secret and no longer viewable after creation.</li><li>If the attribute \"secret\" is not informed the Variable value will be considered as not secret by default.</li></ul>
 
@@ -56,6 +56,7 @@ with variables.ApiClient(configuration) as api_client:
         secret=True,
     )
     try:
+        # /api/variables
         api_response = api_instance.api_variables_create(
             body=body,
         )
@@ -144,7 +145,7 @@ headers | Unset | headers were not defined |
 <a id="api_variables_destroy"></a>
 > api_variables_destroy(uuid)
 
-
+/api/variables/:uuid
 
 Delete a Variable by it's UUID
 
@@ -181,6 +182,7 @@ with variables.ApiClient(configuration) as api_client:
         'uuid': "bf325375-e030-4fcc-aa00-917317c57477",
     }
     try:
+        # /api/variables/:uuid
         api_response = api_instance.api_variables_destroy(
             path_params=path_params,
         )
@@ -266,7 +268,7 @@ headers | Unset | headers were not defined |
 <a id="api_variables_list"></a>
 > [Variable] api_variables_list()
 
-
+/api/variables
 
 List all user's Variables.
 
@@ -301,6 +303,7 @@ with variables.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
+        # /api/variables
         api_response = api_instance.api_variables_list()
         pprint(api_response)
     except variables.ApiException as e:
@@ -345,7 +348,7 @@ Class Name | Input Type | Accessed Type | Description | Notes
 <a id="api_variables_retrieve"></a>
 > Variable api_variables_retrieve(uuid)
 
-
+/api/variables/:uuid
 
 Retrieve all data for a Variable by it's UUID
 
@@ -383,6 +386,7 @@ with variables.ApiClient(configuration) as api_client:
         'uuid': "bf325375-e030-4fcc-aa00-917317c57477",
     }
     try:
+        # /api/variables/:uuid
         api_response = api_instance.api_variables_retrieve(
             path_params=path_params,
         )
@@ -476,7 +480,7 @@ headers | Unset | headers were not defined |
 <a id="api_variables_update"></a>
 > VariableGet api_variables_update(uuidvariable_create)
 
-
+/api/variables/:uuid
 
 Update variable attributes by it's UUID. Keep the Variable UUID but overwrite all editable attributes.
 
@@ -520,6 +524,7 @@ with variables.ApiClient(configuration) as api_client:
         secret=True,
     )
     try:
+        # /api/variables/:uuid
         api_response = api_instance.api_variables_update(
             path_params=path_params,
             body=body,

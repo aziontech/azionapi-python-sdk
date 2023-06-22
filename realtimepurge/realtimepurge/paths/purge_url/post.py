@@ -72,7 +72,7 @@ request_body_purge_url_request = api_client.RequestBody(
     },
 )
 _auth = [
-    'JWT',
+    'tokenAuth',
 ]
 
 

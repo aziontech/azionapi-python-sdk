@@ -10,16 +10,9 @@ Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
 **schema_version** | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
 **count** | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
-**[links](#links)** | dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+**links** | [**DomainLinks**](DomainLinks.md) | [**DomainLinks**](DomainLinks.md) |  | 
 **total_pages** | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
 **[results](#results)** | list, tuple,  | tuple,  |  | 
-
-# links
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
 
 # results
 

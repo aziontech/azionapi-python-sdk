@@ -1,6 +1,5 @@
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/apis/tags/RealTimePurgeApi.md
@@ -30,7 +29,4 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_models/__init__.py
-test/test_models/test_purge_cache_key_request.py
-test/test_models/test_purge_url_request.py
-test/test_models/test_purge_wildcard_request.py
 tox.ini

@@ -47,7 +47,6 @@ docs/models/DeviceGroupsResponse.md
 docs/models/DeviceGroupsResponseLinks.md
 docs/models/DeviceGroupsResultResponse.md
 docs/models/GetApplicationResponse.md
-docs/models/GetApplicationsResponse.md
 docs/models/OriginsIdResponse.md
 docs/models/OriginsResponse.md
 docs/models/OriginsResponseLinks.md
@@ -155,8 +154,6 @@ edgeapplications/model/device_groups_result_response.py
 edgeapplications/model/device_groups_result_response.pyi
 edgeapplications/model/get_application_response.py
 edgeapplications/model/get_application_response.pyi
-edgeapplications/model/get_applications_response.py
-edgeapplications/model/get_applications_response.pyi
 edgeapplications/model/origins_id_response.py
 edgeapplications/model/origins_id_response.pyi
 edgeapplications/model/origins_response.py

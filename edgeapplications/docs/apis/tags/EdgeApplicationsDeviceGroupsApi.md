@@ -1079,6 +1079,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
     body = CreateDeviceGroupsRequest(
         name="name_example",
         user_agent="user_agent_example",
+        addresses="addresses_example",
     )
     try:
         # /edge_applications/{edge_application_id}/device_groups

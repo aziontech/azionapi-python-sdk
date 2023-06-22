@@ -1,7 +1,7 @@
 <a id="__pageTop"></a>
 # realtimepurge.apis.tags.real_time_purge_api.RealTimePurgeApi
 
-All URIs are relative to *http://localhost:3002*
+All URIs are relative to *https://api.azionapi.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,20 +15,20 @@ Method | HTTP request | Description
 
 /purge/cachekey
 
-List of Cache Keys you want to remove from the Azion Edge Servers cache.  urls (array): list of up to 50 Cache Keys to be expired from the cache, per request.  method (choice): purge method, use the “delete” value for removal.  Layer (choice): layer where the purge will be done. Use the value “edge_caching” (default value if not informed) to purge on the Edge Caching layer and the value “l2_caching” to purge on L2 Caching.
+List of Cache Keys you want to remove from the Azion Edge Servers cache. urls (array): list of up to 50 Cache Keys to be expired from the cache, per request. method (choice): purge method, use the “delete” value for removal. Layer (choice): layer where the purge will be done. Use the value “edge_caching” (default value if not informed) to purge on the Edge Caching layer and the value “l2_caching” to purge on L2 Caching.
 
 ### Example
 
-* Api Key Authentication (JWT):
+* Api Key Authentication (tokenAuth):
 ```python
 import realtimepurge
 from realtimepurge.apis.tags import real_time_purge_api
 from realtimepurge.model.purge_cache_key_request import PurgeCacheKeyRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3002
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = realtimepurge.Configuration(
-    host = "http://localhost:3002"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -36,11 +36,11 @@ configuration = realtimepurge.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with realtimepurge.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -221,7 +221,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[JWT](../../../README.md#JWT)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -231,20 +231,20 @@ headers | Unset | headers were not defined |
 
 /purge/url
 
-List of URLs you want to remove from the Azion Edge Servers cache.  urls (array): list of up to 50 URLs to be expired from the cache, per request.  method (choice): purge method, use the “delete” value for removal.
+List of URLs you want to remove from the Azion Edge Servers cache. urls (array): list of up to 50 URLs to be expired from the cache, per request. method (choice): purge method, use the “delete” value for removal.
 
 ### Example
 
-* Api Key Authentication (JWT):
+* Api Key Authentication (tokenAuth):
 ```python
 import realtimepurge
 from realtimepurge.apis.tags import real_time_purge_api
 from realtimepurge.model.purge_url_request import PurgeUrlRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3002
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = realtimepurge.Configuration(
-    host = "http://localhost:3002"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -252,11 +252,11 @@ configuration = realtimepurge.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with realtimepurge.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -436,7 +436,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[JWT](../../../README.md#JWT)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -446,20 +446,20 @@ headers | Unset | headers were not defined |
 
 /purge/wildcard
 
-The Wildcard expression that represents the list of objects that you want to remove from the Azion Edge Servers cache.  urls (array):the Wildcard URL or Wildcard Cache Key that represents the list of objects you want to expire. You can only use one Wildcard expression per request.  method (choice): purge method, use the “delete” value for removal.
+The Wildcard expression that represents the list of objects that you want to remove from the Azion Edge Servers cache. urls (array):the Wildcard URL or Wildcard Cache Key that represents the list of objects you want to expire. You can only use one Wildcard expression per request. method (choice): purge method, use the “delete” value for removal.
 
 ### Example
 
-* Api Key Authentication (JWT):
+* Api Key Authentication (tokenAuth):
 ```python
 import realtimepurge
 from realtimepurge.apis.tags import real_time_purge_api
 from realtimepurge.model.purge_wildcard_request import PurgeWildcardRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3002
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = realtimepurge.Configuration(
-    host = "http://localhost:3002"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -467,11 +467,11 @@ configuration = realtimepurge.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: JWT
-configuration.api_key['JWT'] = 'YOUR_API_KEY'
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['JWT'] = 'Bearer'
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with realtimepurge.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -651,7 +651,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-[JWT](../../../README.md#JWT)
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 

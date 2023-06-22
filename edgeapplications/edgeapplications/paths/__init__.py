@@ -10,7 +10,6 @@ class PathValues(str, enum.Enum):
     EDGE_APPLICATIONS_ID = "/edge_applications/{id}"
     EDGE_APPLICATIONS_EDGE_APPLICATION_ID_CACHE_SETTINGS = "/edge_applications/{edge_application_id}/cache_settings"
     EDGE_APPLICATIONS_EDGE_APPLICATION_ID_CACHE_SETTINGS_CACHE_SETTINGS_ID = "/edge_applications/{edge_application_id}/cache_settings/{cache_settings_id}"
-    EDGE_APPLICATIONS_EDGE_APPLICATION_ID_CACHE_SETTINGS_CACHE_SETTINGS = "/edge_applications/{edge_application_id}/cache_settings/{cache_settings}"
     EDGE_APPLICATIONS_EDGE_APPLICATION_ID_FUNCTIONS_INSTANCES = "/edge_applications/{edge_application_id}/functions_instances"
     EDGE_APPLICATIONS_EDGE_APPLICATION_ID_FUNCTIONS_INSTANCES_FUNCTIONS_INSTANCES_ID = "/edge_applications/{edge_application_id}/functions_instances/{functions_instances_id}"
     EDGE_APPLICATIONS_EDGE_APPLICATION_ID_ORIGINS = "/edge_applications/{edge_application_id}/origins"

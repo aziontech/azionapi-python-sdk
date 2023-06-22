@@ -42,6 +42,9 @@ request_body_create_network_lists_request = api_client.RequestBody(
     },
     required=True,
 )
+_auth = [
+    'tokenAuth',
+]
 
 
 @dataclass
@@ -195,6 +198,7 @@ class BaseApi(api_client.Api):
             headers=_headers,
             fields=_fields,
             body=_body,
+            auth_settings=_auth,
             stream=stream,
             timeout=timeout,
         )

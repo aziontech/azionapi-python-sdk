@@ -52,6 +52,9 @@ request_path_version_id = api_client.PathParameter(
     schema=VersionIdSchema,
     required=True,
 )
+_auth = [
+    'tokenAuth',
+]
 
 
 @dataclass
@@ -110,6 +113,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = False,
     ):
         """
+        /domains/:version_id
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
@@ -134,6 +138,7 @@ class BaseApi(api_client.Api):
         response = self.api_client.call_api(
             resource_path=used_path,
             method='delete'.upper(),
+            auth_settings=_auth,
             stream=stream,
             timeout=timeout,
         )

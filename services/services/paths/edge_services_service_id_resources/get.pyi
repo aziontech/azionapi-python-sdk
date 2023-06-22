@@ -25,8 +25,6 @@ import frozendict  # noqa: F401
 
 from services import schemas  # noqa: F401
 
-from services.model.resource_response_with_total import ResourceResponseWithTotal
-
 # Query params
 PageSchema = schemas.Int64Schema
 PageSizeSchema = schemas.Int64Schema
@@ -111,7 +109,26 @@ request_path_service_id = api_client.PathParameter(
     schema=ServiceIdSchema,
     required=True,
 )
-SchemaFor200ResponseBodyApplicationJson = ResourceResponseWithTotal
+
+
+class SchemaFor200ResponseBodyApplicationJson(
+    schemas.DictSchema
+):
+
+
+    class MetaOapg:
+        additional_properties = schemas.NotAnyTypeSchema
+
+    def __new__(
+        cls,
+        *_args: typing.Union[dict, frozendict.frozendict, ],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+    ) -> 'SchemaFor200ResponseBodyApplicationJson':
+        return super().__new__(
+            cls,
+            *_args,
+            _configuration=_configuration,
+        )
 
 
 @dataclass
