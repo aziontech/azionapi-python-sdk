@@ -21,6 +21,7 @@ from .. import ApiTestMixin
 class TestApiVariables(ApiTestMixin, unittest.TestCase):
     """
     ApiVariables unit test stubs
+        /api/variables  # noqa: E501
     """
     _configuration = configuration.Configuration()
 

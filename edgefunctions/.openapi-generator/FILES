@@ -6,7 +6,6 @@ docs/apis/tags/EdgeFunctionsApi.md
 docs/models/BadRequestResponse.md
 docs/models/CreateEdgeFunctionRequest.md
 docs/models/EdgeFunctionResponse.md
-docs/models/ErrorModel.md
 docs/models/ErrorResponse.md
 docs/models/Links.md
 docs/models/ListEdgeFunctionResponse.md
@@ -26,8 +25,6 @@ edgefunctions/model/create_edge_function_request.py
 edgefunctions/model/create_edge_function_request.pyi
 edgefunctions/model/edge_function_response.py
 edgefunctions/model/edge_function_response.pyi
-edgefunctions/model/error_model.py
-edgefunctions/model/error_model.pyi
 edgefunctions/model/error_response.py
 edgefunctions/model/error_response.pyi
 edgefunctions/model/links.py

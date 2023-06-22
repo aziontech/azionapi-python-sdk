@@ -5,19 +5,20 @@ All URIs are relative to *https://storage-api.azion.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_version**](#delete_version) | **delete** /storage/{version_id}/delete | 
-[**storage_version_id_post**](#storage_version_id_post) | **post** /storage/{version_id} | 
+[**delete_version**](#delete_version) | **delete** /storage/{version_id}/delete | /domains/:version_id
+[**storage_version_id_post**](#storage_version_id_post) | **post** /storage/{version_id} | /domains/:version_id
 
 # **delete_version**
 <a id="delete_version"></a>
 > delete_version(version_id)
 
-
+/domains/:version_id
 
 Delete a version. A version is just um path prefix/sub-namespace for a set of files.
 
 ### Example
 
+* Api Key Authentication (tokenAuth):
 ```python
 import storageapi
 from storageapi.apis.tags import default_api
@@ -28,6 +29,16 @@ configuration = storageapi.Configuration(
     host = "https://storage-api.azion.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with storageapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -38,6 +49,7 @@ with storageapi.ApiClient(configuration) as api_client:
         'version_id': "version_id_example",
     }
     try:
+        # /domains/:version_id
         api_response = api_instance.delete_version(
             path_params=path_params,
         )
@@ -83,7 +95,7 @@ headers | Unset | headers were not defined |
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -91,12 +103,13 @@ No authorization required
 <a id="storage_version_id_post"></a>
 > bool, date, datetime, dict, float, int, list, str, none_type storage_version_id_post(x_azion_static_pathversion_id)
 
-
+/domains/:version_id
 
 Upload file and transfer to remote storage
 
 ### Example
 
+* Api Key Authentication (tokenAuth):
 ```python
 import storageapi
 from storageapi.apis.tags import default_api
@@ -107,6 +120,16 @@ configuration = storageapi.Configuration(
     host = "https://storage-api.azion.com"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with storageapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -120,6 +143,7 @@ with storageapi.ApiClient(configuration) as api_client:
         'X-Azion-Static-Path': "X-Azion-Static-Path_example",
     }
     try:
+        # /domains/:version_id
         api_response = api_instance.storage_version_id_post(
             path_params=path_params,
             header_params=header_params,
@@ -137,6 +161,7 @@ with storageapi.ApiClient(configuration) as api_client:
     }
     body = open('/path/to/file', 'rb')
     try:
+        # /domains/:version_id
         api_response = api_instance.storage_version_id_post(
             path_params=path_params,
             header_params=header_params,
@@ -219,7 +244,7 @@ dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 

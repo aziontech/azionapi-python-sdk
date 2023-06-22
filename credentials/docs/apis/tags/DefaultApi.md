@@ -1,7 +1,7 @@
 <a id="__pageTop"></a>
 # credentials.apis.tags.default_api.DefaultApi
 
-All URIs are relative to *http://localhost:3007*
+All URIs are relative to *https://api.azionapi.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,10 +26,10 @@ from credentials.apis.tags import default_api
 from credentials.model.auth_token import AuthToken
 from credentials.model.create_credential_request import CreateCredentialRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3007
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = credentials.Configuration(
-    host = "http://localhost:3007"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -152,10 +152,10 @@ Delete the Credential
 import credentials
 from credentials.apis.tags import default_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3007
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = credentials.Configuration(
-    host = "http://localhost:3007"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -274,10 +274,10 @@ import credentials
 from credentials.apis.tags import default_api
 from credentials.model.response_with_total import ResponseWithTotal
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3007
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = credentials.Configuration(
-    host = "http://localhost:3007"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -425,10 +425,10 @@ import credentials
 from credentials.apis.tags import default_api
 from credentials.model.response import Response
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3007
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = credentials.Configuration(
-    host = "http://localhost:3007"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -548,10 +548,10 @@ from credentials.apis.tags import default_api
 from credentials.model.response import Response
 from credentials.model.update_credential_request import UpdateCredentialRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3007
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = credentials.Configuration(
-    host = "http://localhost:3007"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters

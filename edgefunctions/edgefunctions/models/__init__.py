@@ -14,7 +14,6 @@
 from edgefunctions.model.bad_request_response import BadRequestResponse
 from edgefunctions.model.create_edge_function_request import CreateEdgeFunctionRequest
 from edgefunctions.model.edge_function_response import EdgeFunctionResponse
-from edgefunctions.model.error_model import ErrorModel
 from edgefunctions.model.error_response import ErrorResponse
 from edgefunctions.model.links import Links
 from edgefunctions.model.list_edge_function_response import ListEdgeFunctionResponse

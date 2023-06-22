@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **edge_applications_get**
 <a id="edge_applications_get"></a>
-> GetApplicationsResponse edge_applications_get()
+> {str: typing.Any} edge_applications_get()
 
 /edge_applications
 
@@ -24,7 +24,6 @@ Method | HTTP request | Description
 ```python
 import edgeapplications
 from edgeapplications.apis.tags import edge_applications_main_settings_api
-from edgeapplications.model.get_applications_response import GetApplicationsResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
@@ -160,10 +159,15 @@ body | typing.Union[SchemaFor200ResponseBodyApplicationJsonVersion3, ] |  |
 headers | Unset | headers were not defined |
 
 # SchemaFor200ResponseBodyApplicationJsonVersion3
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**GetApplicationsResponse**](../../models/GetApplicationsResponse.md) |  | 
 
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+
+### Dictionary Keys
+Key | Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | ------------- | -------------
 
 #### edge_applications_get.ApiResponseFor400
 Name | Type | Description  | Notes

@@ -1,13 +1,11 @@
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/apis/tags/DefaultApi.md
 docs/models/BadRequestResponse.md
 docs/models/CreateNetworkListsRequest.md
 docs/models/ErrorModel.md
-docs/models/ErrorResponse.md
 docs/models/Links.md
 docs/models/ListNetworkListsResponse.md
 docs/models/NetworkLists.md
@@ -27,8 +25,6 @@ networklist/model/create_network_lists_request.py
 networklist/model/create_network_lists_request.pyi
 networklist/model/error_model.py
 networklist/model/error_model.pyi
-networklist/model/error_response.py
-networklist/model/error_response.pyi
 networklist/model/links.py
 networklist/model/links.pyi
 networklist/model/list_network_lists_response.py
@@ -48,13 +44,4 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_models/__init__.py
-test/test_models/test_bad_request_response.py
-test/test_models/test_create_network_lists_request.py
-test/test_models/test_error_model.py
-test/test_models/test_error_response.py
-test/test_models/test_links.py
-test/test_models/test_list_network_lists_response.py
-test/test_models/test_network_lists.py
-test/test_models/test_network_lists_response.py
-test/test_models/test_update_network_lists_request.py
 tox.ini

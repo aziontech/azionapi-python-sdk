@@ -25,8 +25,6 @@ import frozendict  # noqa: F401
 
 from edgeapplications import schemas  # noqa: F401
 
-from edgeapplications.model.get_applications_response import GetApplicationsResponse
-
 from . import path
 
 # Query params
@@ -115,7 +113,26 @@ request_header_accept = api_client.HeaderParameter(
 _auth = [
     'tokenAuth',
 ]
-SchemaFor200ResponseBodyApplicationJsonVersion3 = GetApplicationsResponse
+
+
+class SchemaFor200ResponseBodyApplicationJsonVersion3(
+    schemas.DictSchema
+):
+
+
+    class MetaOapg:
+        additional_properties = schemas.NotAnyTypeSchema
+
+    def __new__(
+        cls,
+        *_args: typing.Union[dict, frozendict.frozendict, ],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+    ) -> 'SchemaFor200ResponseBodyApplicationJsonVersion3':
+        return super().__new__(
+            cls,
+            *_args,
+            _configuration=_configuration,
+        )
 
 
 @dataclass

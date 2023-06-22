@@ -6,7 +6,7 @@ import enum
 
 
 class PathValues(str, enum.Enum):
-    EDGE_SERVICES_ = "/edge_services/"
+    EDGE_SERVICES = "/edge_services"
     EDGE_SERVICES_ID = "/edge_services/{id}"
     EDGE_SERVICES_SERVICE_ID_RESOURCES = "/edge_services/{serviceId}/resources"
     EDGE_SERVICES_SERVICE_ID_RESOURCES_RESOURCE_ID = "/edge_services/{serviceId}/resources/{resourceId}"

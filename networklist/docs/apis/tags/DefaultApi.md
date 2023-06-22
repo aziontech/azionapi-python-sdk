@@ -18,6 +18,7 @@ List all user Network Lists
 
 ### Example
 
+* Api Key Authentication (tokenAuth):
 ```python
 import networklist
 from networklist.apis.tags import default_api
@@ -29,6 +30,16 @@ configuration = networklist.Configuration(
     host = "https://api.azionapi.net"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with networklist.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -94,7 +105,7 @@ Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -106,6 +117,7 @@ Create a Network Lists
 
 ### Example
 
+* Api Key Authentication (tokenAuth):
 ```python
 import networklist
 from networklist.apis.tags import default_api
@@ -119,6 +131,16 @@ configuration = networklist.Configuration(
     host = "https://api.azionapi.net"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with networklist.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -201,7 +223,7 @@ Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -213,6 +235,7 @@ Retrieve a Network Lists set by uuid
 
 ### Example
 
+* Api Key Authentication (tokenAuth):
 ```python
 import networklist
 from networklist.apis.tags import default_api
@@ -224,6 +247,16 @@ configuration = networklist.Configuration(
     host = "https://api.azionapi.net"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with networklist.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -288,7 +321,7 @@ Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -300,6 +333,7 @@ Overwrite some Network Lists attributes
 
 ### Example
 
+* Api Key Authentication (tokenAuth):
 ```python
 import networklist
 from networklist.apis.tags import default_api
@@ -314,6 +348,16 @@ configuration = networklist.Configuration(
     host = "https://api.azionapi.net"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: tokenAuth
+configuration.api_key['tokenAuth'] = 'YOUR_API_KEY'
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['tokenAuth'] = 'Bearer'
 # Enter a context with an instance of the API client
 with networklist.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -422,7 +466,7 @@ Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../../../README.md#tokenAuth)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 

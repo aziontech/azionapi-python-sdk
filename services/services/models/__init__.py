@@ -15,7 +15,6 @@ from services.model.create_resource_request import CreateResourceRequest
 from services.model.create_service_request import CreateServiceRequest
 from services.model.resource_detail import ResourceDetail
 from services.model.resource_response import ResourceResponse
-from services.model.resource_response_with_total import ResourceResponseWithTotal
 from services.model.service_response import ServiceResponse
 from services.model.service_response_with_totals import ServiceResponseWithTotals
 from services.model.update_resource_request import UpdateResourceRequest

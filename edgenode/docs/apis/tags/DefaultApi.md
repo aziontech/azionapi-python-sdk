@@ -1,7 +1,7 @@
 <a id="__pageTop"></a>
 # edgenode.apis.tags.default_api.DefaultApi
 
-All URIs are relative to *http://localhost:3001*
+All URIs are relative to *https://api.azionapi.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -32,10 +32,10 @@ from edgenode.apis.tags import default_api
 from edgenode.model.authorize_edge_nodes_response import AuthorizeEdgeNodesResponse
 from edgenode.model.authorize_edge_nodes_request import AuthorizeEdgeNodesRequest
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3001
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = edgenode.Configuration(
-    host = "http://localhost:3001"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -144,10 +144,10 @@ from edgenode.apis.tags import default_api
 from edgenode.model.service_bind_request import ServiceBindRequest
 from edgenode.model.service_bind_detail_response import ServiceBindDetailResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3001
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = edgenode.Configuration(
-    host = "http://localhost:3001"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -301,10 +301,10 @@ Delete edge-node by ID
 import edgenode
 from edgenode.apis.tags import default_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3001
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = edgenode.Configuration(
-    host = "http://localhost:3001"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -422,10 +422,10 @@ Delete an edge-node Service association
 import edgenode
 from edgenode.apis.tags import default_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3001
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = edgenode.Configuration(
-    host = "http://localhost:3001"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -553,10 +553,10 @@ import edgenode
 from edgenode.apis.tags import default_api
 from edgenode.model.edge_node_detail_response import EdgeNodeDetailResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3001
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = edgenode.Configuration(
-    host = "http://localhost:3001"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -691,10 +691,10 @@ import edgenode
 from edgenode.apis.tags import default_api
 from edgenode.model.node_group_response import NodeGroupResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3001
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = edgenode.Configuration(
-    host = "http://localhost:3001"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -777,10 +777,10 @@ import edgenode
 from edgenode.apis.tags import default_api
 from edgenode.model.service_bind_detail_response import ServiceBindDetailResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3001
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = edgenode.Configuration(
-    host = "http://localhost:3001"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -908,10 +908,10 @@ import edgenode
 from edgenode.apis.tags import default_api
 from edgenode.model.service_response_with_total import ServiceResponseWithTotal
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3001
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = edgenode.Configuration(
-    host = "http://localhost:3001"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1119,10 +1119,10 @@ import edgenode
 from edgenode.apis.tags import default_api
 from edgenode.model.edge_node_response_with_total import EdgeNodeResponseWithTotal
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3001
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = edgenode.Configuration(
-    host = "http://localhost:3001"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1270,10 +1270,10 @@ import edgenode
 from edgenode.apis.tags import default_api
 from edgenode.model.update_edge_node_response import UpdateEdgeNodeResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3001
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = edgenode.Configuration(
-    host = "http://localhost:3001"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1409,10 +1409,10 @@ from edgenode.apis.tags import default_api
 from edgenode.model.update_service_bind_request import UpdateServiceBindRequest
 from edgenode.model.service_bind_detail_response import ServiceBindDetailResponse
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:3001
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = edgenode.Configuration(
-    host = "http://localhost:3001"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters

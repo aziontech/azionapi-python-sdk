@@ -7,7 +7,6 @@ docs/models/CreateResourceRequest.md
 docs/models/CreateServiceRequest.md
 docs/models/ResourceDetail.md
 docs/models/ResourceResponse.md
-docs/models/ResourceResponseWithTotal.md
 docs/models/ServiceResponse.md
 docs/models/ServiceResponseWithTotals.md
 docs/models/UpdateResourceRequest.md
@@ -30,8 +29,6 @@ services/model/resource_detail.py
 services/model/resource_detail.pyi
 services/model/resource_response.py
 services/model/resource_response.pyi
-services/model/resource_response_with_total.py
-services/model/resource_response_with_total.pyi
 services/model/service_response.py
 services/model/service_response.pyi
 services/model/service_response_with_totals.py

@@ -6,6 +6,6 @@ import enum
 
 
 class TagValues(str, enum.Enum):
-    ZONES = "Zones"
-    RECORDS = "Records"
     DNSSEC = "DNSSEC"
+    RECORDS = "Records"
+    ZONES = "Zones"

@@ -1,6 +1,5 @@
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/apis/tags/DefaultApi.md
@@ -69,20 +68,4 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_models/__init__.py
-test/test_models/test_authorize_edge_nodes_request.py
-test/test_models/test_authorize_edge_nodes_response.py
-test/test_models/test_edge_node_detail_response.py
-test/test_models/test_edge_node_modules.py
-test/test_models/test_edge_node_response.py
-test/test_models/test_edge_node_response_with_total.py
-test/test_models/test_node_group.py
-test/test_models/test_node_group_response.py
-test/test_models/test_service_bind_detail_response.py
-test/test_models/test_service_bind_request.py
-test/test_models/test_service_response.py
-test/test_models/test_service_response_with_total.py
-test/test_models/test_unauthorized_edge_node_info.py
-test/test_models/test_update_edge_node_response.py
-test/test_models/test_update_service_bind_request.py
-test/test_models/test_variable.py
 tox.ini
