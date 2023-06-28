@@ -26,6 +26,7 @@ import frozendict  # noqa: F401
 from storageapi import schemas  # noqa: F401
 
 # Header params
+ContentTypeSchema = schemas.StrSchema
 XAzionStaticPathSchema = schemas.StrSchema
 RequestRequiredHeaderParams = typing_extensions.TypedDict(
     'RequestRequiredHeaderParams',
@@ -36,6 +37,7 @@ RequestRequiredHeaderParams = typing_extensions.TypedDict(
 RequestOptionalHeaderParams = typing_extensions.TypedDict(
     'RequestOptionalHeaderParams',
     {
+        'Content-Type': typing.Union[ContentTypeSchema, str, ],
     },
     total=False
 )
@@ -45,6 +47,11 @@ class RequestHeaderParams(RequestRequiredHeaderParams, RequestOptionalHeaderPara
     pass
 
 
+request_header_content_type = api_client.HeaderParameter(
+    name="Content-Type",
+    style=api_client.ParameterStyle.SIMPLE,
+    schema=ContentTypeSchema,
+)
 request_header_x_azion_static_path = api_client.HeaderParameter(
     name="X-Azion-Static-Path",
     style=api_client.ParameterStyle.SIMPLE,
@@ -78,13 +85,13 @@ request_path_version_id = api_client.PathParameter(
     required=True,
 )
 # body param
-SchemaForRequestBodyB2XAuto = schemas.BinarySchema
+SchemaForRequestBodyApplicationOctetStream = schemas.BinarySchema
 
 
 request_body_body = api_client.RequestBody(
     content={
-        'b2/x-auto': api_client.MediaType(
-            schema=SchemaForRequestBodyB2XAuto),
+        'application/octet-stream': api_client.MediaType(
+            schema=SchemaForRequestBodyApplicationOctetStream),
     },
 )
 SchemaFor201ResponseBodyApplicationJson = schemas.AnyTypeSchema
@@ -115,8 +122,8 @@ class BaseApi(api_client.Api):
     @typing.overload
     def _storage_version_id_post_oapg(
         self,
-        content_type: typing_extensions.Literal["b2/x-auto"] = ...,
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        content_type: typing_extensions.Literal["application/octet-stream"] = ...,
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -131,7 +138,7 @@ class BaseApi(api_client.Api):
     def _storage_version_id_post_oapg(
         self,
         content_type: str = ...,
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -148,7 +155,7 @@ class BaseApi(api_client.Api):
         self,
         skip_deserialization: typing_extensions.Literal[True],
         content_type: str = ...,
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -160,7 +167,7 @@ class BaseApi(api_client.Api):
     def _storage_version_id_post_oapg(
         self,
         content_type: str = ...,
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -174,8 +181,8 @@ class BaseApi(api_client.Api):
 
     def _storage_version_id_post_oapg(
         self,
-        content_type: str = 'b2/x-auto',
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        content_type: str = 'application/octet-stream',
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -184,7 +191,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = False,
     ):
         """
-        /domains/:version_id
+        /storage/:version_id
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
@@ -208,6 +215,7 @@ class BaseApi(api_client.Api):
 
         _headers = HTTPHeaderDict()
         for parameter in (
+            request_header_content_type,
             request_header_x_azion_static_path,
         ):
             parameter_data = header_params.get(parameter.name, schemas.unset)
@@ -265,8 +273,8 @@ class StorageVersionIdPost(BaseApi):
     @typing.overload
     def storage_version_id_post(
         self,
-        content_type: typing_extensions.Literal["b2/x-auto"] = ...,
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        content_type: typing_extensions.Literal["application/octet-stream"] = ...,
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -281,7 +289,7 @@ class StorageVersionIdPost(BaseApi):
     def storage_version_id_post(
         self,
         content_type: str = ...,
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -298,7 +306,7 @@ class StorageVersionIdPost(BaseApi):
         self,
         skip_deserialization: typing_extensions.Literal[True],
         content_type: str = ...,
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -310,7 +318,7 @@ class StorageVersionIdPost(BaseApi):
     def storage_version_id_post(
         self,
         content_type: str = ...,
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -324,8 +332,8 @@ class StorageVersionIdPost(BaseApi):
 
     def storage_version_id_post(
         self,
-        content_type: str = 'b2/x-auto',
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        content_type: str = 'application/octet-stream',
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -351,8 +359,8 @@ class ApiForpost(BaseApi):
     @typing.overload
     def post(
         self,
-        content_type: typing_extensions.Literal["b2/x-auto"] = ...,
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        content_type: typing_extensions.Literal["application/octet-stream"] = ...,
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -367,7 +375,7 @@ class ApiForpost(BaseApi):
     def post(
         self,
         content_type: str = ...,
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -384,7 +392,7 @@ class ApiForpost(BaseApi):
         self,
         skip_deserialization: typing_extensions.Literal[True],
         content_type: str = ...,
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -396,7 +404,7 @@ class ApiForpost(BaseApi):
     def post(
         self,
         content_type: str = ...,
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
@@ -410,8 +418,8 @@ class ApiForpost(BaseApi):
 
     def post(
         self,
-        content_type: str = 'b2/x-auto',
-        body: typing.Union[SchemaForRequestBodyB2XAuto, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        content_type: str = 'application/octet-stream',
+        body: typing.Union[SchemaForRequestBodyApplicationOctetStream, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         header_params: RequestHeaderParams = frozendict.frozendict(),
         path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
