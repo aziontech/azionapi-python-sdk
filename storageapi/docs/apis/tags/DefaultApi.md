@@ -5,14 +5,14 @@ All URIs are relative to *https://storage-api.azion.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_version**](#delete_version) | **delete** /storage/{version_id}/delete | /domains/:version_id
-[**storage_version_id_post**](#storage_version_id_post) | **post** /storage/{version_id} | /domains/:version_id
+[**delete_version**](#delete_version) | **delete** /storage/{version_id}/delete | /storage/:version_id/delete
+[**storage_version_id_post**](#storage_version_id_post) | **post** /storage/{version_id} | /storage/:version_id
 
 # **delete_version**
 <a id="delete_version"></a>
 > delete_version(version_id)
 
-/domains/:version_id
+/storage/:version_id/delete
 
 Delete a version. A version is just um path prefix/sub-namespace for a set of files.
 
@@ -49,7 +49,7 @@ with storageapi.ApiClient(configuration) as api_client:
         'version_id': "version_id_example",
     }
     try:
-        # /domains/:version_id
+        # /storage/:version_id/delete
         api_response = api_instance.delete_version(
             path_params=path_params,
         )
@@ -103,7 +103,7 @@ headers | Unset | headers were not defined |
 <a id="storage_version_id_post"></a>
 > bool, date, datetime, dict, float, int, list, str, none_type storage_version_id_post(x_azion_static_pathversion_id)
 
-/domains/:version_id
+/storage/:version_id
 
 Upload file and transfer to remote storage
 
@@ -143,7 +143,7 @@ with storageapi.ApiClient(configuration) as api_client:
         'X-Azion-Static-Path': "X-Azion-Static-Path_example",
     }
     try:
-        # /domains/:version_id
+        # /storage/:version_id
         api_response = api_instance.storage_version_id_post(
             path_params=path_params,
             header_params=header_params,
@@ -157,11 +157,12 @@ with storageapi.ApiClient(configuration) as api_client:
         'version_id': "version_id_example",
     }
     header_params = {
+        'Content-Type': "b2/x-auto",
         'X-Azion-Static-Path': "X-Azion-Static-Path_example",
     }
     body = open('/path/to/file', 'rb')
     try:
-        # /domains/:version_id
+        # /storage/:version_id
         api_response = api_instance.storage_version_id_post(
             path_params=path_params,
             header_params=header_params,
@@ -175,10 +176,10 @@ with storageapi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-body | typing.Union[SchemaForRequestBodyB2XAuto, Unset] | optional, default is unset |
+body | typing.Union[SchemaForRequestBodyApplicationOctetStream, Unset] | optional, default is unset |
 header_params | RequestHeaderParams | |
 path_params | RequestPathParams | |
-content_type | str | optional, default is 'b2/x-auto' | Selects the schema and serialization of the request body
+content_type | str | optional, default is 'application/octet-stream' | Selects the schema and serialization of the request body
 accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
 stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
 timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
@@ -186,7 +187,7 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 
 ### body
 
-# SchemaForRequestBodyB2XAuto
+# SchemaForRequestBodyApplicationOctetStream
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
@@ -198,7 +199,15 @@ bytes, io.FileIO, io.BufferedReader,  | bytes, FileIO,  |  |
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+Content-Type | ContentTypeSchema | | optional
 X-Azion-Static-Path | XAzionStaticPathSchema | | 
+
+# ContentTypeSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | if omitted the server will use the default value of "b2/x-auto"
 
 # XAzionStaticPathSchema
 

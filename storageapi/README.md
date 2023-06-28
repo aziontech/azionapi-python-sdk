@@ -165,7 +165,7 @@ with storageapi.ApiClient(configuration) as api_client:
     version_id = "version_id_example" # str | The version identifier
 
     try:
-        # /domains/:version_id
+        # /storage/:version_id/delete
         api_instance.delete_version(version_id)
     except storageapi.ApiException as e:
         print("Exception when calling DefaultApi->delete_version: %s\n" % e)
@@ -177,8 +177,8 @@ All URIs are relative to *https://storage-api.azion.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**delete_version**](docs/apis/tags/DefaultApi.md#delete_version) | **delete** /storage/{version_id}/delete | /domains/:version_id
-*DefaultApi* | [**storage_version_id_post**](docs/apis/tags/DefaultApi.md#storage_version_id_post) | **post** /storage/{version_id} | /domains/:version_id
+*DefaultApi* | [**delete_version**](docs/apis/tags/DefaultApi.md#delete_version) | **delete** /storage/{version_id}/delete | /storage/:version_id/delete
+*DefaultApi* | [**storage_version_id_post**](docs/apis/tags/DefaultApi.md#storage_version_id_post) | **post** /storage/{version_id} | /storage/:version_id
 
 ## Documentation For Models
 
