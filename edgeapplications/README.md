@@ -266,6 +266,7 @@ Class | Method | HTTP request | Description
  - [DeviceGroupsResponseLinks](docs/models/DeviceGroupsResponseLinks.md)
  - [DeviceGroupsResultResponse](docs/models/DeviceGroupsResultResponse.md)
  - [GetApplicationResponse](docs/models/GetApplicationResponse.md)
+ - [GetApplicationsResponse](docs/models/GetApplicationsResponse.md)
  - [OriginsIdResponse](docs/models/OriginsIdResponse.md)
  - [OriginsResponse](docs/models/OriginsResponse.md)
  - [OriginsResponseLinks](docs/models/OriginsResponseLinks.md)

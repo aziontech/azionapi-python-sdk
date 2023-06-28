@@ -65,7 +65,3 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
-go.mod
-go.sum
-go.mod
-go.sum

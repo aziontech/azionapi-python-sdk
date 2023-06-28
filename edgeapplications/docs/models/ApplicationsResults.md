@@ -8,8 +8,6 @@ dict, frozendict.frozendict,  | frozendict.frozendict,  |  |
 ### Dictionary Keys
 Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
-**next** | 
-**previous** | 
 **id** | decimal.Decimal, int,  | decimal.Decimal,  |  | [optional] value must be a 64 bit integer
 **name** | str,  | str,  |  | [optional] 
 **debug_rules** | bool,  | BoolClass,  |  | [optional] 

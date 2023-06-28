@@ -34,10 +34,6 @@ class ApplicationsResults(
 
 
     class MetaOapg:
-        required = {
-            "next",
-            "previous",
-        }
         
         class properties:
             id = schemas.Int64Schema
@@ -82,7 +78,6 @@ class ApplicationsResults(
                 "origins": origins,
             }
         additional_properties = schemas.NotAnyTypeSchema
-    
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
