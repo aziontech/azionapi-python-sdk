@@ -34,6 +34,15 @@ class ApplicationsResults(
 
 
     class MetaOapg:
+        required = {
+            "last_editor",
+            "name",
+            "active",
+            "origins",
+            "id",
+            "debug_rules",
+            "last_modified",
+        }
         
         class properties:
             id = schemas.Int64Schema
@@ -79,20 +88,19 @@ class ApplicationsResults(
             }
         additional_properties = schemas.NotAnyTypeSchema
     
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["debug_rules"]) -> MetaOapg.properties.debug_rules: ...
+    last_editor: MetaOapg.properties.last_editor
+    name: MetaOapg.properties.name
+    active: MetaOapg.properties.active
+    origins: MetaOapg.properties.origins
+    id: MetaOapg.properties.id
+    debug_rules: MetaOapg.properties.debug_rules
+    last_modified: MetaOapg.properties.last_modified
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["last_editor"]) -> MetaOapg.properties.last_editor: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["last_modified"]) -> MetaOapg.properties.last_modified: ...
+    def __getitem__(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["active"]) -> MetaOapg.properties.active: ...
@@ -100,56 +108,65 @@ class ApplicationsResults(
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["origins"]) -> MetaOapg.properties.origins: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id"], typing_extensions.Literal["name"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["last_editor"], typing_extensions.Literal["last_modified"], typing_extensions.Literal["active"], typing_extensions.Literal["origins"], ]):
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["debug_rules"]) -> MetaOapg.properties.debug_rules: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["last_modified"]) -> MetaOapg.properties.last_modified: ...
+    
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["last_editor"], typing_extensions.Literal["name"], typing_extensions.Literal["active"], typing_extensions.Literal["origins"], typing_extensions.Literal["id"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["last_modified"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["id"]) -> typing.Union[MetaOapg.properties.id, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["last_editor"]) -> MetaOapg.properties.last_editor: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["name"]) -> typing.Union[MetaOapg.properties.name, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["debug_rules"]) -> typing.Union[MetaOapg.properties.debug_rules, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["active"]) -> MetaOapg.properties.active: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["last_editor"]) -> typing.Union[MetaOapg.properties.last_editor, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["origins"]) -> MetaOapg.properties.origins: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["last_modified"]) -> typing.Union[MetaOapg.properties.last_modified, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["id"]) -> MetaOapg.properties.id: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["active"]) -> typing.Union[MetaOapg.properties.active, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["debug_rules"]) -> MetaOapg.properties.debug_rules: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["origins"]) -> typing.Union[MetaOapg.properties.origins, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["last_modified"]) -> MetaOapg.properties.last_modified: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id"], typing_extensions.Literal["name"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["last_editor"], typing_extensions.Literal["last_modified"], typing_extensions.Literal["active"], typing_extensions.Literal["origins"], ]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["last_editor"], typing_extensions.Literal["name"], typing_extensions.Literal["active"], typing_extensions.Literal["origins"], typing_extensions.Literal["id"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["last_modified"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
         cls,
         *_args: typing.Union[dict, frozendict.frozendict, ],
-        id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, schemas.Unset] = schemas.unset,
-        name: typing.Union[MetaOapg.properties.name, str, schemas.Unset] = schemas.unset,
-        debug_rules: typing.Union[MetaOapg.properties.debug_rules, bool, schemas.Unset] = schemas.unset,
-        last_editor: typing.Union[MetaOapg.properties.last_editor, str, schemas.Unset] = schemas.unset,
-        last_modified: typing.Union[MetaOapg.properties.last_modified, str, schemas.Unset] = schemas.unset,
-        active: typing.Union[MetaOapg.properties.active, bool, schemas.Unset] = schemas.unset,
-        origins: typing.Union[MetaOapg.properties.origins, list, tuple, schemas.Unset] = schemas.unset,
+        last_editor: typing.Union[MetaOapg.properties.last_editor, str, ],
+        name: typing.Union[MetaOapg.properties.name, str, ],
+        active: typing.Union[MetaOapg.properties.active, bool, ],
+        origins: typing.Union[MetaOapg.properties.origins, list, tuple, ],
+        id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, ],
+        debug_rules: typing.Union[MetaOapg.properties.debug_rules, bool, ],
+        last_modified: typing.Union[MetaOapg.properties.last_modified, str, ],
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'ApplicationsResults':
         return super().__new__(
             cls,
             *_args,
-            id=id,
-            name=name,
-            debug_rules=debug_rules,
             last_editor=last_editor,
-            last_modified=last_modified,
+            name=name,
             active=active,
             origins=origins,
+            id=id,
+            debug_rules=debug_rules,
+            last_modified=last_modified,
             _configuration=_configuration,
         )
 
