@@ -8,13 +8,13 @@ dict, frozendict.frozendict,  | frozendict.frozendict,  |  |
 ### Dictionary Keys
 Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
-**id** | decimal.Decimal, int,  | decimal.Decimal,  |  | [optional] value must be a 64 bit integer
-**name** | str,  | str,  |  | [optional] 
-**debug_rules** | bool,  | BoolClass,  |  | [optional] 
-**last_editor** | str,  | str,  |  | [optional] 
-**last_modified** | str,  | str,  |  | [optional] 
-**active** | bool,  | BoolClass,  |  | [optional] 
-**[origins](#origins)** | list, tuple,  | tuple,  |  | [optional] 
+**last_editor** | str,  | str,  |  | 
+**name** | str,  | str,  |  | 
+**active** | bool,  | BoolClass,  |  | 
+**[origins](#origins)** | list, tuple,  | tuple,  |  | 
+**id** | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
+**debug_rules** | bool,  | BoolClass,  |  | 
+**last_modified** | str,  | str,  |  | 
 
 # origins
 
