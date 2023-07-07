@@ -58,6 +58,7 @@ _response_for_201 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor201,
 )
 SchemaFor400ResponseBodyApplicationJson = BadRequestResponse
+SchemaFor400ResponseBodyTextHtml = schemas.StrSchema
 
 
 @dataclass
@@ -65,6 +66,7 @@ class ApiResponseFor400(api_client.ApiResponse):
     response: urllib3.HTTPResponse
     body: typing.Union[
         SchemaFor400ResponseBodyApplicationJson,
+        SchemaFor400ResponseBodyTextHtml,
     ]
     headers: schemas.Unset = schemas.unset
 
@@ -74,7 +76,21 @@ _response_for_400 = api_client.OpenApiResponse(
     content={
         'application/json': api_client.MediaType(
             schema=SchemaFor400ResponseBodyApplicationJson),
+        'text/html': api_client.MediaType(
+            schema=SchemaFor400ResponseBodyTextHtml),
     },
+)
+
+
+@dataclass
+class ApiResponseFor404(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: schemas.Unset = schemas.unset
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_404 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor404,
 )
 SchemaFor500ResponseBodyApplicationJson = ErrorModel
 
@@ -98,10 +114,12 @@ _response_for_500 = api_client.OpenApiResponse(
 _status_code_to_response = {
     '201': _response_for_201,
     '400': _response_for_400,
+    '404': _response_for_404,
     '500': _response_for_500,
 }
 _all_accept_content_types = (
     'application/json',
+    'text/html',
 )
 
 
