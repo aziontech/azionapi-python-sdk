@@ -1,10 +1,7 @@
 # do not import all endpoints into this module because that uses a lot of memory and stack frames
 # if you need the ability to import all endpoints from this module, import them with
-# from variables.apis.path_to_api import path_to_api
+# from variables.paths.variables_uuid import Api
 
-import enum
+from variables.paths import PathValues
 
-
-class PathValues(str, enum.Enum):
-    VARIABLES = "/variables"
-    VARIABLES_UUID = "/variables/{uuid}"
+path = PathValues.VARIABLES_UUID

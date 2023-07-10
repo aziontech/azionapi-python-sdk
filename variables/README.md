@@ -144,10 +144,10 @@ from variables.apis.tags import variables_api
 from variables.model.variable import Variable
 from variables.model.variable_create import VariableCreate
 from variables.model.variable_get import VariableGet
-# Defining the host is optional and defaults to https://stage-variables.azion.com
+# Defining the host is optional and defaults to https://stage-api.azion.net/variables
 # See configuration.py for a list of all supported configuration parameters.
 configuration = variables.Configuration(
-    host = "https://stage-variables.azion.com"
+    host = "https://stage-api.azion.net/variables"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -172,7 +172,7 @@ with variables.ApiClient(configuration) as api_client:
     ) # VariableCreate | 
 
     try:
-        # /api/variables
+        # /variables
         api_response = api_instance.api_variables_create(variable_create)
         pprint(api_response)
     except variables.ApiException as e:
@@ -181,15 +181,15 @@ with variables.ApiClient(configuration) as api_client:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://stage-variables.azion.com*
+All URIs are relative to *https://stage-api.azion.net/variables*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*VariablesApi* | [**api_variables_create**](docs/apis/tags/VariablesApi.md#api_variables_create) | **post** /api/variables | /api/variables
-*VariablesApi* | [**api_variables_destroy**](docs/apis/tags/VariablesApi.md#api_variables_destroy) | **delete** /api/variables/{uuid} | /api/variables/:uuid
-*VariablesApi* | [**api_variables_list**](docs/apis/tags/VariablesApi.md#api_variables_list) | **get** /api/variables | /api/variables
-*VariablesApi* | [**api_variables_retrieve**](docs/apis/tags/VariablesApi.md#api_variables_retrieve) | **get** /api/variables/{uuid} | /api/variables/:uuid
-*VariablesApi* | [**api_variables_update**](docs/apis/tags/VariablesApi.md#api_variables_update) | **put** /api/variables/{uuid} | /api/variables/:uuid
+*VariablesApi* | [**api_variables_create**](docs/apis/tags/VariablesApi.md#api_variables_create) | **post** /variables | /variables
+*VariablesApi* | [**api_variables_destroy**](docs/apis/tags/VariablesApi.md#api_variables_destroy) | **delete** /variables/{uuid} | /variables/:uuid
+*VariablesApi* | [**api_variables_list**](docs/apis/tags/VariablesApi.md#api_variables_list) | **get** /variables | /variables
+*VariablesApi* | [**api_variables_retrieve**](docs/apis/tags/VariablesApi.md#api_variables_retrieve) | **get** /variables/{uuid} | /variables/:uuid
+*VariablesApi* | [**api_variables_update**](docs/apis/tags/VariablesApi.md#api_variables_update) | **put** /variables/{uuid} | /variables/:uuid
 
 ## Documentation For Models
 
