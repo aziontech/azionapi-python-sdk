@@ -114,7 +114,7 @@ conf = variables.Configuration(
     ):
         """Constructor
         """
-        self._base_path = "https://stage-variables.azion.com" if host is None else host
+        self._base_path = "https://stage-api.azion.net/variables" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -414,7 +414,7 @@ conf = variables.Configuration(
         """
         return [
             {
-                'url': "https://stage-variables.azion.com",
+                'url': "https://stage-api.azion.net/variables",
                 'description': "Stage",
             }
         ]
