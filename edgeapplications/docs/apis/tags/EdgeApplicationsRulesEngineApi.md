@@ -320,6 +320,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
     }
     body = CreateRulesEngineRequest(
         name="name_example",
+        description="description_example",
         criteria=[
             [
                 RulesEngineCriteria(
@@ -1154,6 +1155,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
     }
     body = UpdateRulesEngineRequest(
         name="name_example",
+        description="description_example",
         criteria=[
             [
                 RulesEngineCriteria(
