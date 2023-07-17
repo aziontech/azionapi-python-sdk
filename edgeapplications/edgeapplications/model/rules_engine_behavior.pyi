@@ -40,7 +40,7 @@ class RulesEngineBehavior(
         
         class properties:
             name = schemas.StrSchema
-            target = schemas.AnyTypeSchema
+            target = schemas.StrSchema
             __annotations__ = {
                 "name": name,
                 "target": target,
@@ -72,7 +72,7 @@ class RulesEngineBehavior(
         cls,
         *_args: typing.Union[dict, frozendict.frozendict, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
-        target: typing.Union[MetaOapg.properties.target, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
+        target: typing.Union[MetaOapg.properties.target, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'RulesEngineBehavior':
         return super().__new__(
