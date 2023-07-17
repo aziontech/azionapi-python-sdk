@@ -11,6 +11,7 @@ Key | Input Type | Accessed Type | Description | Notes
 **[behaviors](#behaviors)** | list, tuple,  | tuple,  |  | 
 **[criteria](#criteria)** | list, tuple,  | tuple,  |  | 
 **name** | str,  | str,  |  | 
+**description** | str,  | str,  |  | [optional] 
 
 # criteria
 

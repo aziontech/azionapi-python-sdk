@@ -116,10 +116,17 @@ class CreateRulesEngineRequest(
             
                 def __getitem__(self, i: int) -> 'RulesEngineBehavior':
                     return super().__getitem__(i)
+            
+            
+            class description(
+                schemas.StrSchema
+            ):
+                pass
             __annotations__ = {
                 "name": name,
                 "criteria": criteria,
                 "behaviors": behaviors,
+                "description": description,
             }
     
     behaviors: MetaOapg.properties.behaviors
@@ -136,9 +143,12 @@ class CreateRulesEngineRequest(
     def __getitem__(self, name: typing_extensions.Literal["behaviors"]) -> MetaOapg.properties.behaviors: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["description"]) -> MetaOapg.properties.description: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name", "criteria", "behaviors", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name", "criteria", "behaviors", "description", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -153,9 +163,12 @@ class CreateRulesEngineRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["behaviors"]) -> MetaOapg.properties.behaviors: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["description"]) -> typing.Union[MetaOapg.properties.description, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name", "criteria", "behaviors", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name", "criteria", "behaviors", "description", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -165,6 +178,7 @@ class CreateRulesEngineRequest(
         behaviors: typing.Union[MetaOapg.properties.behaviors, list, tuple, ],
         criteria: typing.Union[MetaOapg.properties.criteria, list, tuple, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
+        description: typing.Union[MetaOapg.properties.description, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'CreateRulesEngineRequest':
@@ -174,6 +188,7 @@ class CreateRulesEngineRequest(
             behaviors=behaviors,
             criteria=criteria,
             name=name,
+            description=description,
             _configuration=_configuration,
             **kwargs,
         )

@@ -98,6 +98,7 @@ class RulesEngineResultResponse(
                     return super().__getitem__(i)
             is_active = schemas.BoolSchema
             order = schemas.Int64Schema
+            description = schemas.StrSchema
             
             
             class behaviors(
@@ -131,6 +132,7 @@ class RulesEngineResultResponse(
                 "criteria": criteria,
                 "is_active": is_active,
                 "order": order,
+                "description": description,
                 "behaviors": behaviors,
             }
     
@@ -161,12 +163,15 @@ class RulesEngineResultResponse(
     def __getitem__(self, name: typing_extensions.Literal["order"]) -> MetaOapg.properties.order: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["description"]) -> MetaOapg.properties.description: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["behaviors"]) -> MetaOapg.properties.behaviors: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "name", "phase", "criteria", "is_active", "order", "behaviors", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "name", "phase", "criteria", "is_active", "order", "description", "behaviors", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -190,12 +195,15 @@ class RulesEngineResultResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["order"]) -> MetaOapg.properties.order: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["description"]) -> typing.Union[MetaOapg.properties.description, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["behaviors"]) -> typing.Union[MetaOapg.properties.behaviors, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "name", "phase", "criteria", "is_active", "order", "behaviors", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "name", "phase", "criteria", "is_active", "order", "description", "behaviors", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -209,6 +217,7 @@ class RulesEngineResultResponse(
         id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, ],
         behavior: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
         order: typing.Union[MetaOapg.properties.order, decimal.Decimal, int, ],
+        description: typing.Union[MetaOapg.properties.description, str, schemas.Unset] = schemas.unset,
         behaviors: typing.Union[MetaOapg.properties.behaviors, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -223,6 +232,7 @@ class RulesEngineResultResponse(
             id=id,
             behavior=behavior,
             order=order,
+            description=description,
             behaviors=behaviors,
             _configuration=_configuration,
             **kwargs,
