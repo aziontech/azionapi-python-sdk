@@ -43,83 +43,73 @@ class ApplicationCacheCreateRequest(
             browser_cache_settings = schemas.StrSchema
             browser_cache_settings_maximum_ttl = schemas.Int64Schema
             cdn_cache_settings = schemas.StrSchema
-            adaptive_delivery_action = schemas.StrSchema
-            enable_caching_for_options = schemas.BoolSchema
-            enable_query_string_sort = schemas.BoolSchema
             cdn_cache_settings_maximum_ttl = schemas.Int64Schema
             cache_by_query_string = schemas.StrSchema
             
             
             class query_string_fields(
-                schemas.ListSchema
+                schemas.ListBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneTupleMixin
             ):
             
             
                 class MetaOapg:
                     items = schemas.StrSchema
             
+            
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                    *_args: typing.Union[list, tuple, None, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'query_string_fields':
                     return super().__new__(
                         cls,
-                        _arg,
+                        *_args,
                         _configuration=_configuration,
                     )
-            
-                def __getitem__(self, i: int) -> MetaOapg.items:
-                    return super().__getitem__(i)
+            enable_query_string_sort = schemas.BoolSchema
             cache_by_cookies = schemas.StrSchema
             
             
             class cookie_names(
-                schemas.ListSchema
+                schemas.ListBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneTupleMixin
             ):
             
             
                 class MetaOapg:
                     items = schemas.StrSchema
             
+            
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                    *_args: typing.Union[list, tuple, None, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'cookie_names':
                     return super().__new__(
                         cls,
-                        _arg,
+                        *_args,
                         _configuration=_configuration,
                     )
-            
-                def __getitem__(self, i: int) -> MetaOapg.items:
-                    return super().__getitem__(i)
-            enable_caching_for_post = schemas.BoolSchema
+            user_email = schemas.StrSchema
             l2_caching_enabled = schemas.BoolSchema
-            is_slice_configuration_enabled = schemas.BoolSchema
-            is_slice_edge_caching_enabled = schemas.BoolSchema
-            is_slice_l2_caching_enabled = schemas.BoolSchema
-            slice_configuration_range = schemas.Int64Schema
             __annotations__ = {
                 "name": name,
                 "browser_cache_settings": browser_cache_settings,
                 "browser_cache_settings_maximum_ttl": browser_cache_settings_maximum_ttl,
                 "cdn_cache_settings": cdn_cache_settings,
-                "adaptive_delivery_action": adaptive_delivery_action,
-                "enable_caching_for_options": enable_caching_for_options,
-                "enable_query_string_sort": enable_query_string_sort,
                 "cdn_cache_settings_maximum_ttl": cdn_cache_settings_maximum_ttl,
                 "cache_by_query_string": cache_by_query_string,
                 "query_string_fields": query_string_fields,
+                "enable_query_string_sort": enable_query_string_sort,
                 "cache_by_cookies": cache_by_cookies,
                 "cookie_names": cookie_names,
-                "enable_caching_for_post": enable_caching_for_post,
+                "user_email": user_email,
                 "l2_caching_enabled": l2_caching_enabled,
-                "is_slice_configuration_enabled": is_slice_configuration_enabled,
-                "is_slice_edge_caching_enabled": is_slice_edge_caching_enabled,
-                "is_slice_l2_caching_enabled": is_slice_l2_caching_enabled,
-                "slice_configuration_range": slice_configuration_range,
             }
         additional_properties = schemas.NotAnyTypeSchema
     
@@ -138,15 +128,6 @@ class ApplicationCacheCreateRequest(
     def __getitem__(self, name: typing_extensions.Literal["cdn_cache_settings"]) -> MetaOapg.properties.cdn_cache_settings: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["adaptive_delivery_action"]) -> MetaOapg.properties.adaptive_delivery_action: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["enable_caching_for_options"]) -> MetaOapg.properties.enable_caching_for_options: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["enable_query_string_sort"]) -> MetaOapg.properties.enable_query_string_sort: ...
-    
-    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["cdn_cache_settings_maximum_ttl"]) -> MetaOapg.properties.cdn_cache_settings_maximum_ttl: ...
     
     @typing.overload
@@ -156,30 +137,21 @@ class ApplicationCacheCreateRequest(
     def __getitem__(self, name: typing_extensions.Literal["query_string_fields"]) -> MetaOapg.properties.query_string_fields: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["enable_query_string_sort"]) -> MetaOapg.properties.enable_query_string_sort: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["cache_by_cookies"]) -> MetaOapg.properties.cache_by_cookies: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["cookie_names"]) -> MetaOapg.properties.cookie_names: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["enable_caching_for_post"]) -> MetaOapg.properties.enable_caching_for_post: ...
+    def __getitem__(self, name: typing_extensions.Literal["user_email"]) -> MetaOapg.properties.user_email: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["l2_caching_enabled"]) -> MetaOapg.properties.l2_caching_enabled: ...
     
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["is_slice_configuration_enabled"]) -> MetaOapg.properties.is_slice_configuration_enabled: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["is_slice_edge_caching_enabled"]) -> MetaOapg.properties.is_slice_edge_caching_enabled: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["is_slice_l2_caching_enabled"]) -> MetaOapg.properties.is_slice_l2_caching_enabled: ...
-    
-    @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["slice_configuration_range"]) -> MetaOapg.properties.slice_configuration_range: ...
-    
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["browser_cache_settings"], typing_extensions.Literal["browser_cache_settings_maximum_ttl"], typing_extensions.Literal["cdn_cache_settings"], typing_extensions.Literal["adaptive_delivery_action"], typing_extensions.Literal["enable_caching_for_options"], typing_extensions.Literal["enable_query_string_sort"], typing_extensions.Literal["cdn_cache_settings_maximum_ttl"], typing_extensions.Literal["cache_by_query_string"], typing_extensions.Literal["query_string_fields"], typing_extensions.Literal["cache_by_cookies"], typing_extensions.Literal["cookie_names"], typing_extensions.Literal["enable_caching_for_post"], typing_extensions.Literal["l2_caching_enabled"], typing_extensions.Literal["is_slice_configuration_enabled"], typing_extensions.Literal["is_slice_edge_caching_enabled"], typing_extensions.Literal["is_slice_l2_caching_enabled"], typing_extensions.Literal["slice_configuration_range"], ]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["browser_cache_settings"], typing_extensions.Literal["browser_cache_settings_maximum_ttl"], typing_extensions.Literal["cdn_cache_settings"], typing_extensions.Literal["cdn_cache_settings_maximum_ttl"], typing_extensions.Literal["cache_by_query_string"], typing_extensions.Literal["query_string_fields"], typing_extensions.Literal["enable_query_string_sort"], typing_extensions.Literal["cache_by_cookies"], typing_extensions.Literal["cookie_names"], typing_extensions.Literal["user_email"], typing_extensions.Literal["l2_caching_enabled"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -196,15 +168,6 @@ class ApplicationCacheCreateRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["cdn_cache_settings"]) -> typing.Union[MetaOapg.properties.cdn_cache_settings, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["adaptive_delivery_action"]) -> typing.Union[MetaOapg.properties.adaptive_delivery_action, schemas.Unset]: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["enable_caching_for_options"]) -> typing.Union[MetaOapg.properties.enable_caching_for_options, schemas.Unset]: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["enable_query_string_sort"]) -> typing.Union[MetaOapg.properties.enable_query_string_sort, schemas.Unset]: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["cdn_cache_settings_maximum_ttl"]) -> typing.Union[MetaOapg.properties.cdn_cache_settings_maximum_ttl, schemas.Unset]: ...
     
     @typing.overload
@@ -214,30 +177,21 @@ class ApplicationCacheCreateRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["query_string_fields"]) -> typing.Union[MetaOapg.properties.query_string_fields, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["enable_query_string_sort"]) -> typing.Union[MetaOapg.properties.enable_query_string_sort, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["cache_by_cookies"]) -> typing.Union[MetaOapg.properties.cache_by_cookies, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["cookie_names"]) -> typing.Union[MetaOapg.properties.cookie_names, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["enable_caching_for_post"]) -> typing.Union[MetaOapg.properties.enable_caching_for_post, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["user_email"]) -> typing.Union[MetaOapg.properties.user_email, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["l2_caching_enabled"]) -> typing.Union[MetaOapg.properties.l2_caching_enabled, schemas.Unset]: ...
     
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["is_slice_configuration_enabled"]) -> typing.Union[MetaOapg.properties.is_slice_configuration_enabled, schemas.Unset]: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["is_slice_edge_caching_enabled"]) -> typing.Union[MetaOapg.properties.is_slice_edge_caching_enabled, schemas.Unset]: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["is_slice_l2_caching_enabled"]) -> typing.Union[MetaOapg.properties.is_slice_l2_caching_enabled, schemas.Unset]: ...
-    
-    @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["slice_configuration_range"]) -> typing.Union[MetaOapg.properties.slice_configuration_range, schemas.Unset]: ...
-    
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["browser_cache_settings"], typing_extensions.Literal["browser_cache_settings_maximum_ttl"], typing_extensions.Literal["cdn_cache_settings"], typing_extensions.Literal["adaptive_delivery_action"], typing_extensions.Literal["enable_caching_for_options"], typing_extensions.Literal["enable_query_string_sort"], typing_extensions.Literal["cdn_cache_settings_maximum_ttl"], typing_extensions.Literal["cache_by_query_string"], typing_extensions.Literal["query_string_fields"], typing_extensions.Literal["cache_by_cookies"], typing_extensions.Literal["cookie_names"], typing_extensions.Literal["enable_caching_for_post"], typing_extensions.Literal["l2_caching_enabled"], typing_extensions.Literal["is_slice_configuration_enabled"], typing_extensions.Literal["is_slice_edge_caching_enabled"], typing_extensions.Literal["is_slice_l2_caching_enabled"], typing_extensions.Literal["slice_configuration_range"], ]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["browser_cache_settings"], typing_extensions.Literal["browser_cache_settings_maximum_ttl"], typing_extensions.Literal["cdn_cache_settings"], typing_extensions.Literal["cdn_cache_settings_maximum_ttl"], typing_extensions.Literal["cache_by_query_string"], typing_extensions.Literal["query_string_fields"], typing_extensions.Literal["enable_query_string_sort"], typing_extensions.Literal["cache_by_cookies"], typing_extensions.Literal["cookie_names"], typing_extensions.Literal["user_email"], typing_extensions.Literal["l2_caching_enabled"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
@@ -247,20 +201,14 @@ class ApplicationCacheCreateRequest(
         browser_cache_settings: typing.Union[MetaOapg.properties.browser_cache_settings, str, schemas.Unset] = schemas.unset,
         browser_cache_settings_maximum_ttl: typing.Union[MetaOapg.properties.browser_cache_settings_maximum_ttl, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         cdn_cache_settings: typing.Union[MetaOapg.properties.cdn_cache_settings, str, schemas.Unset] = schemas.unset,
-        adaptive_delivery_action: typing.Union[MetaOapg.properties.adaptive_delivery_action, str, schemas.Unset] = schemas.unset,
-        enable_caching_for_options: typing.Union[MetaOapg.properties.enable_caching_for_options, bool, schemas.Unset] = schemas.unset,
-        enable_query_string_sort: typing.Union[MetaOapg.properties.enable_query_string_sort, bool, schemas.Unset] = schemas.unset,
         cdn_cache_settings_maximum_ttl: typing.Union[MetaOapg.properties.cdn_cache_settings_maximum_ttl, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         cache_by_query_string: typing.Union[MetaOapg.properties.cache_by_query_string, str, schemas.Unset] = schemas.unset,
-        query_string_fields: typing.Union[MetaOapg.properties.query_string_fields, list, tuple, schemas.Unset] = schemas.unset,
+        query_string_fields: typing.Union[MetaOapg.properties.query_string_fields, list, tuple, None, schemas.Unset] = schemas.unset,
+        enable_query_string_sort: typing.Union[MetaOapg.properties.enable_query_string_sort, bool, schemas.Unset] = schemas.unset,
         cache_by_cookies: typing.Union[MetaOapg.properties.cache_by_cookies, str, schemas.Unset] = schemas.unset,
-        cookie_names: typing.Union[MetaOapg.properties.cookie_names, list, tuple, schemas.Unset] = schemas.unset,
-        enable_caching_for_post: typing.Union[MetaOapg.properties.enable_caching_for_post, bool, schemas.Unset] = schemas.unset,
+        cookie_names: typing.Union[MetaOapg.properties.cookie_names, list, tuple, None, schemas.Unset] = schemas.unset,
+        user_email: typing.Union[MetaOapg.properties.user_email, str, schemas.Unset] = schemas.unset,
         l2_caching_enabled: typing.Union[MetaOapg.properties.l2_caching_enabled, bool, schemas.Unset] = schemas.unset,
-        is_slice_configuration_enabled: typing.Union[MetaOapg.properties.is_slice_configuration_enabled, bool, schemas.Unset] = schemas.unset,
-        is_slice_edge_caching_enabled: typing.Union[MetaOapg.properties.is_slice_edge_caching_enabled, bool, schemas.Unset] = schemas.unset,
-        is_slice_l2_caching_enabled: typing.Union[MetaOapg.properties.is_slice_l2_caching_enabled, bool, schemas.Unset] = schemas.unset,
-        slice_configuration_range: typing.Union[MetaOapg.properties.slice_configuration_range, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'ApplicationCacheCreateRequest':
         return super().__new__(
@@ -270,19 +218,13 @@ class ApplicationCacheCreateRequest(
             browser_cache_settings=browser_cache_settings,
             browser_cache_settings_maximum_ttl=browser_cache_settings_maximum_ttl,
             cdn_cache_settings=cdn_cache_settings,
-            adaptive_delivery_action=adaptive_delivery_action,
-            enable_caching_for_options=enable_caching_for_options,
-            enable_query_string_sort=enable_query_string_sort,
             cdn_cache_settings_maximum_ttl=cdn_cache_settings_maximum_ttl,
             cache_by_query_string=cache_by_query_string,
             query_string_fields=query_string_fields,
+            enable_query_string_sort=enable_query_string_sort,
             cache_by_cookies=cache_by_cookies,
             cookie_names=cookie_names,
-            enable_caching_for_post=enable_caching_for_post,
+            user_email=user_email,
             l2_caching_enabled=l2_caching_enabled,
-            is_slice_configuration_enabled=is_slice_configuration_enabled,
-            is_slice_edge_caching_enabled=is_slice_edge_caching_enabled,
-            is_slice_l2_caching_enabled=is_slice_l2_caching_enabled,
-            slice_configuration_range=slice_configuration_range,
             _configuration=_configuration,
         )

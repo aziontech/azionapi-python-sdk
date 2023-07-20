@@ -12,27 +12,21 @@ Key | Input Type | Accessed Type | Description | Notes
 **browser_cache_settings** | str,  | str,  |  | [optional] 
 **browser_cache_settings_maximum_ttl** | decimal.Decimal, int,  | decimal.Decimal,  |  | [optional] value must be a 64 bit integer
 **cdn_cache_settings** | str,  | str,  |  | [optional] 
-**adaptive_delivery_action** | str,  | str,  |  | [optional] 
-**enable_caching_for_options** | bool,  | BoolClass,  |  | [optional] 
-**enable_query_string_sort** | bool,  | BoolClass,  |  | [optional] 
 **cdn_cache_settings_maximum_ttl** | decimal.Decimal, int,  | decimal.Decimal,  |  | [optional] value must be a 64 bit integer
 **cache_by_query_string** | str,  | str,  |  | [optional] 
-**[query_string_fields](#query_string_fields)** | list, tuple,  | tuple,  |  | [optional] 
+**[query_string_fields](#query_string_fields)** | list, tuple, None,  | tuple, NoneClass,  |  | [optional] 
+**enable_query_string_sort** | bool,  | BoolClass,  |  | [optional] 
 **cache_by_cookies** | str,  | str,  |  | [optional] 
-**[cookie_names](#cookie_names)** | list, tuple,  | tuple,  |  | [optional] 
-**enable_caching_for_post** | bool,  | BoolClass,  |  | [optional] 
+**[cookie_names](#cookie_names)** | list, tuple, None,  | tuple, NoneClass,  |  | [optional] 
+**user_email** | str,  | str,  |  | [optional] 
 **l2_caching_enabled** | bool,  | BoolClass,  |  | [optional] 
-**is_slice_configuration_enabled** | bool,  | BoolClass,  |  | [optional] 
-**is_slice_edge_caching_enabled** | bool,  | BoolClass,  |  | [optional] 
-**is_slice_l2_caching_enabled** | bool,  | BoolClass,  |  | [optional] 
-**slice_configuration_range** | decimal.Decimal, int,  | decimal.Decimal,  |  | [optional] value must be a 64 bit integer
 
 # query_string_fields
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-list, tuple,  | tuple,  |  | 
+list, tuple, None,  | tuple, NoneClass,  |  | 
 
 ### Tuple Items
 Class Name | Input Type | Accessed Type | Description | Notes
@@ -44,7 +38,7 @@ items | str,  | str,  |  |
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-list, tuple,  | tuple,  |  | 
+list, tuple, None,  | tuple, NoneClass,  |  | 
 
 ### Tuple Items
 Class Name | Input Type | Accessed Type | Description | Notes
