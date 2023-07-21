@@ -23,6 +23,13 @@ Key | Input Type | Accessed Type | Description | Notes
 **cache_by_query_string** | str,  | str,  |  | 
 **browser_cache_settings_maximum_ttl** | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
 **cdn_cache_settings_maximum_ttl** | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
+**is_slice_configuration_enabled** | bool,  | BoolClass,  |  | [optional] 
+**is_slice_edge_caching_enabled** | bool,  | BoolClass,  |  | [optional] 
+**is_slice_l2_caching_enabled** | bool,  | BoolClass,  |  | [optional] 
+**slice_configuration_range** | decimal.Decimal, int,  | decimal.Decimal,  |  | [optional] value must be a 64 bit integer
+**enable_caching_for_options** | bool,  | BoolClass,  |  | [optional] 
+**enable_stale_cache** | bool,  | BoolClass,  |  | [optional] 
+**l2_region** | str,  | str,  |  | [optional] 
 
 # query_string_fields
 
