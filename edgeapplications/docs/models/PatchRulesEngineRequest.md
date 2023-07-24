@@ -9,6 +9,7 @@ dict, frozendict.frozendict,  | frozendict.frozendict,  |  |
 Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
 **name** | str,  | str,  |  | [optional] 
+**description** | str,  | str,  |  | [optional] 
 **[criteria](#criteria)** | list, tuple,  | tuple,  |  | [optional] 
 **[behaviors](#behaviors)** | list, tuple,  | tuple,  |  | [optional] 
 
