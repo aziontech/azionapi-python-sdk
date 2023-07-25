@@ -137,32 +137,10 @@ class DC200List(
                         _configuration=_configuration,
                         **kwargs,
                     )
-            
-            
-            class results(
-                schemas.ListSchema
-            ):
-            
-            
-                class MetaOapg:
-                    
-                    @staticmethod
-                    def items() -> typing.Type['Results']:
-                        return Results
-            
-                def __new__(
-                    cls,
-                    _arg: typing.Union[typing.Tuple['Results'], typing.List['Results']],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                ) -> 'results':
-                    return super().__new__(
-                        cls,
-                        _arg,
-                        _configuration=_configuration,
-                    )
-            
-                def __getitem__(self, i: int) -> 'Results':
-                    return super().__getitem__(i)
+        
+            @staticmethod
+            def results() -> typing.Type['Results']:
+                return Results
             __annotations__ = {
                 "count": count,
                 "total_pages": total_pages,
@@ -184,7 +162,7 @@ class DC200List(
     def __getitem__(self, name: typing_extensions.Literal["links"]) -> MetaOapg.properties.links: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["results"]) -> MetaOapg.properties.results: ...
+    def __getitem__(self, name: typing_extensions.Literal["results"]) -> 'Results': ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
@@ -207,7 +185,7 @@ class DC200List(
     def get_item_oapg(self, name: typing_extensions.Literal["links"]) -> typing.Union[MetaOapg.properties.links, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["results"]) -> typing.Union[MetaOapg.properties.results, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["results"]) -> typing.Union['Results', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -223,7 +201,7 @@ class DC200List(
         total_pages: typing.Union[MetaOapg.properties.total_pages, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         schema_version: typing.Union[MetaOapg.properties.schema_version, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         links: typing.Union[MetaOapg.properties.links, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
-        results: typing.Union[MetaOapg.properties.results, list, tuple, schemas.Unset] = schemas.unset,
+        results: typing.Union['Results', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'DC200List':
