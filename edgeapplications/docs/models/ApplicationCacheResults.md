@@ -26,6 +26,10 @@ Key | Input Type | Accessed Type | Description | Notes
 **l2_region** | str,  | str,  |  | 
 **browser_cache_settings_maximum_ttl** | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
 **cdn_cache_settings_maximum_ttl** | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
+**is_slice_configuration_enabled** | bool,  | BoolClass,  |  | [optional] 
+**is_slice_edge_caching_enabled** | bool,  | BoolClass,  |  | [optional] 
+**is_slice_l2_caching_enabled** | bool,  | BoolClass,  |  | [optional] 
+**slice_configuration_range** | bool,  | BoolClass,  |  | [optional] 
 
 # query_string_fields
 

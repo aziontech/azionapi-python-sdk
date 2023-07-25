@@ -39,6 +39,12 @@ class PatchRulesEngineRequest(
             name = schemas.StrSchema
             
             
+            class description(
+                schemas.StrSchema
+            ):
+                pass
+            
+            
             class criteria(
                 schemas.ListSchema
             ):
@@ -113,6 +119,7 @@ class PatchRulesEngineRequest(
                     return super().__getitem__(i)
             __annotations__ = {
                 "name": name,
+                "description": description,
                 "criteria": criteria,
                 "behaviors": behaviors,
             }
@@ -122,12 +129,15 @@ class PatchRulesEngineRequest(
     def __getitem__(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["description"]) -> MetaOapg.properties.description: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["criteria"]) -> MetaOapg.properties.criteria: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["behaviors"]) -> MetaOapg.properties.behaviors: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["criteria"], typing_extensions.Literal["behaviors"], ]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["description"], typing_extensions.Literal["criteria"], typing_extensions.Literal["behaviors"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -135,18 +145,22 @@ class PatchRulesEngineRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["name"]) -> typing.Union[MetaOapg.properties.name, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["description"]) -> typing.Union[MetaOapg.properties.description, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["criteria"]) -> typing.Union[MetaOapg.properties.criteria, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["behaviors"]) -> typing.Union[MetaOapg.properties.behaviors, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["criteria"], typing_extensions.Literal["behaviors"], ]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["description"], typing_extensions.Literal["criteria"], typing_extensions.Literal["behaviors"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
         cls,
         *_args: typing.Union[dict, frozendict.frozendict, ],
         name: typing.Union[MetaOapg.properties.name, str, schemas.Unset] = schemas.unset,
+        description: typing.Union[MetaOapg.properties.description, str, schemas.Unset] = schemas.unset,
         criteria: typing.Union[MetaOapg.properties.criteria, list, tuple, schemas.Unset] = schemas.unset,
         behaviors: typing.Union[MetaOapg.properties.behaviors, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -155,6 +169,7 @@ class PatchRulesEngineRequest(
             cls,
             *_args,
             name=name,
+            description=description,
             criteria=criteria,
             behaviors=behaviors,
             _configuration=_configuration,

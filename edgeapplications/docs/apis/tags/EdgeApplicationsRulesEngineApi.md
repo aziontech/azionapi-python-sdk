@@ -922,6 +922,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
     }
     body = PatchRulesEngineRequest(
         name="name_example",
+        description="description_example",
         criteria=[
             [
                 RulesEngineCriteria(
