@@ -69,7 +69,26 @@ class Results(
                     
                         def __getitem__(self, i: int) -> MetaOapg.items:
                             return super().__getitem__(i)
-                    validity = schemas.StrSchema
+                    
+                    
+                    class validity(
+                        schemas.StrBase,
+                        schemas.NoneBase,
+                        schemas.Schema,
+                        schemas.NoneStrMixin
+                    ):
+                    
+                    
+                        def __new__(
+                            cls,
+                            *_args: typing.Union[None, str, ],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'validity':
+                            return super().__new__(
+                                cls,
+                                *_args,
+                                _configuration=_configuration,
+                            )
                     status = schemas.StrSchema
                     
                     
@@ -86,6 +105,27 @@ class Results(
                         def TRUSTED_CA_CERTIFICATE(cls):
                             return cls("trusted_ca_certificate")
                     managed = schemas.BoolSchema
+                    
+                    
+                    class issuer(
+                        schemas.StrBase,
+                        schemas.NoneBase,
+                        schemas.Schema,
+                        schemas.NoneStrMixin
+                    ):
+                    
+                    
+                        def __new__(
+                            cls,
+                            *_args: typing.Union[None, str, ],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'issuer':
+                            return super().__new__(
+                                cls,
+                                *_args,
+                                _configuration=_configuration,
+                            )
+                    azion_information = schemas.StrSchema
                     __annotations__ = {
                         "id": id,
                         "name": name,
@@ -94,6 +134,8 @@ class Results(
                         "status": status,
                         "certificate_type": certificate_type,
                         "managed": managed,
+                        "issuer": issuer,
+                        "azion_information": azion_information,
                     }
             
             @typing.overload
@@ -118,9 +160,15 @@ class Results(
             def __getitem__(self, name: typing_extensions.Literal["managed"]) -> MetaOapg.properties.managed: ...
             
             @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["issuer"]) -> MetaOapg.properties.issuer: ...
+            
+            @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["azion_information"]) -> MetaOapg.properties.azion_information: ...
+            
+            @typing.overload
             def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
             
-            def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "name", "subject_name", "validity", "status", "certificate_type", "managed", ], str]):
+            def __getitem__(self, name: typing.Union[typing_extensions.Literal["id", "name", "subject_name", "validity", "status", "certificate_type", "managed", "issuer", "azion_information", ], str]):
                 # dict_instance[name] accessor
                 return super().__getitem__(name)
             
@@ -147,9 +195,15 @@ class Results(
             def get_item_oapg(self, name: typing_extensions.Literal["managed"]) -> typing.Union[MetaOapg.properties.managed, schemas.Unset]: ...
             
             @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["issuer"]) -> typing.Union[MetaOapg.properties.issuer, schemas.Unset]: ...
+            
+            @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["azion_information"]) -> typing.Union[MetaOapg.properties.azion_information, schemas.Unset]: ...
+            
+            @typing.overload
             def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
             
-            def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "name", "subject_name", "validity", "status", "certificate_type", "managed", ], str]):
+            def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["id", "name", "subject_name", "validity", "status", "certificate_type", "managed", "issuer", "azion_information", ], str]):
                 return super().get_item_oapg(name)
             
         
@@ -159,10 +213,12 @@ class Results(
                 id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, schemas.Unset] = schemas.unset,
                 name: typing.Union[MetaOapg.properties.name, str, schemas.Unset] = schemas.unset,
                 subject_name: typing.Union[MetaOapg.properties.subject_name, list, tuple, schemas.Unset] = schemas.unset,
-                validity: typing.Union[MetaOapg.properties.validity, str, schemas.Unset] = schemas.unset,
+                validity: typing.Union[MetaOapg.properties.validity, None, str, schemas.Unset] = schemas.unset,
                 status: typing.Union[MetaOapg.properties.status, str, schemas.Unset] = schemas.unset,
                 certificate_type: typing.Union[MetaOapg.properties.certificate_type, str, schemas.Unset] = schemas.unset,
                 managed: typing.Union[MetaOapg.properties.managed, bool, schemas.Unset] = schemas.unset,
+                issuer: typing.Union[MetaOapg.properties.issuer, None, str, schemas.Unset] = schemas.unset,
+                azion_information: typing.Union[MetaOapg.properties.azion_information, str, schemas.Unset] = schemas.unset,
                 _configuration: typing.Optional[schemas.Configuration] = None,
                 **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
             ) -> 'items':
@@ -176,6 +232,8 @@ class Results(
                     status=status,
                     certificate_type=certificate_type,
                     managed=managed,
+                    issuer=issuer,
+                    azion_information=azion_information,
                     _configuration=_configuration,
                     **kwargs,
                 )

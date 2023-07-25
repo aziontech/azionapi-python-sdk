@@ -1,6 +1,5 @@
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 digital_certificates/__init__.py
@@ -66,15 +65,4 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_models/__init__.py
-test/test_models/test_dc200.py
-test/test_models/test_dc200_list.py
-test/test_models/test_dc201.py
-test/test_models/test_dc400.py
-test/test_models/test_dc401.py
-test/test_models/test_dc403.py
-test/test_models/test_dc404.py
-test/test_models/test_dc406.py
-test/test_models/test_dc409.py
-test/test_models/test_results.py
-test/test_models/test_single_result.py
 tox.ini
