@@ -120,11 +120,11 @@ class ApplicationCacheResults(
             
             
                 class MetaOapg:
-                    items = schemas.StrSchema
+                    items = schemas.IntSchema
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, decimal.Decimal, int, ]], typing.List[typing.Union[MetaOapg.items, decimal.Decimal, int, ]]],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'device_group':
                     return super().__new__(
@@ -143,7 +143,7 @@ class ApplicationCacheResults(
             is_slice_configuration_enabled = schemas.BoolSchema
             is_slice_edge_caching_enabled = schemas.BoolSchema
             is_slice_l2_caching_enabled = schemas.BoolSchema
-            slice_configuration_range = schemas.BoolSchema
+            slice_configuration_range = schemas.Int64Schema
             __annotations__ = {
                 "id": id,
                 "name": name,
@@ -352,7 +352,7 @@ class ApplicationCacheResults(
         is_slice_configuration_enabled: typing.Union[MetaOapg.properties.is_slice_configuration_enabled, bool, schemas.Unset] = schemas.unset,
         is_slice_edge_caching_enabled: typing.Union[MetaOapg.properties.is_slice_edge_caching_enabled, bool, schemas.Unset] = schemas.unset,
         is_slice_l2_caching_enabled: typing.Union[MetaOapg.properties.is_slice_l2_caching_enabled, bool, schemas.Unset] = schemas.unset,
-        slice_configuration_range: typing.Union[MetaOapg.properties.slice_configuration_range, bool, schemas.Unset] = schemas.unset,
+        slice_configuration_range: typing.Union[MetaOapg.properties.slice_configuration_range, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'ApplicationCacheResults':
         return super().__new__(
