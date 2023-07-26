@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **create_certificate**
 <a id="create_certificate"></a>
-> DC201 create_certificate(any_type)
+> DC200 create_certificate(any_type)
 
 Create a new digital certificate
 
@@ -20,7 +20,7 @@ Create a new digital certificate
 import digital_certificates
 from digital_certificates.apis.tags import create_digital_certificate_api
 from digital_certificates.model.dc400 import DC400
-from digital_certificates.model.dc201 import DC201
+from digital_certificates.model.dc200 import DC200
 from digital_certificates.model.dc403 import DC403
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azionapi.net
@@ -110,7 +110,7 @@ headers | Unset | headers were not defined |
 # SchemaFor201ResponseBodyApplicationJsonVersion3
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**DC201**](../../models/DC201.md) |  | 
+[**DC200**](../../models/DC200.md) |  | 
 
 
 #### create_certificate.ApiResponseFor400

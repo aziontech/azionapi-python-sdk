@@ -141,7 +141,7 @@ import time
 import digital_certificates
 from pprint import pprint
 from digital_certificates.apis.tags import create_csr_api
-from digital_certificates.model.dc201 import DC201
+from digital_certificates.model.dc200 import DC200
 from digital_certificates.model.dc400 import DC400
 from digital_certificates.model.dc403 import DC403
 # Defining the host is optional and defaults to https://api.azionapi.net
