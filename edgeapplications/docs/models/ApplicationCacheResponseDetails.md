@@ -24,6 +24,12 @@ Key | Input Type | Accessed Type | Description | Notes
 **adaptive_delivery_action** | str,  | str,  |  | [optional] 
 **[device_group](#device_group)** | list, tuple,  | tuple,  |  | [optional] 
 **enable_caching_for_options** | bool,  | BoolClass,  |  | [optional] 
+**is_slice_configuration_enabled** | bool,  | BoolClass,  |  | [optional] 
+**is_slice_edge_caching_enabled** | bool,  | BoolClass,  |  | [optional] 
+**is_slice_l2_caching_enabled** | bool,  | BoolClass,  |  | [optional] 
+**slice_configuration_range** | decimal.Decimal, int,  | decimal.Decimal,  |  | [optional] value must be a 64 bit integer
+**enable_stale_cache** | bool,  | BoolClass,  |  | [optional] 
+**l2_region** | str,  | str,  |  | [optional] 
 
 # query_string_fields
 

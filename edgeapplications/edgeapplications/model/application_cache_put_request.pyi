@@ -93,12 +93,39 @@ class ApplicationCachePutRequest(
             
                 def __getitem__(self, i: int) -> MetaOapg.items:
                     return super().__getitem__(i)
+            adaptive_delivery_action = schemas.StrSchema
+            
+            
+            class device_group(
+                schemas.ListSchema
+            ):
+            
+            
+                class MetaOapg:
+                    items = schemas.IntSchema
+            
+                def __new__(
+                    cls,
+                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, decimal.Decimal, int, ]], typing.List[typing.Union[MetaOapg.items, decimal.Decimal, int, ]]],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'device_group':
+                    return super().__new__(
+                        cls,
+                        _arg,
+                        _configuration=_configuration,
+                    )
+            
+                def __getitem__(self, i: int) -> MetaOapg.items:
+                    return super().__getitem__(i)
             enable_caching_for_post = schemas.BoolSchema
             l2_caching_enabled = schemas.BoolSchema
             is_slice_configuration_enabled = schemas.BoolSchema
             is_slice_edge_caching_enabled = schemas.BoolSchema
             is_slice_l2_caching_enabled = schemas.BoolSchema
             slice_configuration_range = schemas.Int64Schema
+            enable_caching_for_options = schemas.BoolSchema
+            enable_stale_cache = schemas.BoolSchema
+            l2_region = schemas.StrSchema
             __annotations__ = {
                 "name": name,
                 "browser_cache_settings": browser_cache_settings,
@@ -110,12 +137,17 @@ class ApplicationCachePutRequest(
                 "enable_query_string_sort": enable_query_string_sort,
                 "cache_by_cookies": cache_by_cookies,
                 "cookie_names": cookie_names,
+                "adaptive_delivery_action": adaptive_delivery_action,
+                "device_group": device_group,
                 "enable_caching_for_post": enable_caching_for_post,
                 "l2_caching_enabled": l2_caching_enabled,
                 "is_slice_configuration_enabled": is_slice_configuration_enabled,
                 "is_slice_edge_caching_enabled": is_slice_edge_caching_enabled,
                 "is_slice_l2_caching_enabled": is_slice_l2_caching_enabled,
                 "slice_configuration_range": slice_configuration_range,
+                "enable_caching_for_options": enable_caching_for_options,
+                "enable_stale_cache": enable_stale_cache,
+                "l2_region": l2_region,
             }
         additional_properties = schemas.NotAnyTypeSchema
     
@@ -152,6 +184,12 @@ class ApplicationCachePutRequest(
     def __getitem__(self, name: typing_extensions.Literal["cookie_names"]) -> MetaOapg.properties.cookie_names: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["adaptive_delivery_action"]) -> MetaOapg.properties.adaptive_delivery_action: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["device_group"]) -> MetaOapg.properties.device_group: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["enable_caching_for_post"]) -> MetaOapg.properties.enable_caching_for_post: ...
     
     @typing.overload
@@ -169,7 +207,16 @@ class ApplicationCachePutRequest(
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["slice_configuration_range"]) -> MetaOapg.properties.slice_configuration_range: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["browser_cache_settings"], typing_extensions.Literal["browser_cache_settings_maximum_ttl"], typing_extensions.Literal["cdn_cache_settings"], typing_extensions.Literal["cdn_cache_settings_maximum_ttl"], typing_extensions.Literal["cache_by_query_string"], typing_extensions.Literal["query_string_fields"], typing_extensions.Literal["enable_query_string_sort"], typing_extensions.Literal["cache_by_cookies"], typing_extensions.Literal["cookie_names"], typing_extensions.Literal["enable_caching_for_post"], typing_extensions.Literal["l2_caching_enabled"], typing_extensions.Literal["is_slice_configuration_enabled"], typing_extensions.Literal["is_slice_edge_caching_enabled"], typing_extensions.Literal["is_slice_l2_caching_enabled"], typing_extensions.Literal["slice_configuration_range"], ]):
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["enable_caching_for_options"]) -> MetaOapg.properties.enable_caching_for_options: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["enable_stale_cache"]) -> MetaOapg.properties.enable_stale_cache: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["l2_region"]) -> MetaOapg.properties.l2_region: ...
+    
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["browser_cache_settings"], typing_extensions.Literal["browser_cache_settings_maximum_ttl"], typing_extensions.Literal["cdn_cache_settings"], typing_extensions.Literal["cdn_cache_settings_maximum_ttl"], typing_extensions.Literal["cache_by_query_string"], typing_extensions.Literal["query_string_fields"], typing_extensions.Literal["enable_query_string_sort"], typing_extensions.Literal["cache_by_cookies"], typing_extensions.Literal["cookie_names"], typing_extensions.Literal["adaptive_delivery_action"], typing_extensions.Literal["device_group"], typing_extensions.Literal["enable_caching_for_post"], typing_extensions.Literal["l2_caching_enabled"], typing_extensions.Literal["is_slice_configuration_enabled"], typing_extensions.Literal["is_slice_edge_caching_enabled"], typing_extensions.Literal["is_slice_l2_caching_enabled"], typing_extensions.Literal["slice_configuration_range"], typing_extensions.Literal["enable_caching_for_options"], typing_extensions.Literal["enable_stale_cache"], typing_extensions.Literal["l2_region"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -204,6 +251,12 @@ class ApplicationCachePutRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["cookie_names"]) -> typing.Union[MetaOapg.properties.cookie_names, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["adaptive_delivery_action"]) -> typing.Union[MetaOapg.properties.adaptive_delivery_action, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["device_group"]) -> typing.Union[MetaOapg.properties.device_group, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["enable_caching_for_post"]) -> typing.Union[MetaOapg.properties.enable_caching_for_post, schemas.Unset]: ...
     
     @typing.overload
@@ -221,7 +274,16 @@ class ApplicationCachePutRequest(
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["slice_configuration_range"]) -> typing.Union[MetaOapg.properties.slice_configuration_range, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["browser_cache_settings"], typing_extensions.Literal["browser_cache_settings_maximum_ttl"], typing_extensions.Literal["cdn_cache_settings"], typing_extensions.Literal["cdn_cache_settings_maximum_ttl"], typing_extensions.Literal["cache_by_query_string"], typing_extensions.Literal["query_string_fields"], typing_extensions.Literal["enable_query_string_sort"], typing_extensions.Literal["cache_by_cookies"], typing_extensions.Literal["cookie_names"], typing_extensions.Literal["enable_caching_for_post"], typing_extensions.Literal["l2_caching_enabled"], typing_extensions.Literal["is_slice_configuration_enabled"], typing_extensions.Literal["is_slice_edge_caching_enabled"], typing_extensions.Literal["is_slice_l2_caching_enabled"], typing_extensions.Literal["slice_configuration_range"], ]):
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["enable_caching_for_options"]) -> typing.Union[MetaOapg.properties.enable_caching_for_options, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["enable_stale_cache"]) -> typing.Union[MetaOapg.properties.enable_stale_cache, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["l2_region"]) -> typing.Union[MetaOapg.properties.l2_region, schemas.Unset]: ...
+    
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["browser_cache_settings"], typing_extensions.Literal["browser_cache_settings_maximum_ttl"], typing_extensions.Literal["cdn_cache_settings"], typing_extensions.Literal["cdn_cache_settings_maximum_ttl"], typing_extensions.Literal["cache_by_query_string"], typing_extensions.Literal["query_string_fields"], typing_extensions.Literal["enable_query_string_sort"], typing_extensions.Literal["cache_by_cookies"], typing_extensions.Literal["cookie_names"], typing_extensions.Literal["adaptive_delivery_action"], typing_extensions.Literal["device_group"], typing_extensions.Literal["enable_caching_for_post"], typing_extensions.Literal["l2_caching_enabled"], typing_extensions.Literal["is_slice_configuration_enabled"], typing_extensions.Literal["is_slice_edge_caching_enabled"], typing_extensions.Literal["is_slice_l2_caching_enabled"], typing_extensions.Literal["slice_configuration_range"], typing_extensions.Literal["enable_caching_for_options"], typing_extensions.Literal["enable_stale_cache"], typing_extensions.Literal["l2_region"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
@@ -237,12 +299,17 @@ class ApplicationCachePutRequest(
         enable_query_string_sort: typing.Union[MetaOapg.properties.enable_query_string_sort, bool, schemas.Unset] = schemas.unset,
         cache_by_cookies: typing.Union[MetaOapg.properties.cache_by_cookies, str, schemas.Unset] = schemas.unset,
         cookie_names: typing.Union[MetaOapg.properties.cookie_names, list, tuple, schemas.Unset] = schemas.unset,
+        adaptive_delivery_action: typing.Union[MetaOapg.properties.adaptive_delivery_action, str, schemas.Unset] = schemas.unset,
+        device_group: typing.Union[MetaOapg.properties.device_group, list, tuple, schemas.Unset] = schemas.unset,
         enable_caching_for_post: typing.Union[MetaOapg.properties.enable_caching_for_post, bool, schemas.Unset] = schemas.unset,
         l2_caching_enabled: typing.Union[MetaOapg.properties.l2_caching_enabled, bool, schemas.Unset] = schemas.unset,
         is_slice_configuration_enabled: typing.Union[MetaOapg.properties.is_slice_configuration_enabled, bool, schemas.Unset] = schemas.unset,
         is_slice_edge_caching_enabled: typing.Union[MetaOapg.properties.is_slice_edge_caching_enabled, bool, schemas.Unset] = schemas.unset,
         is_slice_l2_caching_enabled: typing.Union[MetaOapg.properties.is_slice_l2_caching_enabled, bool, schemas.Unset] = schemas.unset,
         slice_configuration_range: typing.Union[MetaOapg.properties.slice_configuration_range, decimal.Decimal, int, schemas.Unset] = schemas.unset,
+        enable_caching_for_options: typing.Union[MetaOapg.properties.enable_caching_for_options, bool, schemas.Unset] = schemas.unset,
+        enable_stale_cache: typing.Union[MetaOapg.properties.enable_stale_cache, bool, schemas.Unset] = schemas.unset,
+        l2_region: typing.Union[MetaOapg.properties.l2_region, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'ApplicationCachePutRequest':
         return super().__new__(
@@ -258,11 +325,16 @@ class ApplicationCachePutRequest(
             enable_query_string_sort=enable_query_string_sort,
             cache_by_cookies=cache_by_cookies,
             cookie_names=cookie_names,
+            adaptive_delivery_action=adaptive_delivery_action,
+            device_group=device_group,
             enable_caching_for_post=enable_caching_for_post,
             l2_caching_enabled=l2_caching_enabled,
             is_slice_configuration_enabled=is_slice_configuration_enabled,
             is_slice_edge_caching_enabled=is_slice_edge_caching_enabled,
             is_slice_l2_caching_enabled=is_slice_l2_caching_enabled,
             slice_configuration_range=slice_configuration_range,
+            enable_caching_for_options=enable_caching_for_options,
+            enable_stale_cache=enable_stale_cache,
+            l2_region=l2_region,
             _configuration=_configuration,
         )
