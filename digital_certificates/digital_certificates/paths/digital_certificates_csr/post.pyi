@@ -26,7 +26,7 @@ import frozendict  # noqa: F401
 from digital_certificates import schemas  # noqa: F401
 
 from digital_certificates.model.dc400 import DC400
-from digital_certificates.model.dc201 import DC201
+from digital_certificates.model.dc200 import DC200
 from digital_certificates.model.dc403 import DC403
 
 # body param
@@ -201,7 +201,7 @@ request_body_any_type = api_client.RequestBody(
     },
     required=True,
 )
-SchemaFor201ResponseBodyApplicationJsonVersion3 = DC201
+SchemaFor201ResponseBodyApplicationJsonVersion3 = DC200
 
 
 @dataclass

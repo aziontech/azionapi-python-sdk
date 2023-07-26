@@ -39,23 +39,23 @@ class DC200(
             schema_version = schemas.IntSchema
         
             @staticmethod
-            def result() -> typing.Type['SingleResult']:
+            def results() -> typing.Type['SingleResult']:
                 return SingleResult
             __annotations__ = {
                 "schema_version": schema_version,
-                "result": result,
+                "results": results,
             }
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["schema_version"]) -> MetaOapg.properties.schema_version: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["result"]) -> 'SingleResult': ...
+    def __getitem__(self, name: typing_extensions.Literal["results"]) -> 'SingleResult': ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["schema_version", "result", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["schema_version", "results", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -64,12 +64,12 @@ class DC200(
     def get_item_oapg(self, name: typing_extensions.Literal["schema_version"]) -> typing.Union[MetaOapg.properties.schema_version, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["result"]) -> typing.Union['SingleResult', schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["results"]) -> typing.Union['SingleResult', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["schema_version", "result", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["schema_version", "results", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -77,7 +77,7 @@ class DC200(
         cls,
         *_args: typing.Union[dict, frozendict.frozendict, ],
         schema_version: typing.Union[MetaOapg.properties.schema_version, decimal.Decimal, int, schemas.Unset] = schemas.unset,
-        result: typing.Union['SingleResult', schemas.Unset] = schemas.unset,
+        results: typing.Union['SingleResult', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'DC200':
@@ -85,7 +85,7 @@ class DC200(
             cls,
             *_args,
             schema_version=schema_version,
-            result=result,
+            results=results,
             _configuration=_configuration,
             **kwargs,
         )
