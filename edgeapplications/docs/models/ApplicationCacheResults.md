@@ -29,7 +29,7 @@ Key | Input Type | Accessed Type | Description | Notes
 **is_slice_configuration_enabled** | bool,  | BoolClass,  |  | [optional] 
 **is_slice_edge_caching_enabled** | bool,  | BoolClass,  |  | [optional] 
 **is_slice_l2_caching_enabled** | bool,  | BoolClass,  |  | [optional] 
-**slice_configuration_range** | bool,  | BoolClass,  |  | [optional] 
+**slice_configuration_range** | decimal.Decimal, int,  | decimal.Decimal,  |  | [optional] value must be a 64 bit integer
 
 # query_string_fields
 
@@ -65,7 +65,7 @@ list, tuple,  | tuple,  |  |
 ### Tuple Items
 Class Name | Input Type | Accessed Type | Description | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-items | str,  | str,  |  | 
+items | decimal.Decimal, int,  | decimal.Decimal,  |  | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

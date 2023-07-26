@@ -117,11 +117,11 @@ class ApplicationCacheCreateResults(
             
             
                 class MetaOapg:
-                    items = schemas.StrSchema
+                    items = schemas.IntSchema
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, decimal.Decimal, int, ]], typing.List[typing.Union[MetaOapg.items, decimal.Decimal, int, ]]],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'device_group':
                     return super().__new__(
