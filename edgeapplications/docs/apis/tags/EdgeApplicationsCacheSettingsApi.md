@@ -1130,8 +1130,19 @@ with edgeapplications.ApiClient(configuration) as api_client:
         enable_query_string_sort=True,
         cache_by_cookies="cache_by_cookies_example",
 ,
-        user_email="user_email_example",
+        adaptive_delivery_action="adaptive_delivery_action_example",
+        device_group=[
+            1
+        ],
+        enable_caching_for_post=True,
         l2_caching_enabled=True,
+        is_slice_configuration_enabled=True,
+        is_slice_edge_caching_enabled=True,
+        is_slice_l2_caching_enabled=True,
+        slice_configuration_range=1,
+        enable_caching_for_options=True,
+        enable_stale_cache=True,
+        l2_region="l2_region_example",
     )
     try:
         # /edge_applications/:edge_application_id:/cache_settings
