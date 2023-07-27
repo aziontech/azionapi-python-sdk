@@ -40,7 +40,116 @@ class RulesEngineBehavior(
         
         class properties:
             name = schemas.StrSchema
-            target = schemas.StrSchema
+            
+            
+            class target(
+                schemas.ComposedSchema,
+            ):
+            
+            
+                class MetaOapg:
+                    one_of_0 = schemas.StrSchema
+                    one_of_1 = schemas.NumberSchema
+                    
+                    
+                    class one_of_2(
+                        schemas.DictSchema
+                    ):
+                    
+                    
+                        class MetaOapg:
+                            
+                            class properties:
+                                captured_array = schemas.StrSchema
+                                subject = schemas.StrSchema
+                                regex = schemas.StrSchema
+                                __annotations__ = {
+                                    "captured_array": captured_array,
+                                    "subject": subject,
+                                    "regex": regex,
+                                }
+                        
+                        @typing.overload
+                        def __getitem__(self, name: typing_extensions.Literal["captured_array"]) -> MetaOapg.properties.captured_array: ...
+                        
+                        @typing.overload
+                        def __getitem__(self, name: typing_extensions.Literal["subject"]) -> MetaOapg.properties.subject: ...
+                        
+                        @typing.overload
+                        def __getitem__(self, name: typing_extensions.Literal["regex"]) -> MetaOapg.properties.regex: ...
+                        
+                        @typing.overload
+                        def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
+                        
+                        def __getitem__(self, name: typing.Union[typing_extensions.Literal["captured_array", "subject", "regex", ], str]):
+                            # dict_instance[name] accessor
+                            return super().__getitem__(name)
+                        
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: typing_extensions.Literal["captured_array"]) -> typing.Union[MetaOapg.properties.captured_array, schemas.Unset]: ...
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: typing_extensions.Literal["subject"]) -> typing.Union[MetaOapg.properties.subject, schemas.Unset]: ...
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: typing_extensions.Literal["regex"]) -> typing.Union[MetaOapg.properties.regex, schemas.Unset]: ...
+                        
+                        @typing.overload
+                        def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
+                        
+                        def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["captured_array", "subject", "regex", ], str]):
+                            return super().get_item_oapg(name)
+                        
+                    
+                        def __new__(
+                            cls,
+                            *_args: typing.Union[dict, frozendict.frozendict, ],
+                            captured_array: typing.Union[MetaOapg.properties.captured_array, str, schemas.Unset] = schemas.unset,
+                            subject: typing.Union[MetaOapg.properties.subject, str, schemas.Unset] = schemas.unset,
+                            regex: typing.Union[MetaOapg.properties.regex, str, schemas.Unset] = schemas.unset,
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                            **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                        ) -> 'one_of_2':
+                            return super().__new__(
+                                cls,
+                                *_args,
+                                captured_array=captured_array,
+                                subject=subject,
+                                regex=regex,
+                                _configuration=_configuration,
+                                **kwargs,
+                            )
+                    
+                    @classmethod
+                    @functools.lru_cache()
+                    def one_of(cls):
+                        # we need this here to make our import statements work
+                        # we must store _composed_schemas in here so the code is only run
+                        # when we invoke this method. If we kept this at the class
+                        # level we would get an error because the class level
+                        # code would be run when this module is imported, and these composed
+                        # classes don't exist yet because their module has not finished
+                        # loading
+                        return [
+                            cls.one_of_0,
+                            cls.one_of_1,
+                            cls.one_of_2,
+                        ]
+            
+            
+                def __new__(
+                    cls,
+                    *_args: typing.Union[dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                    **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
+                ) -> 'target':
+                    return super().__new__(
+                        cls,
+                        *_args,
+                        _configuration=_configuration,
+                        **kwargs,
+                    )
             __annotations__ = {
                 "name": name,
                 "target": target,
@@ -72,7 +181,7 @@ class RulesEngineBehavior(
         cls,
         *_args: typing.Union[dict, frozendict.frozendict, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
-        target: typing.Union[MetaOapg.properties.target, str, schemas.Unset] = schemas.unset,
+        target: typing.Union[MetaOapg.properties.target, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'RulesEngineBehavior':
         return super().__new__(
