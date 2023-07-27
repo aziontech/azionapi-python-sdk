@@ -334,7 +334,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
         behaviors=[
             RulesEngineBehavior(
                 name="name_example",
-                target="target_example",
+                target=None,
             )
         ],
     )
@@ -936,7 +936,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
         behaviors=[
             RulesEngineBehavior(
                 name="name_example",
-                target="target_example",
+                target=None,
             )
         ],
     )
@@ -1170,7 +1170,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
         behaviors=[
             RulesEngineBehavior(
                 name="name_example",
-                target="target_example",
+                target=None,
             )
         ],
     )
