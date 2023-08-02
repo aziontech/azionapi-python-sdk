@@ -20,6 +20,7 @@ Retrieve the DNSSEC zone status
 ```python
 import idns
 from idns.apis.tags import dnssec_api
+from idns.model.error_response import ErrorResponse
 from idns.model.errors_response import ErrorsResponse
 from idns.model.get_or_patch_dns_sec_response import GetOrPatchDnsSecResponse
 from pprint import pprint
@@ -88,6 +89,7 @@ Code | Class | Description
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#get_zone_dns_sec.ApiResponseFor200) | DNSSEC status retrieved
 400 | [ApiResponseFor400](#get_zone_dns_sec.ApiResponseFor400) | Error
+404 | [ApiResponseFor404](#get_zone_dns_sec.ApiResponseFor404) | Zone not found
 
 #### get_zone_dns_sec.ApiResponseFor200
 Name | Type | Description  | Notes
@@ -113,6 +115,19 @@ headers | Unset | headers were not defined |
 Type | Description  | Notes
 ------------- | ------------- | -------------
 [**ErrorsResponse**](../../models/ErrorsResponse.md) |  | 
+
+
+#### get_zone_dns_sec.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor404ResponseBodyApplicationJsonVersion3, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor404ResponseBodyApplicationJsonVersion3
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**ErrorResponse**](../../models/ErrorResponse.md) |  | 
 
 
 ### Authorization
