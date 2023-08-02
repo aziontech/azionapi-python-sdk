@@ -27,6 +27,7 @@ Key | Input Type | Accessed Type | Description | Notes
 **http3** | bool,  | BoolClass,  |  | 
 **id** | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
 **image_optimization** | bool,  | BoolClass,  |  | 
+**l2_caching** | bool,  | BoolClass,  |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
