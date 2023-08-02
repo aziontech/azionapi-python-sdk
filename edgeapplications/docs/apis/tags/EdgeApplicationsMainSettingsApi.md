@@ -1029,6 +1029,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
         https_port=None,
         l2_caching=True,
         http3=True,
+        minimum_tls_version="minimum_tls_version_example",
     )
     try:
         # /edge_applications
