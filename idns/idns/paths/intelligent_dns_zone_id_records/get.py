@@ -25,6 +25,7 @@ import frozendict  # noqa: F401
 
 from idns import schemas  # noqa: F401
 
+from idns.model.error_response import ErrorResponse
 from idns.model.get_records_response import GetRecordsResponse
 from idns.model.errors_response import ErrorsResponse
 
@@ -105,9 +106,29 @@ _response_for_400 = api_client.OpenApiResponse(
             schema=SchemaFor400ResponseBodyApplicationJsonVersion3),
     },
 )
+SchemaFor404ResponseBodyApplicationJsonVersion3 = ErrorResponse
+
+
+@dataclass
+class ApiResponseFor404(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: typing.Union[
+        SchemaFor404ResponseBodyApplicationJsonVersion3,
+    ]
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_404 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor404,
+    content={
+        'application/json; version=3': api_client.MediaType(
+            schema=SchemaFor404ResponseBodyApplicationJsonVersion3),
+    },
+)
 _status_code_to_response = {
     '200': _response_for_200,
     '400': _response_for_400,
+    '404': _response_for_404,
 }
 _all_accept_content_types = (
     'application/json; version=3',

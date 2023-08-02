@@ -336,6 +336,7 @@ Add a new Intelligent DNS zone
 ```python
 import idns
 from idns.apis.tags import zones_api
+from idns.model.error_response import ErrorResponse
 from idns.model.post_or_put_zone_response import PostOrPutZoneResponse
 from idns.model.zone import Zone
 from idns.model.errors_response import ErrorsResponse
@@ -411,6 +412,7 @@ Code | Class | Description
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 201 | [ApiResponseFor201](#post_zone.ApiResponseFor201) | Zone added
 400 | [ApiResponseFor400](#post_zone.ApiResponseFor400) | Error
+404 | [ApiResponseFor404](#post_zone.ApiResponseFor404) | Zone not found
 
 #### post_zone.ApiResponseFor201
 Name | Type | Description  | Notes
@@ -436,6 +438,19 @@ headers | Unset | headers were not defined |
 Type | Description  | Notes
 ------------- | ------------- | -------------
 [**ErrorsResponse**](../../models/ErrorsResponse.md) |  | 
+
+
+#### post_zone.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor404ResponseBodyApplicationJsonVersion3, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor404ResponseBodyApplicationJsonVersion3
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**ErrorResponse**](../../models/ErrorResponse.md) |  | 
 
 
 ### Authorization

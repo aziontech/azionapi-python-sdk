@@ -142,6 +142,7 @@ import idns
 from pprint import pprint
 from idns.apis.tags import dnssec_api
 from idns.model.dns_sec import DnsSec
+from idns.model.error_response import ErrorResponse
 from idns.model.errors_response import ErrorsResponse
 from idns.model.get_or_patch_dns_sec_response import GetOrPatchDnsSecResponse
 # Defining the host is optional and defaults to https://api.azionapi.net

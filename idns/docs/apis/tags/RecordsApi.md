@@ -144,6 +144,7 @@ Get a collection of Intelligent DNS zone records
 ```python
 import idns
 from idns.apis.tags import records_api
+from idns.model.error_response import ErrorResponse
 from idns.model.get_records_response import GetRecordsResponse
 from idns.model.errors_response import ErrorsResponse
 from pprint import pprint
@@ -212,6 +213,7 @@ Code | Class | Description
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#get_zone_records.ApiResponseFor200) | Zones collection retrieved
 400 | [ApiResponseFor400](#get_zone_records.ApiResponseFor400) | Error
+404 | [ApiResponseFor404](#get_zone_records.ApiResponseFor404) | Zone not found
 
 #### get_zone_records.ApiResponseFor200
 Name | Type | Description  | Notes
@@ -239,6 +241,19 @@ Type | Description  | Notes
 [**ErrorsResponse**](../../models/ErrorsResponse.md) |  | 
 
 
+#### get_zone_records.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor404ResponseBodyApplicationJsonVersion3, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor404ResponseBodyApplicationJsonVersion3
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**ErrorResponse**](../../models/ErrorResponse.md) |  | 
+
+
 ### Authorization
 
 [tokenAuth](../../../README.md#tokenAuth)
@@ -257,6 +272,7 @@ Create a new Intelligent DNS zone record
 ```python
 import idns
 from idns.apis.tags import records_api
+from idns.model.error_response import ErrorResponse
 from idns.model.record_post_or_put import RecordPostOrPut
 from idns.model.errors_response import ErrorsResponse
 from idns.model.post_or_put_record_response import PostOrPutRecordResponse
@@ -362,6 +378,7 @@ Code | Class | Description
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 201 | [ApiResponseFor201](#post_zone_record.ApiResponseFor201) | Record added
 400 | [ApiResponseFor400](#post_zone_record.ApiResponseFor400) | Error
+404 | [ApiResponseFor404](#post_zone_record.ApiResponseFor404) | Zone not found
 
 #### post_zone_record.ApiResponseFor201
 Name | Type | Description  | Notes
@@ -389,6 +406,19 @@ Type | Description  | Notes
 [**ErrorsResponse**](../../models/ErrorsResponse.md) |  | 
 
 
+#### post_zone_record.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor404ResponseBodyApplicationJsonVersion3, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor404ResponseBodyApplicationJsonVersion3
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**ErrorResponse**](../../models/ErrorResponse.md) |  | 
+
+
 ### Authorization
 
 [tokenAuth](../../../README.md#tokenAuth)
@@ -407,6 +437,7 @@ Update an Intelligent DNS zone record
 ```python
 import idns
 from idns.apis.tags import records_api
+from idns.model.error_response import ErrorResponse
 from idns.model.record_post_or_put import RecordPostOrPut
 from idns.model.errors_response import ErrorsResponse
 from idns.model.post_or_put_record_response import PostOrPutRecordResponse
@@ -522,6 +553,7 @@ Code | Class | Description
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#put_zone_record.ApiResponseFor200) | Record updated
 400 | [ApiResponseFor400](#put_zone_record.ApiResponseFor400) | Record update error
+404 | [ApiResponseFor404](#put_zone_record.ApiResponseFor404) | Record not found
 
 #### put_zone_record.ApiResponseFor200
 Name | Type | Description  | Notes
@@ -547,6 +579,19 @@ headers | Unset | headers were not defined |
 Type | Description  | Notes
 ------------- | ------------- | -------------
 [**ErrorsResponse**](../../models/ErrorsResponse.md) |  | 
+
+
+#### put_zone_record.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor404ResponseBodyApplicationJsonVersion3, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor404ResponseBodyApplicationJsonVersion3
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**ErrorResponse**](../../models/ErrorResponse.md) |  | 
 
 
 ### Authorization
