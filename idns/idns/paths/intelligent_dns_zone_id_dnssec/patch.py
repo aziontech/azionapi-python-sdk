@@ -25,6 +25,7 @@ import frozendict  # noqa: F401
 
 from idns import schemas  # noqa: F401
 
+from idns.model.error_response import ErrorResponse
 from idns.model.errors_response import ErrorsResponse
 from idns.model.get_or_patch_dns_sec_response import GetOrPatchDnsSecResponse
 from idns.model.dns_sec import DnsSec
@@ -78,6 +79,25 @@ request_body_dns_sec = api_client.RequestBody(
 _auth = [
     'tokenAuth',
 ]
+SchemaFor200ResponseBodyApplicationJsonVersion3 = GetOrPatchDnsSecResponse
+
+
+@dataclass
+class ApiResponseFor200(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: typing.Union[
+        SchemaFor200ResponseBodyApplicationJsonVersion3,
+    ]
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_200 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor200,
+    content={
+        'application/json; version=3': api_client.MediaType(
+            schema=SchemaFor200ResponseBodyApplicationJsonVersion3),
+    },
+)
 SchemaFor201ResponseBodyApplicationJsonVersion3 = GetOrPatchDnsSecResponse
 
 
@@ -116,9 +136,30 @@ _response_for_400 = api_client.OpenApiResponse(
             schema=SchemaFor400ResponseBodyApplicationJsonVersion3),
     },
 )
+SchemaFor404ResponseBodyApplicationJsonVersion3 = ErrorResponse
+
+
+@dataclass
+class ApiResponseFor404(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: typing.Union[
+        SchemaFor404ResponseBodyApplicationJsonVersion3,
+    ]
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_404 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor404,
+    content={
+        'application/json; version=3': api_client.MediaType(
+            schema=SchemaFor404ResponseBodyApplicationJsonVersion3),
+    },
+)
 _status_code_to_response = {
+    '200': _response_for_200,
     '201': _response_for_201,
     '400': _response_for_400,
+    '404': _response_for_404,
 }
 _all_accept_content_types = (
     'application/json; version=3',
@@ -137,6 +178,7 @@ class BaseApi(api_client.Api):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
+        ApiResponseFor200,
         ApiResponseFor201,
     ]: ...
 
@@ -151,6 +193,7 @@ class BaseApi(api_client.Api):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
+        ApiResponseFor200,
         ApiResponseFor201,
     ]: ...
 
@@ -178,6 +221,7 @@ class BaseApi(api_client.Api):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = ...,
     ) -> typing.Union[
+        ApiResponseFor200,
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
@@ -273,6 +317,7 @@ class PutZoneDnsSec(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
+        ApiResponseFor200,
         ApiResponseFor201,
     ]: ...
 
@@ -287,6 +332,7 @@ class PutZoneDnsSec(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
+        ApiResponseFor200,
         ApiResponseFor201,
     ]: ...
 
@@ -314,6 +360,7 @@ class PutZoneDnsSec(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = ...,
     ) -> typing.Union[
+        ApiResponseFor200,
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
@@ -353,6 +400,7 @@ class ApiForpatch(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
+        ApiResponseFor200,
         ApiResponseFor201,
     ]: ...
 
@@ -367,6 +415,7 @@ class ApiForpatch(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
+        ApiResponseFor200,
         ApiResponseFor201,
     ]: ...
 
@@ -394,6 +443,7 @@ class ApiForpatch(BaseApi):
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = ...,
     ) -> typing.Union[
+        ApiResponseFor200,
         ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]: ...

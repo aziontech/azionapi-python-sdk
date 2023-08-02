@@ -125,10 +125,30 @@ _response_for_404 = api_client.OpenApiResponse(
             schema=SchemaFor404ResponseBodyApplicationJsonVersion3),
     },
 )
+SchemaFor500ResponseBodyApplicationJsonVersion3 = ErrorResponse
+
+
+@dataclass
+class ApiResponseFor500(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: typing.Union[
+        SchemaFor500ResponseBodyApplicationJsonVersion3,
+    ]
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_500 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor500,
+    content={
+        'application/json; version=3': api_client.MediaType(
+            schema=SchemaFor500ResponseBodyApplicationJsonVersion3),
+    },
+)
 _status_code_to_response = {
     '200': _response_for_200,
     '400': _response_for_400,
     '404': _response_for_404,
+    '500': _response_for_500,
 }
 _all_accept_content_types = (
     'application/json; version=3',

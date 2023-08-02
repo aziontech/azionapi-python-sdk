@@ -90,6 +90,7 @@ n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization i
 200 | [ApiResponseFor200](#get_zone_dns_sec.ApiResponseFor200) | DNSSEC status retrieved
 400 | [ApiResponseFor400](#get_zone_dns_sec.ApiResponseFor400) | Error
 404 | [ApiResponseFor404](#get_zone_dns_sec.ApiResponseFor404) | Zone not found
+500 | [ApiResponseFor500](#get_zone_dns_sec.ApiResponseFor500) | Error
 
 #### get_zone_dns_sec.ApiResponseFor200
 Name | Type | Description  | Notes
@@ -130,6 +131,19 @@ Type | Description  | Notes
 [**ErrorResponse**](../../models/ErrorResponse.md) |  | 
 
 
+#### get_zone_dns_sec.ApiResponseFor500
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor500ResponseBodyApplicationJsonVersion3, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor500ResponseBodyApplicationJsonVersion3
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**ErrorResponse**](../../models/ErrorResponse.md) |  | 
+
+
 ### Authorization
 
 [tokenAuth](../../../README.md#tokenAuth)
@@ -148,6 +162,7 @@ Update the DNSSEC zone
 ```python
 import idns
 from idns.apis.tags import dnssec_api
+from idns.model.error_response import ErrorResponse
 from idns.model.errors_response import ErrorsResponse
 from idns.model.get_or_patch_dns_sec_response import GetOrPatchDnsSecResponse
 from idns.model.dns_sec import DnsSec
@@ -252,8 +267,23 @@ decimal.Decimal, int,  | decimal.Decimal,  |  |
 Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
+200 | [ApiResponseFor200](#put_zone_dns_sec.ApiResponseFor200) | DNSSEC status updated
 201 | [ApiResponseFor201](#put_zone_dns_sec.ApiResponseFor201) | Zone updated
 400 | [ApiResponseFor400](#put_zone_dns_sec.ApiResponseFor400) | Zone update error
+404 | [ApiResponseFor404](#put_zone_dns_sec.ApiResponseFor404) | Zone not found
+
+#### put_zone_dns_sec.ApiResponseFor200
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor200ResponseBodyApplicationJsonVersion3, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor200ResponseBodyApplicationJsonVersion3
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**GetOrPatchDnsSecResponse**](../../models/GetOrPatchDnsSecResponse.md) |  | 
+
 
 #### put_zone_dns_sec.ApiResponseFor201
 Name | Type | Description  | Notes
@@ -279,6 +309,19 @@ headers | Unset | headers were not defined |
 Type | Description  | Notes
 ------------- | ------------- | -------------
 [**ErrorsResponse**](../../models/ErrorsResponse.md) |  | 
+
+
+#### put_zone_dns_sec.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor404ResponseBodyApplicationJsonVersion3, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor404ResponseBodyApplicationJsonVersion3
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**ErrorResponse**](../../models/ErrorResponse.md) |  | 
 
 
 ### Authorization
