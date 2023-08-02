@@ -832,6 +832,9 @@ with edgeapplications.ApiClient(configuration) as api_client:
         load_balancer=True,
         raw_logs=True,
         web_application_firewall=True,
+        debug_rules=True,
+        http3=True,
+        supported_ciphers="supported_ciphers_example",
     )
     try:
         # /edge_applications/:id
@@ -1020,6 +1023,12 @@ with edgeapplications.ApiClient(configuration) as api_client:
         cdn_cache_settings="cdn_cache_settings_example",
         browser_cache_settings_maximum_ttl=1,
         cdn_cache_settings_maximum_ttl=1,
+        debug_rules=True,
+        supported_ciphers="supported_ciphers_example",
+        http_port=None,
+        https_port=None,
+        l2_caching=True,
+        http3=True,
     )
     try:
         # /edge_applications

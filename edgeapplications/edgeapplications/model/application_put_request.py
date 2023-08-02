@@ -55,6 +55,9 @@ class ApplicationPutRequest(
             load_balancer = schemas.BoolSchema
             raw_logs = schemas.BoolSchema
             web_application_firewall = schemas.BoolSchema
+            debug_rules = schemas.BoolSchema
+            http3 = schemas.BoolSchema
+            supported_ciphers = schemas.StrSchema
             __annotations__ = {
                 "name": name,
                 "delivery_protocol": delivery_protocol,
@@ -72,6 +75,9 @@ class ApplicationPutRequest(
                 "load_balancer": load_balancer,
                 "raw_logs": raw_logs,
                 "web_application_firewall": web_application_firewall,
+                "debug_rules": debug_rules,
+                "http3": http3,
+                "supported_ciphers": supported_ciphers,
             }
         additional_properties = schemas.NotAnyTypeSchema
     
@@ -125,7 +131,16 @@ class ApplicationPutRequest(
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["web_application_firewall"]) -> MetaOapg.properties.web_application_firewall: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["active"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["caching"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["image_optimization"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["load_balancer"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["web_application_firewall"], ]):
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["debug_rules"]) -> MetaOapg.properties.debug_rules: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["http3"]) -> MetaOapg.properties.http3: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["supported_ciphers"]) -> MetaOapg.properties.supported_ciphers: ...
+    
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["active"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["caching"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["image_optimization"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["load_balancer"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["web_application_firewall"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["http3"], typing_extensions.Literal["supported_ciphers"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -177,7 +192,16 @@ class ApplicationPutRequest(
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["web_application_firewall"]) -> typing.Union[MetaOapg.properties.web_application_firewall, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["active"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["caching"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["image_optimization"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["load_balancer"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["web_application_firewall"], ]):
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["debug_rules"]) -> typing.Union[MetaOapg.properties.debug_rules, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["http3"]) -> typing.Union[MetaOapg.properties.http3, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["supported_ciphers"]) -> typing.Union[MetaOapg.properties.supported_ciphers, schemas.Unset]: ...
+    
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["active"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["caching"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["image_optimization"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["load_balancer"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["web_application_firewall"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["http3"], typing_extensions.Literal["supported_ciphers"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
@@ -199,6 +223,9 @@ class ApplicationPutRequest(
         load_balancer: typing.Union[MetaOapg.properties.load_balancer, bool, schemas.Unset] = schemas.unset,
         raw_logs: typing.Union[MetaOapg.properties.raw_logs, bool, schemas.Unset] = schemas.unset,
         web_application_firewall: typing.Union[MetaOapg.properties.web_application_firewall, bool, schemas.Unset] = schemas.unset,
+        debug_rules: typing.Union[MetaOapg.properties.debug_rules, bool, schemas.Unset] = schemas.unset,
+        http3: typing.Union[MetaOapg.properties.http3, bool, schemas.Unset] = schemas.unset,
+        supported_ciphers: typing.Union[MetaOapg.properties.supported_ciphers, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'ApplicationPutRequest':
         return super().__new__(
@@ -220,5 +247,8 @@ class ApplicationPutRequest(
             load_balancer=load_balancer,
             raw_logs=raw_logs,
             web_application_firewall=web_application_firewall,
+            debug_rules=debug_rules,
+            http3=http3,
+            supported_ciphers=supported_ciphers,
             _configuration=_configuration,
         )
