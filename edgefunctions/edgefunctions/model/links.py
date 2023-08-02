@@ -36,8 +36,46 @@ class Links(
     class MetaOapg:
         
         class properties:
-            previous = schemas.StrSchema
-            next = schemas.StrSchema
+            
+            
+            class previous(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *_args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'previous':
+                    return super().__new__(
+                        cls,
+                        *_args,
+                        _configuration=_configuration,
+                    )
+            
+            
+            class next(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *_args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'next':
+                    return super().__new__(
+                        cls,
+                        *_args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "previous": previous,
                 "next": next,
@@ -73,8 +111,8 @@ class Links(
     def __new__(
         cls,
         *_args: typing.Union[dict, frozendict.frozendict, ],
-        previous: typing.Union[MetaOapg.properties.previous, str, schemas.Unset] = schemas.unset,
-        next: typing.Union[MetaOapg.properties.next, str, schemas.Unset] = schemas.unset,
+        previous: typing.Union[MetaOapg.properties.previous, None, str, schemas.Unset] = schemas.unset,
+        next: typing.Union[MetaOapg.properties.next, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'Links':

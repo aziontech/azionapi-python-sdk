@@ -119,6 +119,7 @@ Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#edge_functions_get.ApiResponseFor200) | Success
+404 | [ApiResponseFor404](#edge_functions_get.ApiResponseFor404) | Not found
 default | [ApiResponseForDefault](#edge_functions_get.ApiResponseForDefault) | Unexpected error
 
 #### edge_functions_get.ApiResponseFor200
@@ -132,6 +133,19 @@ headers | Unset | headers were not defined |
 Type | Description  | Notes
 ------------- | ------------- | -------------
 [**ListEdgeFunctionResponse**](../../models/ListEdgeFunctionResponse.md) |  | 
+
+
+#### edge_functions_get.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor404ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor404ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**ErrorResponse**](../../models/ErrorResponse.md) |  | 
 
 
 #### edge_functions_get.ApiResponseForDefault
@@ -337,6 +351,7 @@ Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#edge_functions_id_get.ApiResponseFor200) | Success
+404 | [ApiResponseFor404](#edge_functions_id_get.ApiResponseFor404) | Not found
 default | [ApiResponseForDefault](#edge_functions_id_get.ApiResponseForDefault) | Unexpected error
 
 #### edge_functions_id_get.ApiResponseFor200
@@ -350,6 +365,19 @@ headers | Unset | headers were not defined |
 Type | Description  | Notes
 ------------- | ------------- | -------------
 [**EdgeFunctionResponse**](../../models/EdgeFunctionResponse.md) |  | 
+
+
+#### edge_functions_id_get.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor404ResponseBodyApplicationJson, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor404ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**ErrorResponse**](../../models/ErrorResponse.md) |  | 
 
 
 #### edge_functions_id_get.ApiResponseForDefault
