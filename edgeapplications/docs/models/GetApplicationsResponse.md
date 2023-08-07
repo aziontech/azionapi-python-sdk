@@ -13,6 +13,8 @@ Key | Input Type | Accessed Type | Description | Notes
 **links** | [**ApplicationLinks**](ApplicationLinks.md) | [**ApplicationLinks**](ApplicationLinks.md) |  | 
 **total_pages** | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
 **[results](#results)** | list, tuple,  | tuple,  |  | 
+**next** | None, str,  | NoneClass, str,  |  | [optional] 
+**previous** | None, str,  | NoneClass, str,  |  | [optional] 
 
 # results
 

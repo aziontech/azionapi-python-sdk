@@ -140,7 +140,26 @@ class ApplicationCacheResponseDetails(
             is_slice_l2_caching_enabled = schemas.BoolSchema
             slice_configuration_range = schemas.Int64Schema
             enable_stale_cache = schemas.BoolSchema
-            l2_region = schemas.StrSchema
+            
+            
+            class l2_region(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *_args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'l2_region':
+                    return super().__new__(
+                        cls,
+                        *_args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "id": id,
                 "name": name,
@@ -344,7 +363,7 @@ class ApplicationCacheResponseDetails(
         is_slice_l2_caching_enabled: typing.Union[MetaOapg.properties.is_slice_l2_caching_enabled, bool, schemas.Unset] = schemas.unset,
         slice_configuration_range: typing.Union[MetaOapg.properties.slice_configuration_range, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         enable_stale_cache: typing.Union[MetaOapg.properties.enable_stale_cache, bool, schemas.Unset] = schemas.unset,
-        l2_region: typing.Union[MetaOapg.properties.l2_region, str, schemas.Unset] = schemas.unset,
+        l2_region: typing.Union[MetaOapg.properties.l2_region, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'ApplicationCacheResponseDetails':
         return super().__new__(

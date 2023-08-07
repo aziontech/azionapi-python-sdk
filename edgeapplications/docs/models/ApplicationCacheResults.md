@@ -17,13 +17,13 @@ Key | Input Type | Accessed Type | Description | Notes
 **cdn_cache_settings** | str,  | str,  |  | 
 **enable_caching_for_options** | bool,  | BoolClass,  |  | 
 **adaptive_delivery_action** | str,  | str,  |  | 
-**[query_string_fields](#query_string_fields)** | list, tuple,  | tuple,  |  | 
+**[query_string_fields](#query_string_fields)** | list, tuple, None,  | tuple, NoneClass,  |  | 
 **name** | str,  | str,  |  | 
 **enable_caching_for_post** | bool,  | BoolClass,  |  | 
-**[cookie_names](#cookie_names)** | list, tuple,  | tuple,  |  | 
+**[cookie_names](#cookie_names)** | list, tuple, None,  | tuple, NoneClass,  |  | 
 **id** | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
 **cache_by_query_string** | str,  | str,  |  | 
-**l2_region** | str,  | str,  |  | 
+**l2_region** | None, str,  | NoneClass, str,  |  | 
 **browser_cache_settings_maximum_ttl** | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
 **cdn_cache_settings_maximum_ttl** | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
 **is_slice_configuration_enabled** | bool,  | BoolClass,  |  | [optional] 
@@ -36,7 +36,7 @@ Key | Input Type | Accessed Type | Description | Notes
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-list, tuple,  | tuple,  |  | 
+list, tuple, None,  | tuple, NoneClass,  |  | 
 
 ### Tuple Items
 Class Name | Input Type | Accessed Type | Description | Notes
@@ -48,12 +48,12 @@ items | str,  | str,  |  |
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-list, tuple,  | tuple,  |  | 
+list, tuple, None,  | tuple, NoneClass,  |  | 
 
 ### Tuple Items
 Class Name | Input Type | Accessed Type | Description | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-items | str,  | str,  |  | 
+items | None, str,  | NoneClass, str,  |  | 
 
 # device_group
 

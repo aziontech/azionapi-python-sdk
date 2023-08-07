@@ -34,10 +34,6 @@ class ApplicationOrigins(
 
 
     class MetaOapg:
-        required = {
-            "next",
-            "previous",
-        }
         
         class properties:
             name = schemas.StrSchema
@@ -49,7 +45,6 @@ class ApplicationOrigins(
                 "origin_id": origin_id,
             }
         additional_properties = schemas.NotAnyTypeSchema
-    
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["name"]) -> MetaOapg.properties.name: ...

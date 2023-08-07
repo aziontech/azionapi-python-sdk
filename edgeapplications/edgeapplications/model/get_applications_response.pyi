@@ -76,12 +76,54 @@ class GetApplicationsResponse(
             
                 def __getitem__(self, i: int) -> 'ApplicationsResults':
                     return super().__getitem__(i)
+            
+            
+            class next(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *_args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'next':
+                    return super().__new__(
+                        cls,
+                        *_args,
+                        _configuration=_configuration,
+                    )
+            
+            
+            class previous(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *_args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'previous':
+                    return super().__new__(
+                        cls,
+                        *_args,
+                        _configuration=_configuration,
+                    )
             __annotations__ = {
                 "count": count,
                 "total_pages": total_pages,
                 "schema_version": schema_version,
                 "links": links,
                 "results": results,
+                "next": next,
+                "previous": previous,
             }
         additional_properties = schemas.NotAnyTypeSchema
     
@@ -106,7 +148,13 @@ class GetApplicationsResponse(
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["results"]) -> MetaOapg.properties.results: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["schema_version"], typing_extensions.Literal["count"], typing_extensions.Literal["links"], typing_extensions.Literal["total_pages"], typing_extensions.Literal["results"], ]):
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["next"]) -> MetaOapg.properties.next: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["previous"]) -> MetaOapg.properties.previous: ...
+    
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["schema_version"], typing_extensions.Literal["count"], typing_extensions.Literal["links"], typing_extensions.Literal["total_pages"], typing_extensions.Literal["results"], typing_extensions.Literal["next"], typing_extensions.Literal["previous"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -125,7 +173,13 @@ class GetApplicationsResponse(
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["results"]) -> MetaOapg.properties.results: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["schema_version"], typing_extensions.Literal["count"], typing_extensions.Literal["links"], typing_extensions.Literal["total_pages"], typing_extensions.Literal["results"], ]):
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["next"]) -> typing.Union[MetaOapg.properties.next, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["previous"]) -> typing.Union[MetaOapg.properties.previous, schemas.Unset]: ...
+    
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["schema_version"], typing_extensions.Literal["count"], typing_extensions.Literal["links"], typing_extensions.Literal["total_pages"], typing_extensions.Literal["results"], typing_extensions.Literal["next"], typing_extensions.Literal["previous"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
@@ -136,6 +190,8 @@ class GetApplicationsResponse(
         links: 'ApplicationLinks',
         total_pages: typing.Union[MetaOapg.properties.total_pages, decimal.Decimal, int, ],
         results: typing.Union[MetaOapg.properties.results, list, tuple, ],
+        next: typing.Union[MetaOapg.properties.next, None, str, schemas.Unset] = schemas.unset,
+        previous: typing.Union[MetaOapg.properties.previous, None, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'GetApplicationsResponse':
         return super().__new__(
@@ -146,6 +202,8 @@ class GetApplicationsResponse(
             links=links,
             total_pages=total_pages,
             results=results,
+            next=next,
+            previous=previous,
             _configuration=_configuration,
         )
 

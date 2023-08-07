@@ -66,51 +66,72 @@ class ApplicationCacheResults(
             
             
             class query_string_fields(
-                schemas.ListSchema
+                schemas.ListBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneTupleMixin
             ):
             
             
                 class MetaOapg:
                     items = schemas.StrSchema
             
+            
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                    *_args: typing.Union[list, tuple, None, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'query_string_fields':
                     return super().__new__(
                         cls,
-                        _arg,
+                        *_args,
                         _configuration=_configuration,
                     )
-            
-                def __getitem__(self, i: int) -> MetaOapg.items:
-                    return super().__getitem__(i)
             enable_query_string_sort = schemas.BoolSchema
             cache_by_cookies = schemas.StrSchema
             
             
             class cookie_names(
-                schemas.ListSchema
+                schemas.ListBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneTupleMixin
             ):
             
             
                 class MetaOapg:
-                    items = schemas.StrSchema
+                    
+                    
+                    class items(
+                        schemas.StrBase,
+                        schemas.NoneBase,
+                        schemas.Schema,
+                        schemas.NoneStrMixin
+                    ):
+                    
+                    
+                        def __new__(
+                            cls,
+                            *_args: typing.Union[None, str, ],
+                            _configuration: typing.Optional[schemas.Configuration] = None,
+                        ) -> 'items':
+                            return super().__new__(
+                                cls,
+                                *_args,
+                                _configuration=_configuration,
+                            )
+            
             
                 def __new__(
                     cls,
-                    _arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+                    *_args: typing.Union[list, tuple, None, ],
                     _configuration: typing.Optional[schemas.Configuration] = None,
                 ) -> 'cookie_names':
                     return super().__new__(
                         cls,
-                        _arg,
+                        *_args,
                         _configuration=_configuration,
                     )
-            
-                def __getitem__(self, i: int) -> MetaOapg.items:
-                    return super().__getitem__(i)
             adaptive_delivery_action = schemas.StrSchema
             
             
@@ -139,7 +160,26 @@ class ApplicationCacheResults(
             l2_caching_enabled = schemas.BoolSchema
             enable_caching_for_options = schemas.BoolSchema
             enable_stale_cache = schemas.BoolSchema
-            l2_region = schemas.StrSchema
+            
+            
+            class l2_region(
+                schemas.StrBase,
+                schemas.NoneBase,
+                schemas.Schema,
+                schemas.NoneStrMixin
+            ):
+            
+            
+                def __new__(
+                    cls,
+                    *_args: typing.Union[None, str, ],
+                    _configuration: typing.Optional[schemas.Configuration] = None,
+                ) -> 'l2_region':
+                    return super().__new__(
+                        cls,
+                        *_args,
+                        _configuration=_configuration,
+                    )
             is_slice_configuration_enabled = schemas.BoolSchema
             is_slice_edge_caching_enabled = schemas.BoolSchema
             is_slice_l2_caching_enabled = schemas.BoolSchema
@@ -340,13 +380,13 @@ class ApplicationCacheResults(
         cdn_cache_settings: typing.Union[MetaOapg.properties.cdn_cache_settings, str, ],
         enable_caching_for_options: typing.Union[MetaOapg.properties.enable_caching_for_options, bool, ],
         adaptive_delivery_action: typing.Union[MetaOapg.properties.adaptive_delivery_action, str, ],
-        query_string_fields: typing.Union[MetaOapg.properties.query_string_fields, list, tuple, ],
+        query_string_fields: typing.Union[MetaOapg.properties.query_string_fields, list, tuple, None, ],
         name: typing.Union[MetaOapg.properties.name, str, ],
         enable_caching_for_post: typing.Union[MetaOapg.properties.enable_caching_for_post, bool, ],
-        cookie_names: typing.Union[MetaOapg.properties.cookie_names, list, tuple, ],
+        cookie_names: typing.Union[MetaOapg.properties.cookie_names, list, tuple, None, ],
         id: typing.Union[MetaOapg.properties.id, decimal.Decimal, int, ],
         cache_by_query_string: typing.Union[MetaOapg.properties.cache_by_query_string, str, ],
-        l2_region: typing.Union[MetaOapg.properties.l2_region, str, ],
+        l2_region: typing.Union[MetaOapg.properties.l2_region, None, str, ],
         browser_cache_settings_maximum_ttl: typing.Union[MetaOapg.properties.browser_cache_settings_maximum_ttl, decimal.Decimal, int, ],
         cdn_cache_settings_maximum_ttl: typing.Union[MetaOapg.properties.cdn_cache_settings_maximum_ttl, decimal.Decimal, int, ],
         is_slice_configuration_enabled: typing.Union[MetaOapg.properties.is_slice_configuration_enabled, bool, schemas.Unset] = schemas.unset,

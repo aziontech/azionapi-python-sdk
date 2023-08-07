@@ -698,6 +698,7 @@ n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization i
 400 | [ApiResponseFor400](#edge_applications_id_patch.ApiResponseFor400) | Bad Request
 403 | [ApiResponseFor403](#edge_applications_id_patch.ApiResponseFor403) | Forbidden
 404 | [ApiResponseFor404](#edge_applications_id_patch.ApiResponseFor404) | Not Found
+405 | [ApiResponseFor405](#edge_applications_id_patch.ApiResponseFor405) | Method Not Allowed
 422 | [ApiResponseFor422](#edge_applications_id_patch.ApiResponseFor422) | Unprocessable Entity
 500 | [ApiResponseFor500](#edge_applications_id_patch.ApiResponseFor500) | Internal Server Error
 
@@ -729,6 +730,13 @@ body | Unset | body was not defined |
 headers | Unset | headers were not defined |
 
 #### edge_applications_id_patch.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_applications_id_patch.ApiResponseFor405
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
@@ -913,6 +921,7 @@ n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization i
 400 | [ApiResponseFor400](#edge_applications_id_put.ApiResponseFor400) | Bad Request
 403 | [ApiResponseFor403](#edge_applications_id_put.ApiResponseFor403) | Forbidden
 404 | [ApiResponseFor404](#edge_applications_id_put.ApiResponseFor404) | Not Found
+405 | [ApiResponseFor405](#edge_applications_id_put.ApiResponseFor405) | Method Not Allowed
 422 | [ApiResponseFor422](#edge_applications_id_put.ApiResponseFor422) | Unprocessable Entity
 500 | [ApiResponseFor500](#edge_applications_id_put.ApiResponseFor500) | Internal Server Error
 
@@ -944,6 +953,13 @@ body | Unset | body was not defined |
 headers | Unset | headers were not defined |
 
 #### edge_applications_id_put.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_applications_id_put.ApiResponseFor405
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
@@ -1029,7 +1045,6 @@ with edgeapplications.ApiClient(configuration) as api_client:
         https_port=None,
         l2_caching=True,
         http3=True,
-        minimum_tls_version="minimum_tls_version_example",
     )
     try:
         # /edge_applications
@@ -1089,9 +1104,11 @@ Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#edge_applications_post.ApiResponseFor200) | Successful response
+201 | [ApiResponseFor201](#edge_applications_post.ApiResponseFor201) | Successful response
 400 | [ApiResponseFor400](#edge_applications_post.ApiResponseFor400) | Bad Request
 403 | [ApiResponseFor403](#edge_applications_post.ApiResponseFor403) | Forbidden
 404 | [ApiResponseFor404](#edge_applications_post.ApiResponseFor404) | Not Found
+415 | [ApiResponseFor415](#edge_applications_post.ApiResponseFor415) | Unsupported Media Type
 422 | [ApiResponseFor422](#edge_applications_post.ApiResponseFor422) | Unprocessable Entity
 500 | [ApiResponseFor500](#edge_applications_post.ApiResponseFor500) | Internal Server Error
 
@@ -1103,6 +1120,19 @@ body | typing.Union[SchemaFor200ResponseBodyApplicationJsonVersion3, ] |  |
 headers | Unset | headers were not defined |
 
 # SchemaFor200ResponseBodyApplicationJsonVersion3
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**CreateApplicationResult**](../../models/CreateApplicationResult.md) |  | 
+
+
+#### edge_applications_post.ApiResponseFor201
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor201ResponseBodyApplicationJsonVersion3, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor201ResponseBodyApplicationJsonVersion3
 Type | Description  | Notes
 ------------- | ------------- | -------------
 [**CreateApplicationResult**](../../models/CreateApplicationResult.md) |  | 
@@ -1123,6 +1153,13 @@ body | Unset | body was not defined |
 headers | Unset | headers were not defined |
 
 #### edge_applications_post.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_applications_post.ApiResponseFor415
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
