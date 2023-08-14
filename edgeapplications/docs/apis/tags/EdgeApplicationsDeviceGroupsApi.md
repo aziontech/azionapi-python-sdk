@@ -1158,6 +1158,7 @@ n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization i
 400 | [ApiResponseFor400](#edge_applications_edge_application_id_device_groups_post.ApiResponseFor400) | Bad Request
 403 | [ApiResponseFor403](#edge_applications_edge_application_id_device_groups_post.ApiResponseFor403) | Forbidden
 404 | [ApiResponseFor404](#edge_applications_edge_application_id_device_groups_post.ApiResponseFor404) | Not Found
+415 | [ApiResponseFor415](#edge_applications_edge_application_id_device_groups_post.ApiResponseFor415) | Unsupported Media Type
 422 | [ApiResponseFor422](#edge_applications_edge_application_id_device_groups_post.ApiResponseFor422) | Unprocessable Entity
 500 | [ApiResponseFor500](#edge_applications_edge_application_id_device_groups_post.ApiResponseFor500) | Internal Server Error
 
@@ -1189,6 +1190,13 @@ body | Unset | body was not defined |
 headers | Unset | headers were not defined |
 
 #### edge_applications_edge_application_id_device_groups_post.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_applications_edge_application_id_device_groups_post.ApiResponseFor415
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |

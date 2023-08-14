@@ -25,7 +25,6 @@ Key | Input Type | Accessed Type | Description | Notes
 **https_port** | dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader,  | frozendict.frozendict, str, decimal.Decimal, BoolClass, NoneClass, tuple, bytes, FileIO |  | [optional] 
 **l2_caching** | bool,  | BoolClass,  |  | [optional] 
 **http3** | bool,  | BoolClass,  |  | [optional] 
-**minimum_tls_version** | str,  | str,  |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

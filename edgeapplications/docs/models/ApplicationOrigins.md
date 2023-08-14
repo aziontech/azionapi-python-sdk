@@ -8,8 +8,6 @@ dict, frozendict.frozendict,  | frozendict.frozendict,  |  |
 ### Dictionary Keys
 Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
-**next** | 
-**previous** | 
 **name** | str,  | str,  |  | [optional] 
 **origin_type** | str,  | str,  |  | [optional] 
 **origin_id** | str,  | str,  |  | [optional] 

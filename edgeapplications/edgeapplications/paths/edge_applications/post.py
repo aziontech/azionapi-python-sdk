@@ -94,6 +94,25 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyApplicationJsonVersion3),
     },
 )
+SchemaFor201ResponseBodyApplicationJsonVersion3 = CreateApplicationResult
+
+
+@dataclass
+class ApiResponseFor201(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: typing.Union[
+        SchemaFor201ResponseBodyApplicationJsonVersion3,
+    ]
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_201 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor201,
+    content={
+        'application/json; version=3': api_client.MediaType(
+            schema=SchemaFor201ResponseBodyApplicationJsonVersion3),
+    },
+)
 
 
 @dataclass
@@ -133,6 +152,18 @@ _response_for_404 = api_client.OpenApiResponse(
 
 
 @dataclass
+class ApiResponseFor415(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: schemas.Unset = schemas.unset
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_415 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor415,
+)
+
+
+@dataclass
 class ApiResponseFor422(api_client.ApiResponse):
     response: urllib3.HTTPResponse
     body: schemas.Unset = schemas.unset
@@ -156,9 +187,11 @@ _response_for_500 = api_client.OpenApiResponse(
 )
 _status_code_to_response = {
     '200': _response_for_200,
+    '201': _response_for_201,
     '400': _response_for_400,
     '403': _response_for_403,
     '404': _response_for_404,
+    '415': _response_for_415,
     '422': _response_for_422,
     '500': _response_for_500,
 }
@@ -180,6 +213,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor201,
     ]: ...
 
     @typing.overload
@@ -194,6 +228,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor201,
     ]: ...
 
 
@@ -221,6 +256,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = ...,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
@@ -312,6 +348,7 @@ class EdgeApplicationsPost(BaseApi):
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor201,
     ]: ...
 
     @typing.overload
@@ -326,6 +363,7 @@ class EdgeApplicationsPost(BaseApi):
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor201,
     ]: ...
 
 
@@ -353,6 +391,7 @@ class EdgeApplicationsPost(BaseApi):
         skip_deserialization: bool = ...,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 
@@ -392,6 +431,7 @@ class ApiForpost(BaseApi):
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor201,
     ]: ...
 
     @typing.overload
@@ -406,6 +446,7 @@ class ApiForpost(BaseApi):
         skip_deserialization: typing_extensions.Literal[False] = ...,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor201,
     ]: ...
 
 
@@ -433,6 +474,7 @@ class ApiForpost(BaseApi):
         skip_deserialization: bool = ...,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor201,
         api_client.ApiResponseWithoutDeserialization,
     ]: ...
 

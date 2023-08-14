@@ -29,7 +29,7 @@ Key | Input Type | Accessed Type | Description | Notes
 **is_slice_l2_caching_enabled** | bool,  | BoolClass,  |  | [optional] 
 **slice_configuration_range** | decimal.Decimal, int,  | decimal.Decimal,  |  | [optional] value must be a 64 bit integer
 **enable_stale_cache** | bool,  | BoolClass,  |  | [optional] 
-**l2_region** | str,  | str,  |  | [optional] 
+**l2_region** | None, str,  | NoneClass, str,  |  | [optional] 
 
 # query_string_fields
 
