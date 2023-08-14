@@ -29,6 +29,9 @@ from networklist.model.list_network_lists_response import ListNetworkListsRespon
 
 # Query params
 PageSchema = schemas.IntSchema
+PageSizeSchema = schemas.IntSchema
+SortSchema = schemas.StrSchema
+OrderBySchema = schemas.StrSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -38,6 +41,9 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
         'page': typing.Union[PageSchema, decimal.Decimal, int, ],
+        'page_size': typing.Union[PageSizeSchema, decimal.Decimal, int, ],
+        'sort': typing.Union[SortSchema, str, ],
+        'order_by': typing.Union[OrderBySchema, str, ],
     },
     total=False
 )
@@ -51,6 +57,24 @@ request_query_page = api_client.QueryParameter(
     name="page",
     style=api_client.ParameterStyle.FORM,
     schema=PageSchema,
+    explode=True,
+)
+request_query_page_size = api_client.QueryParameter(
+    name="page_size",
+    style=api_client.ParameterStyle.FORM,
+    schema=PageSizeSchema,
+    explode=True,
+)
+request_query_sort = api_client.QueryParameter(
+    name="sort",
+    style=api_client.ParameterStyle.FORM,
+    schema=SortSchema,
+    explode=True,
+)
+request_query_order_by = api_client.QueryParameter(
+    name="order_by",
+    style=api_client.ParameterStyle.FORM,
+    schema=OrderBySchema,
     explode=True,
 )
 SchemaFor200ResponseBodyApplicationJson = ListNetworkListsResponse
@@ -145,6 +169,9 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_page,
+            request_query_page_size,
+            request_query_sort,
+            request_query_order_by,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

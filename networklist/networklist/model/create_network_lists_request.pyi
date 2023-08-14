@@ -60,7 +60,24 @@ class CreateNetworkListsRequest(
             
                 def __getitem__(self, i: int) -> MetaOapg.items:
                     return super().__getitem__(i)
-            list_type = schemas.StrSchema
+            
+            
+            class list_type(
+                schemas.EnumBase,
+                schemas.StrSchema
+            ):
+                
+                @schemas.classproperty
+                def IP_CIDR(cls):
+                    return cls("ip_cidr")
+                
+                @schemas.classproperty
+                def ASN(cls):
+                    return cls("asn")
+                
+                @schemas.classproperty
+                def COUNTRIES(cls):
+                    return cls("countries")
             __annotations__ = {
                 "name": name,
                 "items_values": items_values,

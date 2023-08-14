@@ -1,4 +1,4 @@
-# networklist.model.create_network_lists_request.CreateNetworkListsRequest
+# networklist.model.network_list_response_entry.NetworkListResponseEntry
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
@@ -8,9 +8,12 @@ dict, frozendict.frozendict,  | frozendict.frozendict,  |  |
 ### Dictionary Keys
 Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
+**id** | decimal.Decimal, int,  | decimal.Decimal,  |  | [optional] value must be a 64 bit integer
+**last_editor** | str,  | str,  |  | [optional] 
+**last_modified** | str,  | str,  |  | [optional] 
+**list_type** | str,  | str,  |  | [optional] 
 **name** | str,  | str,  |  | [optional] 
 **[items_values](#items_values)** | list, tuple,  | tuple,  |  | [optional] 
-**list_type** | str,  | str,  |  | [optional] must be one of ["ip_cidr", "asn", "countries", ] 
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 
 # items_values
