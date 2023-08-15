@@ -118,6 +118,7 @@ Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#edge_firewall_edge_firewall_id_functions_instances_get.ApiResponseFor200) | A list of Edge Functions Instances
+404 | [ApiResponseFor404](#edge_firewall_edge_firewall_id_functions_instances_get.ApiResponseFor404) | Not Found
 
 #### edge_firewall_edge_firewall_id_functions_instances_get.ApiResponseFor200
 Name | Type | Description  | Notes
@@ -131,6 +132,13 @@ Type | Description  | Notes
 ------------- | ------------- | -------------
 [**ListEdgeFunctionsInstancesResponse**](../../models/ListEdgeFunctionsInstancesResponse.md) |  | 
 
+
+#### edge_firewall_edge_firewall_id_functions_instances_get.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
 
 ### Authorization
 
@@ -212,6 +220,7 @@ Code | Class | Description
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 201 | [ApiResponseFor201](#edge_firewall_edge_firewall_id_functions_instances_post.ApiResponseFor201) | Edge Functions Instance created
 400 | [ApiResponseFor400](#edge_firewall_edge_firewall_id_functions_instances_post.ApiResponseFor400) | Bad Request
+404 | [ApiResponseFor404](#edge_firewall_edge_firewall_id_functions_instances_post.ApiResponseFor404) | Not Found
 500 | [ApiResponseFor500](#edge_firewall_edge_firewall_id_functions_instances_post.ApiResponseFor500) | Internal Server Error
 
 #### edge_firewall_edge_firewall_id_functions_instances_post.ApiResponseFor201
@@ -222,6 +231,13 @@ body | Unset | body was not defined |
 headers | Unset | headers were not defined |
 
 #### edge_firewall_edge_firewall_id_functions_instances_post.ApiResponseFor400
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_firewall_edge_firewall_id_functions_instances_post.ApiResponseFor404
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
@@ -316,8 +332,24 @@ Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 204 | [ApiResponseFor204](#edge_firewall_edge_firewall_id_functions_instances_uuid_delete.ApiResponseFor204) | Successfully deleted
+400 | [ApiResponseFor400](#edge_firewall_edge_firewall_id_functions_instances_uuid_delete.ApiResponseFor400) | Bad Request
+404 | [ApiResponseFor404](#edge_firewall_edge_firewall_id_functions_instances_uuid_delete.ApiResponseFor404) | Not Found
 
 #### edge_firewall_edge_firewall_id_functions_instances_uuid_delete.ApiResponseFor204
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_firewall_edge_firewall_id_functions_instances_uuid_delete.ApiResponseFor400
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_firewall_edge_firewall_id_functions_instances_uuid_delete.ApiResponseFor404
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
@@ -408,6 +440,8 @@ Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#edge_firewall_edge_firewall_id_functions_instances_uuid_get.ApiResponseFor200) | An Edge Functions Instance object
+400 | [ApiResponseFor400](#edge_firewall_edge_firewall_id_functions_instances_uuid_get.ApiResponseFor400) | Bad Request
+404 | [ApiResponseFor404](#edge_firewall_edge_firewall_id_functions_instances_uuid_get.ApiResponseFor404) | Not Found
 
 #### edge_firewall_edge_firewall_id_functions_instances_uuid_get.ApiResponseFor200
 Name | Type | Description  | Notes
@@ -421,6 +455,20 @@ Type | Description  | Notes
 ------------- | ------------- | -------------
 [**EdgeFunctionsInstanceResponse**](../../models/EdgeFunctionsInstanceResponse.md) |  | 
 
+
+#### edge_firewall_edge_firewall_id_functions_instances_uuid_get.ApiResponseFor400
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_firewall_edge_firewall_id_functions_instances_uuid_get.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
 
 ### Authorization
 
@@ -524,6 +572,7 @@ Code | Class | Description
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#edge_firewall_edge_firewall_id_functions_instances_uuid_patch.ApiResponseFor200) | Successfully updated
 400 | [ApiResponseFor400](#edge_firewall_edge_firewall_id_functions_instances_uuid_patch.ApiResponseFor400) | Bad Request
+404 | [ApiResponseFor404](#edge_firewall_edge_firewall_id_functions_instances_uuid_patch.ApiResponseFor404) | Not Found
 500 | [ApiResponseFor500](#edge_firewall_edge_firewall_id_functions_instances_uuid_patch.ApiResponseFor500) | Internal Server Error
 
 #### edge_firewall_edge_firewall_id_functions_instances_uuid_patch.ApiResponseFor200
@@ -540,6 +589,13 @@ Type | Description  | Notes
 
 
 #### edge_firewall_edge_firewall_id_functions_instances_uuid_patch.ApiResponseFor400
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_firewall_edge_firewall_id_functions_instances_uuid_patch.ApiResponseFor404
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
@@ -655,6 +711,7 @@ Code | Class | Description
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#edge_firewall_edge_firewall_id_functions_instances_uuid_put.ApiResponseFor200) | Successfully updated
 400 | [ApiResponseFor400](#edge_firewall_edge_firewall_id_functions_instances_uuid_put.ApiResponseFor400) | Bad Request
+404 | [ApiResponseFor404](#edge_firewall_edge_firewall_id_functions_instances_uuid_put.ApiResponseFor404) | Not Found
 500 | [ApiResponseFor500](#edge_firewall_edge_firewall_id_functions_instances_uuid_put.ApiResponseFor500) | Internal Server Error
 
 #### edge_firewall_edge_firewall_id_functions_instances_uuid_put.ApiResponseFor200
@@ -671,6 +728,13 @@ Type | Description  | Notes
 
 
 #### edge_firewall_edge_firewall_id_functions_instances_uuid_put.ApiResponseFor400
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_firewall_edge_firewall_id_functions_instances_uuid_put.ApiResponseFor404
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
