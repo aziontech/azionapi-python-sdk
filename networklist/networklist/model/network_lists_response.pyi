@@ -38,8 +38,8 @@ class NetworkListsResponse(
         class properties:
         
             @staticmethod
-            def results() -> typing.Type['NetworkLists']:
-                return NetworkLists
+            def results() -> typing.Type['NetworkListResponseEntry']:
+                return NetworkListResponseEntry
             schema_version = schemas.NumberSchema
             __annotations__ = {
                 "results": results,
@@ -47,7 +47,7 @@ class NetworkListsResponse(
             }
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["results"]) -> 'NetworkLists': ...
+    def __getitem__(self, name: typing_extensions.Literal["results"]) -> 'NetworkListResponseEntry': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["schema_version"]) -> MetaOapg.properties.schema_version: ...
@@ -61,7 +61,7 @@ class NetworkListsResponse(
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["results"]) -> typing.Union['NetworkLists', schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["results"]) -> typing.Union['NetworkListResponseEntry', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["schema_version"]) -> typing.Union[MetaOapg.properties.schema_version, schemas.Unset]: ...
@@ -76,7 +76,7 @@ class NetworkListsResponse(
     def __new__(
         cls,
         *_args: typing.Union[dict, frozendict.frozendict, ],
-        results: typing.Union['NetworkLists', schemas.Unset] = schemas.unset,
+        results: typing.Union['NetworkListResponseEntry', schemas.Unset] = schemas.unset,
         schema_version: typing.Union[MetaOapg.properties.schema_version, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -90,4 +90,4 @@ class NetworkListsResponse(
             **kwargs,
         )
 
-from networklist.model.network_lists import NetworkLists
+from networklist.model.network_list_response_entry import NetworkListResponseEntry

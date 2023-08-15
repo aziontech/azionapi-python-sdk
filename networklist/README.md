@@ -145,8 +145,8 @@ from networklist.model.bad_request_response import BadRequestResponse
 from networklist.model.create_network_lists_request import CreateNetworkListsRequest
 from networklist.model.error_model import ErrorModel
 from networklist.model.list_network_lists_response import ListNetworkListsResponse
+from networklist.model.network_list_uuid_response import NetworkListUuidResponse
 from networklist.model.network_lists_response import NetworkListsResponse
-from networklist.model.update_network_lists_request import UpdateNetworkListsRequest
 # Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = networklist.Configuration(
@@ -169,10 +169,13 @@ with networklist.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = default_api.DefaultApi(api_client)
     page = 1 # int |  (optional)
+page_size = 1 # int |  (optional)
+sort = "sort_example" # str |  (optional)
+order_by = "order_by_example" # str |  (optional)
 
     try:
         # List all user Network Lists
-        api_response = api_instance.network_lists_get(page=page)
+        api_response = api_instance.network_lists_get(page=pagepage_size=page_sizesort=sortorder_by=order_by)
         pprint(api_response)
     except networklist.ApiException as e:
         print("Exception when calling DefaultApi->network_lists_get: %s\n" % e)
@@ -196,9 +199,11 @@ Class | Method | HTTP request | Description
  - [ErrorModel](docs/models/ErrorModel.md)
  - [Links](docs/models/Links.md)
  - [ListNetworkListsResponse](docs/models/ListNetworkListsResponse.md)
+ - [NetworkListResponseEntry](docs/models/NetworkListResponseEntry.md)
+ - [NetworkListUuidResponse](docs/models/NetworkListUuidResponse.md)
+ - [NetworkListUuidResponseEntry](docs/models/NetworkListUuidResponseEntry.md)
  - [NetworkLists](docs/models/NetworkLists.md)
  - [NetworkListsResponse](docs/models/NetworkListsResponse.md)
- - [UpdateNetworkListsRequest](docs/models/UpdateNetworkListsRequest.md)
 
 ## Documentation For Authorization
 

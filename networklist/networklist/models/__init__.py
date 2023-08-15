@@ -16,6 +16,8 @@ from networklist.model.create_network_lists_request import CreateNetworkListsReq
 from networklist.model.error_model import ErrorModel
 from networklist.model.links import Links
 from networklist.model.list_network_lists_response import ListNetworkListsResponse
+from networklist.model.network_list_response_entry import NetworkListResponseEntry
+from networklist.model.network_list_uuid_response import NetworkListUuidResponse
+from networklist.model.network_list_uuid_response_entry import NetworkListUuidResponseEntry
 from networklist.model.network_lists import NetworkLists
 from networklist.model.network_lists_response import NetworkListsResponse
-from networklist.model.update_network_lists_request import UpdateNetworkListsRequest

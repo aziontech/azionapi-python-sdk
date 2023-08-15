@@ -25,7 +25,7 @@ import frozendict  # noqa: F401
 
 from networklist import schemas  # noqa: F401
 
-from networklist.model.network_lists_response import NetworkListsResponse
+from networklist.model.network_list_uuid_response import NetworkListUuidResponse
 from networklist.model.bad_request_response import BadRequestResponse
 
 from . import path
@@ -59,7 +59,7 @@ request_path_uuid = api_client.PathParameter(
 _auth = [
     'tokenAuth',
 ]
-SchemaFor200ResponseBodyApplicationJson = NetworkListsResponse
+SchemaFor200ResponseBodyApplicationJson = NetworkListUuidResponse
 
 
 @dataclass

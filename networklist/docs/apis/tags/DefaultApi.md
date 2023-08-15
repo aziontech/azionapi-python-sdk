@@ -48,6 +48,9 @@ with networklist.ApiClient(configuration) as api_client:
     # example passing only optional values
     query_params = {
         'page': 1,
+        'page_size': 1,
+        'sort': "sort_example",
+        'order_by': "order_by_example",
     }
     try:
         # List all user Network Lists
@@ -74,6 +77,9 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 page | PageSchema | | optional
+page_size | PageSizeSchema | | optional
+sort | SortSchema | | optional
+order_by | OrderBySchema | | optional
 
 
 # PageSchema
@@ -82,6 +88,27 @@ page | PageSchema | | optional
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 decimal.Decimal, int,  | decimal.Decimal,  |  | 
+
+# PageSizeSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+decimal.Decimal, int,  | decimal.Decimal,  |  | 
+
+# SortSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
+
+# OrderBySchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
 
 ### Return Types, Responses
 
@@ -119,7 +146,7 @@ headers | Unset | headers were not defined |
 
 # **network_lists_post**
 <a id="network_lists_post"></a>
-> network_lists_post(create_network_lists_request)
+> NetworkListsResponse network_lists_post(create_network_lists_request)
 
 Create a Network Lists
 
@@ -129,6 +156,7 @@ Create a Network Lists
 ```python
 import networklist
 from networklist.apis.tags import default_api
+from networklist.model.network_lists_response import NetworkListsResponse
 from networklist.model.error_model import ErrorModel
 from networklist.model.create_network_lists_request import CreateNetworkListsRequest
 from networklist.model.bad_request_response import BadRequestResponse
@@ -165,6 +193,7 @@ with networklist.ApiClient(configuration) as api_client:
         api_response = api_instance.network_lists_post(
             body=body,
         )
+        pprint(api_response)
     except networklist.ApiException as e:
         print("Exception when calling DefaultApi->network_lists_post: %s\n" % e)
 ```
@@ -192,7 +221,7 @@ Type | Description  | Notes
 Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
-201 | [ApiResponseFor201](#network_lists_post.ApiResponseFor201) | Network Lists created
+201 | [ApiResponseFor201](#network_lists_post.ApiResponseFor201) | A Network Lists object
 400 | [ApiResponseFor400](#network_lists_post.ApiResponseFor400) | Bad Request
 404 | [ApiResponseFor404](#network_lists_post.ApiResponseFor404) | Not Found
 500 | [ApiResponseFor500](#network_lists_post.ApiResponseFor500) | Internal Server Error
@@ -201,8 +230,14 @@ n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization i
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
-body | Unset | body was not defined |
+body | typing.Union[SchemaFor201ResponseBodyApplicationJson, ] |  |
 headers | Unset | headers were not defined |
+
+# SchemaFor201ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**NetworkListsResponse**](../../models/NetworkListsResponse.md) |  | 
+
 
 #### network_lists_post.ApiResponseFor400
 Name | Type | Description  | Notes
@@ -252,7 +287,7 @@ Type | Description  | Notes
 
 # **network_lists_uuid_get**
 <a id="network_lists_uuid_get"></a>
-> NetworkListsResponse network_lists_uuid_get(uuid)
+> NetworkListUuidResponse network_lists_uuid_get(uuid)
 
 Retrieve a Network Lists set by uuid
 
@@ -262,7 +297,7 @@ Retrieve a Network Lists set by uuid
 ```python
 import networklist
 from networklist.apis.tags import default_api
-from networklist.model.network_lists_response import NetworkListsResponse
+from networklist.model.network_list_uuid_response import NetworkListUuidResponse
 from networklist.model.bad_request_response import BadRequestResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azionapi.net
@@ -342,7 +377,7 @@ headers | Unset | headers were not defined |
 # SchemaFor200ResponseBodyApplicationJson
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**NetworkListsResponse**](../../models/NetworkListsResponse.md) |  | 
+[**NetworkListUuidResponse**](../../models/NetworkListUuidResponse.md) |  | 
 
 
 #### network_lists_uuid_get.ApiResponseFor400
@@ -380,7 +415,7 @@ headers | Unset | headers were not defined |
 
 # **network_lists_uuid_put**
 <a id="network_lists_uuid_put"></a>
-> ListNetworkListsResponse network_lists_uuid_put(uuidupdate_network_lists_request)
+> NetworkListsResponse network_lists_uuid_put(uuidcreate_network_lists_request)
 
 Overwrite some Network Lists attributes
 
@@ -390,9 +425,9 @@ Overwrite some Network Lists attributes
 ```python
 import networklist
 from networklist.apis.tags import default_api
-from networklist.model.list_network_lists_response import ListNetworkListsResponse
+from networklist.model.network_lists_response import NetworkListsResponse
 from networklist.model.error_model import ErrorModel
-from networklist.model.update_network_lists_request import UpdateNetworkListsRequest
+from networklist.model.create_network_lists_request import CreateNetworkListsRequest
 from networklist.model.bad_request_response import BadRequestResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azionapi.net
@@ -420,7 +455,7 @@ with networklist.ApiClient(configuration) as api_client:
     path_params = {
         'uuid': "uuid_example",
     }
-    body = UpdateNetworkListsRequest(
+    body = CreateNetworkListsRequest(
         name="Network List created using the API",
         items_values=["192.168.0.1"],
         list_type="ip_cidr",
@@ -452,7 +487,7 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 # SchemaForRequestBodyApplicationJson
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**UpdateNetworkListsRequest**](../../models/UpdateNetworkListsRequest.md) |  | 
+[**CreateNetworkListsRequest**](../../models/CreateNetworkListsRequest.md) |  | 
 
 
 ### path_params
@@ -489,7 +524,7 @@ headers | Unset | headers were not defined |
 # SchemaFor200ResponseBodyApplicationJson
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**ListNetworkListsResponse**](../../models/ListNetworkListsResponse.md) |  | 
+[**NetworkListsResponse**](../../models/NetworkListsResponse.md) |  | 
 
 
 #### network_lists_uuid_put.ApiResponseFor400

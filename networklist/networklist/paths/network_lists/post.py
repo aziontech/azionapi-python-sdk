@@ -25,6 +25,7 @@ import frozendict  # noqa: F401
 
 from networklist import schemas  # noqa: F401
 
+from networklist.model.network_lists_response import NetworkListsResponse
 from networklist.model.error_model import ErrorModel
 from networklist.model.create_network_lists_request import CreateNetworkListsRequest
 from networklist.model.bad_request_response import BadRequestResponse
@@ -45,17 +46,24 @@ request_body_create_network_lists_request = api_client.RequestBody(
 _auth = [
     'tokenAuth',
 ]
+SchemaFor201ResponseBodyApplicationJson = NetworkListsResponse
 
 
 @dataclass
 class ApiResponseFor201(api_client.ApiResponse):
     response: urllib3.HTTPResponse
-    body: schemas.Unset = schemas.unset
+    body: typing.Union[
+        SchemaFor201ResponseBodyApplicationJson,
+    ]
     headers: schemas.Unset = schemas.unset
 
 
 _response_for_201 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor201,
+    content={
+        'application/json': api_client.MediaType(
+            schema=SchemaFor201ResponseBodyApplicationJson),
+    },
 )
 SchemaFor400ResponseBodyApplicationJson = BadRequestResponse
 SchemaFor400ResponseBodyTextHtml = schemas.StrSchema
