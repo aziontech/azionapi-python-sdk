@@ -202,6 +202,8 @@ Class | Method | HTTP request | Description
  - [NetworkListResponseEntry](docs/models/NetworkListResponseEntry.md)
  - [NetworkListUuidResponse](docs/models/NetworkListUuidResponse.md)
  - [NetworkListUuidResponseEntry](docs/models/NetworkListUuidResponseEntry.md)
+ - [NetworkListUuidResponseEntryInt](docs/models/NetworkListUuidResponseEntryInt.md)
+ - [NetworkListUuidResponseEntryString](docs/models/NetworkListUuidResponseEntryString.md)
  - [NetworkLists](docs/models/NetworkLists.md)
  - [NetworkListsResponse](docs/models/NetworkListsResponse.md)
 
