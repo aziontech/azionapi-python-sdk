@@ -11,6 +11,8 @@ docs/models/ListNetworkListsResponse.md
 docs/models/NetworkListResponseEntry.md
 docs/models/NetworkListUuidResponse.md
 docs/models/NetworkListUuidResponseEntry.md
+docs/models/NetworkListUuidResponseEntryInt.md
+docs/models/NetworkListUuidResponseEntryString.md
 docs/models/NetworkLists.md
 docs/models/NetworkListsResponse.md
 git_push.sh
@@ -37,6 +39,10 @@ networklist/model/network_list_uuid_response.py
 networklist/model/network_list_uuid_response.pyi
 networklist/model/network_list_uuid_response_entry.py
 networklist/model/network_list_uuid_response_entry.pyi
+networklist/model/network_list_uuid_response_entry_int.py
+networklist/model/network_list_uuid_response_entry_int.pyi
+networklist/model/network_list_uuid_response_entry_string.py
+networklist/model/network_list_uuid_response_entry_string.pyi
 networklist/model/network_lists.py
 networklist/model/network_lists.pyi
 networklist/model/network_lists_response.py
@@ -50,7 +56,6 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_models/__init__.py
-test/test_models/test_network_list_response_entry.py
-test/test_models/test_network_list_uuid_response.py
-test/test_models/test_network_list_uuid_response_entry.py
+test/test_models/test_network_list_uuid_response_entry_int.py
+test/test_models/test_network_list_uuid_response_entry_string.py
 tox.ini

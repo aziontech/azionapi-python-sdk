@@ -23,6 +23,7 @@ List all user Network Lists
 import networklist
 from networklist.apis.tags import default_api
 from networklist.model.list_network_lists_response import ListNetworkListsResponse
+from networklist.model.bad_request_response import BadRequestResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
@@ -66,7 +67,7 @@ with networklist.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 query_params | RequestQueryParams | |
-accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
+accept_content_types | typing.Tuple[str] | default is ('application/json', 'text/html', ) | Tells the server the content type(s) that are accepted by the client
 stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
 timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
 skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
@@ -116,6 +117,7 @@ Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#network_lists_get.ApiResponseFor200) | A list of Network Lists
+400 | [ApiResponseFor400](#network_lists_get.ApiResponseFor400) | Bad Request
 404 | [ApiResponseFor404](#network_lists_get.ApiResponseFor404) | Not Found
 
 #### network_lists_get.ApiResponseFor200
@@ -130,6 +132,26 @@ Type | Description  | Notes
 ------------- | ------------- | -------------
 [**ListNetworkListsResponse**](../../models/ListNetworkListsResponse.md) |  | 
 
+
+#### network_lists_get.ApiResponseFor400
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor400ResponseBodyApplicationJson, SchemaFor400ResponseBodyTextHtml, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor400ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**BadRequestResponse**](../../models/BadRequestResponse.md) |  | 
+
+
+# SchemaFor400ResponseBodyTextHtml
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
 
 #### network_lists_get.ApiResponseFor404
 Name | Type | Description  | Notes

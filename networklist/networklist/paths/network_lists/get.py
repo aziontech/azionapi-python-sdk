@@ -26,6 +26,7 @@ import frozendict  # noqa: F401
 from networklist import schemas  # noqa: F401
 
 from networklist.model.list_network_lists_response import ListNetworkListsResponse
+from networklist.model.bad_request_response import BadRequestResponse
 
 from . import path
 
@@ -101,6 +102,29 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyApplicationJson),
     },
 )
+SchemaFor400ResponseBodyApplicationJson = BadRequestResponse
+SchemaFor400ResponseBodyTextHtml = schemas.StrSchema
+
+
+@dataclass
+class ApiResponseFor400(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: typing.Union[
+        SchemaFor400ResponseBodyApplicationJson,
+        SchemaFor400ResponseBodyTextHtml,
+    ]
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_400 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor400,
+    content={
+        'application/json': api_client.MediaType(
+            schema=SchemaFor400ResponseBodyApplicationJson),
+        'text/html': api_client.MediaType(
+            schema=SchemaFor400ResponseBodyTextHtml),
+    },
+)
 
 
 @dataclass
@@ -115,10 +139,12 @@ _response_for_404 = api_client.OpenApiResponse(
 )
 _status_code_to_response = {
     '200': _response_for_200,
+    '400': _response_for_400,
     '404': _response_for_404,
 }
 _all_accept_content_types = (
     'application/json',
+    'text/html',
 )
 
 
