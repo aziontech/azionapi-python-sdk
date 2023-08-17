@@ -143,25 +143,6 @@ _response_for_400 = api_client.OpenApiResponse(
             schema=SchemaFor400ResponseBodyApplicationJsonVersion3),
     },
 )
-SchemaFor404ResponseBodyApplicationJsonVersion3 = WAFEvents404
-
-
-@dataclass
-class ApiResponseFor404(api_client.ApiResponse):
-    response: urllib3.HTTPResponse
-    body: typing.Union[
-        SchemaFor404ResponseBodyApplicationJsonVersion3,
-    ]
-    headers: schemas.Unset = schemas.unset
-
-
-_response_for_404 = api_client.OpenApiResponse(
-    response_cls=ApiResponseFor404,
-    content={
-        'application/json; version=3': api_client.MediaType(
-            schema=SchemaFor404ResponseBodyApplicationJsonVersion3),
-    },
-)
 SchemaFor401ResponseBodyApplicationJsonVersion3 = WAFEvents401
 
 
@@ -181,11 +162,43 @@ _response_for_401 = api_client.OpenApiResponse(
             schema=SchemaFor401ResponseBodyApplicationJsonVersion3),
     },
 )
+SchemaFor404ResponseBodyApplicationJsonVersion3 = WAFEvents404
+
+
+@dataclass
+class ApiResponseFor404(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: typing.Union[
+        SchemaFor404ResponseBodyApplicationJsonVersion3,
+    ]
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_404 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor404,
+    content={
+        'application/json; version=3': api_client.MediaType(
+            schema=SchemaFor404ResponseBodyApplicationJsonVersion3),
+    },
+)
+
+
+@dataclass
+class ApiResponseFor500(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: schemas.Unset = schemas.unset
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_500 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor500,
+)
 _status_code_to_response = {
     '200': _response_for_200,
     '400': _response_for_400,
-    '404': _response_for_404,
     '401': _response_for_401,
+    '404': _response_for_404,
+    '500': _response_for_500,
 }
 _all_accept_content_types = (
     'application/json; version=3',

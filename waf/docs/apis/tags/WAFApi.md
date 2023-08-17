@@ -21,6 +21,8 @@ Find domains attached to a WAF
 import waf
 from waf.apis.tags import waf_api
 from waf.model.waf_domains200 import WAFDomains200
+from waf.model.waf_events400 import WAFEvents400
+from waf.model.waf_events404 import WAFEvents404
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
@@ -122,6 +124,8 @@ Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#get_waf_domains.ApiResponseFor200) | successful operation
+400 | [ApiResponseFor400](#get_waf_domains.ApiResponseFor400) | Bad request
+404 | [ApiResponseFor404](#get_waf_domains.ApiResponseFor404) | data not found
 
 #### get_waf_domains.ApiResponseFor200
 Name | Type | Description  | Notes
@@ -134,6 +138,32 @@ headers | Unset | headers were not defined |
 Type | Description  | Notes
 ------------- | ------------- | -------------
 [**WAFDomains200**](../../models/WAFDomains200.md) |  | 
+
+
+#### get_waf_domains.ApiResponseFor400
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor400ResponseBodyApplicationJsonVersion3, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor400ResponseBodyApplicationJsonVersion3
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**WAFEvents400**](../../models/WAFEvents400.md) |  | 
+
+
+#### get_waf_domains.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor404ResponseBodyApplicationJsonVersion3, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor404ResponseBodyApplicationJsonVersion3
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**WAFEvents404**](../../models/WAFEvents404.md) |  | 
 
 
 ### Authorization
@@ -280,8 +310,9 @@ Code | Class | Description
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#get_waf_events.ApiResponseFor200) | successful operation
 400 | [ApiResponseFor400](#get_waf_events.ApiResponseFor400) | Bad request
-404 | [ApiResponseFor404](#get_waf_events.ApiResponseFor404) | data not found
 401 | [ApiResponseFor401](#get_waf_events.ApiResponseFor401) | unauthorized operation
+404 | [ApiResponseFor404](#get_waf_events.ApiResponseFor404) | data not found
+500 | [ApiResponseFor500](#get_waf_events.ApiResponseFor500) | Internal server error
 
 #### get_waf_events.ApiResponseFor200
 Name | Type | Description  | Notes
@@ -309,6 +340,19 @@ Type | Description  | Notes
 [**WAFEvents400**](../../models/WAFEvents400.md) |  | 
 
 
+#### get_waf_events.ApiResponseFor401
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | typing.Union[SchemaFor401ResponseBodyApplicationJsonVersion3, ] |  |
+headers | Unset | headers were not defined |
+
+# SchemaFor401ResponseBodyApplicationJsonVersion3
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**WAFEvents401**](../../models/WAFEvents401.md) |  | 
+
+
 #### get_waf_events.ApiResponseFor404
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -322,18 +366,12 @@ Type | Description  | Notes
 [**WAFEvents404**](../../models/WAFEvents404.md) |  | 
 
 
-#### get_waf_events.ApiResponseFor401
+#### get_waf_events.ApiResponseFor500
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
-body | typing.Union[SchemaFor401ResponseBodyApplicationJsonVersion3, ] |  |
+body | Unset | body was not defined |
 headers | Unset | headers were not defined |
-
-# SchemaFor401ResponseBodyApplicationJsonVersion3
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**WAFEvents401**](../../models/WAFEvents401.md) |  | 
-
 
 ### Authorization
 
