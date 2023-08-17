@@ -11,6 +11,7 @@
 
 from networklist.paths.network_lists.get import NetworkListsGet
 from networklist.paths.network_lists.post import NetworkListsPost
+from networklist.paths.network_lists_uuid.delete import NetworkListsUuidDelete
 from networklist.paths.network_lists_uuid.get import NetworkListsUuidGet
 from networklist.paths.network_lists_uuid.put import NetworkListsUuidPut
 
@@ -18,6 +19,7 @@ from networklist.paths.network_lists_uuid.put import NetworkListsUuidPut
 class DefaultApi(
     NetworkListsGet,
     NetworkListsPost,
+    NetworkListsUuidDelete,
     NetworkListsUuidGet,
     NetworkListsUuidPut,
 ):
