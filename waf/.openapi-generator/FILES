@@ -1,6 +1,5 @@
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/apis/tags/WAFApi.md
@@ -16,11 +15,6 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_models/__init__.py
-test/test_models/test_waf_domains200.py
-test/test_models/test_waf_events200.py
-test/test_models/test_waf_events400.py
-test/test_models/test_waf_events401.py
-test/test_models/test_waf_events404.py
 tox.ini
 waf/__init__.py
 waf/api_client.py

@@ -26,6 +26,8 @@ import frozendict  # noqa: F401
 from waf import schemas  # noqa: F401
 
 from waf.model.waf_domains200 import WAFDomains200
+from waf.model.waf_events400 import WAFEvents400
+from waf.model.waf_events404 import WAFEvents404
 
 from . import path
 
@@ -103,8 +105,48 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyApplicationJsonVersion3),
     },
 )
+SchemaFor400ResponseBodyApplicationJsonVersion3 = WAFEvents400
+
+
+@dataclass
+class ApiResponseFor400(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: typing.Union[
+        SchemaFor400ResponseBodyApplicationJsonVersion3,
+    ]
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_400 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor400,
+    content={
+        'application/json; version=3': api_client.MediaType(
+            schema=SchemaFor400ResponseBodyApplicationJsonVersion3),
+    },
+)
+SchemaFor404ResponseBodyApplicationJsonVersion3 = WAFEvents404
+
+
+@dataclass
+class ApiResponseFor404(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: typing.Union[
+        SchemaFor404ResponseBodyApplicationJsonVersion3,
+    ]
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_404 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor404,
+    content={
+        'application/json; version=3': api_client.MediaType(
+            schema=SchemaFor404ResponseBodyApplicationJsonVersion3),
+    },
+)
 _status_code_to_response = {
     '200': _response_for_200,
+    '400': _response_for_400,
+    '404': _response_for_404,
 }
 _all_accept_content_types = (
     'application/json; version=3',
