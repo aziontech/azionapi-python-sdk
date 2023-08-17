@@ -118,8 +118,41 @@ _response_for_201 = api_client.OpenApiResponse(
             schema=SchemaFor201ResponseBodyApplicationJson),
     },
 )
+
+
+@dataclass
+class ApiResponseFor400(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: schemas.Unset = schemas.unset
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_400 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor400,
+)
+SchemaFor404ResponseBodyApplicationJson = schemas.AnyTypeSchema
+
+
+@dataclass
+class ApiResponseFor404(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: typing.Union[
+        SchemaFor404ResponseBodyApplicationJson,
+    ]
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_404 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor404,
+    content={
+        'application/json': api_client.MediaType(
+            schema=SchemaFor404ResponseBodyApplicationJson),
+    },
+)
 _status_code_to_response = {
     '201': _response_for_201,
+    '400': _response_for_400,
+    '404': _response_for_404,
 }
 _all_accept_content_types = (
     'application/json',
