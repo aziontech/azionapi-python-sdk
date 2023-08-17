@@ -56,6 +56,4 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_models/__init__.py
-test/test_models/test_network_list_uuid_response_entry_int.py
-test/test_models/test_network_list_uuid_response_entry_string.py
 tox.ini

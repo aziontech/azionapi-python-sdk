@@ -40,7 +40,7 @@ class NetworkListsResponse(
             @staticmethod
             def results() -> typing.Type['NetworkListResponseEntry']:
                 return NetworkListResponseEntry
-            schema_version = schemas.NumberSchema
+            schema_version = schemas.Int64Schema
             __annotations__ = {
                 "results": results,
                 "schema_version": schema_version,
@@ -77,7 +77,7 @@ class NetworkListsResponse(
         cls,
         *_args: typing.Union[dict, frozendict.frozendict, ],
         results: typing.Union['NetworkListResponseEntry', schemas.Unset] = schemas.unset,
-        schema_version: typing.Union[MetaOapg.properties.schema_version, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
+        schema_version: typing.Union[MetaOapg.properties.schema_version, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'NetworkListsResponse':
