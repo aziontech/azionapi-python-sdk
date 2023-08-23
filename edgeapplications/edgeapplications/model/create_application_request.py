@@ -56,6 +56,7 @@ class CreateApplicationRequest(
             https_port = schemas.AnyTypeSchema
             l2_caching = schemas.BoolSchema
             http3 = schemas.BoolSchema
+            websocket = schemas.BoolSchema
             __annotations__ = {
                 "name": name,
                 "application_acceleration": application_acceleration,
@@ -74,6 +75,7 @@ class CreateApplicationRequest(
                 "https_port": https_port,
                 "l2_caching": l2_caching,
                 "http3": http3,
+                "websocket": websocket,
             }
         additional_properties = schemas.NotAnyTypeSchema
     
@@ -130,7 +132,10 @@ class CreateApplicationRequest(
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["http3"]) -> MetaOapg.properties.http3: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["origin_type"], typing_extensions.Literal["address"], typing_extensions.Literal["origin_protocol_policy"], typing_extensions.Literal["host_header"], typing_extensions.Literal["browser_cache_settings"], typing_extensions.Literal["cdn_cache_settings"], typing_extensions.Literal["browser_cache_settings_maximum_ttl"], typing_extensions.Literal["cdn_cache_settings_maximum_ttl"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["supported_ciphers"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["http3"], ]):
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["websocket"]) -> MetaOapg.properties.websocket: ...
+    
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["origin_type"], typing_extensions.Literal["address"], typing_extensions.Literal["origin_protocol_policy"], typing_extensions.Literal["host_header"], typing_extensions.Literal["browser_cache_settings"], typing_extensions.Literal["cdn_cache_settings"], typing_extensions.Literal["browser_cache_settings_maximum_ttl"], typing_extensions.Literal["cdn_cache_settings_maximum_ttl"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["supported_ciphers"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["http3"], typing_extensions.Literal["websocket"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -185,7 +190,10 @@ class CreateApplicationRequest(
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["http3"]) -> typing.Union[MetaOapg.properties.http3, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["origin_type"], typing_extensions.Literal["address"], typing_extensions.Literal["origin_protocol_policy"], typing_extensions.Literal["host_header"], typing_extensions.Literal["browser_cache_settings"], typing_extensions.Literal["cdn_cache_settings"], typing_extensions.Literal["browser_cache_settings_maximum_ttl"], typing_extensions.Literal["cdn_cache_settings_maximum_ttl"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["supported_ciphers"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["http3"], ]):
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["websocket"]) -> typing.Union[MetaOapg.properties.websocket, schemas.Unset]: ...
+    
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["origin_type"], typing_extensions.Literal["address"], typing_extensions.Literal["origin_protocol_policy"], typing_extensions.Literal["host_header"], typing_extensions.Literal["browser_cache_settings"], typing_extensions.Literal["cdn_cache_settings"], typing_extensions.Literal["browser_cache_settings_maximum_ttl"], typing_extensions.Literal["cdn_cache_settings_maximum_ttl"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["supported_ciphers"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["http3"], typing_extensions.Literal["websocket"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
@@ -208,6 +216,7 @@ class CreateApplicationRequest(
         https_port: typing.Union[MetaOapg.properties.https_port, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, bool, None, list, tuple, bytes, io.FileIO, io.BufferedReader, schemas.Unset] = schemas.unset,
         l2_caching: typing.Union[MetaOapg.properties.l2_caching, bool, schemas.Unset] = schemas.unset,
         http3: typing.Union[MetaOapg.properties.http3, bool, schemas.Unset] = schemas.unset,
+        websocket: typing.Union[MetaOapg.properties.websocket, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'CreateApplicationRequest':
         return super().__new__(
@@ -230,5 +239,6 @@ class CreateApplicationRequest(
             https_port=https_port,
             l2_caching=l2_caching,
             http3=http3,
+            websocket=websocket,
             _configuration=_configuration,
         )

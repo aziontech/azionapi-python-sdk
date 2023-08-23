@@ -53,6 +53,7 @@ class ApplicationUpdateRequest(
             load_balancer = schemas.BoolSchema
             raw_logs = schemas.BoolSchema
             web_application_firewall = schemas.BoolSchema
+            websocket = schemas.BoolSchema
             __annotations__ = {
                 "name": name,
                 "delivery_protocol": delivery_protocol,
@@ -71,6 +72,7 @@ class ApplicationUpdateRequest(
                 "load_balancer": load_balancer,
                 "raw_logs": raw_logs,
                 "web_application_firewall": web_application_firewall,
+                "websocket": websocket,
             }
         additional_properties = schemas.NotAnyTypeSchema
     
@@ -125,7 +127,10 @@ class ApplicationUpdateRequest(
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["web_application_firewall"]) -> MetaOapg.properties.web_application_firewall: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["active"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["caching"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["image_optimization"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["load_balancer"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["web_application_firewall"], ]):
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["websocket"]) -> MetaOapg.properties.websocket: ...
+    
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["active"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["caching"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["image_optimization"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["load_balancer"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["web_application_firewall"], typing_extensions.Literal["websocket"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -180,7 +185,10 @@ class ApplicationUpdateRequest(
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["web_application_firewall"]) -> typing.Union[MetaOapg.properties.web_application_firewall, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["active"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["caching"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["image_optimization"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["load_balancer"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["web_application_firewall"], ]):
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["websocket"]) -> typing.Union[MetaOapg.properties.websocket, schemas.Unset]: ...
+    
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["active"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["caching"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["image_optimization"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["load_balancer"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["web_application_firewall"], typing_extensions.Literal["websocket"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
@@ -203,6 +211,7 @@ class ApplicationUpdateRequest(
         load_balancer: typing.Union[MetaOapg.properties.load_balancer, bool, schemas.Unset] = schemas.unset,
         raw_logs: typing.Union[MetaOapg.properties.raw_logs, bool, schemas.Unset] = schemas.unset,
         web_application_firewall: typing.Union[MetaOapg.properties.web_application_firewall, bool, schemas.Unset] = schemas.unset,
+        websocket: typing.Union[MetaOapg.properties.websocket, bool, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'ApplicationUpdateRequest':
         return super().__new__(
@@ -225,5 +234,6 @@ class ApplicationUpdateRequest(
             load_balancer=load_balancer,
             raw_logs=raw_logs,
             web_application_firewall=web_application_firewall,
+            websocket=websocket,
             _configuration=_configuration,
         )
