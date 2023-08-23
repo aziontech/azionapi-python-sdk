@@ -620,6 +620,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
         load_balancer=True,
         raw_logs=True,
         web_application_firewall=True,
+        websocket=True,
     )
     try:
         # /edge_applications/:id
@@ -842,6 +843,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
         web_application_firewall=True,
         debug_rules=True,
         http3=True,
+        websocket=True,
         supported_ciphers="supported_ciphers_example",
     )
     try:
@@ -1045,6 +1047,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
         https_port=None,
         l2_caching=True,
         http3=True,
+        websocket=True,
     )
     try:
         # /edge_applications

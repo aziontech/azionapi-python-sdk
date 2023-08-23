@@ -26,6 +26,7 @@ Key | Input Type | Accessed Type | Description | Notes
 **web_application_firewall** | bool,  | BoolClass,  |  | [optional] 
 **debug_rules** | bool,  | BoolClass,  |  | [optional] 
 **http3** | bool,  | BoolClass,  |  | [optional] 
+**websocket** | bool,  | BoolClass,  |  | [optional] 
 **supported_ciphers** | str,  | str,  |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

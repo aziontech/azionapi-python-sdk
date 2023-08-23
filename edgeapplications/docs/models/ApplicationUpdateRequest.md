@@ -25,6 +25,7 @@ Key | Input Type | Accessed Type | Description | Notes
 **load_balancer** | bool,  | BoolClass,  |  | [optional] 
 **raw_logs** | bool,  | BoolClass,  |  | [optional] 
 **web_application_firewall** | bool,  | BoolClass,  |  | [optional] 
+**websocket** | bool,  | BoolClass,  |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

@@ -57,6 +57,7 @@ class ApplicationPutRequest(
             web_application_firewall = schemas.BoolSchema
             debug_rules = schemas.BoolSchema
             http3 = schemas.BoolSchema
+            websocket = schemas.BoolSchema
             supported_ciphers = schemas.StrSchema
             __annotations__ = {
                 "name": name,
@@ -77,6 +78,7 @@ class ApplicationPutRequest(
                 "web_application_firewall": web_application_firewall,
                 "debug_rules": debug_rules,
                 "http3": http3,
+                "websocket": websocket,
                 "supported_ciphers": supported_ciphers,
             }
         additional_properties = schemas.NotAnyTypeSchema
@@ -138,9 +140,12 @@ class ApplicationPutRequest(
     def __getitem__(self, name: typing_extensions.Literal["http3"]) -> MetaOapg.properties.http3: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["websocket"]) -> MetaOapg.properties.websocket: ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["supported_ciphers"]) -> MetaOapg.properties.supported_ciphers: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["active"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["caching"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["image_optimization"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["load_balancer"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["web_application_firewall"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["http3"], typing_extensions.Literal["supported_ciphers"], ]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["active"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["caching"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["image_optimization"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["load_balancer"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["web_application_firewall"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["http3"], typing_extensions.Literal["websocket"], typing_extensions.Literal["supported_ciphers"], ]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -199,9 +204,12 @@ class ApplicationPutRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["http3"]) -> typing.Union[MetaOapg.properties.http3, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["websocket"]) -> typing.Union[MetaOapg.properties.websocket, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["supported_ciphers"]) -> typing.Union[MetaOapg.properties.supported_ciphers, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["active"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["caching"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["image_optimization"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["load_balancer"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["web_application_firewall"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["http3"], typing_extensions.Literal["supported_ciphers"], ]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["name"], typing_extensions.Literal["delivery_protocol"], typing_extensions.Literal["http_port"], typing_extensions.Literal["https_port"], typing_extensions.Literal["minimum_tls_version"], typing_extensions.Literal["active"], typing_extensions.Literal["application_acceleration"], typing_extensions.Literal["caching"], typing_extensions.Literal["device_detection"], typing_extensions.Literal["edge_firewall"], typing_extensions.Literal["edge_functions"], typing_extensions.Literal["image_optimization"], typing_extensions.Literal["l2_caching"], typing_extensions.Literal["load_balancer"], typing_extensions.Literal["raw_logs"], typing_extensions.Literal["web_application_firewall"], typing_extensions.Literal["debug_rules"], typing_extensions.Literal["http3"], typing_extensions.Literal["websocket"], typing_extensions.Literal["supported_ciphers"], ]):
         return super().get_item_oapg(name)
 
     def __new__(
@@ -225,6 +233,7 @@ class ApplicationPutRequest(
         web_application_firewall: typing.Union[MetaOapg.properties.web_application_firewall, bool, schemas.Unset] = schemas.unset,
         debug_rules: typing.Union[MetaOapg.properties.debug_rules, bool, schemas.Unset] = schemas.unset,
         http3: typing.Union[MetaOapg.properties.http3, bool, schemas.Unset] = schemas.unset,
+        websocket: typing.Union[MetaOapg.properties.websocket, bool, schemas.Unset] = schemas.unset,
         supported_ciphers: typing.Union[MetaOapg.properties.supported_ciphers, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
     ) -> 'ApplicationPutRequest':
@@ -249,6 +258,7 @@ class ApplicationPutRequest(
             web_application_firewall=web_application_firewall,
             debug_rules=debug_rules,
             http3=http3,
+            websocket=websocket,
             supported_ciphers=supported_ciphers,
             _configuration=_configuration,
         )
