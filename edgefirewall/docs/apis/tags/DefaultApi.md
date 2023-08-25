@@ -89,14 +89,14 @@ order_by | OrderBySchema | | optional
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-decimal.Decimal, int,  | decimal.Decimal,  |  | 
+decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
 
 # PageSizeSchema
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-decimal.Decimal, int,  | decimal.Decimal,  |  | 
+decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 64 bit integer
 
 # SortSchema
 
@@ -118,6 +118,7 @@ Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#edge_firewall_get.ApiResponseFor200) | A list of edge firewalls
+404 | [ApiResponseFor404](#edge_firewall_get.ApiResponseFor404) | Not found
 
 #### edge_firewall_get.ApiResponseFor200
 Name | Type | Description  | Notes
@@ -132,6 +133,13 @@ Type | Description  | Notes
 [**ListEdgeFirewallResponse**](../../models/ListEdgeFirewallResponse.md) |  | 
 
 
+#### edge_firewall_get.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
 ### Authorization
 
 [tokenAuth](../../../README.md#tokenAuth)
@@ -140,7 +148,7 @@ Type | Description  | Notes
 
 # **edge_firewall_post**
 <a id="edge_firewall_post"></a>
-> edge_firewall_post(create_edge_firewall_request)
+> EdgeFirewallResponse edge_firewall_post(create_edge_firewall_request)
 
 Create a edge firewall
 
@@ -150,6 +158,7 @@ Create a edge firewall
 ```python
 import edgefirewall
 from edgefirewall.apis.tags import default_api
+from edgefirewall.model.edge_firewall_response import EdgeFirewallResponse
 from edgefirewall.model.create_edge_firewall_request import CreateEdgeFirewallRequest
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azionapi.net
@@ -189,6 +198,7 @@ with edgefirewall.ApiClient(configuration) as api_client:
         api_response = api_instance.edge_firewall_post(
             body=body,
         )
+        pprint(api_response)
     except edgefirewall.ApiException as e:
         print("Exception when calling DefaultApi->edge_firewall_post: %s\n" % e)
 ```
@@ -198,6 +208,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 body | typing.Union[SchemaForRequestBodyApplicationJson] | required |
 content_type | str | optional, default is 'application/json' | Selects the schema and serialization of the request body
+accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
 stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
 timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
 skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
@@ -216,15 +227,21 @@ Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 201 | [ApiResponseFor201](#edge_firewall_post.ApiResponseFor201) | Edge firewall created
-400 | [ApiResponseFor400](#edge_firewall_post.ApiResponseFor400) | Internal Server Error
+400 | [ApiResponseFor400](#edge_firewall_post.ApiResponseFor400) | Bad Request
 500 | [ApiResponseFor500](#edge_firewall_post.ApiResponseFor500) | Internal Server Error
 
 #### edge_firewall_post.ApiResponseFor201
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
-body | Unset | body was not defined |
+body | typing.Union[SchemaFor201ResponseBodyApplicationJson, ] |  |
 headers | Unset | headers were not defined |
+
+# SchemaFor201ResponseBodyApplicationJson
+Type | Description  | Notes
+------------- | ------------- | -------------
+[**EdgeFirewallResponse**](../../models/EdgeFirewallResponse.md) |  | 
+
 
 #### edge_firewall_post.ApiResponseFor400
 Name | Type | Description  | Notes
@@ -321,8 +338,24 @@ Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 204 | [ApiResponseFor204](#edge_firewall_uuid_delete.ApiResponseFor204) | Successfully deleted
+400 | [ApiResponseFor400](#edge_firewall_uuid_delete.ApiResponseFor400) | Bad Request
+404 | [ApiResponseFor404](#edge_firewall_uuid_delete.ApiResponseFor404) | Not found
 
 #### edge_firewall_uuid_delete.ApiResponseFor204
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_firewall_uuid_delete.ApiResponseFor400
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_firewall_uuid_delete.ApiResponseFor404
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
@@ -413,6 +446,8 @@ Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#edge_firewall_uuid_get.ApiResponseFor200) | An edge firewall object
+400 | [ApiResponseFor400](#edge_firewall_uuid_get.ApiResponseFor400) | Bad Request
+404 | [ApiResponseFor404](#edge_firewall_uuid_get.ApiResponseFor404) | Not found
 
 #### edge_firewall_uuid_get.ApiResponseFor200
 Name | Type | Description  | Notes
@@ -427,6 +462,20 @@ Type | Description  | Notes
 [**EdgeFirewallResponse**](../../models/EdgeFirewallResponse.md) |  | 
 
 
+#### edge_firewall_uuid_get.ApiResponseFor400
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_firewall_uuid_get.ApiResponseFor404
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
 ### Authorization
 
 [tokenAuth](../../../README.md#tokenAuth)
@@ -435,7 +484,7 @@ Type | Description  | Notes
 
 # **edge_firewall_uuid_patch**
 <a id="edge_firewall_uuid_patch"></a>
-> ListEdgeFirewallResponse edge_firewall_uuid_patch(uuidbody)
+> EdgeFirewallResponse edge_firewall_uuid_patch(uuidupdate_edge_firewall_request)
 
 Update some edge firewall attributes, like \"active\"
 
@@ -445,7 +494,8 @@ Update some edge firewall attributes, like \"active\"
 ```python
 import edgefirewall
 from edgefirewall.apis.tags import default_api
-from edgefirewall.model.list_edge_firewall_response import ListEdgeFirewallResponse
+from edgefirewall.model.edge_firewall_response import EdgeFirewallResponse
+from edgefirewall.model.update_edge_firewall_request import UpdateEdgeFirewallRequest
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
@@ -472,30 +522,15 @@ with edgefirewall.ApiClient(configuration) as api_client:
     path_params = {
         'uuid': "uuid_example",
     }
-    body = ListEdgeFirewallResponse(
-        count=1,
-        total_pages=1,
-        schema_version=1,
-        links=Links(
-            previous="previous_example",
-            next="next_example",
-        ),
-        results=[
-            EdgeFirewall(
-                id=1,
-                name="name_example",
-                is_active=True,
-                last_editor="last_editor_example",
-                last_modified="last_modified_example",
-                edge_functions_enabled=True,
-                network_protection_enabled=True,
-                waf_enabled=True,
-                debug_rules=True,
-                domains=[
-                    1
-                ],
-            )
+    body = UpdateEdgeFirewallRequest(
+        name="name_example",
+        domains=[
+            1
         ],
+        is_active=True,
+        edge_functions_enabled=True,
+        network_protection_enabled=True,
+        waf_enabled=True,
     )
     try:
         # Update some edge firewall attributes, like \"active\"
@@ -524,7 +559,7 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 # SchemaForRequestBodyApplicationJson
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**ListEdgeFirewallResponse**](../../models/ListEdgeFirewallResponse.md) |  | 
+[**UpdateEdgeFirewallRequest**](../../models/UpdateEdgeFirewallRequest.md) |  | 
 
 
 ### path_params
@@ -548,6 +583,7 @@ Code | Class | Description
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#edge_firewall_uuid_patch.ApiResponseFor200) | Successfully updated
 400 | [ApiResponseFor400](#edge_firewall_uuid_patch.ApiResponseFor400) | Bad Request
+404 | [ApiResponseFor404](#edge_firewall_uuid_patch.ApiResponseFor404) | Not found
 500 | [ApiResponseFor500](#edge_firewall_uuid_patch.ApiResponseFor500) | Internal Server Error
 
 #### edge_firewall_uuid_patch.ApiResponseFor200
@@ -560,10 +596,17 @@ headers | Unset | headers were not defined |
 # SchemaFor200ResponseBodyApplicationJson
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**ListEdgeFirewallResponse**](../../models/ListEdgeFirewallResponse.md) |  | 
+[**EdgeFirewallResponse**](../../models/EdgeFirewallResponse.md) |  | 
 
 
 #### edge_firewall_uuid_patch.ApiResponseFor400
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_firewall_uuid_patch.ApiResponseFor404
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |
@@ -585,7 +628,7 @@ headers | Unset | headers were not defined |
 
 # **edge_firewall_uuid_put**
 <a id="edge_firewall_uuid_put"></a>
-> ListEdgeFirewallResponse edge_firewall_uuid_put(uuidbody)
+> EdgeFirewallResponse edge_firewall_uuid_put(uuidupdate_edge_firewall_request)
 
 Overwrite some edge firewall attributes, like \"active\"
 
@@ -595,7 +638,8 @@ Overwrite some edge firewall attributes, like \"active\"
 ```python
 import edgefirewall
 from edgefirewall.apis.tags import default_api
-from edgefirewall.model.list_edge_firewall_response import ListEdgeFirewallResponse
+from edgefirewall.model.edge_firewall_response import EdgeFirewallResponse
+from edgefirewall.model.update_edge_firewall_request import UpdateEdgeFirewallRequest
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
@@ -622,30 +666,15 @@ with edgefirewall.ApiClient(configuration) as api_client:
     path_params = {
         'uuid': "uuid_example",
     }
-    body = ListEdgeFirewallResponse(
-        count=1,
-        total_pages=1,
-        schema_version=1,
-        links=Links(
-            previous="previous_example",
-            next="next_example",
-        ),
-        results=[
-            EdgeFirewall(
-                id=1,
-                name="name_example",
-                is_active=True,
-                last_editor="last_editor_example",
-                last_modified="last_modified_example",
-                edge_functions_enabled=True,
-                network_protection_enabled=True,
-                waf_enabled=True,
-                debug_rules=True,
-                domains=[
-                    1
-                ],
-            )
+    body = UpdateEdgeFirewallRequest(
+        name="name_example",
+        domains=[
+            1
         ],
+        is_active=True,
+        edge_functions_enabled=True,
+        network_protection_enabled=True,
+        waf_enabled=True,
     )
     try:
         # Overwrite some edge firewall attributes, like \"active\"
@@ -674,7 +703,7 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 # SchemaForRequestBodyApplicationJson
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**ListEdgeFirewallResponse**](../../models/ListEdgeFirewallResponse.md) |  | 
+[**UpdateEdgeFirewallRequest**](../../models/UpdateEdgeFirewallRequest.md) |  | 
 
 
 ### path_params
@@ -698,6 +727,7 @@ Code | Class | Description
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#edge_firewall_uuid_put.ApiResponseFor200) | Successfully updated
 400 | [ApiResponseFor400](#edge_firewall_uuid_put.ApiResponseFor400) | Bad Request
+404 | [ApiResponseFor404](#edge_firewall_uuid_put.ApiResponseFor404) | Not found
 500 | [ApiResponseFor500](#edge_firewall_uuid_put.ApiResponseFor500) | Internal Server Error
 
 #### edge_firewall_uuid_put.ApiResponseFor200
@@ -710,10 +740,17 @@ headers | Unset | headers were not defined |
 # SchemaFor200ResponseBodyApplicationJson
 Type | Description  | Notes
 ------------- | ------------- | -------------
-[**ListEdgeFirewallResponse**](../../models/ListEdgeFirewallResponse.md) |  | 
+[**EdgeFirewallResponse**](../../models/EdgeFirewallResponse.md) |  | 
 
 
 #### edge_firewall_uuid_put.ApiResponseFor400
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
+
+#### edge_firewall_uuid_put.ApiResponseFor404
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 response | urllib3.HTTPResponse | Raw response |

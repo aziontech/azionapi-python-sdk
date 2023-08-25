@@ -67,8 +67,34 @@ class ApiResponseFor204(api_client.ApiResponse):
 _response_for_204 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor204,
 )
+
+
+@dataclass
+class ApiResponseFor400(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: schemas.Unset = schemas.unset
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_400 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor400,
+)
+
+
+@dataclass
+class ApiResponseFor404(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: schemas.Unset = schemas.unset
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_404 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor404,
+)
 _status_code_to_response = {
     '204': _response_for_204,
+    '400': _response_for_400,
+    '404': _response_for_404,
 }
 
 

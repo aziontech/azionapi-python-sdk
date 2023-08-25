@@ -144,6 +144,7 @@ from edgefirewall.apis.tags import default_api
 from edgefirewall.model.create_edge_firewall_request import CreateEdgeFirewallRequest
 from edgefirewall.model.edge_firewall_response import EdgeFirewallResponse
 from edgefirewall.model.list_edge_firewall_response import ListEdgeFirewallResponse
+from edgefirewall.model.update_edge_firewall_request import UpdateEdgeFirewallRequest
 # Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = edgefirewall.Configuration(

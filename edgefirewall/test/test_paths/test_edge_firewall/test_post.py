@@ -33,7 +33,8 @@ class TestEdgeFirewall(ApiTestMixin, unittest.TestCase):
         pass
 
     response_status = 201
-    response_body = ''
+
+
 
 
 
