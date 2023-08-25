@@ -53,7 +53,7 @@ class EdgeFirewall(
             
             
                 class MetaOapg:
-                    items = schemas.IntSchema
+                    items = schemas.Int64Schema
             
                 def __new__(
                     cls,

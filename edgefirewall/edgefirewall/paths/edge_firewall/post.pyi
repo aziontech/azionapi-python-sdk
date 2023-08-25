@@ -25,6 +25,7 @@ import frozendict  # noqa: F401
 
 from edgefirewall import schemas  # noqa: F401
 
+from edgefirewall.model.edge_firewall_response import EdgeFirewallResponse
 from edgefirewall.model.create_edge_firewall_request import CreateEdgeFirewallRequest
 
 # body param
@@ -38,17 +39,24 @@ request_body_create_edge_firewall_request = api_client.RequestBody(
     },
     required=True,
 )
+SchemaFor201ResponseBodyApplicationJson = EdgeFirewallResponse
 
 
 @dataclass
 class ApiResponseFor201(api_client.ApiResponse):
     response: urllib3.HTTPResponse
-    body: schemas.Unset = schemas.unset
+    body: typing.Union[
+        SchemaFor201ResponseBodyApplicationJson,
+    ]
     headers: schemas.Unset = schemas.unset
 
 
 _response_for_201 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor201,
+    content={
+        'application/json': api_client.MediaType(
+            schema=SchemaFor201ResponseBodyApplicationJson),
+    },
 )
 
 
@@ -74,6 +82,9 @@ class ApiResponseFor500(api_client.ApiResponse):
 _response_for_500 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor500,
 )
+_all_accept_content_types = (
+    'application/json',
+)
 
 
 class BaseApi(api_client.Api):
@@ -82,6 +93,7 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: typing_extensions.Literal["application/json"] = ...,
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: typing_extensions.Literal[False] = ...,
@@ -94,6 +106,7 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = ...,
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: typing_extensions.Literal[False] = ...,
@@ -108,6 +121,7 @@ class BaseApi(api_client.Api):
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         skip_deserialization: typing_extensions.Literal[True],
         content_type: str = ...,
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
     ) -> api_client.ApiResponseWithoutDeserialization: ...
@@ -117,6 +131,7 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = ...,
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = ...,
@@ -129,6 +144,7 @@ class BaseApi(api_client.Api):
         self,
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = 'application/json',
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
@@ -143,6 +159,9 @@ class BaseApi(api_client.Api):
 
         _headers = HTTPHeaderDict()
         # TODO add cookie handling
+        if accept_content_types:
+            for accept_content_type in accept_content_types:
+                _headers.add('Accept', accept_content_type)
 
         if body is schemas.unset:
             raise exceptions.ApiValueError(
@@ -193,6 +212,7 @@ class EdgeFirewallPost(BaseApi):
         self,
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: typing_extensions.Literal["application/json"] = ...,
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: typing_extensions.Literal[False] = ...,
@@ -205,6 +225,7 @@ class EdgeFirewallPost(BaseApi):
         self,
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = ...,
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: typing_extensions.Literal[False] = ...,
@@ -219,6 +240,7 @@ class EdgeFirewallPost(BaseApi):
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         skip_deserialization: typing_extensions.Literal[True],
         content_type: str = ...,
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
     ) -> api_client.ApiResponseWithoutDeserialization: ...
@@ -228,6 +250,7 @@ class EdgeFirewallPost(BaseApi):
         self,
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = ...,
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = ...,
@@ -240,6 +263,7 @@ class EdgeFirewallPost(BaseApi):
         self,
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = 'application/json',
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
@@ -247,6 +271,7 @@ class EdgeFirewallPost(BaseApi):
         return self._edge_firewall_post_oapg(
             body=body,
             content_type=content_type,
+            accept_content_types=accept_content_types,
             stream=stream,
             timeout=timeout,
             skip_deserialization=skip_deserialization
@@ -261,6 +286,7 @@ class ApiForpost(BaseApi):
         self,
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: typing_extensions.Literal["application/json"] = ...,
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: typing_extensions.Literal[False] = ...,
@@ -273,6 +299,7 @@ class ApiForpost(BaseApi):
         self,
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = ...,
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: typing_extensions.Literal[False] = ...,
@@ -287,6 +314,7 @@ class ApiForpost(BaseApi):
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         skip_deserialization: typing_extensions.Literal[True],
         content_type: str = ...,
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
     ) -> api_client.ApiResponseWithoutDeserialization: ...
@@ -296,6 +324,7 @@ class ApiForpost(BaseApi):
         self,
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = ...,
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = ...,
@@ -308,6 +337,7 @@ class ApiForpost(BaseApi):
         self,
         body: typing.Union[SchemaForRequestBodyApplicationJson,],
         content_type: str = 'application/json',
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
@@ -315,6 +345,7 @@ class ApiForpost(BaseApi):
         return self._edge_firewall_post_oapg(
             body=body,
             content_type=content_type,
+            accept_content_types=accept_content_types,
             stream=stream,
             timeout=timeout,
             skip_deserialization=skip_deserialization
