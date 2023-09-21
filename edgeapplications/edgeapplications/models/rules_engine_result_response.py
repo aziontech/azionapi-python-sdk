@@ -20,8 +20,8 @@ import json
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from edgeapplications.models.rules_engine_behavior_entry import RulesEngineBehaviorEntry
 from edgeapplications.models.rules_engine_criteria import RulesEngineCriteria
-from edgeapplications.models.rules_engine_result_response_behaviors import RulesEngineResultResponseBehaviors
 
 class RulesEngineResultResponse(BaseModel):
     """
@@ -31,7 +31,7 @@ class RulesEngineResultResponse(BaseModel):
     name: StrictStr = Field(...)
     description: Optional[StrictStr] = None
     phase: StrictStr = Field(...)
-    behaviors: Optional[conlist(RulesEngineResultResponseBehaviors)] = None
+    behaviors: Optional[conlist(RulesEngineBehaviorEntry)] = None
     criteria: conlist(conlist(RulesEngineCriteria)) = Field(...)
     is_active: StrictBool = Field(...)
     order: StrictInt = Field(...)
@@ -93,7 +93,7 @@ class RulesEngineResultResponse(BaseModel):
             "name": obj.get("name"),
             "description": obj.get("description"),
             "phase": obj.get("phase"),
-            "behaviors": [RulesEngineResultResponseBehaviors.from_dict(_item) for _item in obj.get("behaviors")] if obj.get("behaviors") is not None else None,
+            "behaviors": [RulesEngineBehaviorEntry.from_dict(_item) for _item in obj.get("behaviors")] if obj.get("behaviors") is not None else None,
             "criteria": [
                     [RulesEngineCriteria.from_dict(_inner_item) for _inner_item in _item]
                     for _item in obj.get("criteria")

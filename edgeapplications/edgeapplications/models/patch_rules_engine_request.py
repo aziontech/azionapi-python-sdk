@@ -20,7 +20,7 @@ import json
 
 from typing import List, Optional
 from pydantic import BaseModel, StrictStr, conlist, constr
-from edgeapplications.models.rules_engine_behavior import RulesEngineBehavior
+from edgeapplications.models.rules_engine_behavior_entry import RulesEngineBehaviorEntry
 from edgeapplications.models.rules_engine_criteria import RulesEngineCriteria
 
 class PatchRulesEngineRequest(BaseModel):
@@ -30,7 +30,7 @@ class PatchRulesEngineRequest(BaseModel):
     name: Optional[StrictStr] = None
     description: Optional[constr(strict=True, max_length=1000)] = None
     criteria: Optional[conlist(conlist(RulesEngineCriteria))] = None
-    behaviors: Optional[conlist(RulesEngineBehavior)] = None
+    behaviors: Optional[conlist(RulesEngineBehaviorEntry)] = None
     __properties = ["name", "description", "criteria", "behaviors"]
 
     class Config:
@@ -91,7 +91,7 @@ class PatchRulesEngineRequest(BaseModel):
                     [RulesEngineCriteria.from_dict(_inner_item) for _inner_item in _item]
                     for _item in obj.get("criteria")
                 ] if obj.get("criteria") is not None else None,
-            "behaviors": [RulesEngineBehavior.from_dict(_item) for _item in obj.get("behaviors")] if obj.get("behaviors") is not None else None
+            "behaviors": [RulesEngineBehaviorEntry.from_dict(_item) for _item in obj.get("behaviors")] if obj.get("behaviors") is not None else None
         })
         return _obj
 

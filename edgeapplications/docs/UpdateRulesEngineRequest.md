@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | 
 **description** | **str** |  | [optional] 
 **criteria** | **List[List[RulesEngineCriteria]]** |  | 
-**behaviors** | [**List[RulesEngineBehavior]**](RulesEngineBehavior.md) |  | 
+**behaviors** | [**List[RulesEngineBehaviorEntry]**](RulesEngineBehaviorEntry.md) |  | 
 
 ## Example
 

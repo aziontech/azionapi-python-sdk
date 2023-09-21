@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | 
 **description** | **str** |  | [optional] 
 **phase** | **str** |  | 
-**behaviors** | [**List[RulesEngineResultResponseBehaviors]**](RulesEngineResultResponseBehaviors.md) |  | [optional] 
+**behaviors** | [**List[RulesEngineBehaviorEntry]**](RulesEngineBehaviorEntry.md) |  | [optional] 
 **criteria** | **List[List[RulesEngineCriteria]]** |  | 
 **is_active** | **bool** |  | 
 **order** | **int** |  | 
