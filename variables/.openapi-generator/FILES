@@ -14,10 +14,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_variable.py
-test/test_variable_create.py
-test/test_variable_get.py
-test/test_variables_api.py
 tox.ini
 variables/__init__.py
 variables/api/__init__.py

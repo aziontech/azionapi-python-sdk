@@ -1,6 +1,6 @@
 # variables.VariablesApi
 
-All URIs are relative to *https://api.azionapi.net/variables*
+All URIs are relative to *https://api.azionapi.net*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,10 +30,10 @@ from variables.models.variable_get import VariableGet
 from variables.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.azionapi.net/variables
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = variables.Configuration(
-    host = "https://api.azionapi.net/variables"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -111,10 +111,10 @@ import variables
 from variables.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.azionapi.net/variables
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = variables.Configuration(
-    host = "https://api.azionapi.net/variables"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -191,10 +191,10 @@ from variables.models.variable import Variable
 from variables.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.azionapi.net/variables
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = variables.Configuration(
-    host = "https://api.azionapi.net/variables"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -266,10 +266,10 @@ from variables.models.variable import Variable
 from variables.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.azionapi.net/variables
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = variables.Configuration(
-    host = "https://api.azionapi.net/variables"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -349,10 +349,10 @@ from variables.models.variable_get import VariableGet
 from variables.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.azionapi.net/variables
+# Defining the host is optional and defaults to https://api.azionapi.net
 # See configuration.py for a list of all supported configuration parameters.
 configuration = variables.Configuration(
-    host = "https://api.azionapi.net/variables"
+    host = "https://api.azionapi.net"
 )
 
 # The client must configure the authentication and authorization parameters
