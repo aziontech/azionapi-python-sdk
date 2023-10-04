@@ -815,6 +815,7 @@ class DefaultApi:
             '200': "RuleSetResult",
             '400': None,
             '403': None,
+            '404': None,
             '500': None,
         }
 
@@ -979,6 +980,7 @@ class DefaultApi:
             '200': "RuleSetResult",
             '400': None,
             '403': None,
+            '404': None,
             '500': None,
         }
 
