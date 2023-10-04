@@ -4,6 +4,7 @@
 .travis.yml
 README.md
 docs/CreateNewWAFRulesetRequest.md
+docs/Links.md
 docs/SingleWAF.md
 docs/WAFApi.md
 docs/WAFDomains200.md
@@ -21,17 +22,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_create_new_waf_ruleset_request.py
-test/test_single_waf.py
-test/test_waf_api.py
-test/test_waf_domains200.py
-test/test_waf_events200.py
-test/test_waf_events400.py
-test/test_waf_events401.py
-test/test_waf_events404.py
-test/test_waf_list200.py
-test/test_waf_sensitivity_choices.py
-test/test_waf_single200.py
+test/test_links.py
 tox.ini
 waf/__init__.py
 waf/api/__init__.py
@@ -42,6 +33,7 @@ waf/configuration.py
 waf/exceptions.py
 waf/models/__init__.py
 waf/models/create_new_waf_ruleset_request.py
+waf/models/links.py
 waf/models/single_waf.py
 waf/models/waf_domains200.py
 waf/models/waf_events200.py
