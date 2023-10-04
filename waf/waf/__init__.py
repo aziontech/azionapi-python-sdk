@@ -32,6 +32,7 @@ from waf.exceptions import ApiException
 
 # import models into sdk package
 from waf.models.create_new_waf_ruleset_request import CreateNewWAFRulesetRequest
+from waf.models.links import Links
 from waf.models.single_waf import SingleWAF
 from waf.models.waf_domains200 import WAFDomains200
 from waf.models.waf_events200 import WAFEvents200
