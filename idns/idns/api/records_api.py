@@ -19,7 +19,7 @@ import warnings
 from pydantic import validate_arguments, ValidationError
 
 from typing_extensions import Annotated
-from pydantic import Field, conint
+from pydantic import Field, StrictInt, conint
 
 from typing import Optional
 
@@ -195,17 +195,21 @@ class RecordsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_zone_records(self, zone_id : Annotated[conint(strict=True, ge=1), Field(..., description="The hosted zone id")], **kwargs) -> GetRecordsResponse:  # noqa: E501
+    def get_zone_records(self, zone_id : Annotated[conint(strict=True, ge=1), Field(..., description="The hosted zone id")], page : Annotated[Optional[StrictInt], Field(description="Identifies which page should be returned, if the return is paginated.")] = None, page_size : Annotated[Optional[StrictInt], Field(description="Identifies how many items should be returned per page.")] = None, **kwargs) -> GetRecordsResponse:  # noqa: E501
         """Get a collection of Intelligent DNS zone records  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_zone_records(zone_id, async_req=True)
+        >>> thread = api.get_zone_records(zone_id, page, page_size, async_req=True)
         >>> result = thread.get()
 
         :param zone_id: The hosted zone id (required)
         :type zone_id: int
+        :param page: Identifies which page should be returned, if the return is paginated.
+        :type page: int
+        :param page_size: Identifies how many items should be returned per page.
+        :type page_size: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -221,20 +225,24 @@ class RecordsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_zone_records_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_zone_records_with_http_info(zone_id, **kwargs)  # noqa: E501
+        return self.get_zone_records_with_http_info(zone_id, page, page_size, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_zone_records_with_http_info(self, zone_id : Annotated[conint(strict=True, ge=1), Field(..., description="The hosted zone id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_zone_records_with_http_info(self, zone_id : Annotated[conint(strict=True, ge=1), Field(..., description="The hosted zone id")], page : Annotated[Optional[StrictInt], Field(description="Identifies which page should be returned, if the return is paginated.")] = None, page_size : Annotated[Optional[StrictInt], Field(description="Identifies how many items should be returned per page.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Get a collection of Intelligent DNS zone records  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_zone_records_with_http_info(zone_id, async_req=True)
+        >>> thread = api.get_zone_records_with_http_info(zone_id, page, page_size, async_req=True)
         >>> result = thread.get()
 
         :param zone_id: The hosted zone id (required)
         :type zone_id: int
+        :param page: Identifies which page should be returned, if the return is paginated.
+        :type page: int
+        :param page_size: Identifies how many items should be returned per page.
+        :type page_size: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -263,7 +271,9 @@ class RecordsApi:
         _params = locals()
 
         _all_params = [
-            'zone_id'
+            'zone_id',
+            'page',
+            'page_size'
         ]
         _all_params.extend(
             [
@@ -297,6 +307,12 @@ class RecordsApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('page') is not None:  # noqa: E501
+            _query_params.append(('page', _params['page']))
+
+        if _params.get('page_size') is not None:  # noqa: E501
+            _query_params.append(('page_size', _params['page_size']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
