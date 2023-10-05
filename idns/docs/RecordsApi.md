@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_zone_records**
-> GetRecordsResponse get_zone_records(zone_id)
+> GetRecordsResponse get_zone_records(zone_id, page=page, page_size=page_size)
 
 Get a collection of Intelligent DNS zone records
 
@@ -126,10 +126,12 @@ with idns.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = idns.RecordsApi(api_client)
     zone_id = 56 # int | The hosted zone id
+    page = 1 # int | Identifies which page should be returned, if the return is paginated. (optional) (default to 1)
+    page_size = 10 # int | Identifies how many items should be returned per page. (optional) (default to 10)
 
     try:
         # Get a collection of Intelligent DNS zone records
-        api_response = api_instance.get_zone_records(zone_id)
+        api_response = api_instance.get_zone_records(zone_id, page=page, page_size=page_size)
         print("The response of RecordsApi->get_zone_records:\n")
         pprint(api_response)
     except Exception as e:
@@ -143,6 +145,8 @@ with idns.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **zone_id** | **int**| The hosted zone id | 
+ **page** | **int**| Identifies which page should be returned, if the return is paginated. | [optional] [default to 1]
+ **page_size** | **int**| Identifies how many items should be returned per page. | [optional] [default to 10]
 
 ### Return type
 
