@@ -19,16 +19,17 @@ import json
 
 
 from typing import List, Optional
-from pydantic import BaseModel, StrictInt, conlist
-from waf.models.waf_events200_results_inner import WAFEvents200ResultsInner
+from pydantic import BaseModel, StrictInt, StrictStr, conlist
 
-class WAFEvents200(BaseModel):
+class WAFDomainList200(BaseModel):
     """
-    WAFEvents200
+    WAFDomainList200
     """
-    results: Optional[conlist(WAFEvents200ResultsInner)] = None
-    schema_version: Optional[StrictInt] = None
-    __properties = ["results", "schema_version"]
+    id: Optional[StrictInt] = None
+    name: Optional[StrictStr] = None
+    domain: Optional[StrictStr] = None
+    cnames: Optional[conlist(StrictStr)] = None
+    __properties = ["id", "name", "domain", "cnames"]
 
     class Config:
         """Pydantic configuration"""
@@ -44,8 +45,8 @@ class WAFEvents200(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> WAFEvents200:
-        """Create an instance of WAFEvents200 from a JSON string"""
+    def from_json(cls, json_str: str) -> WAFDomainList200:
+        """Create an instance of WAFDomainList200 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -54,27 +55,22 @@ class WAFEvents200(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in results (list)
-        _items = []
-        if self.results:
-            for _item in self.results:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['results'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> WAFEvents200:
-        """Create an instance of WAFEvents200 from a dict"""
+    def from_dict(cls, obj: dict) -> WAFDomainList200:
+        """Create an instance of WAFDomainList200 from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return WAFEvents200.parse_obj(obj)
+            return WAFDomainList200.parse_obj(obj)
 
-        _obj = WAFEvents200.parse_obj({
-            "results": [WAFEvents200ResultsInner.from_dict(_item) for _item in obj.get("results")] if obj.get("results") is not None else None,
-            "schema_version": obj.get("schema_version")
+        _obj = WAFDomainList200.parse_obj({
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "domain": obj.get("domain"),
+            "cnames": obj.get("cnames")
         })
         return _obj
 

@@ -18,16 +18,21 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
+from typing import List, Optional
 from pydantic import BaseModel, StrictInt, conlist
+from waf.models.links import Links
+from waf.models.waf_domain_list200 import WAFDomainList200
 
 class WAFDomains200(BaseModel):
     """
     WAFDomains200
     """
-    results: Optional[conlist(Dict[str, Any])] = None
+    count: Optional[StrictInt] = None
+    total_pages: Optional[StrictInt] = None
+    links: Optional[Links] = None
+    results: Optional[conlist(WAFDomainList200)] = None
     schema_version: Optional[StrictInt] = None
-    __properties = ["results", "schema_version"]
+    __properties = ["count", "total_pages", "links", "results", "schema_version"]
 
     class Config:
         """Pydantic configuration"""
@@ -53,6 +58,16 @@ class WAFDomains200(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of links
+        if self.links:
+            _dict['links'] = self.links.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in results (list)
+        _items = []
+        if self.results:
+            for _item in self.results:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['results'] = _items
         return _dict
 
     @classmethod
@@ -65,7 +80,10 @@ class WAFDomains200(BaseModel):
             return WAFDomains200.parse_obj(obj)
 
         _obj = WAFDomains200.parse_obj({
-            "results": obj.get("results"),
+            "count": obj.get("count"),
+            "total_pages": obj.get("total_pages"),
+            "links": Links.from_dict(obj.get("links")) if obj.get("links") is not None else None,
+            "results": [WAFDomainList200.from_dict(_item) for _item in obj.get("results")] if obj.get("results") is not None else None,
             "schema_version": obj.get("schema_version")
         })
         return _obj

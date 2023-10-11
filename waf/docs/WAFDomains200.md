@@ -4,7 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | **List[object]** |  | [optional] 
+**count** | **int** |  | [optional] 
+**total_pages** | **int** |  | [optional] 
+**links** | [**Links**](Links.md) |  | [optional] 
+**results** | [**List[WAFDomainList200]**](WAFDomainList200.md) |  | [optional] 
 **schema_version** | **int** |  | [optional] 
 
 ## Example
