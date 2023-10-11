@@ -31,10 +31,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_create_edge_functions_instances_request.py
-test/test_default_api.py
-test/test_edge_functions_instance.py
-test/test_edge_functions_instance_response.py
-test/test_links.py
-test/test_list_edge_functions_instances_response.py
 tox.ini
