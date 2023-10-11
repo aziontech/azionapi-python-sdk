@@ -47,15 +47,633 @@ class DefaultApi:
         self.api_client = api_client
 
     @validate_arguments
-    def edge_firewall_edge_firewall_id_functions_instances_get(self, page : Optional[StrictInt] = None, page_size : Optional[StrictInt] = None, sort : Optional[StrictStr] = None, order_by : Optional[StrictStr] = None, **kwargs) -> ListEdgeFunctionsInstancesResponse:  # noqa: E501
+    def edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_delete(self, edge_firewall_id : StrictInt, edge_function_instance_id : StrictInt, **kwargs) -> None:  # noqa: E501
+        """Delete an Edge Functions Instance by uuid  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_delete(edge_firewall_id, edge_function_instance_id, async_req=True)
+        >>> result = thread.get()
+
+        :param edge_firewall_id: (required)
+        :type edge_firewall_id: int
+        :param edge_function_instance_id: (required)
+        :type edge_function_instance_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_delete_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_delete_with_http_info(edge_firewall_id, edge_function_instance_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_delete_with_http_info(self, edge_firewall_id : StrictInt, edge_function_instance_id : StrictInt, **kwargs) -> ApiResponse:  # noqa: E501
+        """Delete an Edge Functions Instance by uuid  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_delete_with_http_info(edge_firewall_id, edge_function_instance_id, async_req=True)
+        >>> result = thread.get()
+
+        :param edge_firewall_id: (required)
+        :type edge_firewall_id: int
+        :param edge_function_instance_id: (required)
+        :type edge_function_instance_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'edge_firewall_id',
+            'edge_function_instance_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_delete" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['edge_firewall_id']:
+            _path_params['edge_firewall_id'] = _params['edge_firewall_id']
+
+        if _params['edge_function_instance_id']:
+            _path_params['edge_function_instance_id'] = _params['edge_function_instance_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # authentication setting
+        _auth_settings = ['tokenAuth']  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id}', 'DELETE',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_get(self, edge_firewall_id : StrictInt, edge_function_instance_id : StrictInt, **kwargs) -> EdgeFunctionsInstanceResponse:  # noqa: E501
+        """Retrieve an Edge Functions Instance set by uuid  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_get(edge_firewall_id, edge_function_instance_id, async_req=True)
+        >>> result = thread.get()
+
+        :param edge_firewall_id: (required)
+        :type edge_firewall_id: int
+        :param edge_function_instance_id: (required)
+        :type edge_function_instance_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: EdgeFunctionsInstanceResponse
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_get_with_http_info(edge_firewall_id, edge_function_instance_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_get_with_http_info(self, edge_firewall_id : StrictInt, edge_function_instance_id : StrictInt, **kwargs) -> ApiResponse:  # noqa: E501
+        """Retrieve an Edge Functions Instance set by uuid  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_get_with_http_info(edge_firewall_id, edge_function_instance_id, async_req=True)
+        >>> result = thread.get()
+
+        :param edge_firewall_id: (required)
+        :type edge_firewall_id: int
+        :param edge_function_instance_id: (required)
+        :type edge_function_instance_id: int
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(EdgeFunctionsInstanceResponse, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'edge_firewall_id',
+            'edge_function_instance_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_get" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['edge_firewall_id']:
+            _path_params['edge_firewall_id'] = _params['edge_firewall_id']
+
+        if _params['edge_function_instance_id']:
+            _path_params['edge_function_instance_id'] = _params['edge_function_instance_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['tokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "EdgeFunctionsInstanceResponse",
+            '400': None,
+            '404': None,
+        }
+
+        return self.api_client.call_api(
+            '/edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id}', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_patch(self, edge_firewall_id : StrictInt, edge_function_instance_id : StrictInt, body : CreateEdgeFunctionsInstancesRequest, **kwargs) -> EdgeFunctionsInstanceResponse:  # noqa: E501
+        """Update some Edge Functions Instance attributes  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_patch(edge_firewall_id, edge_function_instance_id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param edge_firewall_id: (required)
+        :type edge_firewall_id: int
+        :param edge_function_instance_id: (required)
+        :type edge_function_instance_id: int
+        :param body: (required)
+        :type body: CreateEdgeFunctionsInstancesRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: EdgeFunctionsInstanceResponse
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_patch_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_patch_with_http_info(edge_firewall_id, edge_function_instance_id, body, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_patch_with_http_info(self, edge_firewall_id : StrictInt, edge_function_instance_id : StrictInt, body : CreateEdgeFunctionsInstancesRequest, **kwargs) -> ApiResponse:  # noqa: E501
+        """Update some Edge Functions Instance attributes  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_patch_with_http_info(edge_firewall_id, edge_function_instance_id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param edge_firewall_id: (required)
+        :type edge_firewall_id: int
+        :param edge_function_instance_id: (required)
+        :type edge_function_instance_id: int
+        :param body: (required)
+        :type body: CreateEdgeFunctionsInstancesRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(EdgeFunctionsInstanceResponse, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'edge_firewall_id',
+            'edge_function_instance_id',
+            'body'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_patch" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['edge_firewall_id']:
+            _path_params['edge_firewall_id'] = _params['edge_firewall_id']
+
+        if _params['edge_function_instance_id']:
+            _path_params['edge_function_instance_id'] = _params['edge_function_instance_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['body'] is not None:
+            _body_params = _params['body']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['tokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "EdgeFunctionsInstanceResponse",
+            '400': None,
+            '404': None,
+            '500': None,
+        }
+
+        return self.api_client.call_api(
+            '/edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id}', 'PATCH',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_put(self, edge_firewall_id : StrictInt, edge_function_instance_id : StrictInt, body : CreateEdgeFunctionsInstancesRequest, **kwargs) -> EdgeFunctionsInstanceResponse:  # noqa: E501
+        """Overwrite some Edge Functions Instance attributes  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_put(edge_firewall_id, edge_function_instance_id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param edge_firewall_id: (required)
+        :type edge_firewall_id: int
+        :param edge_function_instance_id: (required)
+        :type edge_function_instance_id: int
+        :param body: (required)
+        :type body: CreateEdgeFunctionsInstancesRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: EdgeFunctionsInstanceResponse
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_put_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_put_with_http_info(edge_firewall_id, edge_function_instance_id, body, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_put_with_http_info(self, edge_firewall_id : StrictInt, edge_function_instance_id : StrictInt, body : CreateEdgeFunctionsInstancesRequest, **kwargs) -> ApiResponse:  # noqa: E501
+        """Overwrite some Edge Functions Instance attributes  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_put_with_http_info(edge_firewall_id, edge_function_instance_id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param edge_firewall_id: (required)
+        :type edge_firewall_id: int
+        :param edge_function_instance_id: (required)
+        :type edge_function_instance_id: int
+        :param body: (required)
+        :type body: CreateEdgeFunctionsInstancesRequest
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(EdgeFunctionsInstanceResponse, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'edge_firewall_id',
+            'edge_function_instance_id',
+            'body'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_put" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['edge_firewall_id']:
+            _path_params['edge_firewall_id'] = _params['edge_firewall_id']
+
+        if _params['edge_function_instance_id']:
+            _path_params['edge_function_instance_id'] = _params['edge_function_instance_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['body'] is not None:
+            _body_params = _params['body']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['tokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "EdgeFunctionsInstanceResponse",
+            '400': None,
+            '404': None,
+            '500': None,
+        }
+
+        return self.api_client.call_api(
+            '/edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id}', 'PUT',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def edge_firewall_edge_firewall_id_functions_instances_get(self, edge_firewall_id : StrictInt, page : Optional[StrictInt] = None, page_size : Optional[StrictInt] = None, sort : Optional[StrictStr] = None, order_by : Optional[StrictStr] = None, **kwargs) -> ListEdgeFunctionsInstancesResponse:  # noqa: E501
         """List all user Edge Functions Instances  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_get(page, page_size, sort, order_by, async_req=True)
+        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_get(edge_firewall_id, page, page_size, sort, order_by, async_req=True)
         >>> result = thread.get()
 
+        :param edge_firewall_id: (required)
+        :type edge_firewall_id: int
         :param page:
         :type page: int
         :param page_size:
@@ -79,18 +697,20 @@ class DefaultApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the edge_firewall_edge_firewall_id_functions_instances_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.edge_firewall_edge_firewall_id_functions_instances_get_with_http_info(page, page_size, sort, order_by, **kwargs)  # noqa: E501
+        return self.edge_firewall_edge_firewall_id_functions_instances_get_with_http_info(edge_firewall_id, page, page_size, sort, order_by, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def edge_firewall_edge_firewall_id_functions_instances_get_with_http_info(self, page : Optional[StrictInt] = None, page_size : Optional[StrictInt] = None, sort : Optional[StrictStr] = None, order_by : Optional[StrictStr] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def edge_firewall_edge_firewall_id_functions_instances_get_with_http_info(self, edge_firewall_id : StrictInt, page : Optional[StrictInt] = None, page_size : Optional[StrictInt] = None, sort : Optional[StrictStr] = None, order_by : Optional[StrictStr] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List all user Edge Functions Instances  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_get_with_http_info(page, page_size, sort, order_by, async_req=True)
+        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_get_with_http_info(edge_firewall_id, page, page_size, sort, order_by, async_req=True)
         >>> result = thread.get()
 
+        :param edge_firewall_id: (required)
+        :type edge_firewall_id: int
         :param page:
         :type page: int
         :param page_size:
@@ -127,6 +747,7 @@ class DefaultApi:
         _params = locals()
 
         _all_params = [
+            'edge_firewall_id',
             'page',
             'page_size',
             'sort',
@@ -158,6 +779,9 @@ class DefaultApi:
 
         # process the path parameters
         _path_params = {}
+        if _params['edge_firewall_id']:
+            _path_params['edge_firewall_id'] = _params['edge_firewall_id']
+
 
         # process the query parameters
         _query_params = []
@@ -194,7 +818,7 @@ class DefaultApi:
         }
 
         return self.api_client.call_api(
-            '/edge_firewall/:edge_firewall_id:/functions_instances', 'GET',
+            '/edge_firewall/{edge_firewall_id}/functions_instances', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -211,15 +835,17 @@ class DefaultApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def edge_firewall_edge_firewall_id_functions_instances_post(self, create_edge_functions_instances_request : CreateEdgeFunctionsInstancesRequest, **kwargs) -> EdgeFunctionsInstanceResponse:  # noqa: E501
+    def edge_firewall_edge_firewall_id_functions_instances_post(self, edge_firewall_id : StrictInt, create_edge_functions_instances_request : CreateEdgeFunctionsInstancesRequest, **kwargs) -> EdgeFunctionsInstanceResponse:  # noqa: E501
         """Create an Edge Functions Instance  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_post(create_edge_functions_instances_request, async_req=True)
+        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_post(edge_firewall_id, create_edge_functions_instances_request, async_req=True)
         >>> result = thread.get()
 
+        :param edge_firewall_id: (required)
+        :type edge_firewall_id: int
         :param create_edge_functions_instances_request: (required)
         :type create_edge_functions_instances_request: CreateEdgeFunctionsInstancesRequest
         :param async_req: Whether to execute the request asynchronously.
@@ -237,18 +863,20 @@ class DefaultApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the edge_firewall_edge_firewall_id_functions_instances_post_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.edge_firewall_edge_firewall_id_functions_instances_post_with_http_info(create_edge_functions_instances_request, **kwargs)  # noqa: E501
+        return self.edge_firewall_edge_firewall_id_functions_instances_post_with_http_info(edge_firewall_id, create_edge_functions_instances_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def edge_firewall_edge_firewall_id_functions_instances_post_with_http_info(self, create_edge_functions_instances_request : CreateEdgeFunctionsInstancesRequest, **kwargs) -> ApiResponse:  # noqa: E501
+    def edge_firewall_edge_firewall_id_functions_instances_post_with_http_info(self, edge_firewall_id : StrictInt, create_edge_functions_instances_request : CreateEdgeFunctionsInstancesRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Create an Edge Functions Instance  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_post_with_http_info(create_edge_functions_instances_request, async_req=True)
+        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_post_with_http_info(edge_firewall_id, create_edge_functions_instances_request, async_req=True)
         >>> result = thread.get()
 
+        :param edge_firewall_id: (required)
+        :type edge_firewall_id: int
         :param create_edge_functions_instances_request: (required)
         :type create_edge_functions_instances_request: CreateEdgeFunctionsInstancesRequest
         :param async_req: Whether to execute the request asynchronously.
@@ -279,6 +907,7 @@ class DefaultApi:
         _params = locals()
 
         _all_params = [
+            'edge_firewall_id',
             'create_edge_functions_instances_request'
         ]
         _all_params.extend(
@@ -307,6 +936,9 @@ class DefaultApi:
 
         # process the path parameters
         _path_params = {}
+        if _params['edge_firewall_id']:
+            _path_params['edge_firewall_id'] = _params['edge_firewall_id']
+
 
         # process the query parameters
         _query_params = []
@@ -342,591 +974,7 @@ class DefaultApi:
         }
 
         return self.api_client.call_api(
-            '/edge_firewall/:edge_firewall_id:/functions_instances', 'POST',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
-
-    @validate_arguments
-    def edge_firewall_edge_firewall_id_functions_instances_uuid_delete(self, uuid : StrictStr, **kwargs) -> None:  # noqa: E501
-        """Delete an Edge Functions Instance by uuid  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_uuid_delete(uuid, async_req=True)
-        >>> result = thread.get()
-
-        :param uuid: (required)
-        :type uuid: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: None
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the edge_firewall_edge_firewall_id_functions_instances_uuid_delete_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.edge_firewall_edge_firewall_id_functions_instances_uuid_delete_with_http_info(uuid, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def edge_firewall_edge_firewall_id_functions_instances_uuid_delete_with_http_info(self, uuid : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
-        """Delete an Edge Functions Instance by uuid  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_uuid_delete_with_http_info(uuid, async_req=True)
-        >>> result = thread.get()
-
-        :param uuid: (required)
-        :type uuid: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: None
-        """
-
-        _params = locals()
-
-        _all_params = [
-            'uuid'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
-
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method edge_firewall_edge_firewall_id_functions_instances_uuid_delete" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-        if _params['uuid']:
-            _path_params['uuid'] = _params['uuid']
-
-
-        # process the query parameters
-        _query_params = []
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        # authentication setting
-        _auth_settings = ['tokenAuth']  # noqa: E501
-
-        _response_types_map = {}
-
-        return self.api_client.call_api(
-            '/edge_firewall/:edge_firewall_id:/functions_instances/{uuid}', 'DELETE',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
-
-    @validate_arguments
-    def edge_firewall_edge_firewall_id_functions_instances_uuid_get(self, uuid : StrictStr, **kwargs) -> EdgeFunctionsInstanceResponse:  # noqa: E501
-        """Retrieve an Edge Functions Instance set by uuid  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_uuid_get(uuid, async_req=True)
-        >>> result = thread.get()
-
-        :param uuid: (required)
-        :type uuid: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: EdgeFunctionsInstanceResponse
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the edge_firewall_edge_firewall_id_functions_instances_uuid_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.edge_firewall_edge_firewall_id_functions_instances_uuid_get_with_http_info(uuid, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def edge_firewall_edge_firewall_id_functions_instances_uuid_get_with_http_info(self, uuid : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
-        """Retrieve an Edge Functions Instance set by uuid  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_uuid_get_with_http_info(uuid, async_req=True)
-        >>> result = thread.get()
-
-        :param uuid: (required)
-        :type uuid: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(EdgeFunctionsInstanceResponse, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        _params = locals()
-
-        _all_params = [
-            'uuid'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
-
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method edge_firewall_edge_firewall_id_functions_instances_uuid_get" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-        if _params['uuid']:
-            _path_params['uuid'] = _params['uuid']
-
-
-        # process the query parameters
-        _query_params = []
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # authentication setting
-        _auth_settings = ['tokenAuth']  # noqa: E501
-
-        _response_types_map = {
-            '200': "EdgeFunctionsInstanceResponse",
-            '400': None,
-            '404': None,
-        }
-
-        return self.api_client.call_api(
-            '/edge_firewall/:edge_firewall_id:/functions_instances/{uuid}', 'GET',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
-
-    @validate_arguments
-    def edge_firewall_edge_firewall_id_functions_instances_uuid_patch(self, uuid : StrictStr, body : CreateEdgeFunctionsInstancesRequest, **kwargs) -> EdgeFunctionsInstanceResponse:  # noqa: E501
-        """Update some Edge Functions Instance attributes  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_uuid_patch(uuid, body, async_req=True)
-        >>> result = thread.get()
-
-        :param uuid: (required)
-        :type uuid: str
-        :param body: (required)
-        :type body: CreateEdgeFunctionsInstancesRequest
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: EdgeFunctionsInstanceResponse
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the edge_firewall_edge_firewall_id_functions_instances_uuid_patch_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.edge_firewall_edge_firewall_id_functions_instances_uuid_patch_with_http_info(uuid, body, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def edge_firewall_edge_firewall_id_functions_instances_uuid_patch_with_http_info(self, uuid : StrictStr, body : CreateEdgeFunctionsInstancesRequest, **kwargs) -> ApiResponse:  # noqa: E501
-        """Update some Edge Functions Instance attributes  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_uuid_patch_with_http_info(uuid, body, async_req=True)
-        >>> result = thread.get()
-
-        :param uuid: (required)
-        :type uuid: str
-        :param body: (required)
-        :type body: CreateEdgeFunctionsInstancesRequest
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(EdgeFunctionsInstanceResponse, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        _params = locals()
-
-        _all_params = [
-            'uuid',
-            'body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
-
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method edge_firewall_edge_firewall_id_functions_instances_uuid_patch" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-        if _params['uuid']:
-            _path_params['uuid'] = _params['uuid']
-
-
-        # process the query parameters
-        _query_params = []
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
-
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
-        if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
-
-        # authentication setting
-        _auth_settings = ['tokenAuth']  # noqa: E501
-
-        _response_types_map = {
-            '200': "EdgeFunctionsInstanceResponse",
-            '400': None,
-            '404': None,
-            '500': None,
-        }
-
-        return self.api_client.call_api(
-            '/edge_firewall/:edge_firewall_id:/functions_instances/{uuid}', 'PATCH',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
-
-    @validate_arguments
-    def edge_firewall_edge_firewall_id_functions_instances_uuid_put(self, uuid : StrictStr, body : CreateEdgeFunctionsInstancesRequest, **kwargs) -> EdgeFunctionsInstanceResponse:  # noqa: E501
-        """Overwrite some Edge Functions Instance attributes  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_uuid_put(uuid, body, async_req=True)
-        >>> result = thread.get()
-
-        :param uuid: (required)
-        :type uuid: str
-        :param body: (required)
-        :type body: CreateEdgeFunctionsInstancesRequest
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: EdgeFunctionsInstanceResponse
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the edge_firewall_edge_firewall_id_functions_instances_uuid_put_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.edge_firewall_edge_firewall_id_functions_instances_uuid_put_with_http_info(uuid, body, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def edge_firewall_edge_firewall_id_functions_instances_uuid_put_with_http_info(self, uuid : StrictStr, body : CreateEdgeFunctionsInstancesRequest, **kwargs) -> ApiResponse:  # noqa: E501
-        """Overwrite some Edge Functions Instance attributes  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.edge_firewall_edge_firewall_id_functions_instances_uuid_put_with_http_info(uuid, body, async_req=True)
-        >>> result = thread.get()
-
-        :param uuid: (required)
-        :type uuid: str
-        :param body: (required)
-        :type body: CreateEdgeFunctionsInstancesRequest
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(EdgeFunctionsInstanceResponse, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        _params = locals()
-
-        _all_params = [
-            'uuid',
-            'body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
-
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method edge_firewall_edge_firewall_id_functions_instances_uuid_put" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-        if _params['uuid']:
-            _path_params['uuid'] = _params['uuid']
-
-
-        # process the query parameters
-        _query_params = []
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
-
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
-        if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
-
-        # authentication setting
-        _auth_settings = ['tokenAuth']  # noqa: E501
-
-        _response_types_map = {
-            '200': "EdgeFunctionsInstanceResponse",
-            '400': None,
-            '404': None,
-            '500': None,
-        }
-
-        return self.api_client.call_api(
-            '/edge_firewall/:edge_firewall_id:/functions_instances/{uuid}', 'PUT',
+            '/edge_firewall/{edge_firewall_id}/functions_instances', 'POST',
             _path_params,
             _query_params,
             _header_params,

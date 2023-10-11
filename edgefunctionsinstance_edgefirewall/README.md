@@ -77,18 +77,14 @@ configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
 with edgefunctionsinstance_edgefirewall.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgefunctionsinstance_edgefirewall.DefaultApi(api_client)
-    page = 56 # int |  (optional)
-    page_size = 56 # int |  (optional)
-    sort = 'sort_example' # str |  (optional)
-    order_by = 'order_by_example' # str |  (optional)
+    edge_firewall_id = 56 # int | 
+    edge_function_instance_id = 56 # int | 
 
     try:
-        # List all user Edge Functions Instances
-        api_response = api_instance.edge_firewall_edge_firewall_id_functions_instances_get(page=page, page_size=page_size, sort=sort, order_by=order_by)
-        print("The response of DefaultApi->edge_firewall_edge_firewall_id_functions_instances_get:\n")
-        pprint(api_response)
+        # Delete an Edge Functions Instance by uuid
+        api_instance.edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_delete(edge_firewall_id, edge_function_instance_id)
     except ApiException as e:
-        print("Exception when calling DefaultApi->edge_firewall_edge_firewall_id_functions_instances_get: %s\n" % e)
+        print("Exception when calling DefaultApi->edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_delete: %s\n" % e)
 
 ```
 
@@ -98,12 +94,12 @@ All URIs are relative to *https://api.azionapi.net*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**edge_firewall_edge_firewall_id_functions_instances_get**](docs/DefaultApi.md#edge_firewall_edge_firewall_id_functions_instances_get) | **GET** /edge_firewall/:edge_firewall_id:/functions_instances | List all user Edge Functions Instances
-*DefaultApi* | [**edge_firewall_edge_firewall_id_functions_instances_post**](docs/DefaultApi.md#edge_firewall_edge_firewall_id_functions_instances_post) | **POST** /edge_firewall/:edge_firewall_id:/functions_instances | Create an Edge Functions Instance
-*DefaultApi* | [**edge_firewall_edge_firewall_id_functions_instances_uuid_delete**](docs/DefaultApi.md#edge_firewall_edge_firewall_id_functions_instances_uuid_delete) | **DELETE** /edge_firewall/:edge_firewall_id:/functions_instances/{uuid} | Delete an Edge Functions Instance by uuid
-*DefaultApi* | [**edge_firewall_edge_firewall_id_functions_instances_uuid_get**](docs/DefaultApi.md#edge_firewall_edge_firewall_id_functions_instances_uuid_get) | **GET** /edge_firewall/:edge_firewall_id:/functions_instances/{uuid} | Retrieve an Edge Functions Instance set by uuid
-*DefaultApi* | [**edge_firewall_edge_firewall_id_functions_instances_uuid_patch**](docs/DefaultApi.md#edge_firewall_edge_firewall_id_functions_instances_uuid_patch) | **PATCH** /edge_firewall/:edge_firewall_id:/functions_instances/{uuid} | Update some Edge Functions Instance attributes
-*DefaultApi* | [**edge_firewall_edge_firewall_id_functions_instances_uuid_put**](docs/DefaultApi.md#edge_firewall_edge_firewall_id_functions_instances_uuid_put) | **PUT** /edge_firewall/:edge_firewall_id:/functions_instances/{uuid} | Overwrite some Edge Functions Instance attributes
+*DefaultApi* | [**edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_delete**](docs/DefaultApi.md#edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_delete) | **DELETE** /edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id} | Delete an Edge Functions Instance by uuid
+*DefaultApi* | [**edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_get**](docs/DefaultApi.md#edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_get) | **GET** /edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id} | Retrieve an Edge Functions Instance set by uuid
+*DefaultApi* | [**edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_patch**](docs/DefaultApi.md#edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_patch) | **PATCH** /edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id} | Update some Edge Functions Instance attributes
+*DefaultApi* | [**edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_put**](docs/DefaultApi.md#edge_firewall_edge_firewall_id_functions_instances_edge_function_instance_id_put) | **PUT** /edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id} | Overwrite some Edge Functions Instance attributes
+*DefaultApi* | [**edge_firewall_edge_firewall_id_functions_instances_get**](docs/DefaultApi.md#edge_firewall_edge_firewall_id_functions_instances_get) | **GET** /edge_firewall/{edge_firewall_id}/functions_instances | List all user Edge Functions Instances
+*DefaultApi* | [**edge_firewall_edge_firewall_id_functions_instances_post**](docs/DefaultApi.md#edge_firewall_edge_firewall_id_functions_instances_post) | **POST** /edge_firewall/{edge_firewall_id}/functions_instances | Create an Edge Functions Instance
 
 
 ## Documentation For Models
