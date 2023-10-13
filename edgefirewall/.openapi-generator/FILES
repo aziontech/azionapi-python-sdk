@@ -4,12 +4,14 @@
 .travis.yml
 README.md
 docs/Behaviors.md
+docs/BehaviorsArgument.md
 docs/Conditionals.md
 docs/CreateEdgeFirewallRequest.md
 docs/CreateRuleSetRequest.md
 docs/DefaultApi.md
 docs/EdgeFirewall.md
 docs/EdgeFirewallResponse.md
+docs/GenericBehaviorDetails.md
 docs/Links.md
 docs/ListEdgeFirewallResponse.md
 docs/RuleSetResponse.md
@@ -20,6 +22,8 @@ docs/RuleSetResultResults.md
 docs/SSLVerificationStatusArguments.md
 docs/SSLVerificationStatusCriteria.md
 docs/SSLVerificationStatusOperators.md
+docs/SetRateLimitDetails.md
+docs/SetWAFRuleSetDetails.md
 docs/UpdateEdgeFirewallRequest.md
 docs/Variables.md
 edgefirewall/__init__.py
@@ -31,11 +35,13 @@ edgefirewall/configuration.py
 edgefirewall/exceptions.py
 edgefirewall/models/__init__.py
 edgefirewall/models/behaviors.py
+edgefirewall/models/behaviors_argument.py
 edgefirewall/models/conditionals.py
 edgefirewall/models/create_edge_firewall_request.py
 edgefirewall/models/create_rule_set_request.py
 edgefirewall/models/edge_firewall.py
 edgefirewall/models/edge_firewall_response.py
+edgefirewall/models/generic_behavior_details.py
 edgefirewall/models/links.py
 edgefirewall/models/list_edge_firewall_response.py
 edgefirewall/models/rule_set_response.py
@@ -43,6 +49,8 @@ edgefirewall/models/rule_set_response_all.py
 edgefirewall/models/rule_set_result.py
 edgefirewall/models/rule_set_result_all.py
 edgefirewall/models/rule_set_result_results.py
+edgefirewall/models/set_rate_limit_details.py
+edgefirewall/models/set_waf_rule_set_details.py
 edgefirewall/models/ssl_verification_status_arguments.py
 edgefirewall/models/ssl_verification_status_criteria.py
 edgefirewall/models/ssl_verification_status_operators.py
@@ -57,4 +65,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_behaviors_argument.py
+test/test_generic_behavior_details.py
+test/test_set_rate_limit_details.py
+test/test_set_waf_rule_set_details.py
 tox.ini

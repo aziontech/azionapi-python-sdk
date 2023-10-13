@@ -52,17 +52,25 @@ class DefaultApi:
         self.api_client = api_client
 
     @validate_arguments
-    def edge_firewall_edge_firewall_id_rules_engine_get(self, edge_firewall_id : conint(strict=True, ge=1), **kwargs) -> RuleSetResponseAll:  # noqa: E501
+    def edge_firewall_edge_firewall_id_rules_engine_get(self, edge_firewall_id : conint(strict=True, ge=1), page : Optional[StrictInt] = None, page_size : Optional[StrictInt] = None, sort : Optional[StrictStr] = None, order_by : Optional[StrictStr] = None, **kwargs) -> RuleSetResponseAll:  # noqa: E501
         """List all rule sets.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.edge_firewall_edge_firewall_id_rules_engine_get(edge_firewall_id, async_req=True)
+        >>> thread = api.edge_firewall_edge_firewall_id_rules_engine_get(edge_firewall_id, page, page_size, sort, order_by, async_req=True)
         >>> result = thread.get()
 
         :param edge_firewall_id: (required)
         :type edge_firewall_id: int
+        :param page:
+        :type page: int
+        :param page_size:
+        :type page_size: int
+        :param sort:
+        :type sort: str
+        :param order_by:
+        :type order_by: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -78,20 +86,28 @@ class DefaultApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the edge_firewall_edge_firewall_id_rules_engine_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.edge_firewall_edge_firewall_id_rules_engine_get_with_http_info(edge_firewall_id, **kwargs)  # noqa: E501
+        return self.edge_firewall_edge_firewall_id_rules_engine_get_with_http_info(edge_firewall_id, page, page_size, sort, order_by, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def edge_firewall_edge_firewall_id_rules_engine_get_with_http_info(self, edge_firewall_id : conint(strict=True, ge=1), **kwargs) -> ApiResponse:  # noqa: E501
+    def edge_firewall_edge_firewall_id_rules_engine_get_with_http_info(self, edge_firewall_id : conint(strict=True, ge=1), page : Optional[StrictInt] = None, page_size : Optional[StrictInt] = None, sort : Optional[StrictStr] = None, order_by : Optional[StrictStr] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List all rule sets.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.edge_firewall_edge_firewall_id_rules_engine_get_with_http_info(edge_firewall_id, async_req=True)
+        >>> thread = api.edge_firewall_edge_firewall_id_rules_engine_get_with_http_info(edge_firewall_id, page, page_size, sort, order_by, async_req=True)
         >>> result = thread.get()
 
         :param edge_firewall_id: (required)
         :type edge_firewall_id: int
+        :param page:
+        :type page: int
+        :param page_size:
+        :type page_size: int
+        :param sort:
+        :type sort: str
+        :param order_by:
+        :type order_by: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -120,7 +136,11 @@ class DefaultApi:
         _params = locals()
 
         _all_params = [
-            'edge_firewall_id'
+            'edge_firewall_id',
+            'page',
+            'page_size',
+            'sort',
+            'order_by'
         ]
         _all_params.extend(
             [
@@ -154,6 +174,18 @@ class DefaultApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('page') is not None:  # noqa: E501
+            _query_params.append(('page', _params['page']))
+
+        if _params.get('page_size') is not None:  # noqa: E501
+            _query_params.append(('page_size', _params['page_size']))
+
+        if _params.get('sort') is not None:  # noqa: E501
+            _query_params.append(('sort', _params['sort']))
+
+        if _params.get('order_by') is not None:  # noqa: E501
+            _query_params.append(('order_by', _params['order_by']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
