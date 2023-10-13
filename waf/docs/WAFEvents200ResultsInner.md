@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country_count** | **int** |  | [optional] 
-**top_10_countries** | **List[str]** |  | [optional] 
-**top_10_ips** | **List[str]** |  | [optional] 
+**top_10_countries** | [**List[WAFEvents200ResultsInnerTop10CountriesInner]**](WAFEvents200ResultsInnerTop10CountriesInner.md) |  | [optional] 
+**top_10_ips** | [**List[WAFEvents200ResultsInnerTop10CountriesInner]**](WAFEvents200ResultsInnerTop10CountriesInner.md) |  | [optional] 
 **hit_count** | **int** |  | [optional] 
 **rule_id** | **int** |  | [optional] 
 **ip_count** | **int** |  | [optional] 

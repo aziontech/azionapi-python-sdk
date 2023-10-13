@@ -20,14 +20,15 @@ import json
 
 from typing import List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr, conlist, validator
+from waf.models.waf_events200_results_inner_top10_countries_inner import WAFEvents200ResultsInnerTop10CountriesInner
 
 class WAFEvents200ResultsInner(BaseModel):
     """
     WAFEvents200ResultsInner
     """
     country_count: Optional[StrictInt] = None
-    top_10_countries: Optional[conlist(StrictStr)] = None
-    top_10_ips: Optional[conlist(StrictStr)] = None
+    top_10_countries: Optional[conlist(WAFEvents200ResultsInnerTop10CountriesInner)] = None
+    top_10_ips: Optional[conlist(WAFEvents200ResultsInnerTop10CountriesInner)] = None
     hit_count: Optional[StrictInt] = None
     rule_id: Optional[StrictInt] = None
     ip_count: Optional[StrictInt] = None
@@ -81,6 +82,20 @@ class WAFEvents200ResultsInner(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of each item in top_10_countries (list)
+        _items = []
+        if self.top_10_countries:
+            for _item in self.top_10_countries:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['top_10_countries'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in top_10_ips (list)
+        _items = []
+        if self.top_10_ips:
+            for _item in self.top_10_ips:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['top_10_ips'] = _items
         return _dict
 
     @classmethod
@@ -94,8 +109,8 @@ class WAFEvents200ResultsInner(BaseModel):
 
         _obj = WAFEvents200ResultsInner.parse_obj({
             "country_count": obj.get("country_count"),
-            "top_10_countries": obj.get("top_10_countries"),
-            "top_10_ips": obj.get("top_10_ips"),
+            "top_10_countries": [WAFEvents200ResultsInnerTop10CountriesInner.from_dict(_item) for _item in obj.get("top_10_countries")] if obj.get("top_10_countries") is not None else None,
+            "top_10_ips": [WAFEvents200ResultsInnerTop10CountriesInner.from_dict(_item) for _item in obj.get("top_10_ips")] if obj.get("top_10_ips") is not None else None,
             "hit_count": obj.get("hit_count"),
             "rule_id": obj.get("rule_id"),
             "ip_count": obj.get("ip_count"),
