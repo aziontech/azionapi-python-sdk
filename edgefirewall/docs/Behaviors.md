@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
-**target** | **str** |  | [optional] 
+**argument** | [**BehaviorsArgument**](BehaviorsArgument.md) |  | [optional] 
 
 ## Example
 

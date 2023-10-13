@@ -32,11 +32,13 @@ from edgefirewall.exceptions import ApiException
 
 # import models into sdk package
 from edgefirewall.models.behaviors import Behaviors
+from edgefirewall.models.behaviors_argument import BehaviorsArgument
 from edgefirewall.models.conditionals import Conditionals
 from edgefirewall.models.create_edge_firewall_request import CreateEdgeFirewallRequest
 from edgefirewall.models.create_rule_set_request import CreateRuleSetRequest
 from edgefirewall.models.edge_firewall import EdgeFirewall
 from edgefirewall.models.edge_firewall_response import EdgeFirewallResponse
+from edgefirewall.models.generic_behavior_details import GenericBehaviorDetails
 from edgefirewall.models.links import Links
 from edgefirewall.models.list_edge_firewall_response import ListEdgeFirewallResponse
 from edgefirewall.models.rule_set_response import RuleSetResponse
@@ -47,5 +49,7 @@ from edgefirewall.models.rule_set_result_results import RuleSetResultResults
 from edgefirewall.models.ssl_verification_status_arguments import SSLVerificationStatusArguments
 from edgefirewall.models.ssl_verification_status_criteria import SSLVerificationStatusCriteria
 from edgefirewall.models.ssl_verification_status_operators import SSLVerificationStatusOperators
+from edgefirewall.models.set_rate_limit_details import SetRateLimitDetails
+from edgefirewall.models.set_waf_rule_set_details import SetWAFRuleSetDetails
 from edgefirewall.models.update_edge_firewall_request import UpdateEdgeFirewallRequest
 from edgefirewall.models.variables import Variables

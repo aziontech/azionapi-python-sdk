@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **edge_firewall_edge_firewall_id_rules_engine_get**
-> RuleSetResponseAll edge_firewall_edge_firewall_id_rules_engine_get(edge_firewall_id)
+> RuleSetResponseAll edge_firewall_edge_firewall_id_rules_engine_get(edge_firewall_id, page=page, page_size=page_size, sort=sort, order_by=order_by)
 
 List all rule sets.
 
@@ -56,10 +56,14 @@ with edgefirewall.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgefirewall.DefaultApi(api_client)
     edge_firewall_id = 56 # int | 
+    page = 56 # int |  (optional)
+    page_size = 56 # int |  (optional)
+    sort = 'sort_example' # str |  (optional)
+    order_by = 'order_by_example' # str |  (optional)
 
     try:
         # List all rule sets.
-        api_response = api_instance.edge_firewall_edge_firewall_id_rules_engine_get(edge_firewall_id)
+        api_response = api_instance.edge_firewall_edge_firewall_id_rules_engine_get(edge_firewall_id, page=page, page_size=page_size, sort=sort, order_by=order_by)
         print("The response of DefaultApi->edge_firewall_edge_firewall_id_rules_engine_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -73,6 +77,10 @@ with edgefirewall.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_firewall_id** | **int**|  | 
+ **page** | **int**|  | [optional] 
+ **page_size** | **int**|  | [optional] 
+ **sort** | **str**|  | [optional] 
+ **order_by** | **str**|  | [optional] 
 
 ### Return type
 

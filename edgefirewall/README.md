@@ -78,10 +78,14 @@ with edgefirewall.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = edgefirewall.DefaultApi(api_client)
     edge_firewall_id = 56 # int | 
+    page = 56 # int |  (optional)
+    page_size = 56 # int |  (optional)
+    sort = 'sort_example' # str |  (optional)
+    order_by = 'order_by_example' # str |  (optional)
 
     try:
         # List all rule sets.
-        api_response = api_instance.edge_firewall_edge_firewall_id_rules_engine_get(edge_firewall_id)
+        api_response = api_instance.edge_firewall_edge_firewall_id_rules_engine_get(edge_firewall_id, page=page, page_size=page_size, sort=sort, order_by=order_by)
         print("The response of DefaultApi->edge_firewall_edge_firewall_id_rules_engine_get:\n")
         pprint(api_response)
     except ApiException as e:
@@ -112,11 +116,13 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Behaviors](docs/Behaviors.md)
+ - [BehaviorsArgument](docs/BehaviorsArgument.md)
  - [Conditionals](docs/Conditionals.md)
  - [CreateEdgeFirewallRequest](docs/CreateEdgeFirewallRequest.md)
  - [CreateRuleSetRequest](docs/CreateRuleSetRequest.md)
  - [EdgeFirewall](docs/EdgeFirewall.md)
  - [EdgeFirewallResponse](docs/EdgeFirewallResponse.md)
+ - [GenericBehaviorDetails](docs/GenericBehaviorDetails.md)
  - [Links](docs/Links.md)
  - [ListEdgeFirewallResponse](docs/ListEdgeFirewallResponse.md)
  - [RuleSetResponse](docs/RuleSetResponse.md)
@@ -127,6 +133,8 @@ Class | Method | HTTP request | Description
  - [SSLVerificationStatusArguments](docs/SSLVerificationStatusArguments.md)
  - [SSLVerificationStatusCriteria](docs/SSLVerificationStatusCriteria.md)
  - [SSLVerificationStatusOperators](docs/SSLVerificationStatusOperators.md)
+ - [SetRateLimitDetails](docs/SetRateLimitDetails.md)
+ - [SetWAFRuleSetDetails](docs/SetWAFRuleSetDetails.md)
  - [UpdateEdgeFirewallRequest](docs/UpdateEdgeFirewallRequest.md)
  - [Variables](docs/Variables.md)
 

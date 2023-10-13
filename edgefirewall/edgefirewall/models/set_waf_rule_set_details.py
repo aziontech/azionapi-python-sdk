@@ -19,25 +19,24 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, StrictStr, validator
-from edgefirewall.models.behaviors_argument import BehaviorsArgument
+from pydantic import BaseModel, StrictStr, conint, validator
 
-class Behaviors(BaseModel):
+class SetWAFRuleSetDetails(BaseModel):
     """
-    Behaviors
+    SetWAFRuleSetDetails
     """
-    name: Optional[StrictStr] = None
-    argument: Optional[BehaviorsArgument] = None
-    __properties = ["name", "argument"]
+    waf_id: Optional[conint(strict=True, ge=1)] = None
+    mode: Optional[StrictStr] = None
+    __properties = ["waf_id", "mode"]
 
-    @validator('name')
-    def name_validate_enum(cls, value):
+    @validator('mode')
+    def mode_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in ('deny', 'drop', 'set_rate_limit', 'set_waf_ruleset', 'run_function', 'tag_event'):
-            raise ValueError("must be one of enum values ('deny', 'drop', 'set_rate_limit', 'set_waf_ruleset', 'run_function', 'tag_event')")
+        if value not in ('Learning', 'Blocking'):
+            raise ValueError("must be one of enum values ('Learning', 'Blocking')")
         return value
 
     class Config:
@@ -54,8 +53,8 @@ class Behaviors(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Behaviors:
-        """Create an instance of Behaviors from a JSON string"""
+    def from_json(cls, json_str: str) -> SetWAFRuleSetDetails:
+        """Create an instance of SetWAFRuleSetDetails from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -64,23 +63,20 @@ class Behaviors(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of argument
-        if self.argument:
-            _dict['argument'] = self.argument.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Behaviors:
-        """Create an instance of Behaviors from a dict"""
+    def from_dict(cls, obj: dict) -> SetWAFRuleSetDetails:
+        """Create an instance of SetWAFRuleSetDetails from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return Behaviors.parse_obj(obj)
+            return SetWAFRuleSetDetails.parse_obj(obj)
 
-        _obj = Behaviors.parse_obj({
-            "name": obj.get("name"),
-            "argument": BehaviorsArgument.from_dict(obj.get("argument")) if obj.get("argument") is not None else None
+        _obj = SetWAFRuleSetDetails.parse_obj({
+            "waf_id": obj.get("waf_id"),
+            "mode": obj.get("mode")
         })
         return _obj
 
