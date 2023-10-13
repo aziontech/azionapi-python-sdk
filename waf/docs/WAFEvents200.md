@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**results** | **List[object]** |  | [optional] 
+**results** | [**List[WAFEvents200ResultsInner]**](WAFEvents200ResultsInner.md) |  | [optional] 
 **schema_version** | **int** |  | [optional] 
 
 ## Example

@@ -7,8 +7,10 @@ docs/CreateNewWAFRulesetRequest.md
 docs/Links.md
 docs/SingleWAF.md
 docs/WAFApi.md
+docs/WAFDomainList200.md
 docs/WAFDomains200.md
 docs/WAFEvents200.md
+docs/WAFEvents200ResultsInner.md
 docs/WAFEvents400.md
 docs/WAFEvents401.md
 docs/WAFEvents404.md
@@ -22,7 +24,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_links.py
+test/test_waf_domain_list200.py
+test/test_waf_events200_results_inner.py
 tox.ini
 waf/__init__.py
 waf/api/__init__.py
@@ -35,8 +38,10 @@ waf/models/__init__.py
 waf/models/create_new_waf_ruleset_request.py
 waf/models/links.py
 waf/models/single_waf.py
+waf/models/waf_domain_list200.py
 waf/models/waf_domains200.py
 waf/models/waf_events200.py
+waf/models/waf_events200_results_inner.py
 waf/models/waf_events400.py
 waf/models/waf_events401.py
 waf/models/waf_events404.py

@@ -6,8 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_new_waf_ruleset**](WAFApi.md#create_new_waf_ruleset) | **POST** /waf/rulesets | Create a new WAF Rule Set in an account.
 [**delete_waf_ruleset**](WAFApi.md#delete_waf_ruleset) | **DELETE** /waf/rulesets/{waf_rule_set_id} | Remove an WAF Rule Set from an account. Warning: this action cannot be undone.
-[**get_waf_domains**](WAFApi.md#get_waf_domains) | **GET** /waf/{wafId}/domains | List all domains attached to a Web Application Firewall (WAF) in an account.
-[**get_waf_events**](WAFApi.md#get_waf_events) | **GET** /waf/{wafId}/waf_events | Find WAF log events
+[**get_waf_domains**](WAFApi.md#get_waf_domains) | **GET** /waf/{waf_id}/domains | List all domains attached to a Web Application Firewall (WAF) in an account.
+[**get_waf_events**](WAFApi.md#get_waf_events) | **GET** /waf/{waf_id}/waf_events | Find WAF log events
 [**get_waf_ruleset**](WAFApi.md#get_waf_ruleset) | **GET** /waf/rulesets/{waf_rule_set_id} | List a specific Rule Set associated to a Web Application Firewall (WAF) in an account.
 [**list_all_waf**](WAFApi.md#list_all_waf) | **GET** /waf | List all Web Application Firewalls (WAFs) created in an account
 [**list_all_waf_rulesets**](WAFApi.md#list_all_waf_rulesets) | **GET** /waf/rulesets | list all Rule Sets associated to a Web Application Firewall (WAF) in an account.
@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_waf_events**
-> WAFEvents200 get_waf_events(waf_id, hour_range, domains_ids, network_list_id=network_list_id)
+> WAFEvents200 get_waf_events(waf_id, hour_range, domains_ids, network_list_id=network_list_id, sort=sort, page=page, page_size=page_size)
 
 Find WAF log events
 
@@ -298,10 +298,13 @@ with waf.ApiClient(configuration) as api_client:
     hour_range = 56 # int | Last log hours since now (it must be a integer number ranging between 1 and 72)
     domains_ids = 'domains_ids_example' # str | Multiple domain's id (they must be separated by comma like 1233,1234)
     network_list_id = 56 # int | Id of a network list (optional)
+    sort = 'asc' # str |  (optional) (default to 'asc')
+    page = 1 # int |  (optional) (default to 1)
+    page_size = 10 # int |  (optional) (default to 10)
 
     try:
         # Find WAF log events
-        api_response = api_instance.get_waf_events(waf_id, hour_range, domains_ids, network_list_id=network_list_id)
+        api_response = api_instance.get_waf_events(waf_id, hour_range, domains_ids, network_list_id=network_list_id, sort=sort, page=page, page_size=page_size)
         print("The response of WAFApi->get_waf_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -318,6 +321,9 @@ Name | Type | Description  | Notes
  **hour_range** | **int**| Last log hours since now (it must be a integer number ranging between 1 and 72) | 
  **domains_ids** | **str**| Multiple domain&#39;s id (they must be separated by comma like 1233,1234) | 
  **network_list_id** | **int**| Id of a network list | [optional] 
+ **sort** | **str**|  | [optional] [default to &#39;asc&#39;]
+ **page** | **int**|  | [optional] [default to 1]
+ **page_size** | **int**|  | [optional] [default to 10]
 
 ### Return type
 
