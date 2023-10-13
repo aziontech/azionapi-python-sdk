@@ -38,6 +38,7 @@ from waf.models.waf_domain_list200 import WAFDomainList200
 from waf.models.waf_domains200 import WAFDomains200
 from waf.models.waf_events200 import WAFEvents200
 from waf.models.waf_events200_results_inner import WAFEvents200ResultsInner
+from waf.models.waf_events200_results_inner_top10_countries_inner import WAFEvents200ResultsInnerTop10CountriesInner
 from waf.models.waf_events400 import WAFEvents400
 from waf.models.waf_events401 import WAFEvents401
 from waf.models.waf_events404 import WAFEvents404

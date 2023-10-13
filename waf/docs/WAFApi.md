@@ -178,7 +178,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_waf_domains**
-> WAFDomains200 get_waf_domains(waf_id, name=name)
+> WAFDomains200 get_waf_domains(waf_id, name=name, page=page, page_size=page_size)
 
 List all domains attached to a Web Application Firewall (WAF) in an account.
 
@@ -216,10 +216,12 @@ with waf.ApiClient(configuration) as api_client:
     api_instance = waf.WAFApi(api_client)
     waf_id = 56 # int | ID of WAF to return
     name = 'name_example' # str | searches WAF for name (optional)
+    page = 1 # int | Identifies which page should be returned, if the return is paginated. (optional) (default to 1)
+    page_size = 10 # int | Identifies how many items should be returned per page. (optional) (default to 10)
 
     try:
         # List all domains attached to a Web Application Firewall (WAF) in an account.
-        api_response = api_instance.get_waf_domains(waf_id, name=name)
+        api_response = api_instance.get_waf_domains(waf_id, name=name, page=page, page_size=page_size)
         print("The response of WAFApi->get_waf_domains:\n")
         pprint(api_response)
     except Exception as e:
@@ -234,6 +236,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **waf_id** | **int**| ID of WAF to return | 
  **name** | **str**| searches WAF for name | [optional] 
+ **page** | **int**| Identifies which page should be returned, if the return is paginated. | [optional] [default to 1]
+ **page_size** | **int**| Identifies how many items should be returned per page. | [optional] [default to 10]
 
 ### Return type
 
@@ -253,12 +257,13 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
 **400** | Bad request |  -  |
+**403** | Forbidden |  -  |
 **404** | data not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_waf_events**
-> WAFEvents200 get_waf_events(waf_id, hour_range, domains_ids, network_list_id=network_list_id, sort=sort, page=page, page_size=page_size)
+> WAFEvents200 get_waf_events(waf_id, hour_range, domains_ids, network_list_id=network_list_id, sort=sort)
 
 Find WAF log events
 
@@ -296,15 +301,13 @@ with waf.ApiClient(configuration) as api_client:
     api_instance = waf.WAFApi(api_client)
     waf_id = 56 # int | ID of WAF to return
     hour_range = 56 # int | Last log hours since now (it must be a integer number ranging between 1 and 72)
-    domains_ids = 'domains_ids_example' # str | Multiple domain's id (they must be separated by comma like 1233,1234)
+    domains_ids = [56] # List[int] | Multiple domain's id (they must be separated by comma like 1233,1234)
     network_list_id = 56 # int | Id of a network list (optional)
     sort = 'asc' # str |  (optional) (default to 'asc')
-    page = 1 # int |  (optional) (default to 1)
-    page_size = 10 # int |  (optional) (default to 10)
 
     try:
         # Find WAF log events
-        api_response = api_instance.get_waf_events(waf_id, hour_range, domains_ids, network_list_id=network_list_id, sort=sort, page=page, page_size=page_size)
+        api_response = api_instance.get_waf_events(waf_id, hour_range, domains_ids, network_list_id=network_list_id, sort=sort)
         print("The response of WAFApi->get_waf_events:\n")
         pprint(api_response)
     except Exception as e:
@@ -319,11 +322,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **waf_id** | **int**| ID of WAF to return | 
  **hour_range** | **int**| Last log hours since now (it must be a integer number ranging between 1 and 72) | 
- **domains_ids** | **str**| Multiple domain&#39;s id (they must be separated by comma like 1233,1234) | 
+ **domains_ids** | [**List[int]**](int.md)| Multiple domain&#39;s id (they must be separated by comma like 1233,1234) | 
  **network_list_id** | **int**| Id of a network list | [optional] 
  **sort** | **str**|  | [optional] [default to &#39;asc&#39;]
- **page** | **int**|  | [optional] [default to 1]
- **page_size** | **int**|  | [optional] [default to 10]
 
 ### Return type
 
@@ -344,6 +345,7 @@ Name | Type | Description  | Notes
 **200** | successful operation |  -  |
 **400** | Bad request |  -  |
 **401** | unauthorized operation |  -  |
+**403** | Forbidden |  -  |
 **404** | data not found |  -  |
 **500** | Internal server error |  -  |
 
@@ -423,6 +425,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
 **400** | Bad request |  -  |
+**403** | Forbidden |  -  |
 **404** | data not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -503,6 +506,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
 **400** | Bad request |  -  |
+**403** | Forbidden |  -  |
 **404** | data not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -587,6 +591,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
 **400** | Bad request |  -  |
+**403** | Forbidden |  -  |
 **404** | data not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

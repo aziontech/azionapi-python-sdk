@@ -19,7 +19,7 @@ import warnings
 from pydantic import validate_arguments, ValidationError
 
 from typing_extensions import Annotated
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictInt, StrictStr, conlist
 
 from typing import Optional
 
@@ -335,19 +335,23 @@ class WAFApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_waf_domains(self, waf_id : Annotated[StrictInt, Field(..., description="ID of WAF to return")], name : Annotated[Optional[StrictStr], Field(description="searches WAF for name")] = None, **kwargs) -> WAFDomains200:  # noqa: E501
+    def get_waf_domains(self, waf_id : Annotated[StrictInt, Field(..., description="ID of WAF to return")], name : Annotated[Optional[StrictStr], Field(description="searches WAF for name")] = None, page : Annotated[Optional[StrictInt], Field(description="Identifies which page should be returned, if the return is paginated.")] = None, page_size : Annotated[Optional[StrictInt], Field(description="Identifies how many items should be returned per page.")] = None, **kwargs) -> WAFDomains200:  # noqa: E501
         """List all domains attached to a Web Application Firewall (WAF) in an account.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_waf_domains(waf_id, name, async_req=True)
+        >>> thread = api.get_waf_domains(waf_id, name, page, page_size, async_req=True)
         >>> result = thread.get()
 
         :param waf_id: ID of WAF to return (required)
         :type waf_id: int
         :param name: searches WAF for name
         :type name: str
+        :param page: Identifies which page should be returned, if the return is paginated.
+        :type page: int
+        :param page_size: Identifies how many items should be returned per page.
+        :type page_size: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -363,22 +367,26 @@ class WAFApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_waf_domains_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_waf_domains_with_http_info(waf_id, name, **kwargs)  # noqa: E501
+        return self.get_waf_domains_with_http_info(waf_id, name, page, page_size, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_waf_domains_with_http_info(self, waf_id : Annotated[StrictInt, Field(..., description="ID of WAF to return")], name : Annotated[Optional[StrictStr], Field(description="searches WAF for name")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_waf_domains_with_http_info(self, waf_id : Annotated[StrictInt, Field(..., description="ID of WAF to return")], name : Annotated[Optional[StrictStr], Field(description="searches WAF for name")] = None, page : Annotated[Optional[StrictInt], Field(description="Identifies which page should be returned, if the return is paginated.")] = None, page_size : Annotated[Optional[StrictInt], Field(description="Identifies how many items should be returned per page.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List all domains attached to a Web Application Firewall (WAF) in an account.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_waf_domains_with_http_info(waf_id, name, async_req=True)
+        >>> thread = api.get_waf_domains_with_http_info(waf_id, name, page, page_size, async_req=True)
         >>> result = thread.get()
 
         :param waf_id: ID of WAF to return (required)
         :type waf_id: int
         :param name: searches WAF for name
         :type name: str
+        :param page: Identifies which page should be returned, if the return is paginated.
+        :type page: int
+        :param page_size: Identifies how many items should be returned per page.
+        :type page_size: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -408,7 +416,9 @@ class WAFApi:
 
         _all_params = [
             'waf_id',
-            'name'
+            'name',
+            'page',
+            'page_size'
         ]
         _all_params.extend(
             [
@@ -445,6 +455,12 @@ class WAFApi:
         if _params.get('name') is not None:  # noqa: E501
             _query_params.append(('name', _params['name']))
 
+        if _params.get('page') is not None:  # noqa: E501
+            _query_params.append(('page', _params['page']))
+
+        if _params.get('page_size') is not None:  # noqa: E501
+            _query_params.append(('page_size', _params['page_size']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
@@ -462,6 +478,7 @@ class WAFApi:
         _response_types_map = {
             '200': "WAFDomains200",
             '400': "WAFEvents400",
+            '403': None,
             '404': "WAFEvents404",
         }
 
@@ -483,13 +500,13 @@ class WAFApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_waf_events(self, waf_id : Annotated[StrictInt, Field(..., description="ID of WAF to return")], hour_range : Annotated[StrictInt, Field(..., description="Last log hours since now (it must be a integer number ranging between 1 and 72)")], domains_ids : Annotated[StrictStr, Field(..., description="Multiple domain's id (they must be separated by comma like 1233,1234)")], network_list_id : Annotated[Optional[StrictInt], Field(description="Id of a network list")] = None, sort : Optional[StrictStr] = None, page : Optional[StrictInt] = None, page_size : Optional[StrictInt] = None, **kwargs) -> WAFEvents200:  # noqa: E501
+    def get_waf_events(self, waf_id : Annotated[StrictInt, Field(..., description="ID of WAF to return")], hour_range : Annotated[StrictInt, Field(..., description="Last log hours since now (it must be a integer number ranging between 1 and 72)")], domains_ids : Annotated[conlist(StrictInt), Field(..., description="Multiple domain's id (they must be separated by comma like 1233,1234)")], network_list_id : Annotated[Optional[StrictInt], Field(description="Id of a network list")] = None, sort : Optional[StrictStr] = None, **kwargs) -> WAFEvents200:  # noqa: E501
         """Find WAF log events  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_waf_events(waf_id, hour_range, domains_ids, network_list_id, sort, page, page_size, async_req=True)
+        >>> thread = api.get_waf_events(waf_id, hour_range, domains_ids, network_list_id, sort, async_req=True)
         >>> result = thread.get()
 
         :param waf_id: ID of WAF to return (required)
@@ -497,15 +514,11 @@ class WAFApi:
         :param hour_range: Last log hours since now (it must be a integer number ranging between 1 and 72) (required)
         :type hour_range: int
         :param domains_ids: Multiple domain's id (they must be separated by comma like 1233,1234) (required)
-        :type domains_ids: str
+        :type domains_ids: List[int]
         :param network_list_id: Id of a network list
         :type network_list_id: int
         :param sort:
         :type sort: str
-        :param page:
-        :type page: int
-        :param page_size:
-        :type page_size: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -521,16 +534,16 @@ class WAFApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_waf_events_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_waf_events_with_http_info(waf_id, hour_range, domains_ids, network_list_id, sort, page, page_size, **kwargs)  # noqa: E501
+        return self.get_waf_events_with_http_info(waf_id, hour_range, domains_ids, network_list_id, sort, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_waf_events_with_http_info(self, waf_id : Annotated[StrictInt, Field(..., description="ID of WAF to return")], hour_range : Annotated[StrictInt, Field(..., description="Last log hours since now (it must be a integer number ranging between 1 and 72)")], domains_ids : Annotated[StrictStr, Field(..., description="Multiple domain's id (they must be separated by comma like 1233,1234)")], network_list_id : Annotated[Optional[StrictInt], Field(description="Id of a network list")] = None, sort : Optional[StrictStr] = None, page : Optional[StrictInt] = None, page_size : Optional[StrictInt] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_waf_events_with_http_info(self, waf_id : Annotated[StrictInt, Field(..., description="ID of WAF to return")], hour_range : Annotated[StrictInt, Field(..., description="Last log hours since now (it must be a integer number ranging between 1 and 72)")], domains_ids : Annotated[conlist(StrictInt), Field(..., description="Multiple domain's id (they must be separated by comma like 1233,1234)")], network_list_id : Annotated[Optional[StrictInt], Field(description="Id of a network list")] = None, sort : Optional[StrictStr] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Find WAF log events  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_waf_events_with_http_info(waf_id, hour_range, domains_ids, network_list_id, sort, page, page_size, async_req=True)
+        >>> thread = api.get_waf_events_with_http_info(waf_id, hour_range, domains_ids, network_list_id, sort, async_req=True)
         >>> result = thread.get()
 
         :param waf_id: ID of WAF to return (required)
@@ -538,15 +551,11 @@ class WAFApi:
         :param hour_range: Last log hours since now (it must be a integer number ranging between 1 and 72) (required)
         :type hour_range: int
         :param domains_ids: Multiple domain's id (they must be separated by comma like 1233,1234) (required)
-        :type domains_ids: str
+        :type domains_ids: List[int]
         :param network_list_id: Id of a network list
         :type network_list_id: int
         :param sort:
         :type sort: str
-        :param page:
-        :type page: int
-        :param page_size:
-        :type page_size: int
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -579,9 +588,7 @@ class WAFApi:
             'hour_range',
             'domains_ids',
             'network_list_id',
-            'sort',
-            'page',
-            'page_size'
+            'sort'
         ]
         _all_params.extend(
             [
@@ -623,15 +630,10 @@ class WAFApi:
 
         if _params.get('domains_ids') is not None:  # noqa: E501
             _query_params.append(('domains_ids', _params['domains_ids']))
+            _collection_formats['domains_ids'] = 'multi'
 
         if _params.get('sort') is not None:  # noqa: E501
             _query_params.append(('sort', _params['sort']))
-
-        if _params.get('page') is not None:  # noqa: E501
-            _query_params.append(('page', _params['page']))
-
-        if _params.get('page_size') is not None:  # noqa: E501
-            _query_params.append(('page_size', _params['page_size']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -651,6 +653,7 @@ class WAFApi:
             '200': "WAFEvents200",
             '400': "WAFEvents400",
             '401': "WAFEvents401",
+            '403': None,
             '404': "WAFEvents404",
             '500': None,
         }
@@ -792,6 +795,7 @@ class WAFApi:
         _response_types_map = {
             '200': "WAFSingle200",
             '400': "WAFEvents400",
+            '403': None,
             '404': "WAFEvents404",
         }
 
@@ -940,6 +944,7 @@ class WAFApi:
         _response_types_map = {
             '200': "WAFList200",
             '400': "WAFEvents400",
+            '403': None,
             '404': "WAFEvents404",
         }
 
@@ -1104,6 +1109,7 @@ class WAFApi:
         _response_types_map = {
             '200': "WAFList200",
             '400': "WAFEvents400",
+            '403': None,
             '404': "WAFEvents404",
         }
 
