@@ -13,75 +13,185 @@
 
 
 from __future__ import annotations
+from inspect import getfullargspec
+import json
 import pprint
 import re  # noqa: F401
-import json
 
+from typing import Any, List, Optional
+from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
+from edgefirewall.models.null_argument_behavior import NullArgumentBehavior
+from edgefirewall.models.set_custom_response import SetCustomResponse
+from edgefirewall.models.set_rate_limit_behavior import SetRateLimitBehavior
+from edgefirewall.models.set_waf_rule_set_and_waf_mode_behavior import SetWAFRuleSetAndWafModeBehavior
+from edgefirewall.models.set_waf_rule_set_behavior import SetWAFRuleSetBehavior
+from edgefirewall.models.simple_argument_behavior import SimpleArgumentBehavior
+from typing import Union, Any, List, TYPE_CHECKING
+from pydantic import StrictStr, Field
 
-from typing import Optional
-from pydantic import BaseModel, StrictStr, validator
-from edgefirewall.models.behaviors_argument import BehaviorsArgument
+BEHAVIORS_ONE_OF_SCHEMAS = ["NullArgumentBehavior", "SetCustomResponse", "SetRateLimitBehavior", "SetWAFRuleSetAndWafModeBehavior", "SetWAFRuleSetBehavior", "SimpleArgumentBehavior"]
 
 class Behaviors(BaseModel):
     """
     Behaviors
     """
-    name: Optional[StrictStr] = None
-    argument: Optional[BehaviorsArgument] = None
-    __properties = ["name", "argument"]
-
-    @validator('name')
-    def name_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in ('deny', 'drop', 'set_rate_limit', 'set_waf_ruleset', 'run_function', 'tag_event'):
-            raise ValueError("must be one of enum values ('deny', 'drop', 'set_rate_limit', 'set_waf_ruleset', 'run_function', 'tag_event')")
-        return value
+    # data type: NullArgumentBehavior
+    oneof_schema_1_validator: Optional[NullArgumentBehavior] = None
+    # data type: SimpleArgumentBehavior
+    oneof_schema_2_validator: Optional[SimpleArgumentBehavior] = None
+    # data type: SetRateLimitBehavior
+    oneof_schema_3_validator: Optional[SetRateLimitBehavior] = None
+    # data type: SetWAFRuleSetBehavior
+    oneof_schema_4_validator: Optional[SetWAFRuleSetBehavior] = None
+    # data type: SetWAFRuleSetAndWafModeBehavior
+    oneof_schema_5_validator: Optional[SetWAFRuleSetAndWafModeBehavior] = None
+    # data type: SetCustomResponse
+    oneof_schema_6_validator: Optional[SetCustomResponse] = None
+    if TYPE_CHECKING:
+        actual_instance: Union[NullArgumentBehavior, SetCustomResponse, SetRateLimitBehavior, SetWAFRuleSetAndWafModeBehavior, SetWAFRuleSetBehavior, SimpleArgumentBehavior]
+    else:
+        actual_instance: Any
+    one_of_schemas: List[str] = Field(BEHAVIORS_ONE_OF_SCHEMAS, const=True)
 
     class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
         validate_assignment = True
 
-    def to_str(self) -> str:
-        """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+    def __init__(self, *args, **kwargs) -> None:
+        if args:
+            if len(args) > 1:
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
+            if kwargs:
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
+            super().__init__(actual_instance=args[0])
+        else:
+            super().__init__(**kwargs)
 
-    def to_json(self) -> str:
-        """Returns the JSON representation of the model using alias"""
-        return json.dumps(self.to_dict())
-
-    @classmethod
-    def from_json(cls, json_str: str) -> Behaviors:
-        """Create an instance of Behaviors from a JSON string"""
-        return cls.from_dict(json.loads(json_str))
-
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of argument
-        if self.argument:
-            _dict['argument'] = self.argument.to_dict()
-        return _dict
+    @validator('actual_instance')
+    def actual_instance_must_validate_oneof(cls, v):
+        instance = Behaviors.construct()
+        error_messages = []
+        match = 0
+        # validate data type: NullArgumentBehavior
+        if not isinstance(v, NullArgumentBehavior):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `NullArgumentBehavior`")
+        else:
+            match += 1
+        # validate data type: SimpleArgumentBehavior
+        if not isinstance(v, SimpleArgumentBehavior):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SimpleArgumentBehavior`")
+        else:
+            match += 1
+        # validate data type: SetRateLimitBehavior
+        if not isinstance(v, SetRateLimitBehavior):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SetRateLimitBehavior`")
+        else:
+            match += 1
+        # validate data type: SetWAFRuleSetBehavior
+        if not isinstance(v, SetWAFRuleSetBehavior):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SetWAFRuleSetBehavior`")
+        else:
+            match += 1
+        # validate data type: SetWAFRuleSetAndWafModeBehavior
+        if not isinstance(v, SetWAFRuleSetAndWafModeBehavior):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SetWAFRuleSetAndWafModeBehavior`")
+        else:
+            match += 1
+        # validate data type: SetCustomResponse
+        if not isinstance(v, SetCustomResponse):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SetCustomResponse`")
+        else:
+            match += 1
+        if match > 1:
+            # more than 1 match
+            raise ValueError("Multiple matches found when setting `actual_instance` in Behaviors with oneOf schemas: NullArgumentBehavior, SetCustomResponse, SetRateLimitBehavior, SetWAFRuleSetAndWafModeBehavior, SetWAFRuleSetBehavior, SimpleArgumentBehavior. Details: " + ", ".join(error_messages))
+        elif match == 0:
+            # no match
+            raise ValueError("No match found when setting `actual_instance` in Behaviors with oneOf schemas: NullArgumentBehavior, SetCustomResponse, SetRateLimitBehavior, SetWAFRuleSetAndWafModeBehavior, SetWAFRuleSetBehavior, SimpleArgumentBehavior. Details: " + ", ".join(error_messages))
+        else:
+            return v
 
     @classmethod
     def from_dict(cls, obj: dict) -> Behaviors:
-        """Create an instance of Behaviors from a dict"""
-        if obj is None:
+        return cls.from_json(json.dumps(obj))
+
+    @classmethod
+    def from_json(cls, json_str: str) -> Behaviors:
+        """Returns the object represented by the json string"""
+        instance = Behaviors.construct()
+        error_messages = []
+        match = 0
+
+        # deserialize data into NullArgumentBehavior
+        try:
+            instance.actual_instance = NullArgumentBehavior.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into SimpleArgumentBehavior
+        try:
+            instance.actual_instance = SimpleArgumentBehavior.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into SetRateLimitBehavior
+        try:
+            instance.actual_instance = SetRateLimitBehavior.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into SetWAFRuleSetBehavior
+        try:
+            instance.actual_instance = SetWAFRuleSetBehavior.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into SetWAFRuleSetAndWafModeBehavior
+        try:
+            instance.actual_instance = SetWAFRuleSetAndWafModeBehavior.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into SetCustomResponse
+        try:
+            instance.actual_instance = SetCustomResponse.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+
+        if match > 1:
+            # more than 1 match
+            raise ValueError("Multiple matches found when deserializing the JSON string into Behaviors with oneOf schemas: NullArgumentBehavior, SetCustomResponse, SetRateLimitBehavior, SetWAFRuleSetAndWafModeBehavior, SetWAFRuleSetBehavior, SimpleArgumentBehavior. Details: " + ", ".join(error_messages))
+        elif match == 0:
+            # no match
+            raise ValueError("No match found when deserializing the JSON string into Behaviors with oneOf schemas: NullArgumentBehavior, SetCustomResponse, SetRateLimitBehavior, SetWAFRuleSetAndWafModeBehavior, SetWAFRuleSetBehavior, SimpleArgumentBehavior. Details: " + ", ".join(error_messages))
+        else:
+            return instance
+
+    def to_json(self) -> str:
+        """Returns the JSON representation of the actual instance"""
+        if self.actual_instance is None:
+            return "null"
+
+        to_json = getattr(self.actual_instance, "to_json", None)
+        if callable(to_json):
+            return self.actual_instance.to_json()
+        else:
+            return json.dumps(self.actual_instance)
+
+    def to_dict(self) -> dict:
+        """Returns the dict representation of the actual instance"""
+        if self.actual_instance is None:
             return None
 
-        if not isinstance(obj, dict):
-            return Behaviors.parse_obj(obj)
+        to_dict = getattr(self.actual_instance, "to_dict", None)
+        if callable(to_dict):
+            return self.actual_instance.to_dict()
+        else:
+            # primitive type
+            return self.actual_instance
 
-        _obj = Behaviors.parse_obj({
-            "name": obj.get("name"),
-            "argument": BehaviorsArgument.from_dict(obj.get("argument")) if obj.get("argument") is not None else None
-        })
-        return _obj
+    def to_str(self) -> str:
+        """Returns the string representation of the actual instance"""
+        return pprint.pformat(self.dict())
 
 
