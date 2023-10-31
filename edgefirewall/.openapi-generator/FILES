@@ -83,17 +83,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_null_argument_behavior.py
-test/test_set_custom_response.py
-test/test_set_custom_response_argument.py
-test/test_set_custom_response_argument_status_code.py
-test/test_set_rate_limit_behavior.py
-test/test_set_rate_limit_behavior_argument.py
-test/test_set_rate_limit_behavior_argument_average_rate_limit.py
-test/test_set_waf_rule_set_and_waf_mode_behavior.py
-test/test_set_waf_rule_set_and_waf_mode_behavior_argument.py
-test/test_set_waf_rule_set_behavior.py
-test/test_set_waf_rule_set_behavior_argument.py
-test/test_simple_argument_behavior.py
-test/test_simple_argument_behavior_argument.py
 tox.ini
