@@ -1176,6 +1176,7 @@ class DefaultApi:
 
         _response_types_map = {
             '200': "ListEdgeFirewallResponse",
+            '403': None,
             '404': None,
         }
 
@@ -1323,6 +1324,7 @@ class DefaultApi:
         _response_types_map = {
             '201': "EdgeFirewallResponse",
             '400': None,
+            '403': None,
             '500': None,
         }
 
@@ -1595,6 +1597,7 @@ class DefaultApi:
         _response_types_map = {
             '200': "EdgeFirewallResponse",
             '400': None,
+            '403': None,
             '404': None,
         }
 
@@ -1750,6 +1753,7 @@ class DefaultApi:
         _response_types_map = {
             '200': "EdgeFirewallResponse",
             '400': None,
+            '403': None,
             '404': None,
             '500': None,
         }
@@ -1906,6 +1910,7 @@ class DefaultApi:
         _response_types_map = {
             '200': "EdgeFirewallResponse",
             '400': None,
+            '403': None,
             '404': None,
             '500': None,
         }

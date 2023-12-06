@@ -149,8 +149,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_rules_engine_behavior_entry.py
-test/test_rules_engine_behavior_object.py
-test/test_rules_engine_behavior_object_target.py
-test/test_rules_engine_behavior_string.py
 tox.ini

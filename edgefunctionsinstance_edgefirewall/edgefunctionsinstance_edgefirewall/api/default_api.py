@@ -314,6 +314,7 @@ class DefaultApi:
         _response_types_map = {
             '200': "EdgeFunctionsInstanceResponse",
             '400': None,
+            '403': None,
             '404': None,
         }
 
@@ -477,6 +478,7 @@ class DefaultApi:
         _response_types_map = {
             '200': "EdgeFunctionsInstanceResponse",
             '400': None,
+            '403': None,
             '404': None,
             '500': None,
         }
@@ -641,6 +643,7 @@ class DefaultApi:
         _response_types_map = {
             '200': "EdgeFunctionsInstanceResponse",
             '400': None,
+            '403': None,
             '404': None,
             '500': None,
         }
@@ -814,6 +817,7 @@ class DefaultApi:
         _response_types_map = {
             '200': "ListEdgeFunctionsInstancesResponse",
             '400': None,
+            '403': None,
             '404': None,
         }
 
@@ -969,6 +973,7 @@ class DefaultApi:
         _response_types_map = {
             '201': "EdgeFunctionsInstanceResponse",
             '400': None,
+            '403': None,
             '404': None,
             '500': None,
         }
