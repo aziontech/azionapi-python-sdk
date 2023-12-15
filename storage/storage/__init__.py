@@ -17,7 +17,7 @@
 __version__ = "1.0.0"
 
 # import apis into sdk package
-from storage.api.buckets_api import BucketsApi
+from storage.api.storage_api import StorageApi
 
 # import ApiClient
 from storage.api_response import ApiResponse
@@ -33,10 +33,12 @@ from storage.exceptions import ApiException
 # import models into sdk package
 from storage.models.bucket import Bucket
 from storage.models.bucket_create import BucketCreate
+from storage.models.bucket_object import BucketObject
 from storage.models.edge_access_enum import EdgeAccessEnum
+from storage.models.object_response_data import ObjectResponseData
 from storage.models.paginated_bucket_list import PaginatedBucketList
-from storage.models.patched_bucket import PatchedBucket
+from storage.models.paginated_bucket_object_list import PaginatedBucketObjectList
 from storage.models.response_bucket import ResponseBucket
-from storage.models.response_delete_bucket import ResponseDeleteBucket
-from storage.models.response_delete_bucket_data import ResponseDeleteBucketData
 from storage.models.state_enum import StateEnum
+from storage.models.success_bucket_operation import SuccessBucketOperation
+from storage.models.success_object_operation import SuccessObjectOperation

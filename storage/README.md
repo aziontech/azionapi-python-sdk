@@ -76,16 +76,16 @@ configuration.api_key['tokenAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with storage.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = storage.BucketsApi(api_client)
+    api_instance = storage.StorageApi(api_client)
     bucket_create = storage.BucketCreate() # BucketCreate | 
 
     try:
-        # /v4/storage/buckets
-        api_response = api_instance.api_v1_storage_buckets_create(bucket_create)
-        print("The response of BucketsApi->api_v1_storage_buckets_create:\n")
+        # Create a new bucket
+        api_response = api_instance.storage_api_buckets_create(bucket_create)
+        print("The response of StorageApi->storage_api_buckets_create:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling BucketsApi->api_v1_storage_buckets_create: %s\n" % e)
+        print("Exception when calling StorageApi->storage_api_buckets_create: %s\n" % e)
 
 ```
 
@@ -95,23 +95,30 @@ All URIs are relative to *https://api.azion.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*BucketsApi* | [**api_v1_storage_buckets_create**](docs/BucketsApi.md#api_v1_storage_buckets_create) | **POST** /v4/storage/buckets | /v4/storage/buckets
-*BucketsApi* | [**api_v1_storage_buckets_destroy**](docs/BucketsApi.md#api_v1_storage_buckets_destroy) | **DELETE** /v4/storage/buckets/{name} | /v4/storage/buckets/:name
-*BucketsApi* | [**api_v1_storage_buckets_list**](docs/BucketsApi.md#api_v1_storage_buckets_list) | **GET** /v4/storage/buckets | /v4/storage/buckets
-*BucketsApi* | [**api_v1_storage_buckets_partial_update**](docs/BucketsApi.md#api_v1_storage_buckets_partial_update) | **PATCH** /v4/storage/buckets/{name} | /v4/storage/buckets/:name
+*StorageApi* | [**storage_api_buckets_create**](docs/StorageApi.md#storage_api_buckets_create) | **POST** /v4/storage/buckets | Create a new bucket
+*StorageApi* | [**storage_api_buckets_destroy**](docs/StorageApi.md#storage_api_buckets_destroy) | **DELETE** /v4/storage/buckets/{name} | Delete a bucket
+*StorageApi* | [**storage_api_buckets_list**](docs/StorageApi.md#storage_api_buckets_list) | **GET** /v4/storage/buckets | List buckets
+*StorageApi* | [**storage_api_buckets_objects_create**](docs/StorageApi.md#storage_api_buckets_objects_create) | **POST** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Create new object key
+*StorageApi* | [**storage_api_buckets_objects_destroy**](docs/StorageApi.md#storage_api_buckets_objects_destroy) | **DELETE** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Delete object key
+*StorageApi* | [**storage_api_buckets_objects_list**](docs/StorageApi.md#storage_api_buckets_objects_list) | **GET** /v4/storage/buckets/{bucket_name}/objects | List buckets objects
+*StorageApi* | [**storage_api_buckets_objects_retrieve**](docs/StorageApi.md#storage_api_buckets_objects_retrieve) | **GET** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Download object
+*StorageApi* | [**storage_api_buckets_objects_update**](docs/StorageApi.md#storage_api_buckets_objects_update) | **PUT** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Update the object key
+*StorageApi* | [**storage_api_buckets_partial_update**](docs/StorageApi.md#storage_api_buckets_partial_update) | **PATCH** /v4/storage/buckets/{name} | Update bucket info
 
 
 ## Documentation For Models
 
  - [Bucket](docs/Bucket.md)
  - [BucketCreate](docs/BucketCreate.md)
+ - [BucketObject](docs/BucketObject.md)
  - [EdgeAccessEnum](docs/EdgeAccessEnum.md)
+ - [ObjectResponseData](docs/ObjectResponseData.md)
  - [PaginatedBucketList](docs/PaginatedBucketList.md)
- - [PatchedBucket](docs/PatchedBucket.md)
+ - [PaginatedBucketObjectList](docs/PaginatedBucketObjectList.md)
  - [ResponseBucket](docs/ResponseBucket.md)
- - [ResponseDeleteBucket](docs/ResponseDeleteBucket.md)
- - [ResponseDeleteBucketData](docs/ResponseDeleteBucketData.md)
  - [StateEnum](docs/StateEnum.md)
+ - [SuccessBucketOperation](docs/SuccessBucketOperation.md)
+ - [SuccessObjectOperation](docs/SuccessObjectOperation.md)
 
 
 <a id="documentation-for-authorization"></a>
