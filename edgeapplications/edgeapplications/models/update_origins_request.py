@@ -32,9 +32,9 @@ class UpdateOriginsRequest(BaseModel):
     """ # noqa: E501
     name: StrictStr
     origin_type: Optional[StrictStr] = None
-    addresses: List[CreateOriginsRequestAddresses]
+    addresses: Optional[List[CreateOriginsRequestAddresses]] = None
     origin_protocol_policy: Optional[StrictStr] = None
-    host_header: StrictStr
+    host_header: Optional[StrictStr] = None
     origin_path: Optional[StrictStr] = None
     hmac_authentication: Optional[StrictBool] = None
     hmac_region_name: Optional[StrictStr] = None
