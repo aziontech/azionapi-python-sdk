@@ -12,14 +12,20 @@
 """  # noqa: E501
 
 
-import re  # noqa: F401
 import io
 import warnings
 
-from pydantic import validate_arguments, ValidationError
+from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
+from typing import Dict, List, Optional, Tuple, Union, Any
 
+try:
+    from typing import Annotated
+except ImportError:
+    from typing_extensions import Annotated
+
+from pydantic import Field
 from typing_extensions import Annotated
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import StrictInt, StrictStr
 
 from typing import Optional
 
@@ -32,10 +38,7 @@ from edgeapplications.models.application_update_instance_request import Applicat
 
 from edgeapplications.api_client import ApiClient
 from edgeapplications.api_response import ApiResponse
-from edgeapplications.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from edgeapplications.rest import RESTResponseType
 
 
 class EdgeApplicationsEdgeFunctionsInstancesApi:
@@ -50,50 +53,29 @@ class EdgeApplicationsEdgeFunctionsInstancesApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
-    def edge_applications_edge_application_id_functions_instances_functions_instances_id_delete(self, edge_application_id : StrictStr, functions_instances_id : StrictStr, accept : Optional[StrictStr] = None, content_type : Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None, **kwargs) -> None:  # noqa: E501
-        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:  # noqa: E501
 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_functions_instances_id_delete(
+        self,
+        edge_application_id: StrictStr,
+        functions_instances_id: StrictStr,
+        accept: Optional[StrictStr] = None,
+        content_type: Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
 
-        >>> thread = api.edge_applications_edge_application_id_functions_instances_functions_instances_id_delete(edge_application_id, functions_instances_id, accept, content_type, async_req=True)
-        >>> result = thread.get()
-
-        :param edge_application_id: (required)
-        :type edge_application_id: str
-        :param functions_instances_id: (required)
-        :type functions_instances_id: str
-        :param accept:
-        :type accept: str
-        :param content_type: The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json
-        :type content_type: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: None
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the edge_applications_edge_application_id_functions_instances_functions_instances_id_delete_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.edge_applications_edge_application_id_functions_instances_functions_instances_id_delete_with_http_info(edge_application_id, functions_instances_id, accept, content_type, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def edge_applications_edge_application_id_functions_instances_functions_instances_id_delete_with_http_info(self, edge_application_id : StrictStr, functions_instances_id : StrictStr, accept : Optional[StrictStr] = None, content_type : Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.edge_applications_edge_application_id_functions_instances_functions_instances_id_delete_with_http_info(edge_application_id, functions_instances_id, accept, content_type, async_req=True)
-        >>> result = thread.get()
 
         :param edge_application_id: (required)
         :type edge_application_id: str
@@ -103,151 +85,291 @@ class EdgeApplicationsEdgeFunctionsInstancesApi:
         :type accept: str
         :param content_type: The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json
         :type content_type: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
         :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
         :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
         :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: None
-        """
+        """ # noqa: E501
 
-        _params = locals()
-
-        _all_params = [
-            'edge_application_id',
-            'functions_instances_id',
-            'accept',
-            'content_type'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
+        _param = self._edge_applications_edge_application_id_functions_instances_functions_instances_id_delete_serialize(
+            edge_application_id=edge_application_id,
+            functions_instances_id=functions_instances_id,
+            accept=accept,
+            content_type=content_type,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
         )
 
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method edge_applications_edge_application_id_functions_instances_functions_instances_id_delete" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
+        _response_types_map: Dict[str, Optional[str]] = {
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
 
-        _collection_formats = {}
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_functions_instances_id_delete_with_http_info(
+        self,
+        edge_application_id: StrictStr,
+        functions_instances_id: StrictStr,
+        accept: Optional[StrictStr] = None,
+        content_type: Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
+
+
+        :param edge_application_id: (required)
+        :type edge_application_id: str
+        :param functions_instances_id: (required)
+        :type functions_instances_id: str
+        :param accept:
+        :type accept: str
+        :param content_type: The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json
+        :type content_type: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._edge_applications_edge_application_id_functions_instances_functions_instances_id_delete_serialize(
+            edge_application_id=edge_application_id,
+            functions_instances_id=functions_instances_id,
+            accept=accept,
+            content_type=content_type,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_functions_instances_id_delete_without_preload_content(
+        self,
+        edge_application_id: StrictStr,
+        functions_instances_id: StrictStr,
+        accept: Optional[StrictStr] = None,
+        content_type: Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
+
+
+        :param edge_application_id: (required)
+        :type edge_application_id: str
+        :param functions_instances_id: (required)
+        :type functions_instances_id: str
+        :param accept:
+        :type accept: str
+        :param content_type: The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json
+        :type content_type: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._edge_applications_edge_application_id_functions_instances_functions_instances_id_delete_serialize(
+            edge_application_id=edge_application_id,
+            functions_instances_id=functions_instances_id,
+            accept=accept,
+            content_type=content_type,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _edge_applications_edge_application_id_functions_instances_functions_instances_id_delete_serialize(
+        self,
+        edge_application_id,
+        functions_instances_id,
+        accept,
+        content_type,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> Tuple:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
 
         # process the path parameters
-        _path_params = {}
-        if _params['edge_application_id']:
-            _path_params['edge_application_id'] = _params['edge_application_id']
-
-        if _params['functions_instances_id']:
-            _path_params['functions_instances_id'] = _params['functions_instances_id']
-
-
+        if edge_application_id is not None:
+            _path_params['edge_application_id'] = edge_application_id
+        if functions_instances_id is not None:
+            _path_params['functions_instances_id'] = functions_instances_id
         # process the query parameters
-        _query_params = []
         # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        if _params['accept']:
-            _header_params['Accept'] = _params['accept']
-
-        if _params['content_type']:
-            _header_params['Content-Type'] = _params['content_type']
-
+        if accept is not None:
+            _header_params['Accept'] = accept
+        if content_type is not None:
+            _header_params['Content-Type'] = content_type
         # process the form parameters
-        _form_params = []
-        _files = {}
         # process the body parameter
-        _body_params = None
+
+
+
+
         # authentication setting
-        _auth_settings = ['tokenAuth']  # noqa: E501
+        _auth_settings: List[str] = [
+            'tokenAuth'
+        ]
 
-        _response_types_map = {}
-
-        return self.api_client.call_api(
-            '/edge_applications/{edge_application_id}/functions_instances/{functions_instances_id}', 'DELETE',
-            _path_params,
-            _query_params,
-            _header_params,
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/edge_applications/{edge_application_id}/functions_instances/{functions_instances_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
             body=_body_params,
             post_params=_form_params,
             files=_files,
-            response_types_map=_response_types_map,
             auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
+            _host=_host,
+            _request_auth=_request_auth
+        )
 
-    @validate_arguments
-    def edge_applications_edge_application_id_functions_instances_functions_instances_id_get(self, edge_application_id : StrictInt, functions_instances_id : StrictInt, accept : Annotated[Optional[StrictStr], Field(description="The id of the edge function instance you plan to query. ")] = None, **kwargs) -> ApplicationInstancesGetOneResponse:  # noqa: E501
-        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:  # noqa: E501
 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.edge_applications_edge_application_id_functions_instances_functions_instances_id_get(edge_application_id, functions_instances_id, accept, async_req=True)
-        >>> result = thread.get()
 
-        :param edge_application_id: (required)
-        :type edge_application_id: int
-        :param functions_instances_id: (required)
-        :type functions_instances_id: int
-        :param accept: The id of the edge function instance you plan to query. 
-        :type accept: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: ApplicationInstancesGetOneResponse
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the edge_applications_edge_application_id_functions_instances_functions_instances_id_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.edge_applications_edge_application_id_functions_instances_functions_instances_id_get_with_http_info(edge_application_id, functions_instances_id, accept, **kwargs)  # noqa: E501
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_functions_instances_id_get(
+        self,
+        edge_application_id: StrictInt,
+        functions_instances_id: StrictInt,
+        accept: Annotated[Optional[StrictStr], Field(description="The id of the edge function instance you plan to query. ")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApplicationInstancesGetOneResponse:
+        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
 
-    @validate_arguments
-    def edge_applications_edge_application_id_functions_instances_functions_instances_id_get_with_http_info(self, edge_application_id : StrictInt, functions_instances_id : StrictInt, accept : Annotated[Optional[StrictStr], Field(description="The id of the edge function instance you plan to query. ")] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.edge_applications_edge_application_id_functions_instances_functions_instances_id_get_with_http_info(edge_application_id, functions_instances_id, accept, async_req=True)
-        >>> result = thread.get()
 
         :param edge_application_id: (required)
         :type edge_application_id: int
@@ -255,125 +377,305 @@ class EdgeApplicationsEdgeFunctionsInstancesApi:
         :type functions_instances_id: int
         :param accept: The id of the edge function instance you plan to query. 
         :type accept: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
         :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
         :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
         :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(ApplicationInstancesGetOneResponse, status_code(int), headers(HTTPHeaderDict))
-        """
+        """ # noqa: E501
 
-        _params = locals()
-
-        _all_params = [
-            'edge_application_id',
-            'functions_instances_id',
-            'accept'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
+        _param = self._edge_applications_edge_application_id_functions_instances_functions_instances_id_get_serialize(
+            edge_application_id=edge_application_id,
+            functions_instances_id=functions_instances_id,
+            accept=accept,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
         )
 
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method edge_applications_edge_application_id_functions_instances_functions_instances_id_get" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-        if _params['edge_application_id']:
-            _path_params['edge_application_id'] = _params['edge_application_id']
-
-        if _params['functions_instances_id']:
-            _path_params['functions_instances_id'] = _params['functions_instances_id']
-
-
-        # process the query parameters
-        _query_params = []
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        if _params['accept']:
-            _header_params['Accept'] = _params['accept']
-
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json; version=3'])  # noqa: E501
-
-        # authentication setting
-        _auth_settings = ['tokenAuth']  # noqa: E501
-
-        _response_types_map = {
+        _response_types_map: Dict[str, Optional[str]] = {
             '200': "ApplicationInstancesGetOneResponse",
             '400': None,
             '403': None,
             '404': None,
             '422': None,
-            '500': None,
+            '500': None
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_functions_instances_id_get_with_http_info(
+        self,
+        edge_application_id: StrictInt,
+        functions_instances_id: StrictInt,
+        accept: Annotated[Optional[StrictStr], Field(description="The id of the edge function instance you plan to query. ")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ApplicationInstancesGetOneResponse]:
+        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
+
+
+        :param edge_application_id: (required)
+        :type edge_application_id: int
+        :param functions_instances_id: (required)
+        :type functions_instances_id: int
+        :param accept: The id of the edge function instance you plan to query. 
+        :type accept: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._edge_applications_edge_application_id_functions_instances_functions_instances_id_get_serialize(
+            edge_application_id=edge_application_id,
+            functions_instances_id=functions_instances_id,
+            accept=accept,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ApplicationInstancesGetOneResponse",
+            '400': None,
+            '403': None,
+            '404': None,
+            '422': None,
+            '500': None
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_functions_instances_id_get_without_preload_content(
+        self,
+        edge_application_id: StrictInt,
+        functions_instances_id: StrictInt,
+        accept: Annotated[Optional[StrictStr], Field(description="The id of the edge function instance you plan to query. ")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
+
+
+        :param edge_application_id: (required)
+        :type edge_application_id: int
+        :param functions_instances_id: (required)
+        :type functions_instances_id: int
+        :param accept: The id of the edge function instance you plan to query. 
+        :type accept: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._edge_applications_edge_application_id_functions_instances_functions_instances_id_get_serialize(
+            edge_application_id=edge_application_id,
+            functions_instances_id=functions_instances_id,
+            accept=accept,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ApplicationInstancesGetOneResponse",
+            '400': None,
+            '403': None,
+            '404': None,
+            '422': None,
+            '500': None
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _edge_applications_edge_application_id_functions_instances_functions_instances_id_get_serialize(
+        self,
+        edge_application_id,
+        functions_instances_id,
+        accept,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> Tuple:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            
         }
 
-        return self.api_client.call_api(
-            '/edge_applications/{edge_application_id}/functions_instances/{functions_instances_id}', 'GET',
-            _path_params,
-            _query_params,
-            _header_params,
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if edge_application_id is not None:
+            _path_params['edge_application_id'] = edge_application_id
+        if functions_instances_id is not None:
+            _path_params['functions_instances_id'] = functions_instances_id
+        # process the query parameters
+        # process the header parameters
+        if accept is not None:
+            _header_params['Accept'] = accept
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json; version=3'
+            ]
+        )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/edge_applications/{edge_application_id}/functions_instances/{functions_instances_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
             body=_body_params,
             post_params=_form_params,
             files=_files,
-            response_types_map=_response_types_map,
             auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
+            _host=_host,
+            _request_auth=_request_auth
+        )
 
-    @validate_arguments
-    def edge_applications_edge_application_id_functions_instances_functions_instances_id_patch(self, edge_application_id : Annotated[StrictStr, Field(..., description="The id of the edge application you plan to overwrite ")], functions_instances_id : Annotated[StrictStr, Field(..., description="The id of the edge function instance you plan to overwrite.")], accept : Optional[StrictStr] = None, content_type : Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None, application_update_instance_request : Optional[ApplicationUpdateInstanceRequest] = None, **kwargs) -> ApplicationInstanceResults:  # noqa: E501
-        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:  # noqa: E501
 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.edge_applications_edge_application_id_functions_instances_functions_instances_id_patch(edge_application_id, functions_instances_id, accept, content_type, application_update_instance_request, async_req=True)
-        >>> result = thread.get()
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_functions_instances_id_patch(
+        self,
+        edge_application_id: Annotated[StrictStr, Field(description="The id of the edge application you plan to overwrite ")],
+        functions_instances_id: Annotated[StrictStr, Field(description="The id of the edge function instance you plan to overwrite.")],
+        accept: Optional[StrictStr] = None,
+        content_type: Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None,
+        application_update_instance_request: Optional[ApplicationUpdateInstanceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApplicationInstanceResults:
+        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
+
 
         :param edge_application_id: The id of the edge application you plan to overwrite  (required)
         :type edge_application_id: str
@@ -385,32 +687,84 @@ class EdgeApplicationsEdgeFunctionsInstancesApi:
         :type content_type: str
         :param application_update_instance_request:
         :type application_update_instance_request: ApplicationUpdateInstanceRequest
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
         :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: ApplicationInstanceResults
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the edge_applications_edge_application_id_functions_instances_functions_instances_id_patch_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.edge_applications_edge_application_id_functions_instances_functions_instances_id_patch_with_http_info(edge_application_id, functions_instances_id, accept, content_type, application_update_instance_request, **kwargs)  # noqa: E501
+        """ # noqa: E501
 
-    @validate_arguments
-    def edge_applications_edge_application_id_functions_instances_functions_instances_id_patch_with_http_info(self, edge_application_id : Annotated[StrictStr, Field(..., description="The id of the edge application you plan to overwrite ")], functions_instances_id : Annotated[StrictStr, Field(..., description="The id of the edge function instance you plan to overwrite.")], accept : Optional[StrictStr] = None, content_type : Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None, application_update_instance_request : Optional[ApplicationUpdateInstanceRequest] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:  # noqa: E501
+        _param = self._edge_applications_edge_application_id_functions_instances_functions_instances_id_patch_serialize(
+            edge_application_id=edge_application_id,
+            functions_instances_id=functions_instances_id,
+            accept=accept,
+            content_type=content_type,
+            application_update_instance_request=application_update_instance_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ApplicationInstanceResults",
+            '400': None,
+            '403': None,
+            '404': None,
+            '405': None,
+            '422': None,
+            '500': None
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
 
-        >>> thread = api.edge_applications_edge_application_id_functions_instances_functions_instances_id_patch_with_http_info(edge_application_id, functions_instances_id, accept, content_type, application_update_instance_request, async_req=True)
-        >>> result = thread.get()
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_functions_instances_id_patch_with_http_info(
+        self,
+        edge_application_id: Annotated[StrictStr, Field(description="The id of the edge application you plan to overwrite ")],
+        functions_instances_id: Annotated[StrictStr, Field(description="The id of the edge function instance you plan to overwrite.")],
+        accept: Optional[StrictStr] = None,
+        content_type: Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None,
+        application_update_instance_request: Optional[ApplicationUpdateInstanceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ApplicationInstanceResults]:
+        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
+
 
         :param edge_application_id: The id of the edge application you plan to overwrite  (required)
         :type edge_application_id: str
@@ -422,141 +776,256 @@ class EdgeApplicationsEdgeFunctionsInstancesApi:
         :type content_type: str
         :param application_update_instance_request:
         :type application_update_instance_request: ApplicationUpdateInstanceRequest
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
         :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
         :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
         :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(ApplicationInstanceResults, status_code(int), headers(HTTPHeaderDict))
-        """
+        """ # noqa: E501
 
-        _params = locals()
-
-        _all_params = [
-            'edge_application_id',
-            'functions_instances_id',
-            'accept',
-            'content_type',
-            'application_update_instance_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
+        _param = self._edge_applications_edge_application_id_functions_instances_functions_instances_id_patch_serialize(
+            edge_application_id=edge_application_id,
+            functions_instances_id=functions_instances_id,
+            accept=accept,
+            content_type=content_type,
+            application_update_instance_request=application_update_instance_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
         )
 
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method edge_applications_edge_application_id_functions_instances_functions_instances_id_patch" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-        if _params['edge_application_id']:
-            _path_params['edge_application_id'] = _params['edge_application_id']
-
-        if _params['functions_instances_id']:
-            _path_params['functions_instances_id'] = _params['functions_instances_id']
-
-
-        # process the query parameters
-        _query_params = []
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        if _params['accept']:
-            _header_params['Accept'] = _params['accept']
-
-        if _params['content_type']:
-            _header_params['Content-Type'] = _params['content_type']
-
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        if _params['application_update_instance_request'] is not None:
-            _body_params = _params['application_update_instance_request']
-
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json; version=3'])  # noqa: E501
-
-        # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json; version=3']))
-        if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
-
-        # authentication setting
-        _auth_settings = ['tokenAuth']  # noqa: E501
-
-        _response_types_map = {
+        _response_types_map: Dict[str, Optional[str]] = {
             '200': "ApplicationInstanceResults",
             '400': None,
             '403': None,
             '404': None,
             '405': None,
             '422': None,
-            '500': None,
+            '500': None
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_functions_instances_id_patch_without_preload_content(
+        self,
+        edge_application_id: Annotated[StrictStr, Field(description="The id of the edge application you plan to overwrite ")],
+        functions_instances_id: Annotated[StrictStr, Field(description="The id of the edge function instance you plan to overwrite.")],
+        accept: Optional[StrictStr] = None,
+        content_type: Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None,
+        application_update_instance_request: Optional[ApplicationUpdateInstanceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
+
+
+        :param edge_application_id: The id of the edge application you plan to overwrite  (required)
+        :type edge_application_id: str
+        :param functions_instances_id: The id of the edge function instance you plan to overwrite. (required)
+        :type functions_instances_id: str
+        :param accept:
+        :type accept: str
+        :param content_type: The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json
+        :type content_type: str
+        :param application_update_instance_request:
+        :type application_update_instance_request: ApplicationUpdateInstanceRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._edge_applications_edge_application_id_functions_instances_functions_instances_id_patch_serialize(
+            edge_application_id=edge_application_id,
+            functions_instances_id=functions_instances_id,
+            accept=accept,
+            content_type=content_type,
+            application_update_instance_request=application_update_instance_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ApplicationInstanceResults",
+            '400': None,
+            '403': None,
+            '404': None,
+            '405': None,
+            '422': None,
+            '500': None
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _edge_applications_edge_application_id_functions_instances_functions_instances_id_patch_serialize(
+        self,
+        edge_application_id,
+        functions_instances_id,
+        accept,
+        content_type,
+        application_update_instance_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> Tuple:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            
         }
 
-        return self.api_client.call_api(
-            '/edge_applications/{edge_application_id}/functions_instances/{functions_instances_id}', 'PATCH',
-            _path_params,
-            _query_params,
-            _header_params,
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if edge_application_id is not None:
+            _path_params['edge_application_id'] = edge_application_id
+        if functions_instances_id is not None:
+            _path_params['functions_instances_id'] = functions_instances_id
+        # process the query parameters
+        # process the header parameters
+        if accept is not None:
+            _header_params['Accept'] = accept
+        if content_type is not None:
+            _header_params['Content-Type'] = content_type
+        # process the form parameters
+        # process the body parameter
+        if application_update_instance_request is not None:
+            _body_params = application_update_instance_request
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json; version=3'
+            ]
+        )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json; version=3'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/edge_applications/{edge_application_id}/functions_instances/{functions_instances_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
             body=_body_params,
             post_params=_form_params,
             files=_files,
-            response_types_map=_response_types_map,
             auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
+            _host=_host,
+            _request_auth=_request_auth
+        )
 
-    @validate_arguments
-    def edge_applications_edge_application_id_functions_instances_functions_instances_id_put(self, edge_application_id : Annotated[StrictStr, Field(..., description="The id of the edge application you plan to overwrite ")], functions_instances_id : Annotated[StrictStr, Field(..., description="The id of the edge function instance you plan to overwrite.")], accept : Optional[StrictStr] = None, content_type : Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None, application_put_instance_request : Optional[ApplicationPutInstanceRequest] = None, **kwargs) -> ApplicationInstanceResults:  # noqa: E501
-        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:  # noqa: E501
 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.edge_applications_edge_application_id_functions_instances_functions_instances_id_put(edge_application_id, functions_instances_id, accept, content_type, application_put_instance_request, async_req=True)
-        >>> result = thread.get()
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_functions_instances_id_put(
+        self,
+        edge_application_id: Annotated[StrictStr, Field(description="The id of the edge application you plan to overwrite ")],
+        functions_instances_id: Annotated[StrictStr, Field(description="The id of the edge function instance you plan to overwrite.")],
+        accept: Optional[StrictStr] = None,
+        content_type: Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None,
+        application_put_instance_request: Optional[ApplicationPutInstanceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApplicationInstanceResults:
+        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
+
 
         :param edge_application_id: The id of the edge application you plan to overwrite  (required)
         :type edge_application_id: str
@@ -568,32 +1037,84 @@ class EdgeApplicationsEdgeFunctionsInstancesApi:
         :type content_type: str
         :param application_put_instance_request:
         :type application_put_instance_request: ApplicationPutInstanceRequest
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
         :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: ApplicationInstanceResults
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the edge_applications_edge_application_id_functions_instances_functions_instances_id_put_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.edge_applications_edge_application_id_functions_instances_functions_instances_id_put_with_http_info(edge_application_id, functions_instances_id, accept, content_type, application_put_instance_request, **kwargs)  # noqa: E501
+        """ # noqa: E501
 
-    @validate_arguments
-    def edge_applications_edge_application_id_functions_instances_functions_instances_id_put_with_http_info(self, edge_application_id : Annotated[StrictStr, Field(..., description="The id of the edge application you plan to overwrite ")], functions_instances_id : Annotated[StrictStr, Field(..., description="The id of the edge function instance you plan to overwrite.")], accept : Optional[StrictStr] = None, content_type : Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None, application_put_instance_request : Optional[ApplicationPutInstanceRequest] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:  # noqa: E501
+        _param = self._edge_applications_edge_application_id_functions_instances_functions_instances_id_put_serialize(
+            edge_application_id=edge_application_id,
+            functions_instances_id=functions_instances_id,
+            accept=accept,
+            content_type=content_type,
+            application_put_instance_request=application_put_instance_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ApplicationInstanceResults",
+            '400': None,
+            '403': None,
+            '404': None,
+            '405': None,
+            '422': None,
+            '500': None
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
 
-        >>> thread = api.edge_applications_edge_application_id_functions_instances_functions_instances_id_put_with_http_info(edge_application_id, functions_instances_id, accept, content_type, application_put_instance_request, async_req=True)
-        >>> result = thread.get()
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_functions_instances_id_put_with_http_info(
+        self,
+        edge_application_id: Annotated[StrictStr, Field(description="The id of the edge application you plan to overwrite ")],
+        functions_instances_id: Annotated[StrictStr, Field(description="The id of the edge function instance you plan to overwrite.")],
+        accept: Optional[StrictStr] = None,
+        content_type: Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None,
+        application_put_instance_request: Optional[ApplicationPutInstanceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ApplicationInstanceResults]:
+        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
+
 
         :param edge_application_id: The id of the edge application you plan to overwrite  (required)
         :type edge_application_id: str
@@ -605,141 +1126,258 @@ class EdgeApplicationsEdgeFunctionsInstancesApi:
         :type content_type: str
         :param application_put_instance_request:
         :type application_put_instance_request: ApplicationPutInstanceRequest
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
         :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
         :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
         :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(ApplicationInstanceResults, status_code(int), headers(HTTPHeaderDict))
-        """
+        """ # noqa: E501
 
-        _params = locals()
-
-        _all_params = [
-            'edge_application_id',
-            'functions_instances_id',
-            'accept',
-            'content_type',
-            'application_put_instance_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
+        _param = self._edge_applications_edge_application_id_functions_instances_functions_instances_id_put_serialize(
+            edge_application_id=edge_application_id,
+            functions_instances_id=functions_instances_id,
+            accept=accept,
+            content_type=content_type,
+            application_put_instance_request=application_put_instance_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
         )
 
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method edge_applications_edge_application_id_functions_instances_functions_instances_id_put" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-        if _params['edge_application_id']:
-            _path_params['edge_application_id'] = _params['edge_application_id']
-
-        if _params['functions_instances_id']:
-            _path_params['functions_instances_id'] = _params['functions_instances_id']
-
-
-        # process the query parameters
-        _query_params = []
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        if _params['accept']:
-            _header_params['Accept'] = _params['accept']
-
-        if _params['content_type']:
-            _header_params['Content-Type'] = _params['content_type']
-
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        if _params['application_put_instance_request'] is not None:
-            _body_params = _params['application_put_instance_request']
-
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json; version=3'])  # noqa: E501
-
-        # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json; version=3']))
-        if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
-
-        # authentication setting
-        _auth_settings = ['tokenAuth']  # noqa: E501
-
-        _response_types_map = {
+        _response_types_map: Dict[str, Optional[str]] = {
             '200': "ApplicationInstanceResults",
             '400': None,
             '403': None,
             '404': None,
             '405': None,
             '422': None,
-            '500': None,
+            '500': None
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_functions_instances_id_put_without_preload_content(
+        self,
+        edge_application_id: Annotated[StrictStr, Field(description="The id of the edge application you plan to overwrite ")],
+        functions_instances_id: Annotated[StrictStr, Field(description="The id of the edge function instance you plan to overwrite.")],
+        accept: Optional[StrictStr] = None,
+        content_type: Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None,
+        application_put_instance_request: Optional[ApplicationPutInstanceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """/edge_applications/:edge_application_id:/functions_instances/:functions_instances_id:
+
+
+        :param edge_application_id: The id of the edge application you plan to overwrite  (required)
+        :type edge_application_id: str
+        :param functions_instances_id: The id of the edge function instance you plan to overwrite. (required)
+        :type functions_instances_id: str
+        :param accept:
+        :type accept: str
+        :param content_type: The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json
+        :type content_type: str
+        :param application_put_instance_request:
+        :type application_put_instance_request: ApplicationPutInstanceRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._edge_applications_edge_application_id_functions_instances_functions_instances_id_put_serialize(
+            edge_application_id=edge_application_id,
+            functions_instances_id=functions_instances_id,
+            accept=accept,
+            content_type=content_type,
+            application_put_instance_request=application_put_instance_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ApplicationInstanceResults",
+            '400': None,
+            '403': None,
+            '404': None,
+            '405': None,
+            '422': None,
+            '500': None
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _edge_applications_edge_application_id_functions_instances_functions_instances_id_put_serialize(
+        self,
+        edge_application_id,
+        functions_instances_id,
+        accept,
+        content_type,
+        application_put_instance_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> Tuple:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            
         }
 
-        return self.api_client.call_api(
-            '/edge_applications/{edge_application_id}/functions_instances/{functions_instances_id}', 'PUT',
-            _path_params,
-            _query_params,
-            _header_params,
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if edge_application_id is not None:
+            _path_params['edge_application_id'] = edge_application_id
+        if functions_instances_id is not None:
+            _path_params['functions_instances_id'] = functions_instances_id
+        # process the query parameters
+        # process the header parameters
+        if accept is not None:
+            _header_params['Accept'] = accept
+        if content_type is not None:
+            _header_params['Content-Type'] = content_type
+        # process the form parameters
+        # process the body parameter
+        if application_put_instance_request is not None:
+            _body_params = application_put_instance_request
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json; version=3'
+            ]
+        )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json; version=3'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/edge_applications/{edge_application_id}/functions_instances/{functions_instances_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
             body=_body_params,
             post_params=_form_params,
             files=_files,
-            response_types_map=_response_types_map,
             auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
+            _host=_host,
+            _request_auth=_request_auth
+        )
 
-    @validate_arguments
-    def edge_applications_edge_application_id_functions_instances_get(self, edge_application_id : StrictInt, page : Optional[StrictInt] = None, page_size : Optional[StrictInt] = None, filter : Optional[StrictStr] = None, order_by : Optional[StrictStr] = None, sort : Optional[StrictStr] = None, accept : Optional[StrictStr] = None, **kwargs) -> ApplicationInstancesGetResponse:  # noqa: E501
-        """/edge_applications/:edge_application_id:/functions_instances  # noqa: E501
 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.edge_applications_edge_application_id_functions_instances_get(edge_application_id, page, page_size, filter, order_by, sort, accept, async_req=True)
-        >>> result = thread.get()
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_get(
+        self,
+        edge_application_id: StrictInt,
+        page: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
+        filter: Optional[StrictStr] = None,
+        order_by: Optional[StrictStr] = None,
+        sort: Optional[StrictStr] = None,
+        accept: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApplicationInstancesGetResponse:
+        """/edge_applications/:edge_application_id:/functions_instances
+
 
         :param edge_application_id: (required)
         :type edge_application_id: int
@@ -755,343 +1393,667 @@ class EdgeApplicationsEdgeFunctionsInstancesApi:
         :type sort: str
         :param accept:
         :type accept: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: ApplicationInstancesGetResponse
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the edge_applications_edge_application_id_functions_instances_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.edge_applications_edge_application_id_functions_instances_get_with_http_info(edge_application_id, page, page_size, filter, order_by, sort, accept, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def edge_applications_edge_application_id_functions_instances_get_with_http_info(self, edge_application_id : StrictInt, page : Optional[StrictInt] = None, page_size : Optional[StrictInt] = None, filter : Optional[StrictStr] = None, order_by : Optional[StrictStr] = None, sort : Optional[StrictStr] = None, accept : Optional[StrictStr] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """/edge_applications/:edge_application_id:/functions_instances  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.edge_applications_edge_application_id_functions_instances_get_with_http_info(edge_application_id, page, page_size, filter, order_by, sort, accept, async_req=True)
-        >>> result = thread.get()
-
-        :param edge_application_id: (required)
-        :type edge_application_id: int
-        :param page:
-        :type page: int
-        :param page_size:
-        :type page_size: int
-        :param filter:
-        :type filter: str
-        :param order_by:
-        :type order_by: str
-        :param sort:
-        :type sort: str
-        :param accept:
-        :type accept: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
         :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
         :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
         :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(ApplicationInstancesGetResponse, status_code(int), headers(HTTPHeaderDict))
-        """
+        """ # noqa: E501
 
-        _params = locals()
-
-        _all_params = [
-            'edge_application_id',
-            'page',
-            'page_size',
-            'filter',
-            'order_by',
-            'sort',
-            'accept'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
+        _param = self._edge_applications_edge_application_id_functions_instances_get_serialize(
+            edge_application_id=edge_application_id,
+            page=page,
+            page_size=page_size,
+            filter=filter,
+            order_by=order_by,
+            sort=sort,
+            accept=accept,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
         )
 
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method edge_applications_edge_application_id_functions_instances_get" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-        if _params['edge_application_id']:
-            _path_params['edge_application_id'] = _params['edge_application_id']
-
-
-        # process the query parameters
-        _query_params = []
-        if _params.get('page') is not None:  # noqa: E501
-            _query_params.append(('page', _params['page']))
-
-        if _params.get('page_size') is not None:  # noqa: E501
-            _query_params.append(('page_size', _params['page_size']))
-
-        if _params.get('filter') is not None:  # noqa: E501
-            _query_params.append(('filter', _params['filter']))
-
-        if _params.get('order_by') is not None:  # noqa: E501
-            _query_params.append(('order_by', _params['order_by']))
-
-        if _params.get('sort') is not None:  # noqa: E501
-            _query_params.append(('sort', _params['sort']))
-
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        if _params['accept']:
-            _header_params['Accept'] = _params['accept']
-
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json; version=3'])  # noqa: E501
-
-        # authentication setting
-        _auth_settings = ['tokenAuth']  # noqa: E501
-
-        _response_types_map = {
+        _response_types_map: Dict[str, Optional[str]] = {
             '200': "ApplicationInstancesGetResponse",
             '400': None,
             '403': None,
             '404': None,
             '422': None,
-            '500': None,
+            '500': None
+            
         }
-
-        return self.api_client.call_api(
-            '/edge_applications/{edge_application_id}/functions_instances', 'GET',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
             response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
+        ).data
 
-    @validate_arguments
-    def edge_applications_edge_application_id_functions_instances_post(self, edge_application_id : StrictInt, accept : Optional[StrictStr] = None, content_type : Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None, application_create_instance_request : Optional[ApplicationCreateInstanceRequest] = None, **kwargs) -> ApplicationInstanceResults:  # noqa: E501
-        """edge_application/:edge_application_id:/functions_instances  # noqa: E501
 
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_get_with_http_info(
+        self,
+        edge_application_id: StrictInt,
+        page: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
+        filter: Optional[StrictStr] = None,
+        order_by: Optional[StrictStr] = None,
+        sort: Optional[StrictStr] = None,
+        accept: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ApplicationInstancesGetResponse]:
+        """/edge_applications/:edge_application_id:/functions_instances
 
-        >>> thread = api.edge_applications_edge_application_id_functions_instances_post(edge_application_id, accept, content_type, application_create_instance_request, async_req=True)
-        >>> result = thread.get()
-
-        :param edge_application_id: (required)
-        :type edge_application_id: int
-        :param accept:
-        :type accept: str
-        :param content_type: The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json
-        :type content_type: str
-        :param application_create_instance_request:
-        :type application_create_instance_request: ApplicationCreateInstanceRequest
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: ApplicationInstanceResults
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the edge_applications_edge_application_id_functions_instances_post_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.edge_applications_edge_application_id_functions_instances_post_with_http_info(edge_application_id, accept, content_type, application_create_instance_request, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def edge_applications_edge_application_id_functions_instances_post_with_http_info(self, edge_application_id : StrictInt, accept : Optional[StrictStr] = None, content_type : Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None, application_create_instance_request : Optional[ApplicationCreateInstanceRequest] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """edge_application/:edge_application_id:/functions_instances  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.edge_applications_edge_application_id_functions_instances_post_with_http_info(edge_application_id, accept, content_type, application_create_instance_request, async_req=True)
-        >>> result = thread.get()
 
         :param edge_application_id: (required)
         :type edge_application_id: int
+        :param page:
+        :type page: int
+        :param page_size:
+        :type page_size: int
+        :param filter:
+        :type filter: str
+        :param order_by:
+        :type order_by: str
+        :param sort:
+        :type sort: str
         :param accept:
         :type accept: str
-        :param content_type: The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json
-        :type content_type: str
-        :param application_create_instance_request:
-        :type application_create_instance_request: ApplicationCreateInstanceRequest
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
         :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
         :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
         :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(ApplicationInstanceResults, status_code(int), headers(HTTPHeaderDict))
-        """
+        """ # noqa: E501
 
-        _params = locals()
-
-        _all_params = [
-            'edge_application_id',
-            'accept',
-            'content_type',
-            'application_create_instance_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
+        _param = self._edge_applications_edge_application_id_functions_instances_get_serialize(
+            edge_application_id=edge_application_id,
+            page=page,
+            page_size=page_size,
+            filter=filter,
+            order_by=order_by,
+            sort=sort,
+            accept=accept,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
         )
 
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method edge_applications_edge_application_id_functions_instances_post" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ApplicationInstancesGetResponse",
+            '400': None,
+            '403': None,
+            '404': None,
+            '422': None,
+            '500': None
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
 
-        _collection_formats = {}
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_get_without_preload_content(
+        self,
+        edge_application_id: StrictInt,
+        page: Optional[StrictInt] = None,
+        page_size: Optional[StrictInt] = None,
+        filter: Optional[StrictStr] = None,
+        order_by: Optional[StrictStr] = None,
+        sort: Optional[StrictStr] = None,
+        accept: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """/edge_applications/:edge_application_id:/functions_instances
+
+
+        :param edge_application_id: (required)
+        :type edge_application_id: int
+        :param page:
+        :type page: int
+        :param page_size:
+        :type page_size: int
+        :param filter:
+        :type filter: str
+        :param order_by:
+        :type order_by: str
+        :param sort:
+        :type sort: str
+        :param accept:
+        :type accept: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._edge_applications_edge_application_id_functions_instances_get_serialize(
+            edge_application_id=edge_application_id,
+            page=page,
+            page_size=page_size,
+            filter=filter,
+            order_by=order_by,
+            sort=sort,
+            accept=accept,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ApplicationInstancesGetResponse",
+            '400': None,
+            '403': None,
+            '404': None,
+            '422': None,
+            '500': None
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _edge_applications_edge_application_id_functions_instances_get_serialize(
+        self,
+        edge_application_id,
+        page,
+        page_size,
+        filter,
+        order_by,
+        sort,
+        accept,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> Tuple:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
 
         # process the path parameters
-        _path_params = {}
-        if _params['edge_application_id']:
-            _path_params['edge_application_id'] = _params['edge_application_id']
-
-
+        if edge_application_id is not None:
+            _path_params['edge_application_id'] = edge_application_id
         # process the query parameters
-        _query_params = []
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
+            
+        if filter is not None:
+            
+            _query_params.append(('filter', filter))
+            
+        if order_by is not None:
+            
+            _query_params.append(('order_by', order_by))
+            
+        if sort is not None:
+            
+            _query_params.append(('sort', sort))
+            
         # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        if _params['accept']:
-            _header_params['Accept'] = _params['accept']
-
-        if _params['content_type']:
-            _header_params['Content-Type'] = _params['content_type']
-
+        if accept is not None:
+            _header_params['Accept'] = accept
         # process the form parameters
-        _form_params = []
-        _files = {}
         # process the body parameter
-        _body_params = None
-        if _params['application_create_instance_request'] is not None:
-            _body_params = _params['application_create_instance_request']
+
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json; version=3'])  # noqa: E501
+            [
+                'application/json; version=3'
+            ]
+        )
 
-        # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json; version=3']))
-        if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
-        _auth_settings = ['tokenAuth']  # noqa: E501
+        _auth_settings: List[str] = [
+            'tokenAuth'
+        ]
 
-        _response_types_map = {
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/edge_applications/{edge_application_id}/functions_instances',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_post(
+        self,
+        edge_application_id: StrictInt,
+        accept: Optional[StrictStr] = None,
+        content_type: Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None,
+        application_create_instance_request: Optional[ApplicationCreateInstanceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApplicationInstanceResults:
+        """edge_application/:edge_application_id:/functions_instances
+
+
+        :param edge_application_id: (required)
+        :type edge_application_id: int
+        :param accept:
+        :type accept: str
+        :param content_type: The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json
+        :type content_type: str
+        :param application_create_instance_request:
+        :type application_create_instance_request: ApplicationCreateInstanceRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._edge_applications_edge_application_id_functions_instances_post_serialize(
+            edge_application_id=edge_application_id,
+            accept=accept,
+            content_type=content_type,
+            application_create_instance_request=application_create_instance_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
             '200': "ApplicationInstanceResults",
             '400': None,
             '403': None,
             '404': None,
             '422': None,
-            '500': None,
+            '500': None
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_post_with_http_info(
+        self,
+        edge_application_id: StrictInt,
+        accept: Optional[StrictStr] = None,
+        content_type: Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None,
+        application_create_instance_request: Optional[ApplicationCreateInstanceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ApplicationInstanceResults]:
+        """edge_application/:edge_application_id:/functions_instances
+
+
+        :param edge_application_id: (required)
+        :type edge_application_id: int
+        :param accept:
+        :type accept: str
+        :param content_type: The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json
+        :type content_type: str
+        :param application_create_instance_request:
+        :type application_create_instance_request: ApplicationCreateInstanceRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._edge_applications_edge_application_id_functions_instances_post_serialize(
+            edge_application_id=edge_application_id,
+            accept=accept,
+            content_type=content_type,
+            application_create_instance_request=application_create_instance_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ApplicationInstanceResults",
+            '400': None,
+            '403': None,
+            '404': None,
+            '422': None,
+            '500': None
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def edge_applications_edge_application_id_functions_instances_post_without_preload_content(
+        self,
+        edge_application_id: StrictInt,
+        accept: Optional[StrictStr] = None,
+        content_type: Annotated[Optional[StrictStr], Field(description="The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json")] = None,
+        application_create_instance_request: Optional[ApplicationCreateInstanceRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """edge_application/:edge_application_id:/functions_instances
+
+
+        :param edge_application_id: (required)
+        :type edge_application_id: int
+        :param accept:
+        :type accept: str
+        :param content_type: The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json
+        :type content_type: str
+        :param application_create_instance_request:
+        :type application_create_instance_request: ApplicationCreateInstanceRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._edge_applications_edge_application_id_functions_instances_post_serialize(
+            edge_application_id=edge_application_id,
+            accept=accept,
+            content_type=content_type,
+            application_create_instance_request=application_create_instance_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ApplicationInstanceResults",
+            '400': None,
+            '403': None,
+            '404': None,
+            '422': None,
+            '500': None
+            
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _edge_applications_edge_application_id_functions_instances_post_serialize(
+        self,
+        edge_application_id,
+        accept,
+        content_type,
+        application_create_instance_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> Tuple:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            
         }
 
-        return self.api_client.call_api(
-            '/edge_applications/{edge_application_id}/functions_instances', 'POST',
-            _path_params,
-            _query_params,
-            _header_params,
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if edge_application_id is not None:
+            _path_params['edge_application_id'] = edge_application_id
+        # process the query parameters
+        # process the header parameters
+        if accept is not None:
+            _header_params['Accept'] = accept
+        if content_type is not None:
+            _header_params['Content-Type'] = content_type
+        # process the form parameters
+        # process the body parameter
+        if application_create_instance_request is not None:
+            _body_params = application_create_instance_request
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json; version=3'
+            ]
+        )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json; version=3'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'tokenAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/edge_applications/{edge_application_id}/functions_instances',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
             body=_body_params,
             post_params=_form_params,
             files=_files,
-            response_types_map=_response_types_map,
             auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+

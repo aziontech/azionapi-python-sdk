@@ -19,11 +19,16 @@ import pprint
 import re  # noqa: F401
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
+from pydantic import BaseModel, Field, StrictStr, ValidationError, field_validator
 from edgeapplications.models.rules_engine_behavior_object import RulesEngineBehaviorObject
 from edgeapplications.models.rules_engine_behavior_string import RulesEngineBehaviorString
-from typing import Union, Any, List, TYPE_CHECKING
+from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
+from typing_extensions import Literal
 from pydantic import StrictStr, Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 RULESENGINEBEHAVIORENTRY_ANY_OF_SCHEMAS = ["RulesEngineBehaviorObject", "RulesEngineBehaviorString"]
 
@@ -37,13 +42,14 @@ class RulesEngineBehaviorEntry(BaseModel):
     # data type: RulesEngineBehaviorObject
     anyof_schema_2_validator: Optional[RulesEngineBehaviorObject] = None
     if TYPE_CHECKING:
-        actual_instance: Union[RulesEngineBehaviorObject, RulesEngineBehaviorString]
+        actual_instance: Optional[Union[RulesEngineBehaviorObject, RulesEngineBehaviorString]] = None
     else:
-        actual_instance: Any
-    any_of_schemas: List[str] = Field(RULESENGINEBEHAVIORENTRY_ANY_OF_SCHEMAS, const=True)
+        actual_instance: Any = None
+    any_of_schemas: List[str] = Literal[RULESENGINEBEHAVIORENTRY_ANY_OF_SCHEMAS]
 
-    class Config:
-        validate_assignment = True
+    model_config = {
+        "validate_assignment": True
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -55,9 +61,9 @@ class RulesEngineBehaviorEntry(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @validator('actual_instance')
+    @field_validator('actual_instance')
     def actual_instance_must_validate_anyof(cls, v):
-        instance = RulesEngineBehaviorEntry.construct()
+        instance = RulesEngineBehaviorEntry.model_construct()
         error_messages = []
         # validate data type: RulesEngineBehaviorString
         if not isinstance(v, RulesEngineBehaviorString):
@@ -78,13 +84,13 @@ class RulesEngineBehaviorEntry(BaseModel):
             return v
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RulesEngineBehaviorEntry:
+    def from_dict(cls, obj: dict) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(cls, json_str: str) -> RulesEngineBehaviorEntry:
+    def from_json(cls, json_str: str) -> Self:
         """Returns the object represented by the json string"""
-        instance = RulesEngineBehaviorEntry.construct()
+        instance = cls.model_construct()
         error_messages = []
         # anyof_schema_1_validator: Optional[RulesEngineBehaviorString] = None
         try:
@@ -116,7 +122,7 @@ class RulesEngineBehaviorEntry(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> Dict:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return "null"
@@ -129,6 +135,6 @@ class RulesEngineBehaviorEntry(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.dict())
+        return pprint.pformat(self.model_dump())
 
 
