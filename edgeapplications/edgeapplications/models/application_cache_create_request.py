@@ -18,25 +18,29 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class ApplicationCacheCreateRequest(BaseModel):
     """
     ApplicationCacheCreateRequest
-    """
-    name: StrictStr = Field(...)
+    """ # noqa: E501
+    name: StrictStr
     browser_cache_settings: Optional[StrictStr] = None
     browser_cache_settings_maximum_ttl: Optional[StrictInt] = None
     cdn_cache_settings: Optional[StrictStr] = None
     cdn_cache_settings_maximum_ttl: Optional[StrictInt] = None
     cache_by_query_string: Optional[StrictStr] = None
-    query_string_fields: Optional[conlist(StrictStr)] = None
+    query_string_fields: Optional[List[StrictStr]] = None
     enable_query_string_sort: Optional[StrictBool] = None
     cache_by_cookies: Optional[StrictStr] = None
-    cookie_names: Optional[conlist(StrictStr)] = None
+    cookie_names: Optional[List[StrictStr]] = None
     adaptive_delivery_action: Optional[StrictStr] = None
-    device_group: Optional[conlist(StrictInt)] = None
+    device_group: Optional[List[StrictInt]] = None
     enable_caching_for_post: Optional[StrictBool] = None
     l2_caching_enabled: Optional[StrictBool] = None
     is_slice_configuration_enabled: Optional[StrictBool] = None
@@ -46,44 +50,56 @@ class ApplicationCacheCreateRequest(BaseModel):
     enable_caching_for_options: Optional[StrictBool] = None
     enable_stale_cache: Optional[StrictBool] = None
     l2_region: Optional[StrictStr] = None
-    __properties = ["name", "browser_cache_settings", "browser_cache_settings_maximum_ttl", "cdn_cache_settings", "cdn_cache_settings_maximum_ttl", "cache_by_query_string", "query_string_fields", "enable_query_string_sort", "cache_by_cookies", "cookie_names", "adaptive_delivery_action", "device_group", "enable_caching_for_post", "l2_caching_enabled", "is_slice_configuration_enabled", "is_slice_edge_caching_enabled", "is_slice_l2_caching_enabled", "slice_configuration_range", "enable_caching_for_options", "enable_stale_cache", "l2_region"]
+    __properties: ClassVar[List[str]] = ["name", "browser_cache_settings", "browser_cache_settings_maximum_ttl", "cdn_cache_settings", "cdn_cache_settings_maximum_ttl", "cache_by_query_string", "query_string_fields", "enable_query_string_sort", "cache_by_cookies", "cookie_names", "adaptive_delivery_action", "device_group", "enable_caching_for_post", "l2_caching_enabled", "is_slice_configuration_enabled", "is_slice_edge_caching_enabled", "is_slice_l2_caching_enabled", "slice_configuration_range", "enable_caching_for_options", "enable_stale_cache", "l2_region"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ApplicationCacheCreateRequest:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ApplicationCacheCreateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+            },
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ApplicationCacheCreateRequest:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ApplicationCacheCreateRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ApplicationCacheCreateRequest.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ApplicationCacheCreateRequest.parse_obj({
+        _obj = cls.model_validate({
             "name": obj.get("name"),
             "browser_cache_settings": obj.get("browser_cache_settings"),
             "browser_cache_settings_maximum_ttl": obj.get("browser_cache_settings_maximum_ttl"),

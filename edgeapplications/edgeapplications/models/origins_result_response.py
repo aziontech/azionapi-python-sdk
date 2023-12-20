@@ -18,56 +18,74 @@ import re  # noqa: F401
 import json
 
 
-from typing import List
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
 from edgeapplications.models.origins_result_response_addresses import OriginsResultResponseAddresses
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class OriginsResultResponse(BaseModel):
     """
     OriginsResultResponse
-    """
-    origin_id: StrictInt = Field(...)
-    origin_key: StrictStr = Field(...)
-    name: StrictStr = Field(...)
-    origin_type: StrictStr = Field(...)
-    addresses: conlist(OriginsResultResponseAddresses) = Field(...)
-    origin_protocol_policy: StrictStr = Field(...)
-    is_origin_redirection_enabled: StrictBool = Field(...)
-    host_header: StrictStr = Field(...)
-    method: StrictStr = Field(...)
-    origin_path: StrictStr = Field(...)
-    connection_timeout: StrictInt = Field(...)
-    timeout_between_bytes: StrictInt = Field(...)
-    hmac_authentication: StrictBool = Field(...)
-    hmac_region_name: StrictStr = Field(...)
-    hmac_access_key: StrictStr = Field(...)
-    hmac_secret_key: StrictStr = Field(...)
-    __properties = ["origin_id", "origin_key", "name", "origin_type", "addresses", "origin_protocol_policy", "is_origin_redirection_enabled", "host_header", "method", "origin_path", "connection_timeout", "timeout_between_bytes", "hmac_authentication", "hmac_region_name", "hmac_access_key", "hmac_secret_key"]
+    """ # noqa: E501
+    origin_id: StrictInt
+    origin_key: StrictStr
+    name: StrictStr
+    origin_type: StrictStr
+    addresses: List[OriginsResultResponseAddresses]
+    origin_protocol_policy: StrictStr
+    is_origin_redirection_enabled: StrictBool
+    host_header: StrictStr
+    method: StrictStr
+    origin_path: StrictStr
+    connection_timeout: StrictInt
+    timeout_between_bytes: StrictInt
+    hmac_authentication: StrictBool
+    hmac_region_name: StrictStr
+    hmac_access_key: StrictStr
+    hmac_secret_key: StrictStr
+    bucket: Optional[StrictStr] = None
+    prefix: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["origin_id", "origin_key", "name", "origin_type", "addresses", "origin_protocol_policy", "is_origin_redirection_enabled", "host_header", "method", "origin_path", "connection_timeout", "timeout_between_bytes", "hmac_authentication", "hmac_region_name", "hmac_access_key", "hmac_secret_key", "bucket", "prefix"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> OriginsResultResponse:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of OriginsResultResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+            },
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in addresses (list)
         _items = []
         if self.addresses:
@@ -78,15 +96,15 @@ class OriginsResultResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> OriginsResultResponse:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of OriginsResultResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return OriginsResultResponse.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = OriginsResultResponse.parse_obj({
+        _obj = cls.model_validate({
             "origin_id": obj.get("origin_id"),
             "origin_key": obj.get("origin_key"),
             "name": obj.get("name"),
@@ -102,7 +120,9 @@ class OriginsResultResponse(BaseModel):
             "hmac_authentication": obj.get("hmac_authentication"),
             "hmac_region_name": obj.get("hmac_region_name"),
             "hmac_access_key": obj.get("hmac_access_key"),
-            "hmac_secret_key": obj.get("hmac_secret_key")
+            "hmac_secret_key": obj.get("hmac_secret_key"),
+            "bucket": obj.get("bucket"),
+            "prefix": obj.get("prefix")
         })
         return _obj
 

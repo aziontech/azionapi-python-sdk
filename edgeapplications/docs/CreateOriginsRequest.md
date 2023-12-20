@@ -6,14 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
 **origin_type** | **str** |  | [optional] 
-**addresses** | [**List[CreateOriginsRequestAddresses]**](CreateOriginsRequestAddresses.md) |  | 
+**addresses** | [**List[CreateOriginsRequestAddresses]**](CreateOriginsRequestAddresses.md) |  | [optional] 
 **origin_protocol_policy** | **str** |  | [optional] 
-**host_header** | **str** |  | 
+**host_header** | **str** |  | [optional] 
 **origin_path** | **str** |  | [optional] 
 **hmac_authentication** | **bool** |  | [optional] 
 **hmac_region_name** | **str** |  | [optional] 
 **hmac_access_key** | **str** |  | [optional] 
 **hmac_secret_key** | **str** |  | [optional] 
+**bucket** | **str** |  | [optional] 
+**prefix** | **str** |  | [optional] 
 
 ## Example
 

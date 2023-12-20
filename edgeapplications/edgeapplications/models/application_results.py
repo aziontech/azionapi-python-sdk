@@ -18,81 +18,97 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class ApplicationResults(BaseModel):
     """
     ApplicationResults
-    """
-    id: StrictInt = Field(...)
-    name: StrictStr = Field(...)
-    active: StrictBool = Field(...)
-    debug_rules: StrictBool = Field(...)
-    http3: StrictBool = Field(...)
-    supported_ciphers: StrictStr = Field(...)
-    delivery_protocol: StrictStr = Field(...)
-    http_port: Optional[Any] = Field(...)
-    https_port: Optional[Any] = Field(...)
-    minimum_tls_version: StrictStr = Field(...)
-    application_acceleration: StrictBool = Field(...)
-    caching: StrictBool = Field(...)
-    device_detection: StrictBool = Field(...)
-    edge_firewall: StrictBool = Field(...)
-    edge_functions: StrictBool = Field(...)
-    image_optimization: StrictBool = Field(...)
-    l2_caching: StrictBool = Field(...)
-    load_balancer: StrictBool = Field(...)
-    raw_logs: StrictBool = Field(...)
-    web_application_firewall: StrictBool = Field(...)
-    __properties = ["id", "name", "active", "debug_rules", "http3", "supported_ciphers", "delivery_protocol", "http_port", "https_port", "minimum_tls_version", "application_acceleration", "caching", "device_detection", "edge_firewall", "edge_functions", "image_optimization", "l2_caching", "load_balancer", "raw_logs", "web_application_firewall"]
+    """ # noqa: E501
+    id: StrictInt
+    name: StrictStr
+    active: StrictBool
+    debug_rules: StrictBool
+    http3: StrictBool
+    supported_ciphers: StrictStr
+    delivery_protocol: StrictStr
+    http_port: Optional[Any]
+    https_port: Optional[Any]
+    minimum_tls_version: StrictStr
+    application_acceleration: StrictBool
+    caching: StrictBool
+    device_detection: StrictBool
+    edge_firewall: StrictBool
+    edge_functions: StrictBool
+    image_optimization: StrictBool
+    l2_caching: StrictBool
+    load_balancer: StrictBool
+    raw_logs: StrictBool
+    web_application_firewall: StrictBool
+    __properties: ClassVar[List[str]] = ["id", "name", "active", "debug_rules", "http3", "supported_ciphers", "delivery_protocol", "http_port", "https_port", "minimum_tls_version", "application_acceleration", "caching", "device_detection", "edge_firewall", "edge_functions", "image_optimization", "l2_caching", "load_balancer", "raw_logs", "web_application_firewall"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ApplicationResults:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ApplicationResults from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+            },
+            exclude_none=True,
+        )
         # set to None if http_port (nullable) is None
-        # and __fields_set__ contains the field
-        if self.http_port is None and "http_port" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.http_port is None and "http_port" in self.model_fields_set:
             _dict['http_port'] = None
 
         # set to None if https_port (nullable) is None
-        # and __fields_set__ contains the field
-        if self.https_port is None and "https_port" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.https_port is None and "https_port" in self.model_fields_set:
             _dict['https_port'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ApplicationResults:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ApplicationResults from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ApplicationResults.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ApplicationResults.parse_obj({
+        _obj = cls.model_validate({
             "id": obj.get("id"),
             "name": obj.get("name"),
             "active": obj.get("active"),

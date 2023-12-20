@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 **hmac_region_name** | **str** |  | 
 **hmac_access_key** | **str** |  | 
 **hmac_secret_key** | **str** |  | 
+**bucket** | **str** |  | [optional] 
+**prefix** | **str** |  | [optional] 
 
 ## Example
 
