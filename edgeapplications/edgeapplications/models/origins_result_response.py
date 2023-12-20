@@ -30,22 +30,22 @@ class OriginsResultResponse(BaseModel):
     """
     OriginsResultResponse
     """ # noqa: E501
-    origin_id: StrictInt
-    origin_key: StrictStr
+    origin_id: Optional[StrictInt] = None
+    origin_key: Optional[StrictStr] = None
     name: StrictStr
-    origin_type: StrictStr
-    addresses: List[OriginsResultResponseAddresses]
-    origin_protocol_policy: StrictStr
-    is_origin_redirection_enabled: StrictBool
-    host_header: StrictStr
-    method: StrictStr
-    origin_path: StrictStr
-    connection_timeout: StrictInt
-    timeout_between_bytes: StrictInt
-    hmac_authentication: StrictBool
-    hmac_region_name: StrictStr
-    hmac_access_key: StrictStr
-    hmac_secret_key: StrictStr
+    origin_type: Optional[StrictStr] = None
+    addresses: Optional[List[OriginsResultResponseAddresses]] = None
+    origin_protocol_policy: Optional[StrictStr] = None
+    is_origin_redirection_enabled: Optional[StrictBool] = None
+    host_header: Optional[StrictStr] = None
+    method: Optional[StrictStr] = None
+    origin_path: Optional[StrictStr] = None
+    connection_timeout: Optional[StrictInt] = None
+    timeout_between_bytes: Optional[StrictInt] = None
+    hmac_authentication: Optional[StrictBool] = None
+    hmac_region_name: Optional[StrictStr] = None
+    hmac_access_key: Optional[StrictStr] = None
+    hmac_secret_key: Optional[StrictStr] = None
     bucket: Optional[StrictStr] = None
     prefix: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["origin_id", "origin_key", "name", "origin_type", "addresses", "origin_protocol_policy", "is_origin_redirection_enabled", "host_header", "method", "origin_path", "connection_timeout", "timeout_between_bytes", "hmac_authentication", "hmac_region_name", "hmac_access_key", "hmac_secret_key", "bucket", "prefix"]
