@@ -25,6 +25,7 @@ Create a new bucket
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
 import time
 import os
@@ -70,6 +71,7 @@ with storage.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bucket_create** | [**BucketCreate**](BucketCreate.md)|  | 
@@ -88,6 +90,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** |  |  -  |
@@ -111,6 +114,7 @@ Delete a bucket
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
 import time
 import os
@@ -155,6 +159,7 @@ with storage.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**|  | 
@@ -173,6 +178,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -195,6 +201,7 @@ List buckets
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
 import time
 import os
@@ -240,6 +247,7 @@ with storage.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| A page number within the paginated result set. | [optional] 
@@ -259,6 +267,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -272,7 +281,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storage_api_buckets_objects_create**
-> SuccessObjectOperation storage_api_buckets_objects_create(bucket_name, object_key, request_body=request_body)
+> SuccessObjectOperation storage_api_buckets_objects_create(bucket_name, object_key, body=body)
 
 Create new object key
 
@@ -281,6 +290,7 @@ Create a new object key in the bucket.
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
 import time
 import os
@@ -312,11 +322,11 @@ with storage.ApiClient(configuration) as api_client:
     api_instance = storage.StorageApi(api_client)
     bucket_name = 'bucket_name_example' # str | 
     object_key = 'object_key_example' # str | 
-    request_body = None # Dict[str, object] |  (optional)
+    body = None # bytearray |  (optional)
 
     try:
         # Create new object key
-        api_response = api_instance.storage_api_buckets_objects_create(bucket_name, object_key, request_body=request_body)
+        api_response = api_instance.storage_api_buckets_objects_create(bucket_name, object_key, body=body)
         print("The response of StorageApi->storage_api_buckets_objects_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -327,11 +337,12 @@ with storage.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bucket_name** | **str**|  | 
  **object_key** | **str**|  | 
- **request_body** | [**Dict[str, object]**](object.md)|  | [optional] 
+ **body** | **bytearray**|  | [optional] 
 
 ### Return type
 
@@ -347,9 +358,11 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
+**201** | Created |  -  |
 **400** | Bad Request |  -  |
 **404** | Not Found |  -  |
 **406** | Not Acceptable |  -  |
@@ -369,6 +382,7 @@ Delete an object key from bucket
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
 import time
 import os
@@ -414,6 +428,7 @@ with storage.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bucket_name** | **str**|  | 
@@ -433,6 +448,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -455,6 +471,7 @@ List buckets objects
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
 import time
 import os
@@ -501,6 +518,7 @@ with storage.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bucket_name** | **str**|  | 
@@ -521,6 +539,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -543,6 +562,7 @@ Download the object key from bucket.
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
 import time
 import os
@@ -587,6 +607,7 @@ with storage.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bucket_name** | **str**|  | 
@@ -606,6 +627,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/octet-stream
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -619,7 +641,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storage_api_buckets_objects_update**
-> SuccessObjectOperation storage_api_buckets_objects_update(bucket_name, object_key, request_body=request_body)
+> SuccessObjectOperation storage_api_buckets_objects_update(bucket_name, object_key, body=body)
 
 Update the object key
 
@@ -628,6 +650,7 @@ Update the object key from bucket.
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
 import time
 import os
@@ -659,11 +682,11 @@ with storage.ApiClient(configuration) as api_client:
     api_instance = storage.StorageApi(api_client)
     bucket_name = 'bucket_name_example' # str | 
     object_key = 'object_key_example' # str | 
-    request_body = None # Dict[str, object] |  (optional)
+    body = None # bytearray |  (optional)
 
     try:
         # Update the object key
-        api_response = api_instance.storage_api_buckets_objects_update(bucket_name, object_key, request_body=request_body)
+        api_response = api_instance.storage_api_buckets_objects_update(bucket_name, object_key, body=body)
         print("The response of StorageApi->storage_api_buckets_objects_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -674,11 +697,12 @@ with storage.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bucket_name** | **str**|  | 
  **object_key** | **str**|  | 
- **request_body** | [**Dict[str, object]**](object.md)|  | [optional] 
+ **body** | **bytearray**|  | [optional] 
 
 ### Return type
 
@@ -694,6 +718,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
@@ -716,6 +741,7 @@ Update bucket info
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
 import time
 import os
@@ -760,6 +786,7 @@ with storage.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**|  | 
@@ -778,6 +805,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
