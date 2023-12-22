@@ -25,9 +25,9 @@ except ImportError:
 
 from pydantic import Field
 from typing_extensions import Annotated
-from pydantic import StrictInt, StrictStr
+from pydantic import StrictBytes, StrictInt, StrictStr
 
-from typing import Any, Dict, Optional, Union
+from typing import Optional, Union
 
 from storage.models.bucket_create import BucketCreate
 from storage.models.paginated_bucket_list import PaginatedBucketList
@@ -115,8 +115,7 @@ class StorageApi:
             '429': None,
             '401': None,
             '403': None,
-            '202': "ResponseBucket"
-            
+            '202': "ResponseBucket",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -190,8 +189,7 @@ class StorageApi:
             '429': None,
             '401': None,
             '403': None,
-            '202': "ResponseBucket"
-            
+            '202': "ResponseBucket",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -265,8 +263,7 @@ class StorageApi:
             '429': None,
             '401': None,
             '403': None,
-            '202': "ResponseBucket"
-            
+            '202': "ResponseBucket",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -287,7 +284,6 @@ class StorageApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
@@ -412,8 +408,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -486,8 +481,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -560,8 +554,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -582,7 +575,6 @@ class StorageApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
@@ -696,8 +688,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -774,8 +765,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -852,8 +842,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -875,7 +864,6 @@ class StorageApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
@@ -936,7 +924,7 @@ class StorageApi:
         self,
         bucket_name: StrictStr,
         object_key: StrictStr,
-        request_body: Optional[Dict[str, Any]] = None,
+        body: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -958,8 +946,8 @@ class StorageApi:
         :type bucket_name: str
         :param object_key: (required)
         :type object_key: str
-        :param request_body:
-        :type request_body: Dict[str, object]
+        :param body:
+        :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -985,7 +973,7 @@ class StorageApi:
         _param = self._storage_api_buckets_objects_create_serialize(
             bucket_name=bucket_name,
             object_key=object_key,
-            request_body=request_body,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -994,13 +982,13 @@ class StorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessObjectOperation",
+            '201': None,
             '400': None,
             '404': None,
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1018,7 +1006,7 @@ class StorageApi:
         self,
         bucket_name: StrictStr,
         object_key: StrictStr,
-        request_body: Optional[Dict[str, Any]] = None,
+        body: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1040,8 +1028,8 @@ class StorageApi:
         :type bucket_name: str
         :param object_key: (required)
         :type object_key: str
-        :param request_body:
-        :type request_body: Dict[str, object]
+        :param body:
+        :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1067,7 +1055,7 @@ class StorageApi:
         _param = self._storage_api_buckets_objects_create_serialize(
             bucket_name=bucket_name,
             object_key=object_key,
-            request_body=request_body,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1076,13 +1064,13 @@ class StorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessObjectOperation",
+            '201': None,
             '400': None,
             '404': None,
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1100,7 +1088,7 @@ class StorageApi:
         self,
         bucket_name: StrictStr,
         object_key: StrictStr,
-        request_body: Optional[Dict[str, Any]] = None,
+        body: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1122,8 +1110,8 @@ class StorageApi:
         :type bucket_name: str
         :param object_key: (required)
         :type object_key: str
-        :param request_body:
-        :type request_body: Dict[str, object]
+        :param body:
+        :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1149,7 +1137,7 @@ class StorageApi:
         _param = self._storage_api_buckets_objects_create_serialize(
             bucket_name=bucket_name,
             object_key=object_key,
-            request_body=request_body,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1158,13 +1146,13 @@ class StorageApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "SuccessObjectOperation",
+            '201': None,
             '400': None,
             '404': None,
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1177,7 +1165,7 @@ class StorageApi:
         self,
         bucket_name,
         object_key,
-        request_body,
+        body,
         _request_auth,
         _content_type,
         _headers,
@@ -1187,7 +1175,6 @@ class StorageApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
@@ -1206,8 +1193,13 @@ class StorageApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if request_body is not None:
-            _body_params = request_body
+        if body is not None:
+            # convert to byte array if the input is a file name (str)
+            if isinstance(body, str):
+                with io.open(body, "rb") as _fp:
+                    _body_params = _fp.read()
+            else:
+                _body_params = body
 
 
         # set the HTTP header `Accept`
@@ -1318,8 +1310,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1396,8 +1387,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1474,8 +1464,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1497,7 +1486,6 @@ class StorageApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
@@ -1617,8 +1605,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1699,8 +1686,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1781,8 +1767,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1805,7 +1790,6 @@ class StorageApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
@@ -1927,8 +1911,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2005,8 +1988,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2083,8 +2065,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2106,7 +2087,6 @@ class StorageApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
@@ -2163,7 +2143,7 @@ class StorageApi:
         self,
         bucket_name: StrictStr,
         object_key: StrictStr,
-        request_body: Optional[Dict[str, Any]] = None,
+        body: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2185,8 +2165,8 @@ class StorageApi:
         :type bucket_name: str
         :param object_key: (required)
         :type object_key: str
-        :param request_body:
-        :type request_body: Dict[str, object]
+        :param body:
+        :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2212,7 +2192,7 @@ class StorageApi:
         _param = self._storage_api_buckets_objects_update_serialize(
             bucket_name=bucket_name,
             object_key=object_key,
-            request_body=request_body,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2226,8 +2206,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2245,7 +2224,7 @@ class StorageApi:
         self,
         bucket_name: StrictStr,
         object_key: StrictStr,
-        request_body: Optional[Dict[str, Any]] = None,
+        body: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2267,8 +2246,8 @@ class StorageApi:
         :type bucket_name: str
         :param object_key: (required)
         :type object_key: str
-        :param request_body:
-        :type request_body: Dict[str, object]
+        :param body:
+        :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2294,7 +2273,7 @@ class StorageApi:
         _param = self._storage_api_buckets_objects_update_serialize(
             bucket_name=bucket_name,
             object_key=object_key,
-            request_body=request_body,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2308,8 +2287,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2327,7 +2305,7 @@ class StorageApi:
         self,
         bucket_name: StrictStr,
         object_key: StrictStr,
-        request_body: Optional[Dict[str, Any]] = None,
+        body: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2349,8 +2327,8 @@ class StorageApi:
         :type bucket_name: str
         :param object_key: (required)
         :type object_key: str
-        :param request_body:
-        :type request_body: Dict[str, object]
+        :param body:
+        :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2376,7 +2354,7 @@ class StorageApi:
         _param = self._storage_api_buckets_objects_update_serialize(
             bucket_name=bucket_name,
             object_key=object_key,
-            request_body=request_body,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2390,8 +2368,7 @@ class StorageApi:
             '406': None,
             '429': None,
             '401': None,
-            '403': None
-            
+            '403': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2404,7 +2381,7 @@ class StorageApi:
         self,
         bucket_name,
         object_key,
-        request_body,
+        body,
         _request_auth,
         _content_type,
         _headers,
@@ -2414,7 +2391,6 @@ class StorageApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
@@ -2433,8 +2409,13 @@ class StorageApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if request_body is not None:
-            _body_params = request_body
+        if body is not None:
+            # convert to byte array if the input is a file name (str)
+            if isinstance(body, str):
+                with io.open(body, "rb") as _fp:
+                    _body_params = _fp.read()
+            else:
+                _body_params = body
 
 
         # set the HTTP header `Accept`
@@ -2542,8 +2523,7 @@ class StorageApi:
             '429': None,
             '401': None,
             '403': None,
-            '202': "ResponseBucket"
-            
+            '202': "ResponseBucket",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2617,8 +2597,7 @@ class StorageApi:
             '429': None,
             '401': None,
             '403': None,
-            '202': "ResponseBucket"
-            
+            '202': "ResponseBucket",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2692,8 +2671,7 @@ class StorageApi:
             '429': None,
             '401': None,
             '403': None,
-            '202': "ResponseBucket"
-            
+            '202': "ResponseBucket",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2714,7 +2692,6 @@ class StorageApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
