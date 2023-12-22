@@ -924,6 +924,7 @@ class StorageApi:
         self,
         bucket_name: StrictStr,
         object_key: StrictStr,
+        content_type: Annotated[Optional[StrictStr], Field(description="The content type of the file (Example: text/plain).")] = None,
         body: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
@@ -946,6 +947,8 @@ class StorageApi:
         :type bucket_name: str
         :param object_key: (required)
         :type object_key: str
+        :param content_type: The content type of the file (Example: text/plain).
+        :type content_type: str
         :param body:
         :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -973,6 +976,7 @@ class StorageApi:
         _param = self._storage_api_buckets_objects_create_serialize(
             bucket_name=bucket_name,
             object_key=object_key,
+            content_type=content_type,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1006,6 +1010,7 @@ class StorageApi:
         self,
         bucket_name: StrictStr,
         object_key: StrictStr,
+        content_type: Annotated[Optional[StrictStr], Field(description="The content type of the file (Example: text/plain).")] = None,
         body: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
@@ -1028,6 +1033,8 @@ class StorageApi:
         :type bucket_name: str
         :param object_key: (required)
         :type object_key: str
+        :param content_type: The content type of the file (Example: text/plain).
+        :type content_type: str
         :param body:
         :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -1055,6 +1062,7 @@ class StorageApi:
         _param = self._storage_api_buckets_objects_create_serialize(
             bucket_name=bucket_name,
             object_key=object_key,
+            content_type=content_type,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1088,6 +1096,7 @@ class StorageApi:
         self,
         bucket_name: StrictStr,
         object_key: StrictStr,
+        content_type: Annotated[Optional[StrictStr], Field(description="The content type of the file (Example: text/plain).")] = None,
         body: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
@@ -1110,6 +1119,8 @@ class StorageApi:
         :type bucket_name: str
         :param object_key: (required)
         :type object_key: str
+        :param content_type: The content type of the file (Example: text/plain).
+        :type content_type: str
         :param body:
         :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -1137,6 +1148,7 @@ class StorageApi:
         _param = self._storage_api_buckets_objects_create_serialize(
             bucket_name=bucket_name,
             object_key=object_key,
+            content_type=content_type,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1165,6 +1177,7 @@ class StorageApi:
         self,
         bucket_name,
         object_key,
+        content_type,
         body,
         _request_auth,
         _content_type,
@@ -1191,6 +1204,8 @@ class StorageApi:
             _path_params['object_key'] = object_key
         # process the query parameters
         # process the header parameters
+        if content_type is not None:
+            _header_params['Content-Type'] = content_type
         # process the form parameters
         # process the body parameter
         if body is not None:
@@ -2143,6 +2158,7 @@ class StorageApi:
         self,
         bucket_name: StrictStr,
         object_key: StrictStr,
+        content_type: Annotated[Optional[StrictStr], Field(description="The content type of the file (Example: text/plain).")] = None,
         body: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
@@ -2165,6 +2181,8 @@ class StorageApi:
         :type bucket_name: str
         :param object_key: (required)
         :type object_key: str
+        :param content_type: The content type of the file (Example: text/plain).
+        :type content_type: str
         :param body:
         :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -2192,6 +2210,7 @@ class StorageApi:
         _param = self._storage_api_buckets_objects_update_serialize(
             bucket_name=bucket_name,
             object_key=object_key,
+            content_type=content_type,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2224,6 +2243,7 @@ class StorageApi:
         self,
         bucket_name: StrictStr,
         object_key: StrictStr,
+        content_type: Annotated[Optional[StrictStr], Field(description="The content type of the file (Example: text/plain).")] = None,
         body: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
@@ -2246,6 +2266,8 @@ class StorageApi:
         :type bucket_name: str
         :param object_key: (required)
         :type object_key: str
+        :param content_type: The content type of the file (Example: text/plain).
+        :type content_type: str
         :param body:
         :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -2273,6 +2295,7 @@ class StorageApi:
         _param = self._storage_api_buckets_objects_update_serialize(
             bucket_name=bucket_name,
             object_key=object_key,
+            content_type=content_type,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2305,6 +2328,7 @@ class StorageApi:
         self,
         bucket_name: StrictStr,
         object_key: StrictStr,
+        content_type: Annotated[Optional[StrictStr], Field(description="The content type of the file (Example: text/plain).")] = None,
         body: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[
             None,
@@ -2327,6 +2351,8 @@ class StorageApi:
         :type bucket_name: str
         :param object_key: (required)
         :type object_key: str
+        :param content_type: The content type of the file (Example: text/plain).
+        :type content_type: str
         :param body:
         :type body: bytearray
         :param _request_timeout: timeout setting for this request. If one
@@ -2354,6 +2380,7 @@ class StorageApi:
         _param = self._storage_api_buckets_objects_update_serialize(
             bucket_name=bucket_name,
             object_key=object_key,
+            content_type=content_type,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2381,6 +2408,7 @@ class StorageApi:
         self,
         bucket_name,
         object_key,
+        content_type,
         body,
         _request_auth,
         _content_type,
@@ -2407,6 +2435,8 @@ class StorageApi:
             _path_params['object_key'] = object_key
         # process the query parameters
         # process the header parameters
+        if content_type is not None:
+            _header_params['Content-Type'] = content_type
         # process the form parameters
         # process the body parameter
         if body is not None:

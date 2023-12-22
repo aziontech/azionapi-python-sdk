@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storage_api_buckets_objects_create**
-> SuccessObjectOperation storage_api_buckets_objects_create(bucket_name, object_key, body=body)
+> SuccessObjectOperation storage_api_buckets_objects_create(bucket_name, object_key, content_type=content_type, body=body)
 
 Create new object key
 
@@ -322,11 +322,12 @@ with storage.ApiClient(configuration) as api_client:
     api_instance = storage.StorageApi(api_client)
     bucket_name = 'bucket_name_example' # str | 
     object_key = 'object_key_example' # str | 
+    content_type = 'content_type_example' # str | The content type of the file (Example: text/plain). (optional)
     body = None # bytearray |  (optional)
 
     try:
         # Create new object key
-        api_response = api_instance.storage_api_buckets_objects_create(bucket_name, object_key, body=body)
+        api_response = api_instance.storage_api_buckets_objects_create(bucket_name, object_key, content_type=content_type, body=body)
         print("The response of StorageApi->storage_api_buckets_objects_create:\n")
         pprint(api_response)
     except Exception as e:
@@ -342,6 +343,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bucket_name** | **str**|  | 
  **object_key** | **str**|  | 
+ **content_type** | **str**| The content type of the file (Example: text/plain). | [optional] 
  **body** | **bytearray**|  | [optional] 
 
 ### Return type
@@ -641,7 +643,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storage_api_buckets_objects_update**
-> SuccessObjectOperation storage_api_buckets_objects_update(bucket_name, object_key, body=body)
+> SuccessObjectOperation storage_api_buckets_objects_update(bucket_name, object_key, content_type=content_type, body=body)
 
 Update the object key
 
@@ -682,11 +684,12 @@ with storage.ApiClient(configuration) as api_client:
     api_instance = storage.StorageApi(api_client)
     bucket_name = 'bucket_name_example' # str | 
     object_key = 'object_key_example' # str | 
+    content_type = 'content_type_example' # str | The content type of the file (Example: text/plain). (optional)
     body = None # bytearray |  (optional)
 
     try:
         # Update the object key
-        api_response = api_instance.storage_api_buckets_objects_update(bucket_name, object_key, body=body)
+        api_response = api_instance.storage_api_buckets_objects_update(bucket_name, object_key, content_type=content_type, body=body)
         print("The response of StorageApi->storage_api_buckets_objects_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -702,6 +705,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bucket_name** | **str**|  | 
  **object_key** | **str**|  | 
+ **content_type** | **str**| The content type of the file (Example: text/plain). | [optional] 
  **body** | **bytearray**|  | [optional] 
 
 ### Return type
