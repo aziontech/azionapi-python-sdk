@@ -17,7 +17,7 @@ json = "{}"
 # create an instance of ObjectResponseData from a JSON string
 object_response_data_instance = ObjectResponseData.from_json(json)
 # print the JSON string representation of the object
-print ObjectResponseData.to_json()
+print(ObjectResponseData.to_json())
 
 # convert the object into a dict
 object_response_data_dict = object_response_data_instance.to_dict()

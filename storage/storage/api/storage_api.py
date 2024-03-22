@@ -11,24 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
-import io
 import warnings
-
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
-from typing import Dict, List, Optional, Tuple, Union, Any
-
-try:
-    from typing import Annotated
-except ImportError:
-    from typing_extensions import Annotated
-
-from pydantic import Field
+from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from pydantic import StrictBytes, StrictInt, StrictStr
 
+from pydantic import Field, StrictBytes, StrictInt, StrictStr
 from typing import Optional, Union
-
+from typing_extensions import Annotated
 from storage.models.bucket_create import BucketCreate
 from storage.models.paginated_bucket_list import PaginatedBucketList
 from storage.models.paginated_bucket_object_list import PaginatedBucketObjectList
@@ -36,7 +26,7 @@ from storage.models.response_bucket import ResponseBucket
 from storage.models.success_bucket_operation import SuccessBucketOperation
 from storage.models.success_object_operation import SuccessObjectOperation
 
-from storage.api_client import ApiClient
+from storage.api_client import ApiClient, RequestSerialized
 from storage.api_response import ApiResponse
 from storage.rest import RESTResponseType
 
@@ -279,7 +269,7 @@ class StorageApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
@@ -570,7 +560,7 @@ class StorageApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
@@ -859,7 +849,7 @@ class StorageApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
@@ -1183,7 +1173,7 @@ class StorageApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
@@ -1211,7 +1201,7 @@ class StorageApi:
         if body is not None:
             # convert to byte array if the input is a file name (str)
             if isinstance(body, str):
-                with io.open(body, "rb") as _fp:
+                with open(body, "rb") as _fp:
                     _body_params = _fp.read()
             else:
                 _body_params = body
@@ -1496,7 +1486,7 @@ class StorageApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
@@ -1800,7 +1790,7 @@ class StorageApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
@@ -2097,7 +2087,7 @@ class StorageApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
@@ -2414,7 +2404,7 @@ class StorageApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
@@ -2442,7 +2432,7 @@ class StorageApi:
         if body is not None:
             # convert to byte array if the input is a file name (str)
             if isinstance(body, str):
-                with io.open(body, "rb") as _fp:
+                with open(body, "rb") as _fp:
                     _body_params = _fp.read()
             else:
                 _body_params = body
@@ -2717,7 +2707,7 @@ class StorageApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
