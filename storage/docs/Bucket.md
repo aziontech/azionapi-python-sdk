@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of Bucket from a JSON string
 bucket_instance = Bucket.from_json(json)
 # print the JSON string representation of the object
-print Bucket.to_json()
+print(Bucket.to_json())
 
 # convert the object into a dict
 bucket_dict = bucket_instance.to_dict()

@@ -27,8 +27,6 @@ Create a new bucket
 * Api Key Authentication (tokenAuth):
 
 ```python
-import time
-import os
 import storage
 from storage.models.bucket_create import BucketCreate
 from storage.models.response_bucket import ResponseBucket
@@ -116,8 +114,6 @@ Delete a bucket
 * Api Key Authentication (tokenAuth):
 
 ```python
-import time
-import os
 import storage
 from storage.models.success_bucket_operation import SuccessBucketOperation
 from storage.rest import ApiException
@@ -203,8 +199,6 @@ List buckets
 * Api Key Authentication (tokenAuth):
 
 ```python
-import time
-import os
 import storage
 from storage.models.paginated_bucket_list import PaginatedBucketList
 from storage.rest import ApiException
@@ -292,8 +286,6 @@ Create a new object key in the bucket.
 * Api Key Authentication (tokenAuth):
 
 ```python
-import time
-import os
 import storage
 from storage.models.success_object_operation import SuccessObjectOperation
 from storage.rest import ApiException
@@ -386,8 +378,6 @@ Delete an object key from bucket
 * Api Key Authentication (tokenAuth):
 
 ```python
-import time
-import os
 import storage
 from storage.models.success_object_operation import SuccessObjectOperation
 from storage.rest import ApiException
@@ -475,8 +465,6 @@ List buckets objects
 * Api Key Authentication (tokenAuth):
 
 ```python
-import time
-import os
 import storage
 from storage.models.paginated_bucket_object_list import PaginatedBucketObjectList
 from storage.rest import ApiException
@@ -566,8 +554,6 @@ Download the object key from bucket.
 * Api Key Authentication (tokenAuth):
 
 ```python
-import time
-import os
 import storage
 from storage.rest import ApiException
 from pprint import pprint
@@ -654,8 +640,6 @@ Update the object key from bucket.
 * Api Key Authentication (tokenAuth):
 
 ```python
-import time
-import os
 import storage
 from storage.models.success_object_operation import SuccessObjectOperation
 from storage.rest import ApiException
@@ -747,8 +731,6 @@ Update bucket info
 * Api Key Authentication (tokenAuth):
 
 ```python
-import time
-import os
 import storage
 from storage.models.response_bucket import ResponseBucket
 from storage.rest import ApiException

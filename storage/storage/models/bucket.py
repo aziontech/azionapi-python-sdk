@@ -17,16 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
-from pydantic import BaseModel
-from pydantic import Field
 from typing_extensions import Annotated
 from storage.models.edge_access_enum import EdgeAccessEnum
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class Bucket(BaseModel):
     """
@@ -36,11 +32,11 @@ class Bucket(BaseModel):
     edge_access: EdgeAccessEnum
     __properties: ClassVar[List[str]] = ["name", "edge_access"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -53,7 +49,7 @@ class Bucket(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Bucket from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -68,17 +64,19 @@ class Bucket(BaseModel):
           are ignored.
         * OpenAPI `readOnly` fields are excluded.
         """
+        excluded_fields: Set[str] = set([
+            "name",
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "name",
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Bucket from a dict"""
         if obj is None:
             return None

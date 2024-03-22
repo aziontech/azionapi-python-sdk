@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of ResponseBucket from a JSON string
 response_bucket_instance = ResponseBucket.from_json(json)
 # print the JSON string representation of the object
-print ResponseBucket.to_json()
+print(ResponseBucket.to_json())
 
 # convert the object into a dict
 response_bucket_dict = response_bucket_instance.to_dict()

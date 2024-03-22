@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **key** | **str** |  | [readonly] 
 **last_modified** | **datetime** |  | [readonly] 
 **size** | **int** |  | [readonly] 
-**etag** | **str** |  | [readonly] 
+**etag** | **str** |  | [optional] [readonly] 
 
 ## Example
 
@@ -20,7 +20,7 @@ json = "{}"
 # create an instance of BucketObject from a JSON string
 bucket_object_instance = BucketObject.from_json(json)
 # print the JSON string representation of the object
-print BucketObject.to_json()
+print(BucketObject.to_json())
 
 # convert the object into a dict
 bucket_object_dict = bucket_object_instance.to_dict()

@@ -20,7 +20,7 @@ json = "{}"
 # create an instance of PaginatedBucketList from a JSON string
 paginated_bucket_list_instance = PaginatedBucketList.from_json(json)
 # print the JSON string representation of the object
-print PaginatedBucketList.to_json()
+print(PaginatedBucketList.to_json())
 
 # convert the object into a dict
 paginated_bucket_list_dict = paginated_bucket_list_instance.to_dict()

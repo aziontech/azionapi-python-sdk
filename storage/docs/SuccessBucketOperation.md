@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of SuccessBucketOperation from a JSON string
 success_bucket_operation_instance = SuccessBucketOperation.from_json(json)
 # print the JSON string representation of the object
-print SuccessBucketOperation.to_json()
+print(SuccessBucketOperation.to_json())
 
 # convert the object into a dict
 success_bucket_operation_dict = success_bucket_operation_instance.to_dict()

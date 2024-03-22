@@ -17,15 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List
-from pydantic import BaseModel
 from storage.models.object_response_data import ObjectResponseData
 from storage.models.state_enum import StateEnum
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class SuccessObjectOperation(BaseModel):
     """
@@ -35,11 +32,11 @@ class SuccessObjectOperation(BaseModel):
     data: ObjectResponseData
     __properties: ClassVar[List[str]] = ["state", "data"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -52,7 +49,7 @@ class SuccessObjectOperation(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of SuccessObjectOperation from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -66,10 +63,12 @@ class SuccessObjectOperation(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of data
@@ -78,7 +77,7 @@ class SuccessObjectOperation(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of SuccessObjectOperation from a dict"""
         if obj is None:
             return None
@@ -88,7 +87,7 @@ class SuccessObjectOperation(BaseModel):
 
         _obj = cls.model_validate({
             "state": obj.get("state"),
-            "data": ObjectResponseData.from_dict(obj.get("data")) if obj.get("data") is not None else None
+            "data": ObjectResponseData.from_dict(obj["data"]) if obj.get("data") is not None else None
         })
         return _obj
 
