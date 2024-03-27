@@ -17,6 +17,7 @@
 from storage.models.bucket import Bucket
 from storage.models.bucket_create import BucketCreate
 from storage.models.bucket_object import BucketObject
+from storage.models.bucket_update import BucketUpdate
 from storage.models.edge_access_enum import EdgeAccessEnum
 from storage.models.object_response_data import ObjectResponseData
 from storage.models.paginated_bucket_list import PaginatedBucketList

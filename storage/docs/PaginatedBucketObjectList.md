@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **count** | **int** |  | [optional] 
 **next** | **str** |  | [optional] 
 **previous** | **str** |  | [optional] 
+**continuation_token** | **str** |  | [optional] 
 **results** | [**List[BucketObject]**](BucketObject.md) |  | [optional] 
 
 ## Example

@@ -17,8 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from storage.models.bucket_object import BucketObject
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,8 +31,19 @@ class PaginatedBucketObjectList(BaseModel):
     count: Optional[StrictInt] = None
     next: Optional[StrictStr] = None
     previous: Optional[StrictStr] = None
+    continuation_token: Optional[Annotated[str, Field(min_length=10, strict=True, max_length=200)]] = None
     results: Optional[List[BucketObject]] = None
-    __properties: ClassVar[List[str]] = ["count", "next", "previous", "results"]
+    __properties: ClassVar[List[str]] = ["count", "next", "previous", "continuation_token", "results"]
+
+    @field_validator('continuation_token')
+    def continuation_token_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r".*", value):
+            raise ValueError(r"must validate the regular expression /.*/")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,6 +101,11 @@ class PaginatedBucketObjectList(BaseModel):
         if self.previous is None and "previous" in self.model_fields_set:
             _dict['previous'] = None
 
+        # set to None if continuation_token (nullable) is None
+        # and model_fields_set contains the field
+        if self.continuation_token is None and "continuation_token" in self.model_fields_set:
+            _dict['continuation_token'] = None
+
         return _dict
 
     @classmethod
@@ -104,6 +121,7 @@ class PaginatedBucketObjectList(BaseModel):
             "count": obj.get("count"),
             "next": obj.get("next"),
             "previous": obj.get("previous"),
+            "continuation_token": obj.get("continuation_token"),
             "results": [BucketObject.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None
         })
         return _obj

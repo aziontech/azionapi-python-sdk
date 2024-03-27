@@ -6,6 +6,7 @@ README.md
 docs/Bucket.md
 docs/BucketCreate.md
 docs/BucketObject.md
+docs/BucketUpdate.md
 docs/EdgeAccessEnum.md
 docs/ObjectResponseData.md
 docs/PaginatedBucketList.md
@@ -31,6 +32,7 @@ storage/models/__init__.py
 storage/models/bucket.py
 storage/models/bucket_create.py
 storage/models/bucket_object.py
+storage/models/bucket_update.py
 storage/models/edge_access_enum.py
 storage/models/object_response_data.py
 storage/models/paginated_bucket_list.py
@@ -43,4 +45,5 @@ storage/py.typed
 storage/rest.py
 test-requirements.txt
 test/__init__.py
+test/test_bucket_update.py
 tox.ini
