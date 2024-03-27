@@ -454,7 +454,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storage_api_buckets_objects_list**
-> PaginatedBucketObjectList storage_api_buckets_objects_list(bucket_name, page=page, page_size=page_size)
+> PaginatedBucketObjectList storage_api_buckets_objects_list(bucket_name, continuation_token=continuation_token, max_object_count=max_object_count)
 
 List buckets objects
 
@@ -492,12 +492,12 @@ with storage.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = storage.StorageApi(api_client)
     bucket_name = 'bucket_name_example' # str | 
-    page = 56 # int | A page number within the paginated result set. (optional)
-    page_size = 56 # int | Number of results to return per page. (optional)
+    continuation_token = 'continuation_token_example' # str | Token for next page. (optional)
+    max_object_count = 56 # int | Number of results to return per page. (optional)
 
     try:
         # List buckets objects
-        api_response = api_instance.storage_api_buckets_objects_list(bucket_name, page=page, page_size=page_size)
+        api_response = api_instance.storage_api_buckets_objects_list(bucket_name, continuation_token=continuation_token, max_object_count=max_object_count)
         print("The response of StorageApi->storage_api_buckets_objects_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -512,8 +512,8 @@ with storage.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bucket_name** | **str**|  | 
- **page** | **int**| A page number within the paginated result set. | [optional] 
- **page_size** | **int**| Number of results to return per page. | [optional] 
+ **continuation_token** | **str**| Token for next page. | [optional] 
+ **max_object_count** | **int**| Number of results to return per page. | [optional] 
 
 ### Return type
 
@@ -543,7 +543,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storage_api_buckets_objects_retrieve**
-> bytearray storage_api_buckets_objects_retrieve(bucket_name, object_key)
+> storage_api_buckets_objects_retrieve(bucket_name, object_key)
 
 Download object
 
@@ -584,9 +584,7 @@ with storage.ApiClient(configuration) as api_client:
 
     try:
         # Download object
-        api_response = api_instance.storage_api_buckets_objects_retrieve(bucket_name, object_key)
-        print("The response of StorageApi->storage_api_buckets_objects_retrieve:\n")
-        pprint(api_response)
+        api_instance.storage_api_buckets_objects_retrieve(bucket_name, object_key)
     except Exception as e:
         print("Exception when calling StorageApi->storage_api_buckets_objects_retrieve: %s\n" % e)
 ```
@@ -603,7 +601,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**bytearray**
+void (empty response body)
 
 ### Authorization
 
@@ -612,7 +610,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: text/html, application/json, application/xml, text/plain, image/jpeg, image/png, image/gif, video/mp4, audio/mpeg, application/pdf, application/javascript, text/css, application/octet-stream
 
 ### HTTP response details
 
@@ -720,7 +718,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **storage_api_buckets_partial_update**
-> ResponseBucket storage_api_buckets_partial_update(name)
+> ResponseBucket storage_api_buckets_partial_update(name, bucket_update=bucket_update)
 
 Update bucket info
 
@@ -732,6 +730,7 @@ Update bucket info
 
 ```python
 import storage
+from storage.models.bucket_update import BucketUpdate
 from storage.models.response_bucket import ResponseBucket
 from storage.rest import ApiException
 from pprint import pprint
@@ -758,10 +757,11 @@ with storage.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = storage.StorageApi(api_client)
     name = 'name_example' # str | 
+    bucket_update = storage.BucketUpdate() # BucketUpdate |  (optional)
 
     try:
         # Update bucket info
-        api_response = api_instance.storage_api_buckets_partial_update(name)
+        api_response = api_instance.storage_api_buckets_partial_update(name, bucket_update=bucket_update)
         print("The response of StorageApi->storage_api_buckets_partial_update:\n")
         pprint(api_response)
     except Exception as e:
@@ -776,6 +776,7 @@ with storage.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**|  | 
+ **bucket_update** | [**BucketUpdate**](BucketUpdate.md)|  | [optional] 
 
 ### Return type
 
@@ -787,7 +788,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

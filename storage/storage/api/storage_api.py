@@ -20,6 +20,7 @@ from pydantic import Field, StrictBytes, StrictInt, StrictStr
 from typing import Optional, Union
 from typing_extensions import Annotated
 from storage.models.bucket_create import BucketCreate
+from storage.models.bucket_update import BucketUpdate
 from storage.models.paginated_bucket_list import PaginatedBucketList
 from storage.models.paginated_bucket_object_list import PaginatedBucketObjectList
 from storage.models.response_bucket import ResponseBucket
@@ -1546,8 +1547,8 @@ class StorageApi:
     def storage_api_buckets_objects_list(
         self,
         bucket_name: StrictStr,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Number of results to return per page.")] = None,
+        continuation_token: Annotated[Optional[StrictStr], Field(description="Token for next page.")] = None,
+        max_object_count: Annotated[Optional[StrictInt], Field(description="Number of results to return per page.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1567,10 +1568,10 @@ class StorageApi:
 
         :param bucket_name: (required)
         :type bucket_name: str
-        :param page: A page number within the paginated result set.
-        :type page: int
-        :param page_size: Number of results to return per page.
-        :type page_size: int
+        :param continuation_token: Token for next page.
+        :type continuation_token: str
+        :param max_object_count: Number of results to return per page.
+        :type max_object_count: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1595,8 +1596,8 @@ class StorageApi:
 
         _param = self._storage_api_buckets_objects_list_serialize(
             bucket_name=bucket_name,
-            page=page,
-            page_size=page_size,
+            continuation_token=continuation_token,
+            max_object_count=max_object_count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1627,8 +1628,8 @@ class StorageApi:
     def storage_api_buckets_objects_list_with_http_info(
         self,
         bucket_name: StrictStr,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Number of results to return per page.")] = None,
+        continuation_token: Annotated[Optional[StrictStr], Field(description="Token for next page.")] = None,
+        max_object_count: Annotated[Optional[StrictInt], Field(description="Number of results to return per page.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1648,10 +1649,10 @@ class StorageApi:
 
         :param bucket_name: (required)
         :type bucket_name: str
-        :param page: A page number within the paginated result set.
-        :type page: int
-        :param page_size: Number of results to return per page.
-        :type page_size: int
+        :param continuation_token: Token for next page.
+        :type continuation_token: str
+        :param max_object_count: Number of results to return per page.
+        :type max_object_count: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1676,8 +1677,8 @@ class StorageApi:
 
         _param = self._storage_api_buckets_objects_list_serialize(
             bucket_name=bucket_name,
-            page=page,
-            page_size=page_size,
+            continuation_token=continuation_token,
+            max_object_count=max_object_count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1708,8 +1709,8 @@ class StorageApi:
     def storage_api_buckets_objects_list_without_preload_content(
         self,
         bucket_name: StrictStr,
-        page: Annotated[Optional[StrictInt], Field(description="A page number within the paginated result set.")] = None,
-        page_size: Annotated[Optional[StrictInt], Field(description="Number of results to return per page.")] = None,
+        continuation_token: Annotated[Optional[StrictStr], Field(description="Token for next page.")] = None,
+        max_object_count: Annotated[Optional[StrictInt], Field(description="Number of results to return per page.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1729,10 +1730,10 @@ class StorageApi:
 
         :param bucket_name: (required)
         :type bucket_name: str
-        :param page: A page number within the paginated result set.
-        :type page: int
-        :param page_size: Number of results to return per page.
-        :type page_size: int
+        :param continuation_token: Token for next page.
+        :type continuation_token: str
+        :param max_object_count: Number of results to return per page.
+        :type max_object_count: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1757,8 +1758,8 @@ class StorageApi:
 
         _param = self._storage_api_buckets_objects_list_serialize(
             bucket_name=bucket_name,
-            page=page,
-            page_size=page_size,
+            continuation_token=continuation_token,
+            max_object_count=max_object_count,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1784,8 +1785,8 @@ class StorageApi:
     def _storage_api_buckets_objects_list_serialize(
         self,
         bucket_name,
-        page,
-        page_size,
+        continuation_token,
+        max_object_count,
         _request_auth,
         _content_type,
         _headers,
@@ -1808,13 +1809,13 @@ class StorageApi:
         if bucket_name is not None:
             _path_params['bucket_name'] = bucket_name
         # process the query parameters
-        if page is not None:
+        if continuation_token is not None:
             
-            _query_params.append(('page', page))
+            _query_params.append(('continuation_token', continuation_token))
             
-        if page_size is not None:
+        if max_object_count is not None:
             
-            _query_params.append(('page_size', page_size))
+            _query_params.append(('max_object_count', max_object_count))
             
         # process the header parameters
         # process the form parameters
@@ -1869,7 +1870,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> bytearray:
+    ) -> None:
         """Download object
 
         Download the object key from bucket.
@@ -1910,7 +1911,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
+            '200': None,
             '400': None,
             '404': None,
             '406': None,
@@ -1946,7 +1947,7 @@ class StorageApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[bytearray]:
+    ) -> ApiResponse[None]:
         """Download object
 
         Download the object key from bucket.
@@ -1987,7 +1988,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
+            '200': None,
             '400': None,
             '404': None,
             '406': None,
@@ -2064,7 +2065,7 @@ class StorageApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "bytearray",
+            '200': None,
             '400': None,
             '404': None,
             '406': None,
@@ -2115,6 +2116,18 @@ class StorageApi:
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             [
+                'text/html', 
+                'application/json', 
+                'application/xml', 
+                'text/plain', 
+                'image/jpeg', 
+                'image/png', 
+                'image/gif', 
+                'video/mp4', 
+                'audio/mpeg', 
+                'application/pdf', 
+                'application/javascript', 
+                'text/css', 
                 'application/octet-stream'
             ]
         )
@@ -2486,6 +2499,7 @@ class StorageApi:
     def storage_api_buckets_partial_update(
         self,
         name: StrictStr,
+        bucket_update: Optional[BucketUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2505,6 +2519,8 @@ class StorageApi:
 
         :param name: (required)
         :type name: str
+        :param bucket_update:
+        :type bucket_update: BucketUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2529,6 +2545,7 @@ class StorageApi:
 
         _param = self._storage_api_buckets_partial_update_serialize(
             name=name,
+            bucket_update=bucket_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2560,6 +2577,7 @@ class StorageApi:
     def storage_api_buckets_partial_update_with_http_info(
         self,
         name: StrictStr,
+        bucket_update: Optional[BucketUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2579,6 +2597,8 @@ class StorageApi:
 
         :param name: (required)
         :type name: str
+        :param bucket_update:
+        :type bucket_update: BucketUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2603,6 +2623,7 @@ class StorageApi:
 
         _param = self._storage_api_buckets_partial_update_serialize(
             name=name,
+            bucket_update=bucket_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2634,6 +2655,7 @@ class StorageApi:
     def storage_api_buckets_partial_update_without_preload_content(
         self,
         name: StrictStr,
+        bucket_update: Optional[BucketUpdate] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2653,6 +2675,8 @@ class StorageApi:
 
         :param name: (required)
         :type name: str
+        :param bucket_update:
+        :type bucket_update: BucketUpdate
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2677,6 +2701,7 @@ class StorageApi:
 
         _param = self._storage_api_buckets_partial_update_serialize(
             name=name,
+            bucket_update=bucket_update,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2703,6 +2728,7 @@ class StorageApi:
     def _storage_api_buckets_partial_update_serialize(
         self,
         name,
+        bucket_update,
         _request_auth,
         _content_type,
         _headers,
@@ -2728,6 +2754,8 @@ class StorageApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if bucket_update is not None:
+            _body_params = bucket_update
 
 
         # set the HTTP header `Accept`
@@ -2737,6 +2765,19 @@ class StorageApi:
             ]
         )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
