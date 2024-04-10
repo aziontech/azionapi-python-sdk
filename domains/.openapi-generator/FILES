@@ -37,13 +37,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_create_domain_request.py
-test/test_domain_data.py
-test/test_domain_entity.py
-test/test_domain_links.py
-test/test_domain_response_with_result.py
-test/test_domain_response_with_results.py
-test/test_domains_api.py
-test/test_put_domain_request.py
-test/test_update_domain_request.py
 tox.ini
