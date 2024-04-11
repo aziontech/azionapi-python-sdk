@@ -36,9 +36,10 @@ class UpdateDomainRequest(BaseModel):
     environment: Optional[StrictStr] = None
     is_mtls_enabled: Optional[StrictBool] = None
     mtls_trusted_ca_certificate_id: Optional[StrictInt] = None
+    edge_firewall_id: Optional[StrictInt] = None
     mtls_verification: Optional[StrictStr] = None
     crl_list: Optional[List[StrictInt]] = None
-    __properties: ClassVar[List[str]] = ["name", "cnames", "cname_access_only", "is_active", "edge_application_id", "digital_certificate_id", "environment", "is_mtls_enabled", "mtls_trusted_ca_certificate_id", "mtls_verification", "crl_list"]
+    __properties: ClassVar[List[str]] = ["name", "cnames", "cname_access_only", "is_active", "edge_application_id", "digital_certificate_id", "environment", "is_mtls_enabled", "mtls_trusted_ca_certificate_id", "edge_firewall_id", "mtls_verification", "crl_list"]
 
     @field_validator('name')
     def name_validate_regular_expression(cls, value):
@@ -119,6 +120,11 @@ class UpdateDomainRequest(BaseModel):
         if self.mtls_trusted_ca_certificate_id is None and "mtls_trusted_ca_certificate_id" in self.model_fields_set:
             _dict['mtls_trusted_ca_certificate_id'] = None
 
+        # set to None if edge_firewall_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.edge_firewall_id is None and "edge_firewall_id" in self.model_fields_set:
+            _dict['edge_firewall_id'] = None
+
         # set to None if crl_list (nullable) is None
         # and model_fields_set contains the field
         if self.crl_list is None and "crl_list" in self.model_fields_set:
@@ -145,6 +151,7 @@ class UpdateDomainRequest(BaseModel):
             "environment": obj.get("environment"),
             "is_mtls_enabled": obj.get("is_mtls_enabled"),
             "mtls_trusted_ca_certificate_id": obj.get("mtls_trusted_ca_certificate_id"),
+            "edge_firewall_id": obj.get("edge_firewall_id"),
             "mtls_verification": obj.get("mtls_verification"),
             "crl_list": obj.get("crl_list")
         })
