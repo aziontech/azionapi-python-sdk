@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **cname_access_only** | **bool** |  | [optional] 
 **is_active** | **bool** |  | [optional] 
 **edge_application_id** | **int** |  | [optional] 
-**digital_certificate_id** | **int** |  | [optional] 
+**digital_certificate_id** | [**DomainDataDigitalCertificateId**](DomainDataDigitalCertificateId.md) |  | [optional] 
 **environment** | **str** |  | [optional] 
 **is_mtls_enabled** | **bool** |  | [optional] 
 **mtls_trusted_ca_certificate_id** | **int** |  | [optional] 
@@ -33,7 +33,7 @@ print(DomainData.to_json())
 # convert the object into a dict
 domain_data_dict = domain_data_instance.to_dict()
 # create an instance of DomainData from a dict
-domain_data_form_dict = domain_data.from_dict(domain_data_dict)
+domain_data_from_dict = DomainData.from_dict(domain_data_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

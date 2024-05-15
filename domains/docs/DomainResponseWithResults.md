@@ -26,7 +26,7 @@ print(DomainResponseWithResults.to_json())
 # convert the object into a dict
 domain_response_with_results_dict = domain_response_with_results_instance.to_dict()
 # create an instance of DomainResponseWithResults from a dict
-domain_response_with_results_form_dict = domain_response_with_results.from_dict(domain_response_with_results_dict)
+domain_response_with_results_from_dict = DomainResponseWithResults.from_dict(domain_response_with_results_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -33,6 +33,7 @@ from domains.exceptions import ApiException
 # import models into sdk package
 from domains.models.create_domain_request import CreateDomainRequest
 from domains.models.domain_data import DomainData
+from domains.models.domain_data_digital_certificate_id import DomainDataDigitalCertificateId
 from domains.models.domain_entity import DomainEntity
 from domains.models.domain_links import DomainLinks
 from domains.models.domain_response_with_result import DomainResponseWithResult
