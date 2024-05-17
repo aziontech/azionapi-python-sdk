@@ -20,7 +20,6 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from domains.models.domain_data_digital_certificate_id import DomainDataDigitalCertificateId
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,7 +32,7 @@ class DomainEntity(BaseModel):
     cname_access_only: Optional[StrictBool] = None
     is_active: Optional[StrictBool] = None
     edge_application_id: Optional[Annotated[int, Field(le=-8446744073709551616, strict=True, ge=1)]] = None
-    digital_certificate_id: Optional[DomainDataDigitalCertificateId] = None
+    digital_certificate_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=100)]] = None
     environment: Optional[StrictStr] = None
     is_mtls_enabled: Optional[StrictBool] = None
     mtls_trusted_ca_certificate_id: Optional[StrictInt] = None
@@ -46,6 +45,16 @@ class DomainEntity(BaseModel):
 
     @field_validator('name')
     def name_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"[a-zA-Z0-9$%^&*()-+=\[\]{};:?><,|\/]+", value):
+            raise ValueError(r"must validate the regular expression /[a-zA-Z0-9$%^&*()-+=\[\]{};:?><,|\/]+/")
+        return value
+
+    @field_validator('digital_certificate_id')
+    def digital_certificate_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
@@ -113,9 +122,6 @@ class DomainEntity(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of digital_certificate_id
-        if self.digital_certificate_id:
-            _dict['digital_certificate_id'] = self.digital_certificate_id.to_dict()
         # set to None if mtls_trusted_ca_certificate_id (nullable) is None
         # and model_fields_set contains the field
         if self.mtls_trusted_ca_certificate_id is None and "mtls_trusted_ca_certificate_id" in self.model_fields_set:
@@ -148,7 +154,7 @@ class DomainEntity(BaseModel):
             "cname_access_only": obj.get("cname_access_only"),
             "is_active": obj.get("is_active"),
             "edge_application_id": obj.get("edge_application_id"),
-            "digital_certificate_id": DomainDataDigitalCertificateId.from_dict(obj["digital_certificate_id"]) if obj.get("digital_certificate_id") is not None else None,
+            "digital_certificate_id": obj.get("digital_certificate_id"),
             "environment": obj.get("environment"),
             "is_mtls_enabled": obj.get("is_mtls_enabled"),
             "mtls_trusted_ca_certificate_id": obj.get("mtls_trusted_ca_certificate_id"),
