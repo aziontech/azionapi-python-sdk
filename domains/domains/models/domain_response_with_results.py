@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt
 from typing import Any, ClassVar, Dict, List
-from domains.models.domain_entity import DomainEntity
+from domains.models.domain_entity_response import DomainEntityResponse
 from domains.models.domain_links import DomainLinks
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,7 +32,7 @@ class DomainResponseWithResults(BaseModel):
     total_pages: StrictInt
     schema_version: StrictInt
     links: DomainLinks
-    results: List[DomainEntity]
+    results: List[DomainEntityResponse]
     __properties: ClassVar[List[str]] = ["count", "total_pages", "schema_version", "links", "results"]
 
     model_config = ConfigDict(
@@ -100,7 +100,7 @@ class DomainResponseWithResults(BaseModel):
             "total_pages": obj.get("total_pages"),
             "schema_version": obj.get("schema_version"),
             "links": DomainLinks.from_dict(obj["links"]) if obj.get("links") is not None else None,
-            "results": [DomainEntity.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None
+            "results": [DomainEntityResponse.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None
         })
         return _obj
 

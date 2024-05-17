@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from domains.models.domain_entity import DomainEntity
+from domains.models.domain_entity_response import DomainEntityResponse
 from domains.models.domain_links import DomainLinks
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,7 +30,7 @@ class DomainResponseWithResult(BaseModel):
     """ # noqa: E501
     count: Optional[StrictInt] = None
     links: Optional[DomainLinks] = None
-    results: DomainEntity
+    results: DomainEntityResponse
     total_pages: Optional[StrictInt] = None
     schema_version: StrictInt
     __properties: ClassVar[List[str]] = ["count", "links", "results", "total_pages", "schema_version"]
@@ -94,7 +94,7 @@ class DomainResponseWithResult(BaseModel):
         _obj = cls.model_validate({
             "count": obj.get("count"),
             "links": DomainLinks.from_dict(obj["links"]) if obj.get("links") is not None else None,
-            "results": DomainEntity.from_dict(obj["results"]) if obj.get("results") is not None else None,
+            "results": DomainEntityResponse.from_dict(obj["results"]) if obj.get("results") is not None else None,
             "total_pages": obj.get("total_pages"),
             "schema_version": obj.get("schema_version")
         })

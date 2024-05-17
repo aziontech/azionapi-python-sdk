@@ -5,7 +5,9 @@
 README.md
 docs/CreateDomainRequest.md
 docs/DomainData.md
+docs/DomainDataResponse.md
 docs/DomainEntity.md
+docs/DomainEntityResponse.md
 docs/DomainLinks.md
 docs/DomainResponseWithResult.md
 docs/DomainResponseWithResults.md
@@ -22,7 +24,9 @@ domains/exceptions.py
 domains/models/__init__.py
 domains/models/create_domain_request.py
 domains/models/domain_data.py
+domains/models/domain_data_response.py
 domains/models/domain_entity.py
+domains/models/domain_entity_response.py
 domains/models/domain_links.py
 domains/models/domain_response_with_result.py
 domains/models/domain_response_with_results.py
@@ -37,4 +41,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_domain_data_response.py
+test/test_domain_entity_response.py
 tox.ini
