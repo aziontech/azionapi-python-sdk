@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **count** | **int** |  | [optional] 
 **links** | [**DomainLinks**](DomainLinks.md) |  | [optional] 
-**results** | [**DomainEntity**](DomainEntity.md) |  | 
+**results** | [**DomainEntityResponse**](DomainEntityResponse.md) |  | 
 **total_pages** | **int** |  | [optional] 
 **schema_version** | **int** |  | 
 

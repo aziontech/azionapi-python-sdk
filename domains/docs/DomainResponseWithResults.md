@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **total_pages** | **int** |  | 
 **schema_version** | **int** |  | 
 **links** | [**DomainLinks**](DomainLinks.md) |  | 
-**results** | [**List[DomainEntity]**](DomainEntity.md) |  | 
+**results** | [**List[DomainEntityResponse]**](DomainEntityResponse.md) |  | 
 
 ## Example
 
