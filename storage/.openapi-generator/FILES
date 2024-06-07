@@ -11,7 +11,11 @@ docs/EdgeAccessEnum.md
 docs/ObjectResponseData.md
 docs/PaginatedBucketList.md
 docs/PaginatedBucketObjectList.md
+docs/PaginatedS3CredentialList.md
 docs/ResponseBucket.md
+docs/ResponseS3Credential.md
+docs/S3Credential.md
+docs/S3CredentialCreate.md
 docs/StateEnum.md
 docs/StorageApi.md
 docs/SuccessBucketOperation.md
@@ -37,7 +41,11 @@ storage/models/edge_access_enum.py
 storage/models/object_response_data.py
 storage/models/paginated_bucket_list.py
 storage/models/paginated_bucket_object_list.py
+storage/models/paginated_s3_credential_list.py
 storage/models/response_bucket.py
+storage/models/response_s3_credential.py
+storage/models/s3_credential.py
+storage/models/s3_credential_create.py
 storage/models/state_enum.py
 storage/models/success_bucket_operation.py
 storage/models/success_object_operation.py
@@ -45,5 +53,8 @@ storage/py.typed
 storage/rest.py
 test-requirements.txt
 test/__init__.py
-test/test_bucket_update.py
+test/test_paginated_s3_credential_list.py
+test/test_response_s3_credential.py
+test/test_s3_credential.py
+test/test_s3_credential_create.py
 tox.ini

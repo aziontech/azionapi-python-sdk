@@ -25,7 +25,7 @@ print(BucketObject.to_json())
 # convert the object into a dict
 bucket_object_dict = bucket_object_instance.to_dict()
 # create an instance of BucketObject from a dict
-bucket_object_form_dict = bucket_object.from_dict(bucket_object_dict)
+bucket_object_from_dict = BucketObject.from_dict(bucket_object_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
