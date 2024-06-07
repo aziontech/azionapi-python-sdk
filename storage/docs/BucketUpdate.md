@@ -22,7 +22,7 @@ print(BucketUpdate.to_json())
 # convert the object into a dict
 bucket_update_dict = bucket_update_instance.to_dict()
 # create an instance of BucketUpdate from a dict
-bucket_update_form_dict = bucket_update.from_dict(bucket_update_dict)
+bucket_update_from_dict = BucketUpdate.from_dict(bucket_update_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

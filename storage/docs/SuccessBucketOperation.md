@@ -23,7 +23,7 @@ print(SuccessBucketOperation.to_json())
 # convert the object into a dict
 success_bucket_operation_dict = success_bucket_operation_instance.to_dict()
 # create an instance of SuccessBucketOperation from a dict
-success_bucket_operation_form_dict = success_bucket_operation.from_dict(success_bucket_operation_dict)
+success_bucket_operation_from_dict = SuccessBucketOperation.from_dict(success_bucket_operation_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

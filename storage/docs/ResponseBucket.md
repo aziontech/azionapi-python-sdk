@@ -23,7 +23,7 @@ print(ResponseBucket.to_json())
 # convert the object into a dict
 response_bucket_dict = response_bucket_instance.to_dict()
 # create an instance of ResponseBucket from a dict
-response_bucket_form_dict = response_bucket.from_dict(response_bucket_dict)
+response_bucket_from_dict = ResponseBucket.from_dict(response_bucket_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

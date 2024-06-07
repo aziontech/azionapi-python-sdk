@@ -39,7 +39,11 @@ from storage.models.edge_access_enum import EdgeAccessEnum
 from storage.models.object_response_data import ObjectResponseData
 from storage.models.paginated_bucket_list import PaginatedBucketList
 from storage.models.paginated_bucket_object_list import PaginatedBucketObjectList
+from storage.models.paginated_s3_credential_list import PaginatedS3CredentialList
 from storage.models.response_bucket import ResponseBucket
+from storage.models.response_s3_credential import ResponseS3Credential
+from storage.models.s3_credential import S3Credential
+from storage.models.s3_credential_create import S3CredentialCreate
 from storage.models.state_enum import StateEnum
 from storage.models.success_bucket_operation import SuccessBucketOperation
 from storage.models.success_object_operation import SuccessObjectOperation
