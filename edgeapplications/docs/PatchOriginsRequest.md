@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -27,12 +28,12 @@ json = "{}"
 # create an instance of PatchOriginsRequest from a JSON string
 patch_origins_request_instance = PatchOriginsRequest.from_json(json)
 # print the JSON string representation of the object
-print PatchOriginsRequest.to_json()
+print(PatchOriginsRequest.to_json())
 
 # convert the object into a dict
 patch_origins_request_dict = patch_origins_request_instance.to_dict()
 # create an instance of PatchOriginsRequest from a dict
-patch_origins_request_form_dict = patch_origins_request.from_dict(patch_origins_request_dict)
+patch_origins_request_from_dict = PatchOriginsRequest.from_dict(patch_origins_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

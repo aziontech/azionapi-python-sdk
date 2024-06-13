@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
@@ -27,12 +28,12 @@ json = "{}"
 # create an instance of UpdateOriginsRequest from a JSON string
 update_origins_request_instance = UpdateOriginsRequest.from_json(json)
 # print the JSON string representation of the object
-print UpdateOriginsRequest.to_json()
+print(UpdateOriginsRequest.to_json())
 
 # convert the object into a dict
 update_origins_request_dict = update_origins_request_instance.to_dict()
 # create an instance of UpdateOriginsRequest from a dict
-update_origins_request_form_dict = update_origins_request.from_dict(update_origins_request_dict)
+update_origins_request_from_dict = UpdateOriginsRequest.from_dict(update_origins_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

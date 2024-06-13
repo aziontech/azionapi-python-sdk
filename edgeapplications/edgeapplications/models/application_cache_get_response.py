@@ -17,15 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, StrictInt
 from typing import Any, ClassVar, Dict, List
-from pydantic import BaseModel, StrictInt
 from edgeapplications.models.application_cache_results import ApplicationCacheResults
 from edgeapplications.models.application_links import ApplicationLinks
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ApplicationCacheGetResponse(BaseModel):
     """
@@ -38,10 +35,11 @@ class ApplicationCacheGetResponse(BaseModel):
     results: List[ApplicationCacheResults]
     __properties: ClassVar[List[str]] = ["count", "total_pages", "schema_version", "links", "results"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -54,7 +52,7 @@ class ApplicationCacheGetResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ApplicationCacheGetResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -68,10 +66,12 @@ class ApplicationCacheGetResponse(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of links
@@ -87,7 +87,7 @@ class ApplicationCacheGetResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ApplicationCacheGetResponse from a dict"""
         if obj is None:
             return None
@@ -99,8 +99,8 @@ class ApplicationCacheGetResponse(BaseModel):
             "count": obj.get("count"),
             "total_pages": obj.get("total_pages"),
             "schema_version": obj.get("schema_version"),
-            "links": ApplicationLinks.from_dict(obj.get("links")) if obj.get("links") is not None else None,
-            "results": [ApplicationCacheResults.from_dict(_item) for _item in obj.get("results")] if obj.get("results") is not None else None
+            "links": ApplicationLinks.from_dict(obj["links"]) if obj.get("links") is not None else None,
+            "results": [ApplicationCacheResults.from_dict(_item) for _item in obj["results"]] if obj.get("results") is not None else None
         })
         return _obj
 

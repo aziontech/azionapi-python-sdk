@@ -20,9 +20,8 @@ Method | HTTP request | Description
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.rules_engine_response import RulesEngineResponse
 from edgeapplications.rest import ApiException
@@ -71,6 +70,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -96,6 +96,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
@@ -117,9 +118,8 @@ Check below the list of behaviors that can be applied:  | Name                  
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.create_rules_engine_request import CreateRulesEngineRequest
 from edgeapplications.models.rules_engine_id_response import RulesEngineIdResponse
@@ -166,6 +166,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -188,6 +189,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
@@ -207,9 +209,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.rest import ApiException
 from pprint import pprint
@@ -251,6 +252,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**| The id of the edge application you plan to delete.  | 
@@ -272,6 +274,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No response |  -  |
@@ -291,9 +294,8 @@ void (empty response body)
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.rules_engine_id_response import RulesEngineIdResponse
 from edgeapplications.rest import ApiException
@@ -338,6 +340,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**| The id of the edge application you want to get.  | 
@@ -359,6 +362,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
@@ -378,9 +382,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.patch_rules_engine_request import PatchRulesEngineRequest
 from edgeapplications.models.rules_engine_id_response import RulesEngineIdResponse
@@ -428,6 +431,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -451,6 +455,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
@@ -470,9 +475,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.rules_engine_id_response import RulesEngineIdResponse
 from edgeapplications.models.update_rules_engine_request import UpdateRulesEngineRequest
@@ -520,6 +524,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -543,6 +548,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |

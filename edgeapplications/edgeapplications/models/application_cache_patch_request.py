@@ -17,13 +17,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ApplicationCachePatchRequest(BaseModel):
     """
@@ -49,10 +46,11 @@ class ApplicationCachePatchRequest(BaseModel):
     slice_configuration_range: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = ["name", "browser_cache_settings", "browser_cache_settings_maximum_ttl", "cdn_cache_settings", "adaptive_delivery_action", "enable_caching_for_options", "cdn_cache_settings_maximum_ttl", "cache_by_query_string", "query_string_fields", "enable_query_string_sort", "cache_by_cookies", "cookie_names", "enable_caching_for_post", "l2_caching_enabled", "is_slice_configuration_enabled", "is_slice_edge_caching_enabled", "is_slice_l2_caching_enabled", "slice_configuration_range"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -65,7 +63,7 @@ class ApplicationCachePatchRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ApplicationCachePatchRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -79,16 +77,18 @@ class ApplicationCachePatchRequest(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ApplicationCachePatchRequest from a dict"""
         if obj is None:
             return None

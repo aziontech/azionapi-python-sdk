@@ -17,13 +17,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ApplicationPutRequest(BaseModel):
     """
@@ -50,10 +47,11 @@ class ApplicationPutRequest(BaseModel):
     supported_ciphers: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["name", "delivery_protocol", "http_port", "https_port", "minimum_tls_version", "active", "application_acceleration", "device_detection", "edge_firewall", "edge_functions", "image_optimization", "l2_caching", "load_balancer", "raw_logs", "web_application_firewall", "debug_rules", "http3", "websocket", "supported_ciphers"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -66,7 +64,7 @@ class ApplicationPutRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ApplicationPutRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -80,10 +78,12 @@ class ApplicationPutRequest(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # set to None if http_port (nullable) is None
@@ -99,7 +99,7 @@ class ApplicationPutRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ApplicationPutRequest from a dict"""
         if obj is None:
             return None
