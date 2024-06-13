@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
@@ -32,12 +33,12 @@ json = "{}"
 # create an instance of ApplicationUpdateRequest from a JSON string
 application_update_request_instance = ApplicationUpdateRequest.from_json(json)
 # print the JSON string representation of the object
-print ApplicationUpdateRequest.to_json()
+print(ApplicationUpdateRequest.to_json())
 
 # convert the object into a dict
 application_update_request_dict = application_update_request_instance.to_dict()
 # create an instance of ApplicationUpdateRequest from a dict
-application_update_request_form_dict = application_update_request.from_dict(application_update_request_dict)
+application_update_request_from_dict = ApplicationUpdateRequest.from_dict(application_update_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

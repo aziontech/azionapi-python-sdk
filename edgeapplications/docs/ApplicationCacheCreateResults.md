@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | 
@@ -37,12 +38,12 @@ json = "{}"
 # create an instance of ApplicationCacheCreateResults from a JSON string
 application_cache_create_results_instance = ApplicationCacheCreateResults.from_json(json)
 # print the JSON string representation of the object
-print ApplicationCacheCreateResults.to_json()
+print(ApplicationCacheCreateResults.to_json())
 
 # convert the object into a dict
 application_cache_create_results_dict = application_cache_create_results_instance.to_dict()
 # create an instance of ApplicationCacheCreateResults from a dict
-application_cache_create_results_form_dict = application_cache_create_results.from_dict(application_cache_create_results_dict)
+application_cache_create_results_from_dict = ApplicationCacheCreateResults.from_dict(application_cache_create_results_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

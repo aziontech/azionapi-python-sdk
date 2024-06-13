@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
@@ -34,12 +35,12 @@ json = "{}"
 # create an instance of ApplicationPutRequest from a JSON string
 application_put_request_instance = ApplicationPutRequest.from_json(json)
 # print the JSON string representation of the object
-print ApplicationPutRequest.to_json()
+print(ApplicationPutRequest.to_json())
 
 # convert the object into a dict
 application_put_request_dict = application_put_request_instance.to_dict()
 # create an instance of ApplicationPutRequest from a dict
-application_put_request_form_dict = application_put_request.from_dict(application_put_request_dict)
+application_put_request_from_dict = ApplicationPutRequest.from_dict(application_put_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

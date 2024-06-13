@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **conditional** | **str** |  | 
@@ -19,12 +20,12 @@ json = "{}"
 # create an instance of RulesEngineCriteria from a JSON string
 rules_engine_criteria_instance = RulesEngineCriteria.from_json(json)
 # print the JSON string representation of the object
-print RulesEngineCriteria.to_json()
+print(RulesEngineCriteria.to_json())
 
 # convert the object into a dict
 rules_engine_criteria_dict = rules_engine_criteria_instance.to_dict()
 # create an instance of RulesEngineCriteria from a dict
-rules_engine_criteria_form_dict = rules_engine_criteria.from_dict(rules_engine_criteria_dict)
+rules_engine_criteria_from_dict = RulesEngineCriteria.from_dict(rules_engine_criteria_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

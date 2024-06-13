@@ -20,9 +20,8 @@ Method | HTTP request | Description
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.rest import ApiException
 from pprint import pprint
@@ -63,6 +62,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -83,6 +83,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No response |  -  |
@@ -102,9 +103,8 @@ void (empty response body)
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.device_groups_id_response import DeviceGroupsIdResponse
 from edgeapplications.rest import ApiException
@@ -148,6 +148,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -168,6 +169,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
@@ -187,9 +189,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.device_groups_id_response import DeviceGroupsIdResponse
 from edgeapplications.models.patch_device_groups_request import PatchDeviceGroupsRequest
@@ -236,6 +237,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -258,6 +260,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
@@ -277,9 +280,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.device_groups_id_response import DeviceGroupsIdResponse
 from edgeapplications.models.update_device_groups_request import UpdateDeviceGroupsRequest
@@ -326,6 +328,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -348,6 +351,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
@@ -367,9 +371,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.device_groups_response import DeviceGroupsResponse
 from edgeapplications.rest import ApiException
@@ -417,6 +420,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -441,6 +445,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
@@ -460,9 +465,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.create_device_groups_request import CreateDeviceGroupsRequest
 from edgeapplications.models.device_groups_id_response import DeviceGroupsIdResponse
@@ -508,6 +512,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -529,6 +534,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |

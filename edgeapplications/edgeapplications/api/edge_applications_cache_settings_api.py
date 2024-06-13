@@ -11,24 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
-import io
 import warnings
-
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
-from typing import Dict, List, Optional, Tuple, Union, Any
-
-try:
-    from typing import Annotated
-except ImportError:
-    from typing_extensions import Annotated
-
-from pydantic import Field
+from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from pydantic import StrictInt, StrictStr
 
+from pydantic import Field, StrictInt, StrictStr
 from typing import Optional
-
+from typing_extensions import Annotated
 from edgeapplications.models.application_cache_create_request import ApplicationCacheCreateRequest
 from edgeapplications.models.application_cache_create_response import ApplicationCacheCreateResponse
 from edgeapplications.models.application_cache_get_one_response import ApplicationCacheGetOneResponse
@@ -38,7 +28,7 @@ from edgeapplications.models.application_cache_patch_response import Application
 from edgeapplications.models.application_cache_put_request import ApplicationCachePutRequest
 from edgeapplications.models.application_cache_put_response import ApplicationCachePutResponse
 
-from edgeapplications.api_client import ApiClient
+from edgeapplications.api_client import ApiClient, RequestSerialized
 from edgeapplications.api_response import ApiResponse
 from edgeapplications.rest import RESTResponseType
 
@@ -121,7 +111,12 @@ class EdgeApplicationsCacheSettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            
+            '204': None,
+            '400': None,
+            '403': None,
+            '404': None,
+            '422': None,
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -199,7 +194,12 @@ class EdgeApplicationsCacheSettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            
+            '204': None,
+            '400': None,
+            '403': None,
+            '404': None,
+            '422': None,
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -277,7 +277,12 @@ class EdgeApplicationsCacheSettingsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            
+            '204': None,
+            '400': None,
+            '403': None,
+            '404': None,
+            '422': None,
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -296,19 +301,18 @@ class EdgeApplicationsCacheSettingsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -417,8 +421,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -497,8 +500,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -577,8 +579,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -596,19 +597,18 @@ class EdgeApplicationsCacheSettingsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -725,8 +725,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -809,8 +808,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -893,8 +891,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -913,19 +910,18 @@ class EdgeApplicationsCacheSettingsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1061,8 +1057,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1149,8 +1144,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1237,8 +1231,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1258,19 +1251,18 @@ class EdgeApplicationsCacheSettingsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1416,8 +1408,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1512,8 +1503,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1608,8 +1598,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1631,19 +1620,18 @@ class EdgeApplicationsCacheSettingsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1778,8 +1766,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1862,8 +1849,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1946,8 +1932,7 @@ class EdgeApplicationsCacheSettingsApi:
             '403': None,
             '404': None,
             '422': None,
-            '500': None
-            
+            '500': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1966,19 +1951,18 @@ class EdgeApplicationsCacheSettingsApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
 
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[str, Union[str, bytes]] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

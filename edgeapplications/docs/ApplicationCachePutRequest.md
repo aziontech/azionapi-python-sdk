@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
@@ -36,12 +37,12 @@ json = "{}"
 # create an instance of ApplicationCachePutRequest from a JSON string
 application_cache_put_request_instance = ApplicationCachePutRequest.from_json(json)
 # print the JSON string representation of the object
-print ApplicationCachePutRequest.to_json()
+print(ApplicationCachePutRequest.to_json())
 
 # convert the object into a dict
 application_cache_put_request_dict = application_cache_put_request_instance.to_dict()
 # create an instance of ApplicationCachePutRequest from a dict
-application_cache_put_request_form_dict = application_cache_put_request.from_dict(application_cache_put_request_dict)
+application_cache_put_request_from_dict = ApplicationCachePutRequest.from_dict(application_cache_put_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

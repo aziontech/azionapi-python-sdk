@@ -17,14 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from pydantic import BaseModel, ConfigDict, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt
 from edgeapplications.models.application_instances_results import ApplicationInstancesResults
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 class ApplicationInstanceResults(BaseModel):
     """
@@ -34,10 +31,11 @@ class ApplicationInstanceResults(BaseModel):
     results: Optional[ApplicationInstancesResults] = None
     __properties: ClassVar[List[str]] = ["schema_version", "results"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
     def to_str(self) -> str:
@@ -50,7 +48,7 @@ class ApplicationInstanceResults(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of ApplicationInstanceResults from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -64,10 +62,12 @@ class ApplicationInstanceResults(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([
+        ])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-            },
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of results
@@ -76,7 +76,7 @@ class ApplicationInstanceResults(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of ApplicationInstanceResults from a dict"""
         if obj is None:
             return None
@@ -86,7 +86,7 @@ class ApplicationInstanceResults(BaseModel):
 
         _obj = cls.model_validate({
             "schema_version": obj.get("schema_version"),
-            "results": ApplicationInstancesResults.from_dict(obj.get("results")) if obj.get("results") is not None else None
+            "results": ApplicationInstancesResults.from_dict(obj["results"]) if obj.get("results") is not None else None
         })
         return _obj
 

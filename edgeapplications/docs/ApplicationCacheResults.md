@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 **query_string_fields** | **List[str]** |  | 
 **enable_query_string_sort** | **bool** |  | 
 **cache_by_cookies** | **str** |  | 
-**cookie_names** | **List[str]** |  | 
+**cookie_names** | **List[Optional[str]]** |  | 
 **adaptive_delivery_action** | **str** |  | 
 **device_group** | **List[int]** |  | 
 **enable_caching_for_post** | **bool** |  | 
@@ -37,12 +38,12 @@ json = "{}"
 # create an instance of ApplicationCacheResults from a JSON string
 application_cache_results_instance = ApplicationCacheResults.from_json(json)
 # print the JSON string representation of the object
-print ApplicationCacheResults.to_json()
+print(ApplicationCacheResults.to_json())
 
 # convert the object into a dict
 application_cache_results_dict = application_cache_results_instance.to_dict()
 # create an instance of ApplicationCacheResults from a dict
-application_cache_results_form_dict = application_cache_results.from_dict(application_cache_results_dict)
+application_cache_results_from_dict = ApplicationCacheResults.from_dict(application_cache_results_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

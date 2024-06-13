@@ -20,9 +20,8 @@ Method | HTTP request | Description
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.rest import ApiException
 from pprint import pprint
@@ -64,6 +63,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -85,6 +85,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No response |  -  |
@@ -104,9 +105,8 @@ void (empty response body)
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.application_cache_get_one_response import ApplicationCacheGetOneResponse
 from edgeapplications.rest import ApiException
@@ -150,6 +150,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -170,6 +171,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
@@ -189,9 +191,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.application_cache_patch_request import ApplicationCachePatchRequest
 from edgeapplications.models.application_cache_patch_response import ApplicationCachePatchResponse
@@ -237,6 +238,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -258,6 +260,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
@@ -277,9 +280,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.application_cache_put_request import ApplicationCachePutRequest
 from edgeapplications.models.application_cache_put_response import ApplicationCachePutResponse
@@ -326,6 +328,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -348,6 +351,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
@@ -367,9 +371,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.application_cache_get_response import ApplicationCacheGetResponse
 from edgeapplications.rest import ApiException
@@ -417,6 +420,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -441,6 +445,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
@@ -460,9 +465,8 @@ Name | Type | Description  | Notes
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgeapplications
 from edgeapplications.models.application_cache_create_request import ApplicationCacheCreateRequest
 from edgeapplications.models.application_cache_create_response import ApplicationCacheCreateResponse
@@ -508,6 +512,7 @@ with edgeapplications.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **edge_application_id** | **int**|  | 
@@ -529,6 +534,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |

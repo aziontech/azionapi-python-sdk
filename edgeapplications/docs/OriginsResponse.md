@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **count** | **int** |  | 
@@ -20,12 +21,12 @@ json = "{}"
 # create an instance of OriginsResponse from a JSON string
 origins_response_instance = OriginsResponse.from_json(json)
 # print the JSON string representation of the object
-print OriginsResponse.to_json()
+print(OriginsResponse.to_json())
 
 # convert the object into a dict
 origins_response_dict = origins_response_instance.to_dict()
 # create an instance of OriginsResponse from a dict
-origins_response_form_dict = origins_response.from_dict(origins_response_dict)
+origins_response_from_dict = OriginsResponse.from_dict(origins_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
