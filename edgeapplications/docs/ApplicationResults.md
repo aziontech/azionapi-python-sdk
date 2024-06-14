@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **load_balancer** | **bool** |  | 
 **raw_logs** | **bool** |  | 
 **web_application_firewall** | **bool** |  | 
+**websocket** | **bool** |  | [optional] 
 
 ## Example
 
