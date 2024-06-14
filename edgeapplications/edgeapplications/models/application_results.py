@@ -46,7 +46,8 @@ class ApplicationResults(BaseModel):
     load_balancer: StrictBool
     raw_logs: StrictBool
     web_application_firewall: StrictBool
-    __properties: ClassVar[List[str]] = ["id", "name", "active", "debug_rules", "http3", "supported_ciphers", "delivery_protocol", "http_port", "https_port", "minimum_tls_version", "application_acceleration", "caching", "device_detection", "edge_firewall", "edge_functions", "image_optimization", "l2_caching", "load_balancer", "raw_logs", "web_application_firewall"]
+    websocket: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "active", "debug_rules", "http3", "supported_ciphers", "delivery_protocol", "http_port", "https_port", "minimum_tls_version", "application_acceleration", "caching", "device_detection", "edge_firewall", "edge_functions", "image_optimization", "l2_caching", "load_balancer", "raw_logs", "web_application_firewall", "websocket"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -128,7 +129,8 @@ class ApplicationResults(BaseModel):
             "l2_caching": obj.get("l2_caching"),
             "load_balancer": obj.get("load_balancer"),
             "raw_logs": obj.get("raw_logs"),
-            "web_application_firewall": obj.get("web_application_firewall")
+            "web_application_firewall": obj.get("web_application_firewall"),
+            "websocket": obj.get("websocket")
         })
         return _obj
 

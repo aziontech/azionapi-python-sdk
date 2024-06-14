@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **raw_logs** | **bool** |  | 
 **web_application_firewall** | **bool** |  | 
 **l2_caching** | **bool** |  | [optional] 
+**websocket** | **bool** |  | [optional] 
 
 ## Example
 
