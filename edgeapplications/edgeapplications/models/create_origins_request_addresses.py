@@ -17,8 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +28,20 @@ class CreateOriginsRequestAddresses(BaseModel):
     CreateOriginsRequestAddresses
     """ # noqa: E501
     address: StrictStr
-    __properties: ClassVar[List[str]] = ["address"]
+    is_active: Optional[StrictBool] = None
+    weight: Optional[StrictInt] = None
+    server_role: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=10)]] = None
+    __properties: ClassVar[List[str]] = ["address", "is_active", "weight", "server_role"]
+
+    @field_validator('server_role')
+    def server_role_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^(primary|backup)$", value):
+            raise ValueError(r"must validate the regular expression /^(primary|backup)$/")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -68,6 +82,11 @@ class CreateOriginsRequestAddresses(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if weight (nullable) is None
+        # and model_fields_set contains the field
+        if self.weight is None and "weight" in self.model_fields_set:
+            _dict['weight'] = None
+
         return _dict
 
     @classmethod
@@ -80,7 +99,10 @@ class CreateOriginsRequestAddresses(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "address": obj.get("address")
+            "address": obj.get("address"),
+            "is_active": obj.get("is_active"),
+            "weight": obj.get("weight"),
+            "server_role": obj.get("server_role")
         })
         return _obj
 

@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,7 +27,7 @@ class OriginsResultResponseAddresses(BaseModel):
     OriginsResultResponseAddresses
     """ # noqa: E501
     address: StrictStr
-    weight: Optional[StrictStr]
+    weight: Optional[StrictInt]
     server_role: StrictStr
     is_active: StrictBool
     __properties: ClassVar[List[str]] = ["address", "weight", "server_role", "is_active"]

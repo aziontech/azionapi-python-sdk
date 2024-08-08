@@ -6,6 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | **str** |  | 
+**is_active** | **bool** |  | [optional] 
+**weight** | **int** |  | [optional] 
+**server_role** | **str** |  | [optional] 
 
 ## Example
 
