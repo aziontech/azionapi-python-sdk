@@ -5,6 +5,7 @@
 README.md
 docs/BadRequestResponse.md
 docs/CreateEdgeFunctionRequest.md
+docs/CreateEdgeFunctionRequestJsonArgs.md
 docs/EdgeFunctionResponse.md
 docs/EdgeFunctionsApi.md
 docs/ErrorResponse.md
@@ -23,6 +24,7 @@ edgefunctions/exceptions.py
 edgefunctions/models/__init__.py
 edgefunctions/models/bad_request_response.py
 edgefunctions/models/create_edge_function_request.py
+edgefunctions/models/create_edge_function_request_json_args.py
 edgefunctions/models/edge_function_response.py
 edgefunctions/models/error_response.py
 edgefunctions/models/links.py
@@ -39,14 +41,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_bad_request_response.py
-test/test_create_edge_function_request.py
-test/test_edge_function_response.py
-test/test_edge_functions_api.py
-test/test_error_response.py
-test/test_links.py
-test/test_list_edge_function_response.py
-test/test_patch_edge_function_request.py
-test/test_put_edge_function_request.py
-test/test_results.py
+test/test_create_edge_function_request_json_args.py
 tox.ini

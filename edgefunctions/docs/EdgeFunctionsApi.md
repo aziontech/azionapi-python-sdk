@@ -20,9 +20,8 @@ edge_functions
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgefunctions
 from edgefunctions.models.list_edge_function_response import ListEdgeFunctionResponse
 from edgefunctions.rest import ApiException
@@ -67,6 +66,7 @@ with edgefunctions.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**|  | [optional] 
@@ -88,6 +88,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; version=3, application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
@@ -104,9 +105,8 @@ edge_functions
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgefunctions
 from edgefunctions.rest import ApiException
 from pprint import pprint
@@ -145,6 +145,7 @@ with edgefunctions.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
@@ -163,6 +164,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Success |  -  |
@@ -178,9 +180,8 @@ edge_functions
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgefunctions
 from edgefunctions.models.edge_function_response import EdgeFunctionResponse
 from edgefunctions.rest import ApiException
@@ -222,6 +223,7 @@ with edgefunctions.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
@@ -240,6 +242,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
@@ -256,9 +259,8 @@ edge_functions
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgefunctions
 from edgefunctions.models.edge_function_response import EdgeFunctionResponse
 from edgefunctions.models.patch_edge_function_request import PatchEdgeFunctionRequest
@@ -302,6 +304,7 @@ with edgefunctions.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
@@ -321,6 +324,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
@@ -337,9 +341,8 @@ edge_functions
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgefunctions
 from edgefunctions.models.edge_function_response import EdgeFunctionResponse
 from edgefunctions.models.put_edge_function_request import PutEdgeFunctionRequest
@@ -383,6 +386,7 @@ with edgefunctions.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
@@ -402,6 +406,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
@@ -418,9 +423,8 @@ edge_functions
 ### Example
 
 * Api Key Authentication (tokenAuth):
+
 ```python
-import time
-import os
 import edgefunctions
 from edgefunctions.models.create_edge_function_request import CreateEdgeFunctionRequest
 from edgefunctions.models.edge_function_response import EdgeFunctionResponse
@@ -463,6 +467,7 @@ with edgefunctions.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **create_edge_function_request** | [**CreateEdgeFunctionRequest**](CreateEdgeFunctionRequest.md)|  | 
@@ -481,6 +486,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Success |  -  |

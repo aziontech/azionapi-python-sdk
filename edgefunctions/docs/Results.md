@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
@@ -27,12 +28,12 @@ json = "{}"
 # create an instance of Results from a JSON string
 results_instance = Results.from_json(json)
 # print the JSON string representation of the object
-print Results.to_json()
+print(Results.to_json())
 
 # convert the object into a dict
 results_dict = results_instance.to_dict()
 # create an instance of Results from a dict
-results_form_dict = results.from_dict(results_dict)
+results_from_dict = Results.from_dict(results_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -17,78 +17,93 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, Optional
-from pydantic import BaseModel, StrictBool, StrictStr, validator
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from edgefunctions.models.create_edge_function_request_json_args import CreateEdgeFunctionRequestJsonArgs
+from typing import Optional, Set
+from typing_extensions import Self
 
 class CreateEdgeFunctionRequest(BaseModel):
     """
     CreateEdgeFunctionRequest
-    """
+    """ # noqa: E501
     name: Optional[StrictStr] = None
     language: Optional[StrictStr] = None
     code: Optional[StrictStr] = None
-    json_args: Optional[Any] = None
+    json_args: Optional[CreateEdgeFunctionRequestJsonArgs] = None
     initiator_type: Optional[StrictStr] = None
     active: Optional[StrictBool] = None
     is_proprietary_code: Optional[StrictBool] = None
-    __properties = ["name", "language", "code", "json_args", "initiator_type", "active", "is_proprietary_code"]
+    __properties: ClassVar[List[str]] = ["name", "language", "code", "json_args", "initiator_type", "active", "is_proprietary_code"]
 
-    @validator('initiator_type')
+    @field_validator('initiator_type')
     def initiator_type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in ('edge_application', 'edge_firewall'):
+        if value not in set(['edge_application', 'edge_firewall']):
             raise ValueError("must be one of enum values ('edge_application', 'edge_firewall')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CreateEdgeFunctionRequest:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of CreateEdgeFunctionRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
-        # set to None if json_args (nullable) is None
-        # and __fields_set__ contains the field
-        if self.json_args is None and "json_args" in self.__fields_set__:
-            _dict['json_args'] = None
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of json_args
+        if self.json_args:
+            _dict['json_args'] = self.json_args.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CreateEdgeFunctionRequest:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of CreateEdgeFunctionRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CreateEdgeFunctionRequest.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = CreateEdgeFunctionRequest.parse_obj({
+        _obj = cls.model_validate({
             "name": obj.get("name"),
             "language": obj.get("language"),
             "code": obj.get("code"),
-            "json_args": obj.get("json_args"),
+            "json_args": CreateEdgeFunctionRequestJsonArgs.from_dict(obj["json_args"]) if obj.get("json_args") is not None else None,
             "initiator_type": obj.get("initiator_type"),
             "active": obj.get("active"),
             "is_proprietary_code": obj.get("is_proprietary_code")
