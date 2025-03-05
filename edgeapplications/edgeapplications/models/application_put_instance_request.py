@@ -18,7 +18,8 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
+from edgeapplications.models.application_create_instance_request_args import ApplicationCreateInstanceRequestArgs
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +29,7 @@ class ApplicationPutInstanceRequest(BaseModel):
     """ # noqa: E501
     name: StrictStr
     edge_function_id: StrictInt
-    args: Optional[Any]
+    args: ApplicationCreateInstanceRequestArgs
     __properties: ClassVar[List[str]] = ["name", "edge_function_id", "args"]
 
     model_config = ConfigDict(
@@ -70,11 +71,9 @@ class ApplicationPutInstanceRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if args (nullable) is None
-        # and model_fields_set contains the field
-        if self.args is None and "args" in self.model_fields_set:
-            _dict['args'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of args
+        if self.args:
+            _dict['args'] = self.args.to_dict()
         return _dict
 
     @classmethod
@@ -89,7 +88,7 @@ class ApplicationPutInstanceRequest(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "edge_function_id": obj.get("edge_function_id"),
-            "args": obj.get("args")
+            "args": ApplicationCreateInstanceRequestArgs.from_dict(obj["args"]) if obj.get("args") is not None else None
         })
         return _obj
 

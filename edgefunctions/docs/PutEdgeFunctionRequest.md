@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
 **code** | **str** |  | [optional] 
-**json_args** | [**CreateEdgeFunctionRequestJsonArgs**](CreateEdgeFunctionRequestJsonArgs.md) |  | [optional] 
+**json_args** | **object** |  | [optional] 
 **active** | **bool** |  | [optional] 
 **initiator_type** | **str** |  | [optional] 
 **language** | **str** |  | [optional] 

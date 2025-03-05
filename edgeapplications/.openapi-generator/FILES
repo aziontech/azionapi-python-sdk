@@ -15,6 +15,7 @@ docs/ApplicationCachePutResponse.md
 docs/ApplicationCacheResponseDetails.md
 docs/ApplicationCacheResults.md
 docs/ApplicationCreateInstanceRequest.md
+docs/ApplicationCreateInstanceRequestArgs.md
 docs/ApplicationInstanceResults.md
 docs/ApplicationInstancesGetOneResponse.md
 docs/ApplicationInstancesGetResponse.md
@@ -93,6 +94,7 @@ edgeapplications/models/application_cache_put_response.py
 edgeapplications/models/application_cache_response_details.py
 edgeapplications/models/application_cache_results.py
 edgeapplications/models/application_create_instance_request.py
+edgeapplications/models/application_create_instance_request_args.py
 edgeapplications/models/application_instance_results.py
 edgeapplications/models/application_instances_get_one_response.py
 edgeapplications/models/application_instances_get_response.py
@@ -149,4 +151,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_application_create_instance_request_args.py
 tox.ini

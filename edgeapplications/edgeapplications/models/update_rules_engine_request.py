@@ -79,18 +79,18 @@ class UpdateRulesEngineRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in criteria (list of list)
         _items = []
         if self.criteria:
-            for _item in self.criteria:
-                if _item:
+            for _item_criteria in self.criteria:
+                if _item_criteria:
                     _items.append(
-                         [_inner_item.to_dict() for _inner_item in _item if _inner_item is not None]
+                         [_inner_item.to_dict() for _inner_item in _item_criteria if _inner_item is not None]
                     )
             _dict['criteria'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in behaviors (list)
         _items = []
         if self.behaviors:
-            for _item in self.behaviors:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_behaviors in self.behaviors:
+                if _item_behaviors:
+                    _items.append(_item_behaviors.to_dict())
             _dict['behaviors'] = _items
         return _dict
 
