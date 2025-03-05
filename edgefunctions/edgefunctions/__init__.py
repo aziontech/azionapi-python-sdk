@@ -33,6 +33,7 @@ from edgefunctions.exceptions import ApiException
 # import models into sdk package
 from edgefunctions.models.bad_request_response import BadRequestResponse
 from edgefunctions.models.create_edge_function_request import CreateEdgeFunctionRequest
+from edgefunctions.models.create_edge_function_request_json_args import CreateEdgeFunctionRequestJsonArgs
 from edgefunctions.models.edge_function_response import EdgeFunctionResponse
 from edgefunctions.models.error_response import ErrorResponse
 from edgefunctions.models.links import Links
