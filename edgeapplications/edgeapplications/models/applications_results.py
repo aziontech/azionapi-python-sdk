@@ -78,9 +78,9 @@ class ApplicationsResults(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in origins (list)
         _items = []
         if self.origins:
-            for _item in self.origins:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_origins in self.origins:
+                if _item_origins:
+                    _items.append(_item_origins.to_dict())
             _dict['origins'] = _items
         return _dict
 

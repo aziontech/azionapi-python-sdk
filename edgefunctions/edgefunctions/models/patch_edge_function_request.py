@@ -19,7 +19,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from edgefunctions.models.create_edge_function_request_json_args import CreateEdgeFunctionRequestJsonArgs
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +28,7 @@ class PatchEdgeFunctionRequest(BaseModel):
     """ # noqa: E501
     name: Optional[StrictStr] = None
     code: Optional[StrictStr] = None
-    json_args: Optional[CreateEdgeFunctionRequestJsonArgs] = None
+    json_args: Optional[Any] = None
     active: Optional[StrictBool] = None
     is_proprietary_code: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["name", "code", "json_args", "active", "is_proprietary_code"]
@@ -73,9 +72,11 @@ class PatchEdgeFunctionRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of json_args
-        if self.json_args:
-            _dict['json_args'] = self.json_args.to_dict()
+        # set to None if json_args (nullable) is None
+        # and model_fields_set contains the field
+        if self.json_args is None and "json_args" in self.model_fields_set:
+            _dict['json_args'] = None
+
         return _dict
 
     @classmethod
@@ -90,7 +91,7 @@ class PatchEdgeFunctionRequest(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "code": obj.get("code"),
-            "json_args": CreateEdgeFunctionRequestJsonArgs.from_dict(obj["json_args"]) if obj.get("json_args") is not None else None,
+            "json_args": obj.get("json_args"),
             "active": obj.get("active"),
             "is_proprietary_code": obj.get("is_proprietary_code")
         })

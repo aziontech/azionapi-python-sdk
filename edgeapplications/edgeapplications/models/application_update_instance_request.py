@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from edgeapplications.models.application_create_instance_request_args import ApplicationCreateInstanceRequestArgs
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +29,7 @@ class ApplicationUpdateInstanceRequest(BaseModel):
     """ # noqa: E501
     name: Optional[StrictStr]
     edge_function_id: Optional[StrictInt]
-    args: Optional[Any]
+    args: ApplicationCreateInstanceRequestArgs
     __properties: ClassVar[List[str]] = ["name", "edge_function_id", "args"]
 
     model_config = ConfigDict(
@@ -70,6 +71,9 @@ class ApplicationUpdateInstanceRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of args
+        if self.args:
+            _dict['args'] = self.args.to_dict()
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -79,11 +83,6 @@ class ApplicationUpdateInstanceRequest(BaseModel):
         # and model_fields_set contains the field
         if self.edge_function_id is None and "edge_function_id" in self.model_fields_set:
             _dict['edge_function_id'] = None
-
-        # set to None if args (nullable) is None
-        # and model_fields_set contains the field
-        if self.args is None and "args" in self.model_fields_set:
-            _dict['args'] = None
 
         return _dict
 
@@ -99,7 +98,7 @@ class ApplicationUpdateInstanceRequest(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "edge_function_id": obj.get("edge_function_id"),
-            "args": obj.get("args")
+            "args": ApplicationCreateInstanceRequestArgs.from_dict(obj["args"]) if obj.get("args") is not None else None
         })
         return _obj
 
