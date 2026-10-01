@@ -3,7 +3,7 @@ name: Security
 # Public repository: aziontech/azion-action-security is private and cannot be
 # used here, so the same capabilities run inline with pinned, checksum-verified
 # tools (precedent: aziontech/azion-console-kit).
-#   - secrets:      gitleaks over the full git history
+#   - secrets:      gitleaks (tree + new commits; full history weekly)
 #   - SAST:         semgrep (registry rules, ERROR severity blocks)
 #   - dependencies: osv-scanner over every manifest/lockfile (HIGH/CRITICAL block)
 
@@ -59,7 +59,28 @@ jobs:
 
       - name: Secret scanning (gitleaks)
         if: ${{ !cancelled() }}
-        run: gitleaks detect --source . --no-banner --redact --verbose
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          # Current tree on every run; new commits on PRs and pushes; the full
+          # history on the weekly schedule and on manual runs.
+          status=0
+          gitleaks detect --source . --no-git --no-banner --redact --verbose || status=1
+          case "$EVENT_NAME" in
+            pull_request) range="${PR_BASE}..${PR_HEAD}" ;;
+            push) range="${PUSH_BEFORE}..${GITHUB_SHA}"
+                  git cat-file -e "${PUSH_BEFORE}^{commit}" 2>/dev/null || range="${GITHUB_SHA}^!" ;;
+            *) range="" ;;
+          esac
+          if [ -n "$range" ]; then
+            gitleaks detect --source . --no-banner --redact --verbose --log-opts="$range" || status=1
+          else
+            gitleaks detect --source . --no-banner --redact --verbose || status=1
+          fi
+          exit "$status"
 
       - name: SAST (semgrep)
         if: ${{ !cancelled() }}
