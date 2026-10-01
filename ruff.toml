@@ -1,0 +1,22 @@
+# Ruff baseline for the generated SDK packages (OpenAPI Generator output).
+# Only checks that catch real breakage are enabled: syntax errors, invalid
+# comparisons, misplaced statements and undefined names. Generated code is not
+# reformatted; style rules can be enabled later in the generator templates.
+target-version = "py37"
+extend-exclude = [
+  "*.pyi",
+  "tests/vitest/node_modules",
+  "tests/vitest/.venvs",
+]
+
+[lint]
+select = ["E9", "F63", "F7", "F82"]
+external = ["H301"]
+
+[lint.per-file-ignores]
+# The python generator schemas (models and inline request bodies) reference their own properties by name inside
+# class bodies (forward references resolved at runtime), which ruff reports as
+# undefined names.
+"*/*/model/*.py" = ["F821"]
+"*/*/models/*.py" = ["F821"]
+"*/*/paths/*/*.py" = ["F821"]
