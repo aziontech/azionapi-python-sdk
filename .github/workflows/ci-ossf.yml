@@ -15,7 +15,7 @@ jobs:
   scorecard:
     name: OSSF Scorecard # required status check context
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     permissions:
       contents: read
     steps:
