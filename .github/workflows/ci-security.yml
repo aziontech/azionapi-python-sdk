@@ -2,7 +2,7 @@ name: Security
 
 # Public repository: aziontech/azion-action-security is private and cannot be
 # used here, so the same capabilities run inline with pinned, checksum-verified
-# tools (precedent: aziontech/azion-console-kit).
+# tools.
 #   - secrets:      gitleaks (tree + new commits; full history weekly)
 #   - SAST:         semgrep (registry rules, ERROR severity blocks)
 #   - dependencies: osv-scanner over every manifest/lockfile (HIGH/CRITICAL block)
